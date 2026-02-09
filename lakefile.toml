@@ -1,7 +1,7 @@
-name = "aristotle_proofs"
+name = "convex_eval"
 version = "0.1.0"
 keywords = ["math"]
-defaultTargets = ["AristotleProofs"]
+defaultTargets = ["ConvexEval"]
 
 [leanOptions]
 pp.unicode.fun = true # pretty-prints `fun a ↦ b`
@@ -16,14 +16,9 @@ git = "https://github.com/leanprover-community/mathlib4"
 rev = "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
 scope = "leanprover-community"
 
-
 [[require]]
 name = "checkdecls"
 git = "https://github.com/PatrickMassot/checkdecls.git"
 
-[[require]]
-name = "«doc-gen4»"
-git = "https://github.com/leanprover/doc-gen4"
-rev = "v4.24.0"
 [[lean_lib]]
-name = "AristotleProofs"
+name = "ConvexEval"

@@ -1,0 +1,151 @@
+\subsection{First-order developments}
+
+\begin{lemma}
+\label{lem:2.1.1}
+Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex and $x\in\mathbb{R}^n$. For any $\varepsilon>0$, there exists $\delta>0$ such that $\|h\|\le\delta$ implies
+\[
+\big|f(x+h)-f(x)-f'(x,h)\big|\le\varepsilon\|h\|.
+\tag{2.1.1}
+\]
+\end{lemma}
+
+\begin{proof}
+Suppose for contradiction that there is $\varepsilon>0$ and a sequence $(h_k)$ with $\|h_k\|=:t_k\le 1/k$ such that
+
+\[
+|f(x+h_k)-f(x)-f'(x,h_k)|>\varepsilon t_k\qquad\text{for }k=1,2,\dots
+\]
+
+Extracting a subsequence if necessary, assume that $h_k/t_k\to d$ for some $d$ of norm $1$. Then take a local Lipschitz constant $L$ of $f$ (see Remark 1.1.3) and expand:
+\[
+\varepsilon t_k<|f(x+h_k)-f(x)-f'(x,h_k)|
+\le |f(x+h_k)-f(x+t_kd)|+
+\]
+\[
+\quad +|f(x+t_kd)-f(x)-f'(x,t_kd)|+|f'(x,t_kd)-f'(x,h_k)|
+\]
+\[
+\le 2L\|h_k-t_kd\|+|f(x+t_kd)-f(x)-t_kf'(x,d)|.
+\]
+
+Divide by $t_k>0$ and pass to the limit to obtain the contradiction $\varepsilon\le 0$.
+\end{proof}
+
+\begin{corollary}\label{cor:2.1.3}
+Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. At any $x$,
+\[
+f(x+h)=f(x)+\langle s,h\rangle+o(\|h\|)
+\]
+whenever one of the following equivalent properties holds:
+\[
+s\in\partial f(x)(h)\iff h\in N_{\partial f(x)}(s)\iff s=p_{\partial f(x)}(s+h).
+\]
+\end{corollary}
+
+\begin{corollary}\label{cor:2.1.4}
+If the convex $f$ is (G\^ateaux) differentiable at $x$, its only subgradient at $x$ is its gradient $\nabla f(x)$. Conversely, if $\partial f(x)$ contains only one element $s$, then $f$ is (Fr\'echet) differentiable at $x$, with $\nabla f(x)=s$.
+\end{corollary}
+
+\begin{proposition}
+\label{prop:2.1.5}
+Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. For all $x$ and $d$ in $\mathbb{R}^n$, we have
+\[
+F_{\partial f(x)}(d)=\partial[f'(x,\cdot)](d).
+\]
+\end{proposition}
+
+\begin{proof}
+If $s\in\partial f(x)$ then $f'(x,d')\ge\langle s,d'\rangle$ for all $d'\in\mathbb{R}^n$, simply because $f'(x,\cdot)$ is the support function of $\partial f(x)$. If, in addition, $\langle s,d\rangle=f'(x,d)$, we get
+\[
+f'(x,d')\ge f'(x,d)+\langle s,d'-d\rangle\qquad\text{for all }d'\in\mathbb{R}^n
+\tag{2.1.4}
+\]
+which proves the inclusion $F_{\partial f(x)}(d)\subset\partial[f'(x,\cdot)](d)$.
+
+Conversely, let $s$ satisfy (2.1.4). Set $d'':=d'-d$ and deduce from subadditivity
+\[
+f'(x,d)+f'(x,d'')\ge f'(x,d')\ge f'(x,d)+\langle s,d''\rangle\qquad\text{for all }d''\in\mathbb{R}^n
+\]
+which implies $f'(x,\cdot)\ge\langle s,\cdot\rangle$, hence $s\in\partial f(x)$. Also, putting $d'=0$ in (2.1.4) shows that $\langle s,d\rangle\ge f'(x,d)$. Altogether, we have $s\in F_{\partial f(x)}(d)$. \qedhere
+\end{proof}
+
+\begin{definition}\label{def:2.1.6}
+A point $x$ at which $\partial f(x)$ has more than one element --- i.e.\ at which $f$ is not differentiable --- is called a \emph{kink} (or corner-point) of $f$.
+\end{definition}
+
+\subsection{Minimality conditions}
+
+\begin{theorem}\label{thm:2.2.1}
+For $f:\mathbb{R}^n\to\mathbb{R}$ convex, the following three properties are equivalent:
+\begin{enumerate}[(i)]
+\item $f$ is minimized at $x$ over $\mathbb{R}^n$, i.e., $f(y)\ge f(x)$ for all $y\in\mathbb{R}^n$;
+\item $0\in\partial f(x)$;
+\item $f'(x,d)\ge 0$ for all $d\in\mathbb{R}^n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The equivalence (i) $\Leftrightarrow$ (ii) [resp.\ (ii) $\Leftrightarrow$ (iii)] is obvious from (1.2.1) [resp.\ (1.1.6)].
+\end{proof}
+
+\subsection{Mean-value theorems}
+
+\begin{lemma}
+\label{lem:2.3.1}
+The subdifferential of $\varphi$ defined by (2.3.1) is
+\[
+\partial\varphi(t)=\{\;s,y-x\;:\;s\in\partial f(x_t)\;\}
+\]
+or, more symbolically:
+\[
+\partial\varphi(t)=\langle\partial f(x_t),\,y-x\rangle.
+\]
+\end{lemma}
+
+\begin{proof}
+In terms of right- and left-derivatives (see Theorem 0.6.3), we have
+\[
+D_{+}\varphi(t)=\lim_{\tau\downarrow 0}\frac{f(x_t+\tau(y-x))-f(x_t)}{\tau}=f'(x_t,y-x),
+\]
+\[
+D_{-}\varphi(t)=\lim_{\tau\uparrow 0}\frac{f(x_t+\tau(y-x))-f(x_t)}{\tau}=-f'(x_t,-(y-x));
+\]
+so, knowing that
+\[
+f'(x_t,y-x)=\max_{s\in\partial f(x_t)}\langle s,y-x\rangle,
+\]
+\[
+-\,f'(x_t,-(y-x))=\min_{s\in\partial f(x_t)}\langle s,y-x\rangle,
+\]
+we obtain \(\partial\varphi(t):=[D_{-}\varphi(t),D_{+}\varphi(t)]=\{\langle s,y-x\rangle : s\in\partial f(x)\}.\)
+\end{proof}
+
+\begin{theorem}\label{thm:2.3.3}
+Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. Given two points $x\neq y$ in $\mathbb{R}^n$, there exist $t\in ]0,1[$ and $s\in\partial f(x_t)$ such that
+\[
+f(y)-f(x)=\langle s,\,y-x\rangle.
+\tag{2.3.2}
+\]
+In other words,
+\[
+f(y)-f(x)\in\bigcup_{t\in]0,1[}\{\langle\partial f(x_t),\,y-x\rangle\}.
+\]
+\end{theorem}
+
+\begin{proof}
+Start from the function $\varphi$ of (2.3.1) and, as usual in this context, consider the auxiliary function
+\[
+\psi(t):=\varphi(t)-\varphi(0)-t[\varphi(1)-\varphi(0)],
+\]
+which is clearly convex. Computing directional derivatives gives easily $\partial\psi(t)=\partial\varphi(t)-[\varphi(1)-\varphi(0)]$. Now $\psi$ is continuous on $[0,1]$, it has been constructed so that $\psi(0)=\psi(1)=0$, so it is minimal at some $t\in ]0,1[$: at this $t$, $0\in\partial\psi(t)$ (Theorem 2.2.1). In view of Lemma 2.3.1, this means that there is $s\in\partial f(x_t)$ such that
+\[
+\langle s,\,y-x\rangle=\varphi(1)-\varphi(0)=f(y)-f(x).
+\]
+\end{proof}
+
+\begin{theorem}\label{thm:2.3.4}
+Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. For $x,y\in\mathbb{R}^n$,
+\[
+f(y)-f(x)=\int_0^1\langle\partial f(xt),\,y-x\rangle\,dt.
+\]
+\end{theorem}

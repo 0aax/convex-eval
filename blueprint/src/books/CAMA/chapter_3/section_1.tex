@@ -1,0 +1,223 @@
+\subsection{Definitions and first examples}
+
+\begin{definition}\label{def:1.1.1}
+The set $C \subset \mathbb{R}^n$ is said to be convex if $ \alpha x + (1-\alpha)x'$ is in $C$ whenever $x$ and $x'$ are in $C$, and $\alpha \in ]0,1[$ (or equivalently $\alpha \in [0,1]$).
+\end{definition}
+
+\subsection{Convexity preserving operations on sets}
+
+\begin{proposition}\label{prop:1.2.1}
+Let \(\{C_j\}_{j\in J}\) be an arbitrary family of convex sets. Then
+\[
+C:=\bigcap\{C_j:\; j\in J\}
+\]
+is convex.
+\end{proposition}
+
+\begin{proof}
+Immediate from the very Definition 1.1.1.
+\end{proof}
+
+\begin{proposition}
+\label{prop:1.2.3}
+For $i=1,\dots,k$, let $C_i\subset\mathbb{R}^{n_i}$ be convex sets. Then $C_1\times\cdots\times C_k$ is a convex set of $\mathbb{R}^{n_1}\times\cdots\times\mathbb{R}^{n_k}$.
+\end{proposition}
+
+\begin{proof}
+Straightforward.
+\end{proof}
+
+\begin{proposition}
+\label{prop:1.2.4}
+Let $A:\mathbb{R}^n\to\mathbb{R}^m$ be an affine mapping and $C$ a convex set of $\mathbb{R}^n$. The image $A(C)$ of $C$ under $A$ is convex in $\mathbb{R}^m$.
+
+If $D$ is a convex set of $\mathbb{R}^m$, the inverse image
+\[
+A^{-1}(D):=\{x\in\mathbb{R}^n:\;A(x)\in D\}
+\]
+is convex in $\mathbb{R}^n$.
+\end{proposition}
+
+\begin{proof}
+For $x$ and $x'$ in $\mathbb{R}^n$, the image under $A$ of the segment $[x,x']$ is clearly the segment $[A(x),A(x')]\subset\mathbb{R}^m$. This proves the first claim, but also the second: indeed, if $x$ and $x'$ are such that $A(x)$ and $A(x')$ are both in the convex set $D$, then every point of the segment $[x,x']$ has its image in $[A(x),A(x')]\subset D$.
+\end{proof}
+
+\begin{proposition}
+If $C$ is convex, so are its interior $\operatorname{int}C$ and its closure $\overline{C}$.
+\end{proposition}
+
+\begin{proof}
+For given different $x$ and $x'$, and $\alpha\in]0,1[$, we set $x''=\alpha x+(1-\alpha)x'\in]x,x'[$.
+
+Take first $x$ and $x'$ in $\operatorname{int}C$. Choosing $\delta>0$ such that $B(x',\delta)\subset C$, we show that $B(x'',(1-\alpha)\delta)\subset C$. As often in convex analysis, it is probably best to draw a picture. The ratio $\|x''-x\|/\|x'-x\|$ being precisely $1-\alpha$, Fig.\ 1.2.3 clearly shows that $B(x'',(1-\alpha)\delta)$ is just the set $\alpha x+(1-\alpha)B(x',\delta)$, obtained from segments with endpoints in $\operatorname{int}C$: $x''\in\operatorname{int}C$.
+
+Now, take $x$ and $x'$ in $\operatorname{cl}C$: we select in $C$ two sequences $\{x_k\}$ and $\{x_k'\}$ converging to $x$ and $x'$ respectively. Then, $\alpha x_k + (1-\alpha)x_k'$ is in $C$ and converges to $\alpha x + (1-\alpha)x'$, which is therefore in $\operatorname{cl}C$.
+\end{proof}
+
+\subsection{Convex combinations and convex hulls}
+
+\begin{definition}
+\label{def:1.3.2}
+A \emph{convex combination} of elements $x_1,\ldots,x_k$ in $\mathbb{R}^n$ is an element of the form
+\[
+\sum_{i=1}^k \alpha_i x_i
+\]
+where
+\[
+\sum_{i=1}^k \alpha_i = 1 \quad\text{and}\quad \alpha_i \ge 0\ \text{for } i=1,\ldots,k.
+\]
+\end{definition}
+
+\begin{proposition}
+A set $C\subset\mathbb{R}^n$ is convex if and only if it contains every convex combination of its elements.
+\end{proposition}
+
+\begin{proof}
+The condition is sufficient: convex combinations of two elements just make up the segment joining them. To prove necessity, take $x_1,\dots,x_k$ in $C$ and $\alpha=(\alpha_1,\dots,\alpha_k)\in\Delta_k$. One at least of the $\alpha_i$'s is positive, say $\alpha_1>0$. Then form
+\[
+y_2:=\frac{\alpha_1}{\alpha_1+\alpha_2}x_1+\frac{\alpha_2}{\alpha_1+\alpha_2}x_2
+\quad\left[= \frac{1}{\alpha_1+\alpha_2}(\alpha_1x_1+\alpha_2x_2)\right]
+\]
+which is in $C$ by Definition 1.1.1 itself. Therefore,
+\[
+y_3:=\frac{\alpha_1+\alpha_2}{\alpha_1+\alpha_2+\alpha_3}y_2+\frac{\alpha_3}{\alpha_1+\alpha_2+\alpha_3}x_3
+\quad\left[= \frac{1}{\sum_{i=1}^3\alpha_i}\sum_{i=1}^3\alpha_i x_i\right]
+\]
+is in $C$ for the same reason; and so on until
+\[
+y_k:=\frac{\alpha_1+\cdots+\alpha_{k-1}}{1}y_{k-1}+\frac{\alpha_k}{1}x_k
+\quad\left[= \tfrac{1}{1}\sum_{i=1}^k\alpha_i x_i\right].
+\]
+\end{proof}
+
+\begin{proposition}
+\label{prop:1.3.4}
+The convex hull can also be described as the set of all convex combinations:
+\[
+\operatorname{co}S:=\bigcap\{C: C\ \text{is convex and contains }S\}
+= \Big\{x\in\mathbb{R}^n : \text{for some }k\in\mathbb{N}_*,\ \text{there exist }x_1,\dots,x_k\in S\ \text{and }
+\alpha=(\alpha_1,\dots,\alpha_k)\in\Delta_k\ \text{such that }\sum_{i=1}^k\alpha_i x_i=x\Big\}.
+\tag{1.3.2}
+\]
+\end{proposition}
+
+\begin{proof}
+Call $T$ the set described in the rightmost side of (1.3.2). Clearly, $T\supset S$. Also,
+if $C$ is convex and contains $S$, then it contains all convex combinations of elements
+
+For this, take two points $x$ and $y$ in $T$, characterized respectively by $(x_{1},\alpha_{1}),\dots,$
+$(x_{k},\alpha_{k})$ and by $(y_{1},\beta_{1}),\dots,(y_{\ell},\beta_{\ell})$; take also
+$\lambda\in[0,1]$. Then $\lambda x+(1-\lambda)y$ is a certain combination of $k+\ell$ elements of $S$; this combination is convex because its coefficients $\lambda\alpha_{i}$ and $(1-\lambda)\beta_{j}$ are nonnegative, and their sum is
+\[
+\lambda\sum_{i=1}^{k}\alpha_{i}+(1-\lambda)\sum_{j=1}^{\ell}\beta_{j}=\lambda+1-\lambda=1.
+\]
+\end{proof}
+
+\begin{theorem}
+\label{thm:1.3.6}
+(C. Carathéodory) Any $x\in\operatorname{co}S\subset\mathbb{R}^n$ can be represented as a convex combination of $n+1$ elements of $S$.
+\end{theorem}
+
+\begin{proof}
+Take an arbitrary convex combination $x=\sum_{i=1}^k \alpha_i x_i$, with $k>n+1$. We will show that one of the $x_i$'s can be assigned a $0$-coefficient without changing $x$. For this, assume that all coefficients $\alpha_i$ are positive (otherwise we are done).
+
+The $k>n+1$ elements $x_i$ are certainly affinely dependent: (1.3.1) tells us that we can find $\delta_1,\dots,\delta_k$, not all zero, such that
+\[
+\sum_{i=1}^k \delta_i x_i = 0 \quad\text{and}\quad \sum_{i=1}^k \delta_i = 0.
+\]
+
+There is at least one positive $\delta_i$; and we can set $\alpha_i':=\alpha_i-t^*\delta_i$ for $i=1,\dots,k$, where
+\[
+t^*:=\max\{t\ge 0:\ \alpha_i-t\delta_i\ge 0\ \text{for }i=1,\dots,k\}
+=\min_{\delta_j>0}\frac{\alpha_j}{\delta_j}.
+\]
+
+Clearly enough,
+\[
+\alpha_i'\ge 0\quad\text{for }i=1,\dots,k \qquad[\text{automatic if }\delta_i\le 0,\ \text{by construction of }t^*\text{ if }\delta_i>0]
+\]
+\[
+\sum_{i=1}^k \alpha_i'=\sum_{i=1}^k \alpha_i - t^*\sum_{i=1}^k \delta_i =1;
+\]
+\[
+\sum_{i=1}^k \alpha_i' x_i = x - t^* \sum_{i=1}^k \delta_i x_i = x;
+\]
+and there exists $i_0$ such that $\alpha_{i_0}'=0$. \qquad [by construction of $t^*$]
+
+In other words, we have expressed $x$ as a convex combination of $k-1$ among the $x_i$'s; our claim is proved.
+
+Now, if $k-1=n+1$, the proof is finished. If not, we can apply the above construction to the convex combination $x=\sum_{i=1}^{k-1}\alpha_i' x_i$ and so on. The process can be continued until there remain only $n+1$ elements (which may be affinely independent).
+\end{proof}
+
+\begin{theorem}\label{thm:1.3.7}
+(W. Fenchel and L. Bunt) If $S\subset\mathbb{R}^n$ has no more than $n$ connected components (in particular, if $S$ is connected), then any $x\in\operatorname{co}S$ can be expressed as a convex combination of $n$ elements of $S$.
+\end{theorem}
+
+\subsection{Closed convex sets and hulls}
+
+\begin{definition}
+The \emph{closed convex hull} of a nonempty set \(S\subset\mathbb{R}^n\) is the intersection of all closed convex sets containing \(S\). It will be denoted by \(\overline{\operatorname{co}}\,S\).
+\end{definition}
+
+\begin{proposition}
+\label{prop:1.4.2}
+The closed convex hull \(\overline{\operatorname{co}}S\) of Definition 1.4.1 is the closure \(\operatorname{cl}(\operatorname{co}S)\) of the convex hull of \(S\).
+\end{proposition}
+
+\begin{proof}
+Because \(\operatorname{cl}(\operatorname{co}S)\) is a closed convex set containing \(S\), it contains \(\overline{\operatorname{co}}S\) as well. On the other hand, take a closed convex set \(C\) containing \(S\); being convex, \(C\) contains \(\operatorname{co}S\); being closed, it contains also the closure of \(\operatorname{co}S\). Since \(C\) was arbitrary, we conclude \(\bigcap C \supset\operatorname{cl}\operatorname{co}S\).
+\end{proof}
+
+\begin{theorem}\label{thm:1.4.3}
+If $S$ is bounded [resp.\ compact], then $\operatorname{co}S$ is bounded [resp.\ compact].
+\end{theorem}
+
+\begin{proof}
+Let $x=\sum_{i=1}^{n+1}\alpha_i x_i\in\operatorname{co}S$. If $S$ is bounded, say by $M$, we can write
+\[
+\|x\|\le \sum_{i=1}^{n+1}\alpha_i\|x_i\|\le M\sum_{i=1}^{n+1}\alpha_i = M.
+\]
+
+Now take a sequence $\{x^k\}\subset\operatorname{co}S$. For each $k$ we can choose
+\[
+x^k_1,\dots,x^k_{n+1}\in S\qquad\text{and}\qquad \alpha^k=(\alpha^k_1,\dots,\alpha^k_{n+1})\in\Delta_{n+1}
+\]
+such that $x^k=\sum_{i=1}^{n+1}\alpha^k_i x^k_i$. Note that $\Delta_{n+1}$ is compact. If $S$ is compact, we can extract a subsequence as many times as necessary (not more than $n+2$ times) so that $\{\alpha^k\}$ and each $\{x^k_i\}$ converge: we end up with an index set $K\subset\mathbb{N}$ such that, when $k\to+\infty$,
+\[
+\{x^k_i\}_{k\in K}\to x_i\in S\qquad\text{and}\qquad \{\alpha^k\}_{k\in K}\to \alpha\in\Delta_{n+1}.
+\]
+
+Passing to the limit for $k\in K$, we see that $\{x^k\}_{k\in K}$ converges to a point $x$, which can be expressed as a convex combination of points of $S$: $x\in\operatorname{co}S$, whose compactness is thus established.
+\end{proof}
+
+\begin{definition}
+\label{def:1.4.5}
+A \emph{conical combination} of elements $x_1,\dots,x_k$ is an element of the form $\sum_{i=1}^k \alpha_i x_i$, where the coefficients $\alpha_i$ are nonnegative.
+
+The set of all conical combinations from a given nonempty $S\subset\mathbb{R}^n$ is the \emph{conical hull} of $S$. It is denoted by $\operatorname{cone} S$.
+\end{definition}
+
+\begin{definition}
+\label{def:1.4.6}
+The \emph{closed conical hull} (or rather closed convex conical hull) of a nonempty set $S\subset\mathbb{R}^n$ is
+\[
+\overline{\operatorname{cone} S}:=\operatorname{cl}\big(\operatorname{cone} S\big)
+=\overline{\Big\{\sum_{i=1}^k \alpha_i x_i:\ \alpha_i\ge 0,\ x_i\in S\ \text{ for } i=1,\dots,k\Big\}}.
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:1.4.7}
+Let $S$ be a nonempty compact set such that $0\notin\operatorname{co}S$. Then
+\[
+\overline{\operatorname{cone}S}=\mathbb{R}^{+}(\operatorname{co}S)\quad[=\operatorname{cone}S].
+\]
+\end{proposition}
+
+\begin{proof}
+The set $C:=\operatorname{co}S$ is compact and does not contain the origin; we prove that $\mathbb{R}^{+}C$ is closed. Let $\{t_kx_k\}\subset\mathbb{R}^{+}C$ converge to $y$; extracting a subsequence if necessary, we may suppose $x_k\to x\in C$; note: $x\neq 0$. We write
+\[
+t_k\frac{x_k}{\|x_k\|}\longrightarrow\frac{y}{\|x\|},
+\]
+which implies $t_k\to\|y\|/\|x\|=:t\ge 0$. Then, $t_kx_k\to tx=y$, which is thus in $\mathbb{R}^{+}C$.
+\end{proof}

@@ -1,0 +1,186 @@
+\subsection{Definitions, Interpretations}
+
+\begin{definition}
+\label{def:2.1.1}
+( Support Function) Let $S$ be a nonempty set in $\mathbb{R}^n$. The function
+\[
+\sigma_S:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}
+\]
+defined by
+\[
+\mathbb{R}^n\ni x\mapsto \sigma_S(x):=\sup\{\langle s,x\rangle:\; s\in S\}\tag{2.1.1}
+\]
+is called the \emph{support function} of $S$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:2.1.2}
+A support function is closed and sublinear.
+\end{proposition}
+
+\begin{proof}
+This results from Proposition 1.3.1(ii) (a linear form is closed and convex!). Observe in particular that a support function is null (hence $< +\infty$) at the origin.
+\end{proof}
+
+\begin{proposition}
+\label{prop:2.1.3}
+The support function of $S$ is finite everywhere if and only if $S$ is bounded.
+\end{proposition}
+
+\begin{proof}
+Let $S$ be bounded, say $S\subset B(0,L)$ for some $L>0$. Then
+\[
+\langle s,x\rangle \le \|s\|\,\|x\| \le L\|x\|\qquad\text{for all } s\in S,
+\]
+which implies $\sigma_S(x)\le L\|x\|$ for all $x\in\mathbb{R}^n$.
+
+Conversely, finiteness of the convex $\sigma_S$ implies its continuity on the whole space (Theorem B.3.1.2), hence its local boundedness: for some $L$,
+\[
+\langle s,x\rangle \le \sigma_S(x)\le L\qquad\text{for all }(s,x)\in S\times B(0,1).
+\]
+If $s\neq 0$, we can take $x=s/\|s\|$ in the above relation, which implies \(\|s\|\le L\).
+\end{proof}
+
+\begin{definition}
+\label{def:2.1.4}
+(Breadth of a Set) The \emph{breadth} of a nonempty set $S$ along $x\neq0$ is
+\[
+\sigma_S(x)+\sigma_S(-x)=\sup_{s\in S}\langle s,x\rangle-\inf_{s\in S}\langle s,x\rangle,
+\]
+a number in $[0,+\infty]$. It is $0$ if and only if $S$ lies entirely in some affine hyperplane orthogonal to $x$; such a hyperplane is expressed as
+\[
+\{y\in\mathbb{R}^n:\ \langle y,x\rangle=\sigma_S(x)\},
+\]
+which in particular contains $S$. The intersection of all these hyperplanes is just the affine hull of $S$.
+\end{definition}
+
+\subsection{Basic properties}
+
+\begin{proposition}
+For \(S\subset\mathbb{R}^n\) nonempty, there holds \(\sigma_S=\sigma_{\operatorname{cl} S}=\sigma_{\operatorname{co} S}\); whence
+\[
+\sigma_S=\sigma_{\overline{\operatorname{co}}\,S}.
+\tag{2.2.1}
+\]
+\end{proposition}
+
+\begin{proof}
+The continuity [resp.\ linearity, hence convexity] of the function \(\langle s,\cdot\rangle\), which is maximized over \(S\), implies that \(\sigma_S=\sigma_{\operatorname{cl} S}\) [resp.\ \(\sigma_S=\sigma_{\operatorname{co} S}\)]. Knowing that \(\overline{\operatorname{co}}\,S=\operatorname{cl}\,\operatorname{co}\,S\) (Proposition A.1.4.2), (2.2.1) follows immediately.
+\end{proof}
+
+\begin{theorem}\label{thm:2.2.2}
+For the nonempty $S\subset\mathbb{R}^n$ and its support function $\sigma_S$, there holds
+\[
+s\in\overline{\operatorname{co}}S\iff\bigl[\langle s,d\rangle\le\sigma_S(d)\quad\text{for all }d\in X\bigr],
+\tag{2.2.2}
+\]
+where the set $X$ can be indifferently taken as: the whole of $\mathbb{R}^n$, the unit ball $B(0,1)$ or its boundary the unit sphere $\tilde{B}$, or $\operatorname{dom}\sigma_S$.
+\end{theorem}
+
+\begin{proof}
+First, the equivalence between all the choices for $X$ is clear enough; in particular due to positive homogeneity. Because ``$\Rightarrow$'' is Proposition 2.2.1, we have to prove ``$\Leftarrow$'' only, with $X=\mathbb{R}^n$ say.
+
+So suppose that $s\notin\overline{\operatorname{co}}S$. Then $\{s\}$ and $\overline{\operatorname{co}}S$ can be strictly separated (Theorem A.4.1.1): there exists $d_0\in\mathbb{R}^n$ such that
+\[
+\langle s,d_0\rangle>\sup\{\langle s',d_0\rangle:s'\in\overline{\operatorname{co}}S\}=\sigma_S(d_0),
+\]
+where the last equality is (2.2.1). Our result is proved by contradiction.
+\end{proof}
+
+\begin{theorem}
+\label{thm:2.2.3}
+Let $S$ be a nonempty closed convex set in $\mathbb{R}^n$. Then
+\begin{enumerate}
+\item[(i)] $s\in\operatorname{aff}S$ if and only if
+\[
+\langle s,d\rangle=\sigma_S(d)\quad\text{for all }d\text{ with }\sigma_S(d)+\sigma_S(-d)=0;
+\tag{2.2.3}
+\]
+\item[(ii)] $s\in\operatorname{ri}S$ if and only if
+\[
+\langle s,d\rangle<\sigma_S(d)\quad\text{for all }d\text{ with }\sigma_S(d)+\sigma_S(-d)>0;
+\tag{2.2.4}
+\]
+\item[(iii)] in particular, $s\in\operatorname{int}S$ if and only if
+\[
+\langle s,d\rangle<\sigma_S(d)\quad\text{for all }d\neq0.
+\tag{2.2.5}
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+[(i)] Let first $s\in S$. We have already seen in Definition 2.1.4 that
+\[
+- \sigma_S(-d) \le \langle s,d\rangle \le \sigma_S(d)\qquad\text{for all } d\in\mathbb{R}^n.
+\]
+If the breadth of $S$ along $d$ is zero, we obtain a pair of equalities: for such $d$, there holds
+\[
+\langle s,d\rangle = \sigma_S(d),
+\]
+an equality which extends by affine combination to any element \(s\in\operatorname{aff}S\).
+
+Conversely, let \(s\) satisfy (2.2.3). A first case is when the only \(d\) described in (2.2.3) is \(d = 0\); as a consequence of our observations in Definition 2.1.4, there is no affine hyperplane containing \(S\), i.e.\ \(\operatorname{aff}S = \mathbb{R}^n\) and there is nothing to prove. Otherwise, there does exist a hyperplane \(H\) containing \(S\); it is defined by
+\[
+H := \{p \in \mathbb{R}^n : \langle p,d_H\rangle = \sigma_S(d_H)\}, \tag{2.2.6}
+\]
+for some \(d_H \neq 0\). We proceed to prove \(\langle s,\cdot\rangle \le \sigma_H\).
+
+In fact, the breadth of \(S\) along \(d_H\) is certainly 0, hence \(\langle s,d_H\rangle = \sigma_S(d_H)\) because of (2.2.3), while (2.2.6) shows that \(\sigma_S(d_H) = \sigma_H(d_H)\). On the other hand, it is obvious that \(\sigma_H(d) = +\infty\) if \(d\) is not collinear to \(d_H\). In summary, we have proved \(\langle s,d\rangle \le \sigma_H(d)\) for all \(d\), i.e.\ \(s \in H\). We conclude that our \(s\) is in any affine manifold containing \(S\): \(s \in \operatorname{aff}S\).
+
+[(iii)] In view of positive homogeneity, we can normalize \(d\) in (2.2.5). For \(s \in \operatorname{int} S\), there exists \(\varepsilon > 0\) such that \(s + \varepsilon d \in S\) for all \(d\) in the unit sphere \(\widetilde{B}\). Then, from the very definition (2.1.1),
+\[
+\sigma_S(d) \ge \langle s + \varepsilon d,d\rangle = \langle s,d\rangle + \varepsilon \quad\text{for all } d \in \widetilde{B}.
+\]
+
+Conversely, let \(s \in \mathbb{R}^n\) be such that
+\[
+\sigma_S(d) - \langle s,d\rangle > 0 \quad\text{for all } d \in \widetilde{B},
+\]
+which implies, because \(\sigma_S\) is closed and the unit sphere is compact:
+\[
+0 < \varepsilon := \inf\{\sigma_S(d) - \langle s,d\rangle : d \in \widetilde{B}\} \le +\infty.
+\]
+Thus
+\[
+\langle s,d\rangle + \varepsilon \le \sigma_S(d)\quad\text{for all } d \in \widetilde{B}.
+\]
+
+Now take \(u\) with \(\|u\| < \varepsilon\). From the Cauchy-Schwarz inequality, we have for all \(d \in \widetilde{B}\)
+\[
+\langle s+u,d\rangle = \langle s,d\rangle + \langle u,d\rangle \le \langle s,d\rangle + \varepsilon \le \sigma_S(d)
+\]
+and this implies \(s + u \in S\) because of Theorem 2.2.2: \(s \in \operatorname{int} S\) and (iii) is proved.
+
+[(ii)] Look at Fig. 2.2.2 again: decompose \(\mathbb{R}^n = V \oplus U\), where \(V\) is the subspace parallel to \(\operatorname{aff}S\) and \(U = V^\perp\). In the decomposition \(d = d_V + d_U\), \(\langle\cdot,d_U\rangle\) is constant over \(S\), so \(S\) has 0-breadth along \(d_U\) and
+\[
+\sigma_S(d) = \sup_{s\in S}\langle s,d_V + d_U\rangle = \langle s,d_U\rangle + \sup_{s\in S}\langle s,d_V\rangle
+\]
+for any \(s \in S\). With these notations, a direction described as in (2.2.4) is a \(d\) such that
+\[
+\sigma_S(d) + \sigma_S(-d) = \sigma_S(d_V) + \sigma_S(-d_V) > 0.
+\]
+Then, (ii) is just (iii) written in the subspace \(V\).
+\end{proof}
+
+\begin{proposition}
+Let $S$ be a nonempty closed convex set in $\mathbb{R}^n$. Then $\overline{\operatorname{dom}\sigma_S}$ and the asymptotic cone $S_\infty$ of $S$ are mutually polar cones.
+\end{proposition}
+
+\begin{proof}
+Recall from \S A.3.2 that, if $K_1$ and $K_2$ are two closed convex cones, then $K_1\subset K_2$ if and only if $(K_1)^\circ \supset (K_2)^\circ$.
+
+Let $p\in S_\infty$. Fix $s_0$ arbitrary in $S$ and use the fact that $S_\infty = \bigcap_{t>0} t(S-s_0)$ ( \S A.2.2); for all $t>0$, we can find $s_t\in S$ such that $p=t(s_t-s_0)$. Now, for $q\in\operatorname{dom}\sigma_S$, there holds
+\[
+\langle p,q\rangle = t\langle s_t-s_0,q\rangle \le t\big[\sigma_S(q)-\langle s_0,q\rangle\big]<+\infty
+\]
+and letting $t\downarrow 0$ shows that $\langle p,q\rangle\le 0$. In other words, $\operatorname{dom}\sigma_S\subset (S_\infty)^\circ$; then $\overline{\operatorname{dom}\sigma_S}\subset (S_\infty)^\circ$ since the latter is closed.
+
+Conversely, let $q\in (\operatorname{dom}\sigma_S)^\circ$, which is a cone, hence $tq\in(\operatorname{dom}\sigma_S)^\circ$ for any $t>0$. Thus, given $s_0\in S$, we have for arbitrary $p\in\operatorname{dom}\sigma_S$
+\[
+\langle s_0+tq,p\rangle = \langle s_0,p\rangle + t\langle q,p\rangle \le \langle s_0,p\rangle \le \sigma_S(p),
+\]
+so $s_0+tq\in S$ by virtue of Theorem 2.2.2. In other words: $q\in (S-s_0)/t$ for all $t>0$ and $q\in S_\infty$. 
+\end{proof}
+
+\subsection{Examples}

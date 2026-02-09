@@ -1,0 +1,109 @@
+\subsection{The projection operator}
+
+\begin{theorem}\label{thm:3.1.1}
+A point $y_x\in C$ is the projection $p_C(x)$ if and only if
+\[
+\langle x-y_x,\;y-y_x\rangle\le 0\qquad\text{for all }y\in C .
+\tag{3.1.3}
+\]
+\end{theorem}
+
+\begin{proof}
+Call $y_x$ the solution of (3.1.1); take $y$ arbitrary in $C$, so that $y_x+\alpha(y-y_x)\in C$ for any $\alpha\in ]0,1[$. Then we can write with the notation (3.1.2)
+\[
+f_x(y_x)\le f_x\big(y_x+\alpha(y-y_x)\big)=\tfrac12\|y_x-x+\alpha(y-y_x)\|^2.
+\]
+Developing the square, we obtain after simplification
+\[
+0\le \alpha\langle y_x-x,\;y-y_x\rangle+\tfrac12\alpha^2\|y-y_x\|^2.
+\]
+Divide by $\alpha\ (>0)$ and let $\alpha\downarrow0$ to obtain (3.1.3).
+
+Conversely, suppose that $y_x\in C$ satisfies (3.1.3). If $y_x=x$, then $y_x$ certainly solves (3.1.1). If not, write for arbitrary $y\in C$:
+\[
+0\ge \langle x-y_x,\;y-y_x\rangle=(x-y_x,\;y-x+x-y_x)
+\]
+\[
+=\|x-y_x\|^2+\langle x-y_x,\;y-x\rangle\ge\|x-y_x\|^2-\|x-y\|\;\|x-y_x\|,
+\]
+where the Cauchy-Schwarz inequality is used. Divide by $\|x-y_x\|>0$ to see that $y_x$ solves (3.1.1).
+\end{proof}
+
+\begin{proposition}
+For all $(x_1,x_2)\in\mathbb{R}^n\times\mathbb{R}^n$, there holds
+\[
+\|p_C(x_1)-p_C(x_2)\|^2 \le \langle p_C(x_1)-p_C(x_2),\,x_1-x_2\rangle.
+\]
+\end{proposition}
+
+\begin{proof}
+Write (3.1.3) with $x=x_1$, $y=p_C(x_2)\in C$:
+\[
+\langle p_C(x_2)-p_C(x_1),\,x_1-p_C(x_1)\rangle \le 0;
+\]
+likewise,
+\[
+\langle p_C(x_1)-p_C(x_2),\,x_2-p_C(x_2)\rangle \le 0,
+\]
+and conclude by addition
+\[
+\langle p_C(x_1)-p_C(x_2),\,x_2-x_1 + p_C(x_1)-p_C(x_2)\rangle \le 0.
+\]
+\end{proof}
+
+\subsection{Projection onto a closed convex cone}
+
+\begin{definition}
+\label{def:3.2.1}
+Let $K$ be a convex cone, as defined in Example 1.1.4. The \emph{polar cone} of $K$ (called negative polar cone by some authors) is:
+\[
+K^{\circ} := \{ s \in \mathbb{R}^n : \langle s,x\rangle \le 0 \text{ for all } x \in K \}.
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:3.2.3}
+Let $K$ be a closed convex cone.  Then $y_x = p_K(x)$ if and only if
+\[
+y_x \in K,\qquad x-y_x\in K^\circ,\qquad \langle x-y_x,y_x\rangle=0.
+\tag{3.2.1}
+\]
+\end{proposition}
+
+\begin{proof}
+We know from Theorem 3.1.1 that $y_x = p_K(x)$ satisfies
+\[
+\langle x-y_x,y-y_x\rangle\le 0\qquad\text{for all }y\in K.
+\tag{3.2.2}
+\]
+Taking $y=\alpha y_x$, with arbitrary $\alpha\ge 0$, this inequality implies
+\[
+(\alpha-1)\langle x-y_x,y_x\rangle\le 0\qquad\text{for all }\alpha\ge 0.
+\]
+Since $\alpha-1$ can have either sign, this implies $\langle x-y_x,y_x\rangle=0$ and (3.2.2) becomes
+\[
+\langle y,x-y_x\rangle\le 0\quad\text{for all }y\in K,\qquad\text{i.e.}\quad x-y_x\in K^\circ.
+\]
+
+Conversely, let $y_x$ satisfy (3.2.1).  For arbitrary $y\in K$, use the notation (3.1.2):
+\[
+f_x(y)=\tfrac12\|x-y_x+y_x-y\|^2\ge f_x(y_x)+\langle x-y_x,y_x-y\rangle;
+\]
+but (3.2.1) shows that
+\[
+\langle x-y_x,y_x-y\rangle=-\langle x-y_x,y\rangle\ge 0,
+\]
+hence $f_x(y)\ge f_x(y_x)$: $y_x$ solves (3.1.1).
+\end{proof}
+
+\begin{theorem}[J.-J. Moreau]\label{thm:3.2.5}
+Let $K$ be a closed convex cone. For the three elements $x,x_1$ and $x_2$ in $\mathbb{R}^n$, the properties below are equivalent:
+\begin{enumerate}
+\item[(i)] $x=x_1+x_2$ with $x_1\in K$, $x_2\in K^\circ$ and $\langle x_1,x_2\rangle=0$;
+\item[(ii)] $x_1=\mathrm{p}_K(x)$ and $x_2=\mathrm{p}_{K^\circ}(x)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Straightforward, from (3.2.3) and the characterization (3.2.1) of $x_1=\mathrm{p}_K(x)$.
+\end{proof}

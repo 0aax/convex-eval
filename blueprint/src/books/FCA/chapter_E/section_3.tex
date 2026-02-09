@@ -1,0 +1,53 @@
+\subsection{The Cramer transform}
+
+\subsection{The conjugate of a convex partially quadratic function}
+
+\begin{proposition}
+\label{prop:3.2.1}
+The function $g$ of (3.2.1) has the conjugate
+\[
+g^{*}(s)=\begin{cases}
+\tfrac{1}{2}\langle s, (p_{H}\circ B\circ p_{H})^{-}s\rangle & \text{if } s\in\operatorname{Im}B+H^{\perp},\\[4pt]
++\infty & \text{otherwise},
+\end{cases}\tag{3.2.2}
+\]
+where $p_{H}$ is the operator of orthogonal projection onto $H$ and $(\cdot)^{-}$ is the Moore--Penrose pseudo-inverse.
+\end{proposition}
+
+\begin{proof}
+Set $f:=\tfrac{1}{2}\langle B\cdot,\cdot\rangle$, so that $g=f+i_{H}$ and $g^{*}=(f\circ p_{H})^{*}\circ p_{H}$ (Proposition 1.3.2). Knowing that $(f\circ p_{H})(x)=\tfrac{1}{2}\langle (p_{H}\circ B\circ p_{H})x,x\rangle$, we obtain from Example 1.1.4 the conjugate $g^{*}(s)$ under the form
+\[
+(f\circ p_{H})^{*}(p_{H}s)=\begin{cases}
+\tfrac{1}{2}\langle s,(p_{H}\circ B\circ p_{H})^{-}s\rangle & \text{if } p_{H}s\in\operatorname{Im}(p_{H}\circ B\circ p_{H}),\\[4pt]
++\infty & \text{otherwise}.
+\end{cases}
+\]
+
+It could be checked directly that $\operatorname{Im}(p_{H}\circ B\circ p_{H})+H^{\perp}=\operatorname{Im}B+H^{\perp}$. A simpler argument, however, is obtained via Theorem 2.3.2, which can be applied since $\operatorname{dom}f=\mathbb{R}^{n}$. Thus,
+\[
+g^{*}(s)=(f^{*}\,\square\,i_{H^{\perp}})(s)=\min\{\tfrac{1}{2}\langle p,B^{-}p\rangle:\;p\in\operatorname{Im}B,\;s-p\in H^{\perp}\},
+\]
+which shows that $\operatorname{dom}g^{*}=\operatorname{Im}B+H^{\perp}$.
+\end{proof}
+
+\subsection{Polyhedral functions}
+
+\begin{proposition}\label{prop:3.3.1}
+At each $s\in\operatorname{co}\{s_1,\ldots,s_k\}=\operatorname{dom}f^*$, the conjugate of $f$ has the value ( $\Delta_k$ is the unit simplex)
+\[
+f^*(s)=\min\Big\{\sum_{i=1}^k \alpha_i b_i:\ \alpha\in\Delta_k,\ \sum_{i=1}^k \alpha_i s_i=s\Big\}.
+\tag{3.3.2}
+\]
+\end{proposition}
+
+\begin{proof}
+Set $g_i(s):= \iota_{\{s_i\}}+b_i$ and
+\[
+g(s):=(\inf_i g_i)(s)=
+\begin{cases}
+b_i &\text{if } s=s_i\text{ for some } i=1,\ldots,k,\\[4pt]
++\infty &\text{otherwise}.
+\end{cases}
+\]
+Apply Proposition B.2.5.4 to see that $\overline{\operatorname{co}}\,g=f^*$ of (3.3.2). The rest follows from Theorem 2.4.1 or 2.4.4, with a notational flip of $f$ and $g$. \qedhere
+\end{proof}

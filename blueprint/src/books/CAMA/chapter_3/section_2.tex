@@ -1,0 +1,324 @@
+\subsection{Relative interior}
+
+\begin{definition}\label{def:2.1.1}
+The \emph{relative interior} \(\operatorname{ri} C\) (or \(\operatorname{relint} C\)) of a convex set \(C \subset \mathbb{R}^n\) is the interior of \(C\) for the topology relative to the affine hull of \(C\).  In other words: \(x \in \operatorname{ri} C\) if and only if
+\[
+x \in \operatorname{aff} C \quad\text{and}\quad \exists \delta>0\ \text{such that}\ (\operatorname{aff} C)\cap B(x,\delta)\subset C .
+\]
+The \emph{dimension} of a convex set \(C\) is the dimension of its affine hull, that is to say the dimension of the subspace parallel to \(\operatorname{aff} C\).
+\end{definition}
+
+\begin{theorem}\label{thm:2.1.3}
+If $C\neq\varnothing$, then $\operatorname{ri}C\neq\varnothing$.  In fact, $\dim(\operatorname{ri}C)=\dim C$.
+\end{theorem}
+
+\begin{proof}
+Let $k:=1+\dim C$.  Since $\operatorname{aff}C$ has dimension $k-1$, $C$ contains $k$ elements affinely independent $x_1,\dots,x_k$.  Call $\Delta:=\operatorname{co}\{x_1,\dots,x_k\}$ the simplex that they generate; see fig.\ 2.1.1; $\operatorname{aff}\Delta=\operatorname{aff}C$ because $\Delta\subset C$ and $\dim\Delta=k-1$.  The proof will be finished if we show that $\Delta$ has nonempty relative interior.
+
+Take $\bar{x}:=1/k\sum_{i=1}^k x_i$ (the ``center'' of $\Delta$) and describe $\operatorname{aff}\Delta$ by points of the form
+\[
+\bar{x}+y=\bar{x}+\sum_{i=1}^k \alpha_i(y)x_i
+=\sum_{i=1}^k\Big[\tfrac{1}{k}+\alpha_i(y)\Big]x_i,
+\]
+
+where $\alpha(y)=(\alpha_1(y),\dots,\alpha_k(y))\in\mathbb R^k$ solves
+\[
+\sum_{i=1}^k \alpha_i x_i = y,\qquad \sum_{i=1}^k \alpha_i = 0.
+\]
+
+Because this system has a unique solution, the mapping $y\mapsto\alpha(y)$ is (linear and) continuous: we can find $\delta>0$ such that $\|y\|\le\delta$ implies
+\[
+|\alpha_i(y)|\le 1/k\quad\text{for }i=1,\dots,k,
+\]
+hence $\bar x+y\in\Delta$.
+
+In other words, $\bar x\in\operatorname{ri}\Delta\subset\operatorname{ri}C$.
+
+It follows in particular $\dim\operatorname{ri}C=\dim\Delta=\dim C$.
+\end{proof}
+
+\begin{lemma}
+Let $x\in\operatorname{cl}C$ and $x'\in\operatorname{ri}C$. Then the half-open segment
+\[
+]x,x']=\{\alpha x+(1-\alpha)x':\;0\le\alpha<1\}
+\]
+is contained in $\operatorname{ri}C$.
+\end{lemma}
+
+\begin{proof}
+Take $x''=\alpha x+(1-\alpha)x'$, with $1>\alpha\ge0$. To avoid writing ``\(\operatorname{ri}C\)'' every time, we assume without loss of generality that $\operatorname{aff}C=\mathbb{R}^n$.
+
+Since $x\in\operatorname{cl}C$, for all $\varepsilon>0$, $x\in C+B(0,\varepsilon)$ and we can write
+\[
+B(x'',\varepsilon)
+= \alpha x+(1-\alpha)x' + B(0,\varepsilon)
+= \alpha C + (1-\alpha)x' + (1+\alpha)B(0,\varepsilon)
+= \alpha C + (1-\alpha)\{x'+B\bigl(0,\tfrac{1+\alpha}{1-\alpha}\varepsilon\bigr)\}.
+\]
+
+Since $x'\in\operatorname{int}C$, we can choose $\varepsilon$ so small that $x'+B\bigl(0,\tfrac{1+\alpha}{1-\alpha}\varepsilon\bigr)\subset C$. Then we have
+\[
+B(x'',\varepsilon)\subset \alpha C + (1-\alpha)C = C
+\]
+(where the last equality is just the definition of a convex set).
+\end{proof}
+
+\begin{proposition}
+The three convex sets $\operatorname{ri}C$, $C$ and $\operatorname{cl}C$ have the same affine hull (and hence the same dimension), the same relative interior and the same closure (and hence the same relative boundary).
+\end{proposition}
+
+\begin{proof}
+The case of the affine hull was already seen in Theorem 2.1.3. For the others, the key result is Lemma 2.1.6 (as well as for most other properties involving closures and relative interiors). We illustrate it by restricting our proof to one of the properties, say: $\operatorname{ri}C$ and $C$ have the same closure.
+
+Thus, we have to prove that $\operatorname{cl}C\subset\operatorname{cl}(\operatorname{ri}C)$. Let $x\in\operatorname{cl}C$ and take $x'\in\operatorname{ri}C$ (it is possible by virtue of Theorem 2.1.3). Because $[x,x']\subset\operatorname{ri}C$ (Lemma 2.1.6), we do have that $x$ is a limit of points in $\operatorname{ri}C$ (and even a "radial" limit); hence $x$ is in the closure of $\operatorname{ri}C$.
+\end{proof}
+
+\begin{proposition}
+\label{prop:2.1.10}
+Let the two convex sets $C_1$ and $C_2$ satisfy $\operatorname{ri}C_1\cap\operatorname{ri}C_2\neq\varnothing$. Then
+\begin{align}
+\operatorname{ri}(C_1\cap C_2) &= \operatorname{ri}C_1\cap\operatorname{ri}C_2 \label{eq:2.1.1}\\
+\operatorname{cl}(C_1\cap C_2) &= \operatorname{cl}C_1\cap\operatorname{cl}C_2 .\label{eq:2.1.2}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+First we show that $\operatorname{cl}C_1\cap\operatorname{cl}C_2 \subset \operatorname{cl}(C_1\cap C_2)$ (the converse inclusion is always true). Given $x\in \operatorname{cl}C_1\cap\operatorname{cl}C_2$, we pick $x'$ in the nonempty $\operatorname{ri}C_1\cap\operatorname{ri}C_2$. From Lemma 2.1.6 applied to $C_1$ and to $C_2$,
+\[
+]x,x'[\subset \operatorname{ri}C_1\cap\operatorname{ri}C_2 .
+\]
+Taking the closure of both sides, we conclude
+\[
+x\in \operatorname{cl}(\operatorname{ri}C_1\cap\operatorname{ri}C_2)\subset \operatorname{cl}(C_1\cap C_2),
+\]
+which proves \eqref{eq:2.1.2} because $x$ was arbitrary; the above inclusion is actually an equality.
+
+Now, we have just seen that the two convex sets $\operatorname{ri}C_1\cap\operatorname{ri}C_2$ and $C_1\cap C_2$ have the same closure. According to Remark 2.1.9, they have the same relative interior:
+\[
+\operatorname{ri}(C_1\cap C_2)=\operatorname{ri}(\operatorname{ri}C_1\cap\operatorname{ri}C_2)\subset \operatorname{ri}C_1\cap\operatorname{ri}C_2.
+\]
+
+It remains to prove the converse inclusion, so let $y\in \operatorname{ri}C_1\cap\operatorname{ri}C_2$. If we take $x'\in C_1$ [resp.\ $C_2$], the segment $[x',y]$ is in aff $C_1$ [resp.\ aff $C_2$] and, by definition of the relative interior, this segment can be stretched beyond $y$ and yet stay in $C_1$ [resp.\ $C_2$] (see Fig.\ 2.1.3). Take in particular $x'\in \operatorname{ri}(C_1\cap C_2)$, $x'\neq y$ (if such an $x'$ does not exist, we are done). The above stretching singles out an $x\in C_1\cap C_2$ such that $y\in ]x,x'[:$
+\[
+y=\alpha x+(1-\alpha)x' \quad\text{for some }\alpha\in ]0,1[.
+\]
+Then Lemma 2.1.6 applied to $C_1\cap C_2$ tells us that $y\in \operatorname{ri}(C_1\cap C_2)$.
+\end{proof}
+
+\begin{proposition}
+For $i=1,\ldots,k$, let $C_i\subset\mathbb{R}^{n_i}$ be convex sets. Then
+\[
+\operatorname{ri}(C_1\times\cdots\times C_k)
+= (\operatorname{ri} C_1)\times\cdots\times(\operatorname{ri} C_k).
+\]
+\end{proposition}
+
+\begin{proof}
+It suffices to apply Definition 2.1.1 alone, observing that
+\[
+\operatorname{aff}(C_1\times\cdots\times C_k)
+= (\operatorname{aff} C_1)\times\cdots\times(\operatorname{aff} C_k).
+\]
+\end{proof}
+
+\begin{proposition}
+\label{prop:2.1.12}
+Let $A:\mathbb{R}^n\to\mathbb{R}^m$ be an affine mapping and $C$ a convex set of $\mathbb{R}^n$. Then
+\[
+\operatorname{ri}[A(C)] = A(\operatorname{ri} C).
+\tag{2.1.3}
+\]
+If $D$ is a convex set of $\mathbb{R}^m$ satisfying $A^{-1}(\operatorname{ri}D)\neq\varnothing$, then
+\[
+\operatorname{ri}\bigl[A^{-1}(D)\bigr] = A^{-1}(\operatorname{ri} D).
+\tag{2.1.4}
+\]
+\end{proposition}
+
+\begin{proof}
+First, note that the continuity of $A$ implies $A(\operatorname{cl}S)\subset\operatorname{cl}[A(S)]$ for any $S\subset\mathbb{R}^n$. Apply this result to $\operatorname{ri}C$, whose closure is $\operatorname{cl} C$ (Proposition 2.1.8), and use the monotonicity of the closure operation:
+\[
+A(C)\subset A(\operatorname{cl}C)=A[\operatorname{cl}(\operatorname{ri}C)]\subset\operatorname{cl}[A(\operatorname{ri}C)]\subset\operatorname{cl}[A(C)];
+\]
+the closed set $\operatorname{cl}[A(\operatorname{ri}C)]$ is therefore $\operatorname{cl}[A(C)]$. Because $A(\operatorname{ri}C)$ and $A(C)$ have the same closure, they have the same relative interior (Remark 2.1.9):
+\[
+\operatorname{ri}\,A(C)=\operatorname{ri}[A(\operatorname{ri}C)]\subset A(\operatorname{ri}C).
+\]
+
+To prove the converse inclusion, let $w=A(y)\in A(\operatorname{ri}C)$, with $y\in\operatorname{ri}C$. We choose $z'=A(x')\in\operatorname{ri}A(C)$, with $x'\in C$ (we assume $z'\neq w$, hence $x'\neq y$).
+
+Using in $C$ the same stretching mechanism as in Fig.\ 2.1.3, we single out $x\in C$
+such that $y\in ]x,x'[$, to which corresponds $z=A(x)\in A(C)$. By affinity, $A(y)\in
+]A(x),A(x')[=]z,z'[$. Thus, $z$ and $z'$ fulfill the conditions of Lemma 2.1.6 applied
+to the convex set $A(C)$: $w\in\operatorname{ri}A(C)$, and (2.1.3) is proved.
+
+The proof of (2.1.4) uses the same technique.
+\end{proof}
+
+\subsection{The asymptotic cone}
+
+\begin{proposition}
+\label{prop:2.2.1}
+The closed convex cone $C_{\infty}(x)$ does not depend on $x\in C$.
+\end{proposition}
+
+\begin{proof}
+See Theorem I.2.3.1 and the pantographic Figure I.2.3.1. Take two different points $x_{1}$ and $x_{2}$ in $C$; it suffices to prove one inclusion, say $C_{\infty}(x_{1})\subset C_{\infty}(x_{2})$. Let $d\in C_{\infty}(x_{1})$ and $t>0$, we have to prove $x_{2}+td\in C$. With $\varepsilon\in ]0,1[$, consider the point
+\[
+\bar{x}_{\varepsilon}:=x_{1}+td+(1-\varepsilon)(x_{2}-x_{1}).
+\]
+
+Writing it as
+\[
+\bar{x}_\varepsilon = \varepsilon\bigl(x_1 + \tfrac{t}{\varepsilon} d\bigr) + (1-\varepsilon)x_2,
+\]
+we see that \(\bar{x}_\varepsilon\in C\) (use the definitions of \(C_\infty(x_1)\) and of a convex set). On the other hand,
+\[
+x_2 + t d = \lim_{\varepsilon\downarrow 0}\bar{x}_\varepsilon \in \overline{C}.
+\]
+\end{proof}
+
+\begin{definition}\label{def:2.2.2}
+The asymptotic cone, or recession cone of the closed convex set $C$ is the closed convex cone $C_{\infty}$ defined by (2.2.1) or (2.2.2), in which Proposition 2.2.1 is exploited.
+\end{definition}
+
+\begin{proposition}
+\label{prop:2.2.3}
+A closed convex set $C$ is compact if and only if $C_\infty=\{0\}$.
+\end{proposition}
+
+\begin{proof}
+If $C$ is bounded, it is clear that $C_\infty$ cannot contain any nonzero direction.
+
+Conversely, let $\{x_k\}\subset C$ be such that $\|x_k\|\to+\infty$ (we assume $x_k\neq0$). The sequence $\{d_k:=x_k/\|x_k\|\}$ is bounded, extract a convergent subsequence: $d=\lim_{k\in K}d_k$ with $K\subset\mathbb N$ ($\|d\|=1$). Now, given $x\in C$ and $t>0$, take $k$ so large that $\|x_k\|\ge t$. Then, we see that
+\[
+x+td=\lim_{k\in K}\Big[(1-\tfrac{t}{\|x_k\|})x+\tfrac{t}{\|x_k\|}x_k\Big]
+\]
+is in the closed convex set $C$, hence $d\in C_\infty$.
+\end{proof}
+
+\begin{proposition}
+Proposition 2.2.5
+\end{proposition}
+
+\begin{itemize}
+\item If $\{C_j\}_{j\in J}$ is a family of closed convex sets having a point in common, then
+\[
+\left(\bigcap_{j\in J} C_j\right)_\infty = \bigcap_{j\in J}(C_j)_\infty .
+\]
+
+\item If, for $j=1,\dots,m$, $C_j$ are closed convex sets in $\mathbb{R}^{n_j}$, then
+\[
+(C_1\times\cdots\times C_m)_\infty = (C_1)_\infty\times\cdots\times (C_m)_\infty .
+\]
+
+\item Let $A:\mathbb{R}^n\to\mathbb{R}^m$ be an affine mapping. If $C$ is closed convex in $\mathbb{R}^n$ and $A(C)$ is closed, then
+\[
+A(C_\infty)\subset [A(C)]_\infty .
+\]
+
+\item If $D$ is closed convex in $\mathbb{R}^m$ with nonempty inverse image, then
+\[
+\bigl[\;A^{-1}(D)\;\bigr]_\infty = A^{-1}(D_\infty).
+\]
+\end{itemize}
+
+\subsection{Extreme points}
+
+\begin{definition}\label{def:2.3.1}
+We say that $x\in C$ is an \emph{extreme point} of $C$ if there are no two different points $x_1$ and $x_2$ in $C$ such that $x=\tfrac{1}{2}(x_1+x_2)$.
+\end{definition}
+
+\begin{proposition}
+If $C$ is compact, then $\operatorname{ext}C\neq\varnothing$.
+\end{proposition}
+
+\begin{proof}
+Because $C$ is compact, there is $\bar x\in C$ maximizing the continuous function $x\mapsto\|x\|^2$.  We claim that $\bar x$ is extremal.  In fact, suppose that there are $x_1$ and $x_2$ in $C$ with $\bar x=\tfrac12(x_1+x_2)$.  Then, with $x_1\neq x_2$ and using (2.3.1), we obtain the contradiction
+\[
+\|\bar x\|^2=\Big\|\tfrac12(x_1+x_2)\Big\|^2<\tfrac12\big(\|x_1\|^2+\|x_2\|^2\big)\le\tfrac12\big(\|\bar x\|^2+\|\bar x\|^2\big)=\|\bar x\|^2.
+\]
+\end{proof}
+
+\begin{theorem}\label{thm:2.3.4}
+(H. Minkowski) Let $C$ be compact, convex in $\mathbb{R}^n$. Then $C$ is the convex hull of its extreme points: $C=\operatorname{co}(\operatorname{ext}C)$.
+\end{theorem}
+
+\begin{definition}
+A nonempty convex subset $F\subset C$ is a \emph{face} of $C$ if it satisfies the following property: every segment of $C$, having in its relative interior an element of $F$, is entirely contained in $F$.  In other words,
+\[
+\left.
+\begin{array}{c}
+(x_1,x_2)\in C\times C\\[4pt]
+\exists\alpha\in]0,1[:\ \alpha x_1+(1-\alpha)x_2\in F
+\end{array}
+\right\}\implies [x_1,x_2]\subset F.
+\tag{2.3.2}
+\]
+\end{definition}
+
+\begin{proposition}\label{prop:2.3.7}
+Let $F$ be a face of $C$. Then any extreme point of $F$ is an extreme point of $C$.
+\end{proposition}
+
+\begin{proof}
+Take \(x\in F\subset C\) and assume that \(x\) is not an extreme point of \(C\): there are different \(x_1,x_2\) in \(C\) and \(\alpha\in\,]0,1[\) such that \(x=\alpha x_1+(1-\alpha)x_2\in F\). From the very definition (2.3.2) of a face, this implies that \(x_1\) and \(x_2\) are in \(F\): \(x\) cannot be an extreme point of \(F\).
+\(\square\)
+\end{proof}
+
+\subsection{Exposed faces}
+
+\begin{definition}[Supporting Hyperplane]\label{def:2.4.1}
+An affine hyperplane $H_{s,r}$ is said to \emph{support} the set $C$ when $C$ is entirely contained in one of the two closed half-spaces delimited by $H_{s,r}$: say
+\[
+\langle s,y\rangle \le r\qquad\text{for all }y\in C.
+\tag{2.4.1}
+\]
+It is said to support $C$ at $x\in C$ when, in addition, $x\in H_{s,r}$; (2.4.1) holds, as well as
+\[
+\langle s,x\rangle = r.
+\]
+\end{definition}
+
+\begin{definition}\label{def:2.4.2}
+The set $F\subset C$ is an \emph{exposed face} of $C$ if there is a supporting hyperplane $H_{s,r}$ of $C$ such that $F=C\cap H_{s,r}$.
+
+An \emph{exposed point}, or \emph{vertex}, is a $0$-dimensional exposed face, i.e.\ a point $x\in C$ at which there is a supporting hyperplane $H_{s,r}$ of $C$ such that $H_{s,r}\cap C$ reduces to $\{x\}$.
+\end{definition}
+
+\begin{proposition}
+Proposition 2.4.3 \quad An exposed face is a face.
+\end{proposition}
+
+\begin{proof}
+Let $F$ be an exposed face, with its associated support $H_{s,r}$. Take $x_1$ and $x_2$ in $C$:
+\begin{equation}
+\langle s,x_i\rangle \le r \quad\text{for } i=1,2;
+\label{2.4.2}
+\end{equation}
+take also $\alpha\in]0,1[$ such that $\alpha x_1+(1-\alpha)x_2\in F\subset H_{s,r}$:
+\[
+\langle s,\alpha x_1+(1-\alpha)x_2\rangle = r.
+\]
+Suppose that one of the relations \eqref{2.4.2} holds as strict inequality. By convex combination, we obtain $(0<\alpha<1!)$
+\[
+\langle s,\alpha x_1+(1-\alpha)x_2\rangle < r,
+\]
+a contradiction.
+\end{proof}
+
+\begin{proposition}\label{prop:2.4.6}
+Let $C$ be convex and compact. For $s\in\mathbb{R}^n$, there holds
+\[
+\max_{x\in C}\langle s,x\rangle=\max_{x\in\operatorname{ext} C}\langle s,x\rangle.
+\]
+\end{proposition}
+
+Furthermore, the solution-set of the first problem is the convex hull of the solution-set of the second:
+\[
+\operatorname{Argmax}_{x\in C}\langle s,x\rangle = \operatorname{co}\{\operatorname{Argmax}_{x\in\operatorname{ext}C}\langle s,x\rangle\}.
+\]
+
+\begin{proof}
+Because $C$ is compact, $\langle s,\cdot\rangle$ attains its maximum on $F_C(s)$. The latter set is convex and compact, and as such is the convex hull of its extreme points (Minkowski's Theorem 2.3.4); these extreme points are also extreme in $C$ (Proposition 2.3.7 and Remark 2.4.4).
+\end{proof}

@@ -1,0 +1,220 @@
+\subsection{Continuity properties}
+\begin{lemma}
+\label{lem:3.1.1}
+Let $f\in\operatorname{Conv}\mathbb{R}^n$ and suppose there are $x_0,\ \delta,\ m$ and $M$ such that
+\[
+m\le f(x)\le M\quad\text{for all }x\in B(x_0,2\delta).
+\]
+Then $f$ is Lipschitzian on $B(x_0,\delta)$; more precisely: for all $y$ and $y'$ in $B(x_0,\delta)$,
+\begin{equation}
+\label{eq:3.1.1}
+|f(y)-f(y')|\le\frac{M-m}{\delta}\|y-y'\|.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Look at Fig.\ 3.1.1: with two different $y$ and $y'$ in $B(x_0,\delta)$, take
+\[
+y'':=y'+\delta\,\frac{y'-y}{\|y'-y\|}\in B(x_0,2\delta);
+\]
+
+by construction, $y'$ lies on the segment $[y,y'']$, namely
+\[
+y'=\frac{\|y'-y\|}{\delta+\|y'-y\|}\,y''+\frac{\delta}{\delta+\|y'-y\|}\,y.
+\]
+Applying the convexity of $f$ and using the postulated bounds, we obtain
+\[
+f(y')-f(y)\le\frac{\|y'-y\|}{\delta+\|y'-y\|}\bigl[f(y'')-f(y)\bigr]\le\frac{1}{\delta}\|y'-y\|(M-m).
+\]
+Then, it suffices to exchange $y$ and $y'$ to prove (3.1.1).
+\end{proof}
+
+\begin{theorem}\label{thm:3.1.2}
+With $f\in\operatorname{Conv}\mathbb{R}^n$, let $S$ be a convex compact subset of \(\operatorname{ri}\dom f\). Then there exists \(L=L(S)\ge 0\) such that
+\[
+|f(x)-f(x')|\le L\|x-x'\|\quad\text{for all }x\text{ and }x'\text{ in }S.
+\tag{3.1.2}
+\]
+\end{theorem}
+
+\begin{proof}
+[Preliminaries] First of all, our statement ignores \(x\)-values outside the affine hull of the convex set \(\dom f\). Instead of \(\mathbb{R}^n\), it can be formulated in \(\mathbb{R}^d\), where \(d\) is the dimension of \(\dom f\); alternatively, we may assume \(\ri\dom f=\int\dom f\), which will simplify the writing.
+
+Make this assumption and let \(x_0\in S\). We will prove that there are \(\delta=\delta(x_0)>0\) and \(L=L(x_0,\delta)\) such that the ball \(B(x_0,\delta)\) is included in \(\int\dom f\) and
+\[
+|f(y)-f(y')|\le L\|y-y'\|\quad\text{for all }y\text{ and }y'\text{ in }B(x_0,\delta).
+\tag{3.1.3}
+\]
+
+If this holds for all \(x_0\in S\), the corresponding balls \(B(x_0,\delta)\) will provide a covering of the compact set \(S\), from which we will extract a finite covering \((x_1,\delta_1,L_1),\ldots,(x_k,\delta_k,L_k)\). With these balls, we will divide an arbitrary segment \([x,x']\) of the convex set \(S\) into finitely many subsegments, of endpoints \(y_0:=x,\ldots,y_i,\ldots,y_\ell:=x'\). Ordering properly the \(y_i\)'s, we will have \(\|x-x'\|=\sum_{i=1}^\ell\|y_i-y_{i-1}\|\); furthermore, \(f\) will be Lipschitzian on each \([y_{i-1},y_i]\) with the common constant \(L:=\max\{L_1,\ldots,L_k\}\). The required Lipschitz property (3.1.2) will follow.
+
+[Main Step] To establish (3.1.3), we use Lemma 3.1.1, which requires boundedness of $f$ in the neighborhood of $x_0$. For this, we construct as in the proof of Theorem A.2.1.3 (see Fig.\ A.2.1.1) a simplex $\Delta=\operatorname{co}\{v_0,\dots,v_n\}\cap\operatorname{dom}f$ having $x_0$ in its interior: we can take $\delta>0$ such that $B(x_0,2\delta)\subset\Delta$.
+
+Then any $y\in B(x_0,2\delta)$ can be written: $y=\sum_{i=0}^n\alpha_i v_i$ with $\alpha\in\Delta_{n+1}$, so that the convexity of $f$ gives
+\[
+f(y)\le\sum_{i=0}^n\alpha_i f(v_i)\le\max\{f(v_0),\dots,f(v_n)\} =: M .
+\]
+
+On the other hand, Proposition 1.2.1 tells us that $f$ is bounded from below, say by $m$, on this very same $B(x_0,2\delta)$. Our claim is proved: we have singled out $\delta>0$ such that $m\le f(y)\le M$ for all $y\in B(x_0,2\delta)$.
+\end{proof}
+
+\begin{theorem}\label{thm:3.1.4}
+Let the convex functions $f_k:\mathbb{R}^n\to\mathbb{R}$ converge pointwise for $k\to+\infty$ to $f:\mathbb{R}^n\to\mathbb{R}$. Then $f$ is convex and, for each compact set $S$, the convergence of $f_k$ to $f$ is uniform on $S$.
+\end{theorem}
+
+\begin{proof}
+Convexity of $f$ is trivial: pass to the limit in the definition (1.1.1) itself. For uniformity, we want to use Lemma 3.1.1, so we need to bound $f_k$ on $S$ independently of $k$; thus, let $r>0$ be such that $S\subset B(0,r)$.
+
+[Step 1] First the function $g:=\sup_k f_k$ is convex, and $g(x)<+\infty$ for all $x$ because the convergent sequence $(f_k(x))_k$ is certainly bounded. Hence, $g$ is continuous and therefore bounded, say by $M$, on the compact set $B(0,2r)$:
+\[
+f_k(x)\le g(x)\le M\qquad\text{for all $k$ and all $x\in B(0,2r)$.}
+\]
+
+Second, the convergent sequence $(f_k(0))_k$ is bounded from below:
+\[
+\mu\le f_k(0)\qquad\text{for all $k$.}
+\]
+
+Then, for $x\in B(0,2r)$ and all $k$, use convexity on $[-x,x]\subset B(0,2r)$:
+\[
+2\mu\le 2f_k(0)\le f_k(x)+f_k(-x)\le f_k(x)+M,
+\]
+i.e.\ the $f_k$'s are bounded from below, independently of $k$. Thus, we are within the conditions of Lemma 3.1.1: there is some $L$ (independent of $k$) such that
+\[
+|f_k(y)-f_k(y')| \le L\|y-y'\| \quad\text{for all }k\text{ and all }y,y'\in B(0,r). \tag{3.1.5}
+\]
+
+Naturally, the same Lipschitz property is transmitted to the limiting function $f$.
+
+[Step 2] Now fix $\varepsilon>0$. Cover $S$ by the balls $B(x,\varepsilon)$ for $x$ describing $S$, and extract a finite covering $S\subset B(x_1,\varepsilon)\cup\cdots\cup B(x_m,\varepsilon)$. With $x$ arbitrary in $S$, take an $x_i$ such that $x\in B(x_i,\varepsilon)$. There is $k_{i,\varepsilon}$ such that, for all $k\ge k_{i,\varepsilon}$,
+\[
+|f_k(x)-f(x)| \le |f_k(x)-f_k(x_i)|+|f_k(x_i)-f(x_i)|+|f(x_i)-f(x)| \le (2L+1)\varepsilon
+\]
+where we have also used (3.1.5), knowing that $x$ and $x_i$ are in $S\subset B(0,r)$. The above inequality is then valid uniformly in $x$, providing that
+\[
+k\ge \max\{k_{1,\varepsilon},\ldots,k_{m,\varepsilon}\} =: k_\varepsilon.
+\]
+\end{proof}
+
+\subsection{Behavior at infinity}
+
+\begin{proposition}
+\label{prop:3.2.1}
+For $f\in\overline{\operatorname{Conv}}\mathbb{R}^n$, the asymptotic cone of $\operatorname{epi} f$ is the epigraph of the function $f'_{\infty}\in\overline{\operatorname{Conv}}\mathbb{R}^n$ defined by
+\[
+d\mapsto f'_{\infty}(d):=\sup_{t>0}\frac{f(x_0+td)-f(x_0)}{t}
+\;=\;
+\lim_{t\to+\infty}\frac{f(x_0+td)-f(x_0)}{t},
+\tag{3.2.2}
+\]
+where $x_0$ is arbitrary in $\operatorname{dom} f$.
+\end{proposition}
+
+\begin{proof}
+Since $(x_0,f(x_0))\in\operatorname{epi} f$, (3.2.1) tells us that $(d,\rho)\in(\operatorname{epi} f)_{\infty}$ if and only if $f(x_0+td)\le f(x_0)+t\rho$ for all $t>0$, which means
+
+\[
+\sup_{t>0}\frac{f(x_0+td)-f(x_0)}{t}\le \rho. \tag{3.2.3}
+\]
+
+In other words, $(\operatorname{epi} f)_\infty$ is the epigraph of the function whose value at $d$ is the left hand side of (3.2.3); and this is true no matter how $x_0$ has been chosen in \(\operatorname{dom} f\). The rest follows from the fact that the difference quotient in (3.2.3) is closed convex in \(d\), and increasing in \(t\) (the function \(t\mapsto f(x_0+td)\) is convex and enjoys the property of increasing slopes, namely Proposition 0.6.1). \(\square\)
+\end{proof}
+
+\begin{definition}
+\label{def:3.2.2}
+(Asymptotic function) The function $f'_{\infty}$ of Proposition 3.2.1 is called the \emph{asymptotic function}, or recession function, of $f$.
+\end{definition}
+
+\begin{proposition}
+Let $f\in\operatorname{Conv}\mathbb{R}^n$. All the nonempty sublevel-sets of $f$ have the same asymptotic cone, which is the sublevel-set of $f^\infty$ at the level $0$:
+\[
+\forall r\in\mathbb{R}\ \text{with } S_r(f)\neq\varnothing,\qquad [S_r(f)]_\infty=\{d\in\mathbb{R}^n:\ f^\infty(d)\le 0\}.
+\]
+In particular, the following statements are equivalent:
+\end{proposition}
+
+(i) There is r for which $S_r(f)$ is nonempty and compact;
+
+(ii) all the sublevel-sets of $f$ are compact;
+
+(iii) $f^\infty_\circ(d)>0$ for all nonzero $d\in\mathbb{R}^n$.
+
+\begin{proof}
+By definition (A.2.2.1), a direction $d$ is in the asymptotic cone of the nonempty sublevel-set $S_r(f)$ if and only if
+\[
+x\in S_r(f)\qquad\Longrightarrow\qquad [x+td\in S_r(f)\ \text{for all }t>0],
+\]
+which can also be written --- see (1.1.4):
+\[
+(x,r)\in\operatorname{epi} f\qquad\Longrightarrow\qquad (x+td,r+t\times 0)\in\operatorname{epi} f\ \text{ for all }t>0;
+\]
+and this in turn just means that $(d,0)\in(\operatorname{epi} f)_\infty=\operatorname{epi} f^\infty_\circ$. We have proved the first part of the theorem.
+
+A particular case is when the sublevel-set $S_0(f^\infty_\circ)$ is reduced to the singleton $\{0\}$, which exactly means (iii). This is therefore equivalent to $[S_r(f)]_\infty=\{0\}$ for all $r\in\mathbb{R}$ with $S_r(f)\neq\emptyset$, which means that $S_r(f)$ is compact (Proposition A.2.2.3). The equivalence between (i), (ii) and (iii) is proved.
+\end{proof}
+
+\begin{definition}
+\label{def:3.2.5}
+(Coercivity) The functions $f\in\operatorname{Conv}\mathbb{R}^n$ satisfying (i), (ii) or (iii) are called $0$-coercive. Equivalently, the $0$-coercive functions are those that ``increase at infinity'':
+\[
+f(x)\to +\infty\qquad\text{whenever}\qquad \|x\|\to +\infty,
+\]
+and closed convex $0$-coercive functions achieve their minimum over $\mathbb{R}^n$.
+
+An important particular case is when $f'_\infty(d)=+\infty$ for all $d\neq 0$, i.e.\ when $f'_\infty = \iota_{\{0\}}$. It can be seen that this means precisely
+\[
+\frac{f(x)}{\|x\|}\to +\infty\qquad\text{whenever}\qquad \|x\|\to +\infty.
+\]
+
+(to establish this equivalence, extract a cluster point of $(x_k/\|x_k\|)$, and use the lower semi-continuity of $f'_\infty$). In words: at infinity, $f$ increases to infinity faster than any affine function; such functions are called $1$-coercive, or sometimes just coercive.
+\end{definition}
+
+\begin{proposition}
+\label{prop:3.2.6}
+A function $f\in\operatorname{Conv}\mathbb{R}^n$ is Lipschitzian on the whole of $\mathbb{R}^n$ if and only if $f'_\infty$ is finite on the whole of $\mathbb{R}^n$. The best Lipschitz constant for $f$ is then
+\[
+\sup\{f'_\infty(d):\|d\|=1\}.
+\tag{3.2.4}
+\]
+\end{proposition}
+
+\begin{proof}
+When the (convex) function $f'_\infty$ is finite-valued, it is continuous (\S3.1) and therefore bounded on the compact unit sphere:
+\[
+\sup\{f'_\infty(d):\|d\|=1\} =: L < +\infty,
+\]
+which implies by positive homogeneity
+\[
+f'_\infty(d) \le L\|d\|\quad\text{for all }d\in\mathbb{R}^n.
+\]
+Now use the definition (3.2.2) of $f'_\infty$:
+\[
+f(x+d)-f(x)\le L\|d\|\quad\text{for all }x\in\operatorname{dom}f\text{ and }d\in\mathbb{R}^n;
+\]
+thus, $\operatorname{dom}f$ is the whole space ($f(x+d)<+\infty$ for all $d$) and we do obtain that $L$ is a global Lipschitz constant for $f$.
+
+Conversely, let $f$ have a global Lipschitz constant $L$. Pick $x_0\in\operatorname{dom}f$ and plug the inequality
+\[
+f(x_0+td)-f(x_0)\le Lt\|d\|\quad\text{for all }t>0\text{ and }d\in\mathbb{R}^n
+\]
+into the definition (3.2.2) of $f'_\infty$ to obtain $f'_\infty(d)\le L\|d\|$ for all $d\in\mathbb{R}^n$.
+
+It follows that $f'_\infty$ is finite everywhere, and the value (3.2.4) does not exceed $L$.
+\end{proof}
+
+\begin{proposition}[3.2.8]
+\label{thm:3.2.8}
+\begin{enumerate}
+\item Let $f_1,\dots,f_m$ be $m$ functions of $\Conv\R^n$, and $t_1,\dots,t_m$ be positive numbers. Assume that there is $x_0$ at which each $f_j$ is finite. Then,
+\[
+\text{for } f:=\sum_{j=1}^m t_j f_j,\qquad\text{we have } f'_\infty=\sum_{j=1}^m t_j(f_j)'_\infty.
+\]
+
+\item Let $\{f_j\}_{j\in J}$ be a family of functions in $\Conv\R^n$. Assume that there is $x_0$ at which $\sup_{j\in J} f_j(x_0)<+\infty$. Then,
+\[
+\text{for } f:=\sup_{j\in J} f_j,\qquad\text{we have } f'_\infty=\sup_{j\in J}(f_j)'_\infty.
+\]
+
+\item Let $A:\R^n\to\R^m$ be affine with linear part $A_0$, and let $f\in\Conv\R^m$. Assume that $A(\R^n)\cap\dom f\neq\emptyset$. Then $(f\circ A)'_\infty=f'_\infty\circ A_0$.
+\end{enumerate}
+\end{proposition}

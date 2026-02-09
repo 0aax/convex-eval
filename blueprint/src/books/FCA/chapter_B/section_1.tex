@@ -1,0 +1,316 @@
+\subsection{The definitions of a Convex Function}
+
+\begin{definition}
+\label{def:1.1.1}
+Let $C$ be a nonempty convex set in $\mathbb{R}^n$.  A function $f : C \to \mathbb{R}$ is said to be \emph{convex on $C$} when, for all pairs $(x,x')\in C\times C$ and all $\alpha\in[0,1]$, there holds
+\[
+f(\alpha x + (1-\alpha)x') \le \alpha f(x) + (1-\alpha) f(x').
+\tag{1.1.1}
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:1.1.2}
+The function $f$ is strongly convex on $C$ with modulus $c$ if and only if the function $f-\tfrac{1}{2}c\|\cdot\|^{2}$ is convex on $C$.
+\end{proposition}
+
+\begin{proof}
+Use direct calculations in the definition (1.1.1) of convexity applied to the function $f-\tfrac{1}{2}c\|\cdot\|^{2}$, namely:
+\[
+f(\alpha x+(1-\alpha)x')-\tfrac{1}{2}c\|\alpha x+(1-\alpha)x'\|^{2}\le
+\]
+\[
+\le \alpha f(x)+(1-\alpha)f(x')-\tfrac{1}{2}c\big[\alpha\|x\|^{2}+(1-\alpha)\|x'\|^{2}\big].
+\]
+\end{proof}
+
+\begin{definition}
+\label{def:1.1.3}
+(The Set $\operatorname{Conv}\mathbb{R}^n$) A function $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically $+\infty$, is said to be convex when, for all $(x,x')\in\mathbb{R}^n\times\mathbb{R}^n$ and all $\alpha\in[0,1]$, there holds
+\[
+f\big(\alpha x+(1-\alpha)x'\big)\le \alpha f(x)+(1-\alpha)f(x'),
+\]
+considered as an inequality in $\mathbb{R}\cup\{+\infty\}$. 
+
+The class of such functions is denoted by $\operatorname{Conv}\mathbb{R}^n$.
+\end{definition}
+
+\begin{definition}
+\label{def:1.1.4}
+(Domain of a Function) The \emph{domain} (or also effective domain) of $f\in\Conv\mathbb{R}^n$ is the nonempty set
+\[
+\dom f := \{x\in\mathbb{R}^n : f(x) < +\infty\}.
+\]
+\end{definition}
+
+\begin{definition}
+\label{def:1.1.5}
+(Epigraph of a Function) Given $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically equal to $+\infty$, the \emph{epigraph} of $f$ is the nonempty set
+\[
+\operatorname{epi} f := \{(x,r)\in\mathbb{R}^n\times\mathbb{R} : r \ge f(x)\}.
+\]
+Its \emph{strict epigraph} $\operatorname{epi}_s f$ is defined likewise, with ``$\ge$'' replaced by ``$>$'' (beware that the word ``strict'' here has nothing to do with strict convexity).
+\end{definition}
+
+\begin{proposition}
+\label{prop:1.1.6}
+Let $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$ be not identically equal to $+\infty$. The three properties below are equivalent:
+\begin{enumerate}
+\item[(i)] $f$ is convex in the sense of Definition 1.1.3;
+\item[(ii)] its epigraph is a convex set in $\mathbb{R}^n\times\mathbb{R}$;
+\item[(iii)] its strict epigraph is a convex set in $\mathbb{R}^n\times\mathbb{R}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Left as an exercise.
+\end{proof}
+
+\begin{theorem}\label{thm:1.1.8}
+(Inequality of Jensen) Let $f\in\operatorname{Conv}\mathbb{R}^n$. Then, for all collections $\{x_1,\dots,x_k\}$ of points in $\dom f$ and all $\alpha=(\alpha_1,\dots,\alpha_k)$ in the unit simplex of $\mathbb{R}^k$, there holds (inequality of Jensen in summation form)
+\[
+f\!\bigg(\sum_{i=1}^k \alpha_i x_i\bigg)\le \sum_{i=1}^k \alpha_i f(x_i).
+\]
+\end{theorem}
+
+\begin{proof}
+The $k$ points $(x_i,f(x_i))\in\mathbb{R}^n\times\mathbb{R}$ are clearly in $\epi f$, a convex set. Their convex combination
+\[
+\sum_i \alpha_i (x_i,f(x_i)) = \Big(\sum_i \alpha_i x_i,\sum_i \alpha_i f(x_i)\Big)
+\]
+is also in $\epi f$ (Proposition A.1.3.3). This is just the claimed inequality.
+\end{proof}
+
+\begin{proposition}
+\label{prop:1.1.9}
+Let $f\in\Conv\R^n$.  The relative interior of $\operatorname{epi}f$ is the union over $x\in\operatorname{ri}\,\operatorname{dom}f$ of the open half-lines with bottom endpoints at $f(x)$:
+\[
+\operatorname{ri}\operatorname{epi}f=\{(x,r)\in\R^n\times\R : x\in\operatorname{ri}\operatorname{dom}f,\ r>f(x)\}.
+\]
+\end{proposition}
+
+\begin{proof}
+Since $\operatorname{dom}f$ is the image of $\operatorname{epi}f$ under the linear mapping ``projection onto $\R^n$'', Proposition A.2.1.12 tells us that
+\[
+\operatorname{ri}\operatorname{dom}f\ \text{is the projection onto }\R^n\ \text{of }\operatorname{ri}\operatorname{epi}f.
+\tag{1.1.5}
+\]
+Now take $x$ arbitrary in $\operatorname{ri}\operatorname{dom}f$.  The subset of $\operatorname{ri}\operatorname{epi}f$ that is projected onto $x$ is just $((\{x\}\times\R)\cap\operatorname{ri}\operatorname{epi}f)$, which in turn is $\operatorname{ri}((\{x\}\times\R)\cap\operatorname{epi}f)$ (use Proposition A.2.1.10).  This latter set is clearly $\{x\}\times(f(x),+\infty)$.
+
+In summary, we have proved that, for $x\in\operatorname{ri}\operatorname{dom}f$, $(x,r)\in\operatorname{ri}\operatorname{epi}f$ if and only if $r>f(x)$.  Together with (1.1.5), this proves our claim.
+\end{proof}
+
+\subsection{Special convex functions: Affinity and Closedness}
+
+\begin{proposition}\label{thm:1.2.1}
+Any $f\in\operatorname{Conv}\mathbb{R}^n$ is minorized by some affine function.  More precisely: for any $x_0\in\operatorname{ri}\operatorname{dom}f$, there is $s$ in the subspace parallel to $\operatorname{aff}\operatorname{dom}f$ such that
+\[
+f(x)\ge f(x_0)+\langle s,\,x-x_0\rangle\quad\text{for all }x\in\mathbb{R}^n.
+\]
+\end{proposition}
+
+In other words, the affine function can be forced to coincide with $f$ at $x_0$.
+
+\begin{proof}
+We know that $\operatorname{dom}f$ is the image of $\operatorname{epi}f$ under the linear mapping "projection onto $\mathbb{R}^n$".  Look again at the definition of an affine hull (\S A.1.3) to realize that
+\[
+\operatorname{aff}\operatorname{epi}f=(\operatorname{aff}\operatorname{dom}f)\times\mathbb{R}\,.
+\]
+
+Denote by $V$ the linear subspace parallel to $\operatorname{aff}\operatorname{dom}f$, so that $\operatorname{aff}\operatorname{dom}f=\{x_0\}+V$ with $x_0$ arbitrary in $\operatorname{dom}f$; then we have
+\begin{equation}\label{eq:1.2.1}
+\operatorname{aff}\operatorname{epi}f=\{x_0+V\}\times\mathbb{R}.
+\end{equation}
+
+We equip $V\times\mathbb{R}$ and $\mathbb{R}^n\times\mathbb{R}$ with the scalar product of product-spaces.  With $x_0\in\operatorname{ri}\operatorname{dom}f$, Proposition 1.1.9 tells us that $(x_0,f(x_0))\in\operatorname{rbd}\operatorname{epi}f$ and we can take a nontrivial hyperplane supporting $\operatorname{epi}f$ at $(x_0,f(x_0))$: using Remark A.4.2.2 and (\ref{eq:1.2.1}), there are $s=s_V\in V$ and $\alpha\in\mathbb{R}$, not both zero, such that
+\begin{equation}\label{eq:1.2.2}
+\langle s,x\rangle+\alpha r\le\langle s,x_0\rangle+\alpha f(x_0)
+\end{equation}
+for all $(x,r)$ with $f(x)\le r$.  Note: this implies $\alpha\le 0$ (let $r\to+\infty$!).
+
+Because of our choice of $s$ (in $V$) and $x_0$ (in $\operatorname{ri}\operatorname{dom}f$), we can take $\delta>0$ so small that $x_0+\delta s\in\operatorname{dom}f$, for which (\ref{eq:1.2.2}) gives
+\[
+\delta\|s\|^2\le\alpha\bigl[f(x_0)-f(x_0+\delta s)\bigr]<+\infty;
+\]
+this shows $\alpha\neq 0$ (otherwise, both $s$ and $\alpha$ would be zero).  Without loss of generality, we can assume $\alpha=-1$; then (\ref{eq:1.2.2}) gives our affine function.
+\end{proof}
+
+\begin{proposition}
+For $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, the following three properties are equivalent:
+\begin{enumerate}
+\item[(i)] $f$ is lower semi-continuous on $\mathbb{R}^n$;
+\item[(ii)] $\operatorname{epi} f$ is a closed set in $\mathbb{R}^n\times\mathbb{R}$;
+\item[(iii)] the sublevel-sets $S_r(f)$ are closed (possibly empty) for all $r\in\mathbb{R}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+[(i) $\Rightarrow$ (ii)] Let $(y_k,r_k)_k$ be a sequence of $\operatorname{epi} f$ converging to $(x,r)$ for $k\to+\infty$. Since $f(y_k)\le r_k$ for all $k$, the l.s.c.\ relation (1.2.3) readily gives
+\[
+r=\lim r_k \ge \liminf f(y_k)\ge \liminf_{y\to x} f(y)\ge f(x),
+\]
+i.e.\ $(x,r)\in\operatorname{epi} f$.
+
+[(ii) $\Rightarrow$ (iii)] Construct the sublevel-sets $S_r(f)$ as in Remark 1.1.7: the closed sets $\operatorname{epi} f$ and $\mathbb{R}^n\times\{r\}$ have a closed intersection.
+
+[(iii) $\Rightarrow$ (i)] Suppose $f$ is not lower semi-continuous at some $x$: there is a (sub)sequence $(y_k)$ converging to $x$ such that $f(y_k)$ converges to $\rho<f(x)\le +\infty$. Pick $r\in[\rho,f(x))$: for $k$ large enough, $f(y_k)\le r< f(x)$; hence $S_r(f)$ contains the tail of $(y_k)$ but not its limit $x$. Consequently, this $S_r(f)$ is not closed.
+\end{proof}
+
+\begin{definition}
+\label{def:1.2.3}
+(Closed Functions) The function $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$ is said to be closed if it is lower semi-continuous everywhere, or if its epigraph is closed, or if its sublevel-sets are closed.
+\end{definition}
+
+\begin{definition}[Closure of a Function]\label{def:1.2.4}
+The \emph{closure} (or lower semi-continuous hull) of a function $f$ is the function $\operatorname{cl}f:\mathbb{R}^n\to\mathbb{R}\cup\{\pm\infty\}$ defined by:
+\[
+\operatorname{cl}f(x):=\liminf_{y\to x} f(y)\qquad\text{for all }x\in\mathbb{R}^n,
+\tag{1.2.4}
+\]
+or equivalently by
+\[
+\operatorname{epi}(\operatorname{cl}f):=\operatorname{cl}\big(\operatorname{epi} f\big).
+\tag{1.2.5}
+\]
+\end{definition}
+
+\begin{proposition}
+Let $f\in\operatorname{Conv}\mathbb{R}^n$ and $x'\in\operatorname{ri}\operatorname{dom}f$. There holds (in $\mathbb{R}\cup\{+\infty\}$)
+\[
+\operatorname{cl}f(x)=\lim_{t\downarrow 0}f\big(x+t(x'-x)\big)\quad\text{for all }x\in\mathbb{R}^n.
+\]
+\label{thm:1.2.5}
+\end{proposition}
+
+\begin{proof}
+Since $x_t:=x+t(x'-x)\to x$ when $t\downarrow 0$, we certainly have
+\[
+(\operatorname{cl}f)(x)\le\liminf_{t\downarrow 0}f\big(x+t(x'-x)\big).
+\]
+
+We will prove the converse inequality by showing that
+\[
+\limsup_{t\downarrow 0}f\big(x+t(x'-x)\big)\le r\quad\text{for all }r\ge(\operatorname{cl}f)(x).
+\]
+
+(Non-existence of such an $r$ means that $\operatorname{cl}f(x)=+\infty$, the proof is finished.)
+
+Thus let $(x,r)\in\operatorname{epi}(\operatorname{cl}f)=\operatorname{cl}(\operatorname{epi}f)$. Pick $r'>f(x')$, hence $(x',r')\in\operatorname{epi}f$ (Proposition 1.1.9). Applying Lemma A.2.1.6 to the convex set $\operatorname{epi}f$, we see that
+\[
+t(x',r')+(1-t)(x,r)\in\operatorname{epi}f\subset\operatorname{epi}f\quad\text{for all }t\in]0,1].
+\]
+
+This just means
+\[
+f\big(x+t(x'-x)\big)\le tr'+(1-t)r\quad\text{for all }t\in]0,1]
+\]
+and our required inequality follows by letting $t\downarrow 0$.
+\end{proof}
+
+\begin{proposition}1.2.6
+For $f\in\Conv\R^n$, there holds
+\[
+\operatorname{cl} f\in\Conv\R^n;
+\tag{1.2.7}
+\]
+\[
+\operatorname{cl} f\text{ and }f\text{ coincide on the relative interior of }\dom f.
+\tag{1.2.8}
+\]
+\end{proposition}
+
+\begin{proof}
+We already know from Proposition A.1.2.6 that $\epi\operatorname{cl} f=\operatorname{cl}\epi f$ is a convex set; also $\operatorname{cl} f\le f\not\equiv+\infty$; finally, Proposition 1.2.1 guarantees in the relation of definition (1.2.4) that $\operatorname{cl} f(x)>-\infty$ for all $x$: (1.2.7) does hold.
+
+On the other hand, suppose $x\in\ri\dom f$. Then the one-dimensional function $\varphi(t)=f(x+td)$ is continuous at $t=0$ (Theorem 0.6.2); it follows from Proposition 1.2.5 that $\operatorname{cl} f$ coincides with $f$ on $\ri\dom f$; besides, $\operatorname{cl} f(x)$ is obviously equal to $f(x)=+\infty$ for all $x\notin\cl\dom f$. Altogether, (1.2.8) is true.
+\end{proof}
+
+Notation 1.2.7 (The Set $\overline{\operatorname{Conv}}\mathbb{R}^n$) The set of closed convex functions on $\mathbb{R}^n$ is denoted by $\overline{\operatorname{Conv}}\mathbb{R}^n$. \qed
+
+\begin{proposition}\label{thm:1.2.8}
+The closure of $f\in\Conv\R^n$ is the supremum of all affine functions minorizing $f$:
+\[
+\cl f(x)=\sup_{(s,b)\in\R^n\times\R}\{\langle s,x\rangle-b:\langle s,y\rangle-b\le f(y)\text{ for all }y\in\R^n\}.
+\tag{1.2.9}
+\]
+\end{proposition}
+
+\begin{proof}
+A closed half-space containing $\epi f$ is characterized by a nonzero vector $(s,\alpha)\in\R^n\times\R$ and a real number $b$ such that
+\[
+\langle s,x\rangle+\alpha r\le b\qquad\text{for all }(x,r)\in\epi f
+\tag{1.2.10}
+\]
+(we equip the graph-space $\R^n\times\R$ with the scalar product of a product-space). Let us denote by $\Sigma\subset\R^n\times\R\times\R$ the index-set of such triples $\sigma=(s,\alpha,b)$, with corresponding half-space
+\[
+H^-_{\sigma}:=\{(x,r):\langle s,x\rangle+\alpha r\le b\}.
+\tag{1.2.11}
+\]
+
+In other words, $\operatorname{epi}(\overline{cl}\,f)=\overline{\operatorname{epi}f}=\bigcap_{\sigma\in\Sigma}H^-_{\sigma}$.
+
+Because of the particular nature of an epigraph, (1.2.10) implies $\alpha\le 0$ (let $r\to +\infty$) and, by positive homogeneity, the values $\alpha=0$ and $\alpha=-1$ suffice: $\Sigma$ can be partitioned in
+
+\[
+\Sigma_1 := \{(s,-1,b):(1.2.10)\ \text{holds with }\alpha=-1\}
+\]
+
+and
+
+\[
+\Sigma_0 := \{(s,0,b):(1.2.10)\ \text{holds with }\alpha=0\}.
+\]
+
+Indeed, $\Sigma_1$ corresponds to affine functions minorizing $f$ (Proposition 1.2.1 tells us that $\Sigma_1\neq\varnothing$) and $\Sigma_0$ to closed half-spaces of $\mathbb{R}^{n}$ containing $\operatorname{dom}f$ (note that $\Sigma_0=\varnothing$ if $\operatorname{dom}f=\mathbb{R}^n$).
+
+We have to prove that, even when $\Sigma_0\neq\varnothing$, intersecting the half-spaces $H^-_{\sigma}$ over $\Sigma$ or over $\Sigma_1$ produces the same set, namely $\operatorname{epi}f$. For this we take arbitrary $\sigma_0=(s_0,0,b_0)\in\Sigma_0$ and $\sigma_1=(s_1,-1,b_1)\in\Sigma_1$, we set
+
+\[
+\sigma(t):=(s_1+ts_0,-1,b_1+t b_0)\in\Sigma_1\quad\text{for all }t\ge 0,
+\]
+
+and we prove (see Fig. 1.2.1)
+
+\[
+H^-_{\sigma_0}\cap H^-_{\sigma_1}=\bigcap_{t\ge 0}H^-_{\sigma(t)}=:\,H^-.
+\]
+
+Fig. 1.2.1. Closing a convex epigraph
+
+It results directly from the definition (1.2.11) that an $(x,r)$ in $H^-_{\sigma_0}\cap H^-_{\sigma_1}$ satisfies
+
+\[
+\langle s_1+ts_0,x\rangle-(b_1+tb_0)\le r\quad\text{for all }t\ge 0,\tag{1.2.12}
+\]
+
+i.e.\ $(x,r)\in H^-$. Conversely, take $(x,r)\in H^-$. Set $t=0$ in (1.2.12) to see that $(x,r)\in H^-_{\sigma_1}$. Also, divide by $t>0$ and let $t\to+\infty$ to see that $(x,r)\in H^-_{\sigma_0}$. The proof is complete.
+\end{proof}
+
+\subsection{First examples}
+\begin{theorem}\label{thm:1.3.1}
+Let $C$ be a nonempty subset of $\mathbb{R}^n\times\mathbb{R}$ satisfying \eqref{1.3.2}, and let its lower-bound function $\ell_C$ be defined by \eqref{1.3.5}.
+\begin{enumerate}[(i)]
+\item If $C$ is convex, then $\ell_C\in\operatorname{Conv}\mathbb{R}^n$;
+\item If $C$ is closed convex, then $\ell_C\in\overline{\operatorname{Conv}}\mathbb{R}^n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We use the analytical definition (1.1.1). Take arbitrary $\varepsilon>0$, $\alpha\in]0,1[$ and $(x_i,r_i)\in C$ such that $r_i\le \ell_C(x_i)+\varepsilon$ for $i=1,2$.
+
+When $C$ is convex, $(\alpha x_1+(1-\alpha)x_2,\alpha r_1+(1-\alpha)r_2)\in C$, hence
+\[
+\ell_C(\alpha x_1+(1-\alpha)x_2)\le \alpha r_1+(1-\alpha)r_2 \le \alpha\ell_C(x_1)+(1-\alpha)\ell_C(x_2)+\varepsilon.
+\]
+
+The convexity of $\ell_C$ follows, since $\varepsilon>0$ was arbitrary; (i) is proved.
+
+Now take a sequence $(x_k,\rho_k)_k\subset\operatorname{epi}\ell_C$ converging to $(x,\rho)$; we have to prove $\ell_C(x)\le \rho$ (cf.\ Proposition 1.2.2). By definition of $\ell_C(x_k)$, we can select, for each positive integer $k$, a real number $r_k$ such that $(x_k,r_k)\in C$ and
+\begin{equation}\label{eq:1.3.7}
+\ell_C(x_k)\le r_k\le \ell_C(x_k)+\tfrac{1}{k}\le \rho_k+\tfrac{1}{k}.
+\end{equation}
+
+We deduce first that $(r_k)$ is bounded from above. Also, when $\ell_C$ is convex, Proposition 1.2.1 implies the existence of an affine function minorizing $\ell_C$: $(r_k)$ is bounded from below.
+
+Extracting a subsequence if necessary, we may assume $r_k\to r$. When $C$ is closed, $(x,r)\in C$, hence $\ell_C(x)\le r$; but pass to the limit in \eqref{eq:1.3.7} to see that $r\le \rho$; the proof is complete.
+\end{proof}

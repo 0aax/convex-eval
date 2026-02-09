@@ -1,0 +1,178 @@
+\subsection{Differentiable convex functions}
+\begin{theorem}\label{thm:4.1.1}
+Let $f$ be a function differentiable on an open set $\Omega\subset\mathbb{R}^n$, and let $C$ be a convex subset of $\Omega$. Then
+\begin{enumerate}
+\item $f$ is convex on $C$ if and only if
+\[
+f(x)\ge f(x_0)+\langle\nabla f(x_0),\,x-x_0\rangle\quad\text{for all }(x_0,x)\in C\times C;
+\tag{4.1.1}
+\]
+
+\item $f$ is strictly convex on $C$ if and only if strict inequality holds in (4.1.1) whenever $x\neq x_0$;
+
+\item $f$ is strongly convex with modulus $c$ on $C$ if and only if, for all $(x_0,x)\in C\times C$,
+\[
+f(x)\ge f(x_0)+\langle\nabla f(x_0),x-x_0\rangle+\tfrac{1}{2}c\|x-x_0\|^2.
+\tag{4.1.2}
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+[(i)] Let $f$ be convex on $C$: for arbitrary $(x_0,x)\in C\times C$ and $\alpha\in ]0,1[$, we have from the definition (1.1.1) of convexity
+\[
+f(\alpha x+(1-\alpha)x_0)-f(x_0)\le\alpha[f(x)-f(x_0)].
+\]
+Divide by $\alpha$ and let $\alpha\downarrow0$: observing that $\alpha x+(1-\alpha)x_0=x_0+\alpha(x-x_0)$, the lefthand side tends to $\langle\nabla f(x_0),x-x_0\rangle$ and (4.1.1) is established.
+
+Conversely, take $x_1$ and $x_2$ in $C$, $\alpha\in ]0,1[$ and set $x_0:=\alpha x_1+(1-\alpha)x_2\in C$. By assumption,
+\[
+f(x_i)\ge f(x_0)+\langle\nabla f(x_0),x_i-x_0\rangle\quad\text{for }i=1,2
+\tag{4.1.3}
+\]
+and we obtain by convex combination
+\[
+\alpha f(x_1)+(1-\alpha)f(x_2)\ge f(x_0)+\langle\nabla f(x_0),\alpha x_1+(1-\alpha)x_2-x_0\rangle
+\]
+which, after simplification, is just the relation of definition (1.1.1).
+
+[(ii)] If $f$ is strictly convex, we have for $x_0\ne x$ in $C$ and $\alpha\in ]0,1[$,
+\[
+f(x_0+\alpha(x-x_0))-f(x_0)<\alpha[f(x)-f(x_0)];
+\]
+but $f$ is in particular convex and we can use (i):
+\[
+\langle\nabla f(x_0),\alpha(x-x_0)\rangle\le f(x_0+\alpha(x-x_0))-f(x_0),
+\]
+so the required strict inequality follows.
+
+For the converse, proceed as for (i), starting from strict inequalities in (4.1.3).
+
+[(iii)] Using Proposition 1.1.2, just apply (i) to the function $f-\tfrac{1}{2}c\|\cdot\|^2$, which is of course differentiable.
+\end{proof}
+
+\begin{definition}
+Let $C\subset\mathbb{R}^n$ be convex. The mapping $F: C\to\mathbb{R}^n$ is said to be \emph{monotone} [resp.\ strictly monotone, resp.\ strongly monotone with modulus $c>0$] on $C$ when, for all $x$ and $x'$ in $C$,
+\[
+\langle F(x)-F(x'),\,x-x'\rangle \ge 0
+\]
+[resp.\ $\langle F(x)-F(x'),\,x-x'\rangle > 0$ whenever $x\neq x'$, resp.\ $\langle F(x)-F(x'),\,x-x'\rangle \ge c\|x-x'\|^2$].
+\end{definition}
+
+\begin{theorem}\label{thm:4.1.4}
+Let $f$ be a function differentiable on an open set $\Omega\subset\mathbb{R}^n$, and let $C$ be a convex subset of $\Omega$. Then, $f$ is convex [resp.\ strictly convex, resp.\ strongly convex with modulus $c$] on $C$ if and only if its gradient $\nabla f$ is monotone [resp.\ strictly monotone, resp.\ strongly monotone with modulus $c$] on $C$.
+\end{theorem}
+
+\begin{proof}
+We combine the “convex $\Leftrightarrow$ monotone” and “strongly convex $\Leftrightarrow$ strongly monotone” cases by accepting the value $c=0$ in the relevant relations such as (4.1.2).
+
+Thus, let $f$ be [strongly] convex on $C$: in view of Theorem 4.1.1, we can write for arbitrary $x_0$ and $x$ in $C$:
+\[
+f(x)\ge f(x_0)+\langle\nabla f(x_0),x-x_0\rangle+\tfrac{1}{2}c\|x-x_0\|^2
+\]
+\[
+f(x_0)\ge f(x)+\langle\nabla f(x),x_0-x\rangle+\tfrac{1}{2}c\|x_0-x\|^2,
+\]
+and mere addition shows that $\nabla f$ is [strongly] monotone.
+
+Conversely, let $(x_0,x_1)$ be a pair of elements in $C$. Consider the univariate function $t\mapsto\varphi(t):=f(x_t)$, where $x_t:=x_0+t(x_1-x_0)$; for $t$ in an open interval containing $[0,1]$, $x_t\in\Omega$ and $\varphi$ is well-defined and differentiable; its derivative at $t$ is $\varphi'(t)=\langle\nabla f(x_t),x_1-x_0\rangle$. Thus, we have for all $0\le t'<t\le1$
+\[
+\varphi'(t)-\varphi'(t')=\langle\nabla f(x_t)-\nabla f(x_{t'}),\,x_1-x_0\rangle
+=\frac{1}{t-t'}\langle\nabla f(x_t)-\nabla f(x_{t'}),\,x_t-x_{t'}\rangle\tag{4.1.4}
+\]
+and the monotonicity relation for $\nabla f$ shows that $\varphi'$ is increasing, $\varphi$ is therefore convex (Corollary 0.6.5).
+
+For strong convexity, set $t'=0$ in (4.1.4) and use the strong monotonicity relation for $\nabla f$:
+\[
+\varphi'(t)-\varphi'(0)\ge\frac{1}{t}c\|x_t-x_0\|^2 = tc\|x_1-x_0\|^2. \tag{4.1.5}
+\]
+
+Because the differentiable convex function $\varphi$ is the integral of its derivative, we can write
+\[
+\varphi(1)-\varphi(0)-\varphi'(0)=\int_0^1[\varphi'(t)-\varphi'(0)]\,dt \ge \tfrac{1}{2}c\|x_1-x_0\|^2
+\]
+which, by definition of $\varphi$, is just (4.1.2) (the coefficient $1/2$ is $\int_0^1 t\,dt!$).
+
+The same technique proves the ``strictly monotone \(\Leftrightarrow\) strictly convex'' case; then, (4.1.5) becomes a strict inequality --- with $c=0$ --- and remains so after integration.
+\end{proof}
+
+\subsection{Nondifferentiable convex functions}
+\begin{proposition}[Proposition 4.2.1]
+For $f\in\operatorname{Conv}\mathbb{R}^n$ and $x\in\operatorname{int}\dom f$, the three statements below are equivalent:
+\begin{enumerate}
+\item The function
+\[
+\mathbb{R}^n\ni d\mapsto\lim_{t\downarrow 0}\frac{f(x+td)-f(x)}{t}
+\]
+is linear in $d$;
+\item for some basis of $\mathbb{R}^n$ in which $x=(\xi^1,\dots,\xi^n)$, the partial derivatives $\dfrac{\partial f}{\partial \xi^i}(x)$ exist at $x$, for $i=1,\dots,n$;
+\item $f$ is differentiable at $x$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+First of all, remember from Theorem 0.6.3 that the one-dimensional function $t\mapsto f(x+td)$ has half-derivatives at $0$: the limits considered in (i) exist for all $d$. We will denote by $\{b_1,\dots,b_n\}$ the basis postulated in (ii), so that $x=\sum_{i=1}^n \xi^i b_i$.
+
+Denote by $d\mapsto \ell(d)$ the function defined in (i); taking $d=\pm b_i$, realize that, when (i) holds,
+\[
+\lim_{\tau\downarrow 0}\frac{f(x+\tau b_i)-f(x)}{-\tau}
+=\ell(-b_i)=-\ell(b_i)=-\lim_{t\downarrow 0}\frac{f(x+t b_i)-f(x)}{t}.
+\]
+
+This means that the two half-derivatives at $t=0$ of the function $t\mapsto f(x+t b_i)$ coincide: the partial derivative of $f$ at $x$ along $b_i$ exists, (ii) holds. That (iii) implies (i) is clear: when $f$ is differentiable at $x$,
+\[
+\lim_{t\downarrow 0}\frac{f(x+td)-f(x)}{t}=\langle\nabla f(x),d\rangle.
+\]
+
+We do not really complete the proof here, because everything follows in a straightforward way from subsequent chapters. More precisely, [(ii) $\Rightarrow$ (i)] is Proposition C.1.1.6, which states that the function $\ell$ is linear on the space generated by the $b_i$'s, whenever it is linear along each $b_i$. Finally [(i) $\Rightarrow$ (iii)] results from Lemma D.2.1.1 and the proof goes as follows. One of the possible definitions of (iii) is:
+\[
+\lim_{t\downarrow 0,\;d'\to d}\frac{f(x+t d')-f(x)}{t}\quad\text{is linear in }d.
+\]
+
+Because $f$ is locally Lipschitzian, the above limit exists whenever it exists for fixed $d'=d$---i.e.\ the expression in (i).
+\end{proof}
+
+\begin{theorem}\label{thm:4.2.3}
+Let $f\in\operatorname{Conv}\mathbb{R}^n$. The subset of $\operatorname{int}\operatorname{dom}f$ where $f$ fails to be differentiable is of zero (Lebesgue) measure.
+\end{theorem}
+
+\subsection{Second-order differentiation}
+
+\begin{theorem}\label{thm:4.3.1}
+Let $f$ be twice differentiable on an open convex set $\Omega\subset\mathbb{R}^n$. Then
+\begin{enumerate}
+\item[(i)] $f$ is convex on $\Omega$ if and only if $\nabla^2 f(x_0)$ is positive semi-definite for all $x_0\in\Omega$;
+\item[(ii)] if $\nabla^2 f(x_0)$ is positive definite for all $x_0\in\Omega$, then $f$ is strictly convex on $\Omega$;
+\item[(iii)] $f$ is strongly convex with modulus $c$ on $\Omega$ if and only if the smallest eigenvalue of $\nabla^2 f(\cdot)$ is minorized by $c$ on $\Omega$: for all $x_0\in\Omega$ and all $d\in\mathbb{R}^n$,
+\[
+\langle\nabla^2 f(x_0)d,d\rangle\ge c\|d\|^2.
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For given $x_0\in\Omega$, $d\in\mathbb{R}^n$ and $t\in\mathbb{R}$ such that $x_0+td\in\Omega$, we will set
+\[
+x_t:=x_0+td\quad\text{and}\quad \varphi(t):=f(x_t)=f(x+td),
+\]
+so that $\varphi''(t)=\langle\nabla^2 f(x_t)d,d\rangle$.
+
+[(i)] Assume $f$ is convex on $\Omega$; let $(x_0,d)$ be arbitrary in $\Omega\times\mathbb{R}^n$, with $d\neq 0$: $\varphi$ is then convex on the open interval $I:=\{t\in\mathbb{R}:x_0+td\in\Omega\}$. It follows
+\[
+0 \le \varphi''(t) = \langle \nabla^2 f(x_t)d,d\rangle\quad\text{for all }t\in I\ni 0
+\]
+and $\nabla^2 f(x_0)$ is positive semi-definite.
+
+Conversely, take an arbitrary $[x_0,x_1]\subset \Omega$, set $d:=x_1-x_0$ and assume $\nabla^2 f(x_t)$ positive semi-definite, i.e. $\varphi''(t)\ge 0$, for $t\in[0,1]$. Then Theorem 0.6.6 tells us that $\varphi$ is convex on $[0,1]$, i.e. $f$ is convex on $[x_0,x_1]$. The result follows since $x_0$ and $x_1$ were arbitrary in $\Omega$.
+
+[(ii)] To establish the strict convexity of $f$ on $\Omega$, we prove that $\nabla f$ is strictly monotone on $\Omega$: Theorem 4.1.4 will apply. As above, take an arbitrary $[x_0,x_1]\subset \Omega$, $x_1\neq x_0$, $d:=x_1-x_0$, and apply the mean-value theorem to the function $\varphi'$, differentiable on $[0,1]$, for some $\tau\in]0,1[$,
+\[
+\varphi'(1)-\varphi'(0)=\varphi''(\tau)=\langle \nabla^2 f(x_\tau)d,d\rangle>0
+\]
+and the result follows since
+\[
+\varphi'(1)-\varphi'(0)=\langle \nabla f(x_1)-\nabla f(x_0),x_1-x_0\rangle.
+\]
+
+[(iii)] Using Proposition 1.1.2, apply (i) to the function $f-{\tfrac12}c\|\,\cdot\,\|^2$, whose Hessian operator is $\nabla^2 f-cI_n$ and has the eigenvalues $\lambda-c$, with $\lambda$ describing the eigenvalues of $\nabla^2 f$. 
+\end{proof}

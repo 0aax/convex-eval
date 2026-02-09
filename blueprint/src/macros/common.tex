@@ -9,10 +9,26 @@
 % (this is what the [theorem] arguments mean) and never resets it.
 % If you want for instance to number them within chapters then you can add
 % [chapter] at the end of the next line.
-\newtheorem{theorem}{Theorem}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
 
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\aff}{\text{aff }}
+\newcommand{\cl}{\text{cl }}
+\newcommand{\co}{\text{co }}
+\newcommand{\codom}{\text{codom }}
+\newcommand{\dom}{\text{dom }}
+\newcommand{\epi}{\text{epi }}
+\newcommand{\lin}{\text{lin }}
+\newcommand{\ri}{\text{ri }}
+
+\newcommand{\Conv}{\text{Conv }}
+\newcommand{\Ker}{\text{Ker }}
+
+\newcommand{\infconv}{\mathbin{\ooalign{\raisebox{-0.4ex}{$\vee$}\cr\hidewidth\raisebox{1.0ex}{\tiny$+$}\hidewidth}}}

@@ -1,0 +1,278 @@
+\subsection{Positive combinations of functions}
+
+\begin{theorem}\label{thm:4.1.1}
+Let $f_1,f_2$ be two convex functions from $\mathbb{R}^n$ to $\mathbb{R}$ and $t_1,t_2$ be positive. Then
+\[
+\partial (t_1 f_1 + t_2 f_2)(x) = t_1\partial f_1(x) + t_2\partial f_2(x)
+\qquad\text{for all }x\in\mathbb{R}^n.
+\tag{4.1.1}
+\]
+\end{theorem}
+
+\begin{proof}
+Apply Theorem C.3.3.2(i): $t_1\partial f_1(x)+t_2\partial f_2(x)$ is a compact convex set whose support function is
+\[
+t_1 f_1'(x,\cdot) + t_2 f_2'(x,\cdot).
+\tag{4.1.2}
+\]
+On the other hand, the support function of $\partial (t_1 f_1 + t_2 f_2)(x)$ is by definition the directional derivative $(t_1 f_1 + t_2 f_2)'(x,\cdot)$ which, from elementary calculus, is just (4.1.2). Therefore the two (compact convex) sets in (4.1.1) coincide, since they have the same support function.
+\end{proof}
+
+\subsection{Pre-composition with an affine mapping}
+
+\begin{theorem}\label{thm:4.2.1}
+Let $A:\mathbb{R}^n\to\mathbb{R}^m$ be an affine mapping ( $Ax = A_0x + b$, with $A_0$ linear and $b\in\mathbb{R}^m$) and let $g$ be a finite convex function on $\mathbb{R}^m$. Then
+\[
+\partial (g\circ A)(x)=A_0^*\partial g(Ax)\qquad\text{for all }x\in\mathbb{R}^n.
+\tag{4.2.1}
+\]
+\end{theorem}
+
+\begin{proof}
+Form the difference quotient giving rise to $(g\circ A)'(x,d)$ and use the relation $A(x+td)=Ax+tA_0d$ to obtain
+\[
+(g\circ A)'(x,d)=g'(Ax,A_0d)\qquad\text{for all }d\in\mathbb{R}^n.
+\]
+From Proposition C.3.3.3, the righthand side in the above equality is the support function of the convex compact set $A_0^*\partial g(Ax)$. \qedhere
+\end{proof}
+
+\subsection{Post-composition with increasing convex function of several variables}
+
+\begin{theorem}\label{thm:4.3.1}
+Let $f$, $F$ and $g$ be defined as above. For all $x\in\mathbb{R}^n$,
+\[
+\partial (g\circ F)(x)=\big\{\sum_{i=1}^m \rho^i s_i :\; (\rho^1,\dots,\rho^m)\in\partial g(F(x)),
+\; s_i\in\partial f_i(x)\ \text{ for } i=1,\dots,m\big\}.
+\tag{4.3.1}
+\]
+\end{theorem}
+
+\begin{proof}
+[Preamble] Our aim is to show the formula via support functions, hence we need to establish the convexity and compactness of the righthand side in (4.3.1) -- call it $S$. Boundedness and closedness are easy, coming from the fact that a subdifferential (be it $\partial g$ or $\partial f_i$) is bounded and closed. As for convexity, pick two points in $S$ and form their convex combination
+\[
+s=\alpha\sum_{i=1}^m \rho^i s_i + (1-\alpha)\sum_{i=1}^m \rho^{\prime i} s_i' =
+\sum_{i=1}^m\big[\alpha\rho^i s_i + (1-\alpha)\rho^{\prime i}s_i'\big],
+\]
+where $\alpha\in[0,1]$. Remember that each $\rho^i$ and $\rho^{\prime i}$ is nonnegative and the above sum can be restricted to those terms such that $\rho^{\prime\prime i}:=\alpha\rho^i+(1-\alpha)\rho^{\prime i}>0$. Then we write each such term as
+\[
+\rho^{\prime\prime i}\big[\frac{\alpha\rho^i}{\rho^{\prime\prime i}} s_i +
+\frac{(1-\alpha)\rho^{\prime i}}{\rho^{\prime\prime i}} s_i'\big].
+\]
+It suffices to observe that $\rho^{\prime\prime i}\in\partial g(F(x))$, so the bracketed expression is in $\partial f_i(x)$; thus $s\in S$.
+
+[Step 1] Now let us compute the support function $\sigma_S$ of $S$. For $d\in\mathbb{R}^n$, we denote by $F'(x,d)\in\mathbb{R}^m$ the vector whose components are $f_i'(x,d)$ and we proceed to prove
+\[
+\sigma_S(d)=g' (F(x),F'(x,d)).
+\tag{4.3.2}
+\]
+For any $s=\sum_{i=1}^m \rho^i s_i\in S$, we write $\langle s,d\rangle$ as
+\[
+\sum_{i=1}^m \rho^i\langle s_i,d\rangle \le
+\sum_{i=1}^m \rho^i f_i'(x,d) \le g'(F(x),F'(x,d)) ;
+\tag{4.3.3}
+\]
+the first inequality uses $\rho^i\ge 0$ and the definition of $f_i'(x,\cdot)=\sigma_{\partial f_i}(x)$; the second uses the definition $g'(F(x),\cdot)=\sigma_{\partial g(F(x))}$.
+
+On the other hand, the compactness of $\partial g(F(x))$ implies the existence of an $m$-tuple $(\bar\rho^i)\in\partial g(F(x))$ such that
+\[
+g'(F(x),F'(x,d))=\sum_{i=1}^m\bar{\rho}^i f_i'(x,d),
+\]
+and the compactness of each $\partial f_i(x)$ yields likewise an $\bar{s}_i\in\partial f_i(x)$ such that
+\[
+f_i'(x,d)=\langle\bar{s}_i,d\rangle\quad\text{for }i=1,\dots,m.
+\]
+
+Altogether, we have exhibited an $\bar{s}=\sum_{i=1}^m\bar{\rho}^i\bar{s}_i\in S$ such that equality holds in (4.3.3), so (4.3.2) is established.
+
+[Step 2] It remains to prove that the support function (4.3.2) is really the directional derivative $(g\circ F)'(x,d)$. For $t>0$, expand $F(x+td)$, use the fact that $g$ is locally Lipschitzian, and then expand $g(F(x+td))$:
+\[
+g(F(x+td))=g(F(x)+tF'(x,d)+o(t))=g(F(x)+tF'(x,d))+o(t)
+= g(F(x))+tg'(F(x),F'(x,d))+o(t).
+\]
+
+From there, it follows
+\[
+(g\circ F)'(x,d):=\lim_{t\downarrow 0}\frac{g(F(x+td))-g(F(x))}{t}=g'(F(x),F'(x,d)).
+\quad\square
+\]
+\end{proof}
+
+\begin{corollary}\label{thm:4.3.2}
+Let $f_1,\dots,f_m$ be $m$ convex functions from $\mathbb{R}^n$ to $\mathbb{R}$ and define
+\[
+f := \max\{f_1,\dots,f_m\}.
+\]
+Denoting by $I(x) := \{i : f_i(x) = f(x)\}$ the active index-set, we have
+\[
+\partial f(x) = \operatorname{co}\{\bigcup_{i\in I(x)}\partial f_i(x)\}.
+\tag{4.3.4}
+\]
+\end{corollary}
+
+\begin{proof}
+Take \(g(y)=\max\{y^{1},\dots,y^{m}\}\), whose subdifferential was computed in (3.7): \(\{e_{i}\}\) denoting the canonical basis of \(\mathbb{R}^{m}\),
+\[
+\partial g(y)=\operatorname{co}\{e_{i} : i\ \text{such that}\ y^{i}=g(y)\}.
+\]
+Then, using the notation of Theorem 4.3.1, we write \(\partial g(F(x))\) as
+\[
+\left\{(\rho^{1},\dots,\rho^{m}):\ \rho^{i}=0\ \text{for}\ i\notin I(x),\ \rho^{i}\ge 0\ \text{for}\ i\in I(x),\ \sum_{i=1}^{m}\rho^{i}=1\right\},
+\]
+and (4.3.1) gives
+\[
+\partial f(x)=\left\{\sum_{i\in I(x)}\rho^{i}\partial f_{i}(x):\ \rho^{i}\ge 0\ \text{for}\ i\in I(x),\ \sum_{i\in I(x)}\rho^{i}=1\right\}.
+\]
+Remembering Example A.1.3.5, it suffices to recognize in the above expression the convex hull announced in (4.3.4).
+\end{proof}
+
+\subsection{Supremum of convex functions}
+
+\begin{lemma}[Lemma 4.4.1]
+With the notation (4.4.1), (4.4.2),
+\[
+\partial f(x)\supset\operatorname{co}\{\partial f_j(x):\; j\in J(x)\}.
+\tag{4.4.3}
+\]
+\end{lemma}
+
+\begin{proof}
+Take $j\in J(x)$ and $s\in\partial f_j(x)$; from the definition (1.2.1) of the subdifferential,
+\[
+f(y)\ge f_j(y)\ge f_j(x)+\langle s,y-x\rangle\qquad\text{for all }y\in\mathbb R^n,
+\]
+so $\partial f(x)$ contains $\partial f_j(x)$. Being closed and convex, it also contains the closed convex hull appearing in (4.4.3).
+\end{proof}
+
+\begin{theorem}\label{thm:4.4.2}
+With the notation (4.4.1), (4.4.2), assume that $J$ is a compact set (in some metric space), on which the functions $j\mapsto f_j(x)$ are upper semi-continuous for each $x\in\mathbb{R}^n$. Then
+\[
+\partial f(x)=\operatorname{co}\{\cup\partial f_j(x):\; j\in J(x)\}.
+\tag{4.4.4}
+\]
+\end{theorem}
+
+\begin{proof}
+[Step 0] Our assumptions make $J(x)$ nonempty and compact. Denote by $S$ the curly bracketed set in (4.4.4); because of (4.4.3), $S$ is bounded, let us check that it is closed. Take a sequence $(s_k)\subset S$ converging to $s$; to each $s_k$, we associate some $j_k\in J(x)$ such that $s_k\in\partial f_{j_k}(x)$, i.e.
+\[
+f_{j_k}(y)\ge f_{j_k}(x)+\langle s_k,y-x\rangle\qquad\text{for all }y\in\mathbb{R}^n.
+\]
+Let $k\to\infty$; extract a subsequence so that $j_k\to j\in J(x)$; we have $f_{j_k}(x)\equiv f(x)=:f_j(x)$; and by upper semi-continuity of the function $f_{(\cdot)}(y)$, we obtain
+\[
+f_j(y)\ge\limsup f_{j_k}(y)\ge f_j(x)+\langle s,y-x\rangle\qquad\text{for all }y\in\mathbb{R}^n,
+\]
+which shows $s\in\partial f_j(x)\subset S$. Altogether, $S$ is compact and its convex hull is also compact (Theorem A.1.4.3).
+
+In view of Lemma 4.4.1, it suffices to prove the ``$\subset$''-inclusion in (4.4.4); for this, we will establish the corresponding inequality between support functions which, in view of the calculus rule C.3.3.2(ii), is: for all $d\in\mathbb{R}^n$,
+\[
+f'(x,d)\le\sigma_S(d)=\sup\{f_j'(x,d):\; j\in J(x)\}.
+\tag{4.4.5}
+\]
+
+[Step 1] Let $\varepsilon>0$; from the definition (1.1.2) of $f'(x,d)$,
+\[
+\frac{f(x+td)-f(x)}{t}>f'(x,d)-\varepsilon\qquad\text{for all }t>0.
+\tag{4.4.6}
+\]
+For $t>0$, set
+\[
+J_t:=\Big\{j\in J:\;\frac{f_j(x+td)-f_j(x)}{t}\ge f'(x,d)-\varepsilon\Big\}.
+\]
+The definition of $f(x+td)$ shows with (4.4.6) that $J_t$ is nonempty. Because $J$ is compact and $f_{(\cdot)}(x+td)$ is upper semi-continuous, $J_t$ is visibly compact. Observe that $J_t$ is a superlevel-set of the function
+\[
+0<t\mapsto\frac{f_j(x+td)-f_j(x)}{t}+\frac{f_j(x)-f(x)}{t},
+\]
+which is nondecreasing: the first fraction is the slope of a convex function, and the second fraction has a nonpositive numerator. Thus, $J_{t_1}\subset J_{t_2}$ for $0<t_1\le t_2$.
+
+[Step 2] By compactness, we deduce the existence of some $j^*\in\bigcap_{t>0}J_t$ (for each $\tau\in ]0,t]$, pick some $j_\tau\in J_\tau\subset J_t$; take a cluster point for $\tau\downarrow 0$: it is in $J_t$). We therefore have
+\[
+f_{j^*}(x+td)-f(x)\ge t\bigl[f'(x,d)-\varepsilon\bigr]\qquad\text{for all }t>0,
+\]
+hence $j^*\in J(x)$ (\text{continuity of the convex function } $f_{j^*}$ for $t\downarrow0$). In this inequality, we can replace $f(x)$ by $f_{j^*}(x)$, divide by $t$ and let $t\downarrow0$ to obtain
+\[
+\sigma_S(d)\ge f'_{j^*}(x,d)\ge f'(x,d)-\varepsilon.
+\]
+Since $d\in\mathbb{R}^n$ and $\varepsilon>0$ were arbitrary, (4.4.5) is established.
+\end{proof}
+
+\begin{corollary}\label{cor:4.4.4}
+The notation and assumptions are those of Theorem 4.4.2. Assume also that each $f_j$ is differentiable; then
+\[
+\partial f(x)=\operatorname{co}\{\nabla f_j(x):\; j\in J(x)\}.
+\]
+\end{corollary}
+
+\begin{corollary}
+\label{cor:4.4.5}
+For some compact set $Y\subset\mathbb{R}^p$, let $g:\mathbb{R}^n\times Y\to\mathbb{R}$ be a function satisfying the following properties:
+\begin{itemize}
+\item for each $x\in\mathbb{R}^n$, $g(x,\cdot)$ is upper semi-continuous;
+\item for each $y\in Y$, $g(\cdot,y)$ is convex and differentiable;
+\item the function $f:=\sup_{y\in Y} g(\cdot,y)$ is finite-valued on $\mathbb{R}^n$;
+\item at some $x\in\mathbb{R}^n$, $g(x,\cdot)$ is maximized at a unique $y(x)\in Y$.
+\end{itemize}
+Then $f$ is differentiable at this $x$, and its gradient is
+\[
+\nabla f(x)=\nabla_x g\bigl(x,y(x)\bigr)
+\tag{4.4.8}
+\]
+(where $\nabla_x g(x,y)$ denotes the gradient of the function $g(\cdot,y)$ at $x$).
+\end{corollary}
+
+\subsection{Image of a function under a linear mapping}
+
+\begin{theorem}\label{thm:4.5.1}
+With the notation (4.5.1), (4.5.2), assume $A$ is surjective. Let $x$ be such that $Y(x)$ is nonempty. Then, for arbitrary $y\in Y(x)$,
+\[
+\partial(Ag)(x)=\{\,s\in\mathbb{R}^n:\;A^*s\in\partial g(y)\,\}=\bigl(A^*\bigr)^{-1}[\partial g(y)]
+\tag{4.5.3}
+\]
+(and this set is thus independent of the particular optimal $y$).
+\end{theorem}
+
+\begin{proof}
+By definition, $s\in\partial(Ag)(x)$ if and only if $(Ag)(x')\ge(Ag)(x)+\langle s,x'-x\rangle$ for all $x'\in\mathbb{R}^n$, which can be rewritten
+\[
+(Ag)(x')\ge g(y)+\langle s,x'-Ay\rangle\qquad\text{for all }x'\in\mathbb{R}^n
+\]
+where $y$ is arbitrary in $Y(x)$. Furthermore, because $A$ is surjective and by definition of $Ag$, this last relation is equivalent to
+\[
+g(y')\ge g(y)+\langle s,Ay'-Ay\rangle = g(y)+\langle A^*s,y'-y\rangle\qquad\text{for all }y'\in\mathbb{R}^m
+\]
+which means that $A^*s\in\partial g(y)$.
+\end{proof}
+
+\begin{corollary}\label{cor:4.5.2}
+Make the assumptions of Theorem 4.5.1. If $g$ is differentiable at some $y\in Y(x)$, then $Ag$ is differentiable at $x$.
+\end{corollary}
+
+\begin{proof}
+Surjectivity of $A$ is equivalent to injectivity of $A^*$: in (4.5.3), we have an equation in $s$: $A^*s=\nabla g(y)$, whose solution is unique, and is therefore $\nabla(Ag)(x)$.
+\end{proof}
+
+\begin{corollary}\label{cor:4.5.3}
+Suppose that the subdifferential of $g$ in (4.5.4) is associated with a scalar product $\langle\!\langle\cdot,\cdot\rangle\!\rangle$ preserving the structure of a product space:
+\[
+\langle\!\langle (x,y),(x',y')\rangle\!\rangle=\langle x,x'\rangle_n+\langle y,y'\rangle_m
+\qquad\text{for }x,x'\in\mathbb{R}^n\text{ and }y,y'\in\mathbb{R}^m.
+\]
+At a given $x\in\mathbb{R}^n$, take an arbitrary $y$ solving (4.5.4). Then
+\[
+\partial f(x)=\{\,s\in\mathbb{R}^n:\,(s,0)\in\partial_{(x,y)}g(x,y)\,\}.
+\]
+\end{corollary}
+
+\begin{proof}
+With our notation, $A^*s=(s,0)$ for all $s\in\mathbb{R}^n$. It suffices to apply Theorem 4.5.1 (the symbol $\partial_{(x,y)}g$ is used as a reminder that we are dealing with the subdifferential of $g$ with respect to the variable $(\cdot,\cdot)\in\mathbb{R}^n\times\mathbb{R}^m$).
+\end{proof}
+
+\begin{corollary}{4.5.5}
+Let $f_1$ and $f_2:\mathbb{R}^n\to\mathbb{R}$ be two convex functions minorized by a common affine function. For given $x$, let $(y_1,y_2)$ be such that the inf-convolution is exact at $x=y_1+y_2$, i.e.: $(f_1\infconv f_2)(x)=f_1(y_1)+f_2(y_2)$. Then
+\[
+\partial(f_1\infconv f_2)(x)=\partial f_1(y_1)\cap\partial f_2(y_2).
+\tag{4.5.6}
+\]
+\end{corollary}
+
+\begin{proof}
+First observe that $A^*s=(s,s)$. Also, apply Definition 1.2.1 to see that $(s_1,s_2)\in\partial g(y_1,y_2)$ if and only if $s_1\in\partial f_1(y_1)$ and $s_2\in\partial f_2(y_2)$. Then (4.5.6) is just the copy of (4.5.3) in the present context.
+\end{proof}

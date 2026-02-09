@@ -1,0 +1,293 @@
+\subsection{Definition and first examples}
+
+\begin{definition}
+The \emph{conjugate} of a function $f$ satisfying (1.1.1) is the function $f^{*}$ defined by
+\[
+\mathbb{R}^{n}\ni s\mapsto f^{*}(s):=\sup\{\langle s,x\rangle-f(x):x\in\operatorname{dom}f\}.
+\tag{1.1.2}
+\]
+For simplicity, we may also let $x$ run over the whole space instead of $\operatorname{dom}f$.
+
+The mapping $f\mapsto f^{*}$ will often be called the \emph{conjugacy} operation, or the Legendre–Fenchel transform.
+\end{definition}
+
+\begin{theorem}\label{thm:1.1.2}
+For $f$ satisfying (1.1.1), the conjugate $f^*$ is a closed convex function: $f^*\in\Conv\mathbb{R}^n$.
+\end{theorem}
+
+\begin{proof}
+See Example B.2.1.3.
+\end{proof}
+
+\subsection{Interpretations}
+
+\begin{proposition}
+There holds for all $x\in\mathbb{R}^n$
+\[
+f^*(s)=\sigma_{\mathrm{epi}\,f}(s,-1)=\sup\{\langle s,x\rangle - r : (x,r)\in\mathrm{epi}\,f\}.
+\tag{1.2.1}
+\]
+\end{proposition}
+
+It follows that the support function of $\mathrm{epi}\,f$ has the expression
+\[
+\sigma_{\mathrm{epi}\,f}(s,-u)=
+\begin{cases}
+u\,f^*\!\bigl(\tfrac{1}{u}s\bigr) & \text{if } u>0,\\[4pt]
+\sigma_{\mathrm{epi}\,f}(s,0)=\sigma_{\mathrm{dom}\,f}(s) & \text{if } u=0,\\[4pt]
++\infty & \text{if } u<0.
+\end{cases}
+\tag{1.2.2}
+\]
+
+\begin{proof}
+In (1.2.1), the right-most term can be written
+\[
+\sup_x\;\sup_{r\ge f(x)}\bigl[\langle s,x\rangle - r\bigr]
+= \sup_x\bigl[\langle s,x\rangle - f(x)\bigr]
+\]
+and the first equality is established. As for (1.2.2), the case $u<0$ is trivial; when $u>0$, use the positive homogeneity of support functions to get
+\[
+\sigma_{\operatorname{epi} f}(s,-u)=u\sigma_{\operatorname{epi} f}\bigl(\tfrac{1}{u}s,-1\bigr)=u f^*\bigl(\tfrac{1}{u}s\bigr).
+\]
+Finally, for $u=0$, we have by definition
+\[
+\sigma_{\operatorname{epi} f}(s,0)=\sup\{ \langle s,x\rangle : (x,r)\in\operatorname{epi} f\text{ for some }r\in\mathbb{R}\},
+\]
+and we recognize $\sigma_{\operatorname{dom} f}(s)$.
+\end{proof}
+
+\begin{proposition}\label{thm:1.2.2}
+For $f\in\operatorname{Conv}\mathbb{R}^n$,
+\[
+\sigma_{\operatorname{dom} f}(s)=\sigma_{\operatorname{epi} f}(s,0)=(f^*)^\infty(s)\quad\text{for all }s\in\mathbb{R}^n.
+\tag{1.2.3}
+\]
+\end{proposition}
+
+\begin{proof}
+Use direct calculations; or see Proposition B.2.2.2 and the calculations in Example B.3.2.3.
+\end{proof}
+
+\subsection{First properties}
+
+\begin{proposition}{1.3.1}
+The functions $f$, $f_j$ appearing below are assumed to satisfy (1.1.1).
+
+(i) The conjugate of the function $g(x):=f(x)+r$ is $g^*(s)=f^*(s)-r$.
+
+(ii) With $t>0$, the conjugate of the function $g(x):=tf(x)$ is $g^*(s)=t f^*(s/t)$.
+
+(iii) With $t\neq0$, the conjugate of the function $g(x):=f(tx)$ is $g^*(s)=f^*(s/t)$.
+
+(iv) More generally: if $A$ is an invertible linear operator, $(f\circ A)^*=f^*\circ (A^{-1})^*$.
+
+(v) The conjugate of the function $g(x):=f(x-x_{0})$ is $g^{*}(s)=f^{*}(s)+\langle s,x_{0}\rangle$.
+
+(vi) The conjugate of the function $g(x):=f(x)+\langle s_{0},x\rangle$ is $g^{*}(s)=f^{*}(s-s_{0})$.
+
+(vii) If $f_{1}\le f_{2}$, then $f_{1}^{*}\ge f_{2}^{*}$.
+
+(viii) ``Convexity'' of the conjugation: if $\mathrm{dom}\,f_{1}\cap\mathrm{dom}\,f_{2}\neq\varnothing$ and $\alpha\in]0,1[$,
+\[
+[\alpha f_{1}+(1-\alpha)f_{2}]^{*}\le \alpha f_{1}^{*}+(1-\alpha)f_{2}^{*};
+\]
+
+(ix) The Legendre-Fenchel transform preserves decomposition: with
+\[
+\mathbb{R}^{n}:=\mathbb{R}^{n_{1}}\times\cdots\times\mathbb{R}^{n_{m}}\ni x\mapsto f(x):=\sum_{j=1}^{m}f_{j}(x_{j})
+\]
+and assuming that $\mathbb{R}^{n}$ has the scalar product of a product-space, there holds
+\[
+f^{*}(s_{1},\dots,s_{m})=\sum_{j=1}^{m}f_{j}^{*}(s_{j}) .
+\]
+\end{proposition}
+
+\begin{proposition}\label{prop:1.3.2}
+Let $f$ satisfy (1.1.1), let $H$ be a subspace of $\mathbb{R}^n$, and call $p_H$ the operator of orthogonal projection onto $H$. Suppose that there is a point in $H$ where $f$ is finite. Then $f+p_{iH}$ satisfies (1.1.1) and its conjugate is
+\[
+(f+p_{iH})^*=(f\circ p_H)^*\circ p_H .
+\tag{1.3.1}
+\]
+\end{proposition}
+
+\begin{proof}
+When $y$ describes $\mathbb{R}^n$, $p_H y$ describes $H$ so we can write, knowing that $p_H$ is symmetric:
+\[
+(f+p_{iH})^*(s):=\sup\{\langle s,x\rangle-f(x):x\in H\}
+=\sup\{\langle s,p_H y\rangle-f(p_H y):y\in\mathbb{R}^n\}
+=\sup\{\langle p_H s,y\rangle-f(p_H y):y\in\mathbb{R}^n\}.
+\]
+\end{proof}
+
+\begin{proposition}
+For $f$ satisfying (1.1.1), let a subspace $V$ contain the subspace parallel to $\operatorname{aff\,dom}f$ and set $U:=V^{\perp}$. For any $z\in\operatorname{aff\,dom}f$ and any $s\in\mathbb{R}^{n}$ decomposed as $s=s_{U}+s_{V}$, there holds
+\[
+f^{*}(s)=\langle s_{U},z\rangle+f^{*}(s_{V}).
+\]
+\end{proposition}
+
+\begin{proof}
+In (1.1.2), the variable $x$ can range through $z+V\supset\operatorname{aff\,dom}f$:
+\[
+\begin{aligned}
+f^{*}(s)&=\sup_{v\in V}[\langle s_{U}+s_{V},z+v\rangle-f(z+v)]\\
+&=\langle s_{U},z\rangle+\sup_{v\in V}[\langle s_{V},z+v\rangle-f(z+v)]\\
+&=\langle s_{U},z\rangle+f^{*}(s_{V}).
+\end{aligned}
+\]
+\end{proof}
+
+\begin{theorem}
+For $f$ satisfying (1.1.1), the function $f^{**}$ of (1.3.2) is the pointwise supremum of all the affine functions on $\mathbb{R}^n$ majorized by $f$.  In other words
+\[
+\operatorname{epi} f^{**}=\overline{\operatorname{co}}\bigl(\operatorname{epi} f\bigr).
+\tag{1.3.3}
+\]
+\end{theorem}
+
+\begin{proof}
+Call $\Sigma\subset\mathbb{R}^n\times\mathbb{R}$ the set of pairs $(s,r)$ defining affine functions $\langle s,\cdot\rangle - r$ majorized by $f$:
+\[
+(s,r)\in\Sigma\iff f(x)\ge\langle s,x\rangle - r\quad\text{for all }x\in\mathbb{R}^n
+\]
+\[
+\iff r\ge\sup\{\,\langle s,x\rangle - f(x):x\in\mathbb{R}^n\,\}
+\]
+\[
+\iff r\ge f^*(s)\qquad(\text{and }s\in\operatorname{dom}f^*!).
+\]
+
+Then we obtain, for $x\in\mathbb{R}^n$,
+\[
+\sup_{(s,r)\in\Sigma}\{\langle s,x\rangle - r\}
+= \sup\{\langle s,x\rangle - r : s\in\operatorname{dom}f^*,\ -r\le -f^*(s)\}
+\]
+\[
+= \sup\{\langle s,x\rangle - f^*(s): s\in\operatorname{dom}f^*\}=f^{**}(x).
+\]
+
+Geometrically, the epigraphs of the affine functions associated with $(s,r)\in\Sigma$ are the (non-vertical) closed half-spaces containing $\operatorname{epi} f$.  From §B.2.5, the epigraph of their supremum is the closed convex hull of $\operatorname{epi} f$, and this proves (1.3.3).
+\end{proof}
+
+\begin{corollary}\label{cor:1.3.6}
+If $g$ is a function satisfying $\overline{\operatorname{co}}\,f \le g \le f$, then $g^* = f^*$. The function $f$ is equal to its biconjugate $f^{**}$ if and only if $f\in\operatorname{Conv}\mathbb{R}^n$.
+\end{corollary}
+
+\begin{proof}
+Immediate.
+\end{proof}
+
+\begin{definition}
+A function $f$ satisfying (1.1.1) is said to be coercive [resp.\ 1-coercive] when
+\[
+\lim_{\|x\|\to+\infty} f(x)=+\infty
+\qquad
+\bigl[\text{resp. }\lim_{\|x\|\to+\infty}\frac{f(x)}{\|x\|}=+\infty\bigr].
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:1.3.8}
+If $f$ satisfying (1.1.1) is 1-coercive, then $f^*(s) < +\infty$ for all $s \in \mathbb{R}^n$.
+\end{proposition}
+
+\begin{proof}
+Let $s$ be given. The 1-coercivity of $f$ implies the existence of a number $R$ such that $f(x) \ge \|s\|\,\|x\|$ (hence $\langle s,x\rangle - f(x) \le 0$) whenever $\|x\| \ge R$. As a result, we have in (1.1.2)
+\[
+\sup\{\langle s,x\rangle - \|s\|\,\|x\| : \|x\| \ge R\} \le 0.
+\]
+On the other hand, (1.1.1) implies an upper bound
+\[
+\sup \{\langle s,x\rangle - f(x) : \|x\| \le R\} \le M .
+\]
+Altogether, $f^*(s) \le \max\{0,M\}$. \qed
+\end{proof}
+
+\begin{proposition}
+\label{prop:1.3.9}
+For $f$ satisfying (1.1.1), the following holds:
+\begin{enumerate}
+\item[(i)] If $x_0\in\operatorname{int}\dom f$ then $f^*-\langle x_0,\cdot\rangle$ is $0$-coercive;
+\item[(ii)] in particular, if $f$ is finite over $\mathbb R^n$, then $f^*$ is $1$-coercive.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We know from (1.2.3) that $\sigma_{\dom f}=(f^*)^{\vee}_{\infty}$ so, using Theorem C.2.2.3(iii),
+$x_0\in\operatorname{int}\dom f\subset\int(\codom f)$ implies $(f^*)^{\vee}_{\infty}(s)-\langle x_0,s\rangle>0$ for all $s\neq0$.
+By virtue of Proposition B.3.2.4, this means exactly that $f^*-\langle x_0,\cdot\rangle$ has compact sublevel-sets; (i) is proved.
+
+Then, as demonstrated in Definition B.3.2.5, $0$-coercivity of $f^*-\langle x_0,\cdot\rangle$ for all $x_0$ means $1$-coercivity of $f^*$.
+\end{proof}
+
+\subsection{Subdifferentials and extended-valued functions}
+
+\begin{theorem}\label{thm:1.4.1}
+For $f$ satisfying (1.1.1) and $\partial f$ defined by (1.4.1), $s\in\partial f(x)$ if and only if
+\[
+f^*(s)+f(x)-\langle s,x\rangle=0\quad(\text{or }\le 0).
+\tag{1.4.2}
+\]
+\end{theorem}
+
+\begin{proof}
+To say that $s$ lies in the set (1.4.1) is to say that
+\[
+\langle s,y\rangle-f(y)\le\langle s,x\rangle-f(x)\quad\text{for all }y\in\dom f,
+\]
+i.e.\ $f^*(s)\le\langle s,x\rangle-f(x)$; but this is indeed an equality, in view of Fenchel's inequality (1.1.3).
+\end{proof}
+
+\begin{theorem}\label{thm:1.4.2}
+Let $f\in\operatorname{Conv}\mathbb{R}^n$.  Then $\partial f(x)\neq\varnothing$ whenever $x\in\operatorname{ri}\dom f$.
+\end{theorem}
+
+\begin{proof}
+This is Proposition B.1.2.1.
+\end{proof}
+
+\begin{proposition}
+\label{prop:1.4.3}
+For $f$ satisfying (1.1.1), the following properties hold:
+\[
+\partial f(x)\neq\varnothing \quad\Longrightarrow\quad (\overline{\operatorname{co}}\,f)(x)=f(x);\tag{1.4.3}
+\]
+\[
+\overline{\operatorname{co}}\,f\le g\le f\ \text{ and }\ g(x)=f(x)
+\quad\Longrightarrow\quad \partial g(x)=\partial f(x);\tag{1.4.4}
+\]
+\[
+s\in\partial f(x)\quad\Longrightarrow\quad x\in\partial f^*(s).\tag{1.4.5}
+\]
+\end{proposition}
+
+\begin{proof}
+Let $s$ be a subgradient of $f$ at $x$. From the definition (1.4.1) itself, the function $y\mapsto \ell_s(y):=f(x)+\langle s,y-x\rangle$ is affine and minorizes $f$, hence $\ell_s\le \overline{\operatorname{co}}\,f\le f$; because $\ell_s(x)=f(x)$, this implies (1.4.3).
+
+Now, $s\in\partial f(x)$ if and only if (1.4.2) holds. From our assumption in (1.4.4), $f^*=g^*=(\overline{\operatorname{co}}\,f)^*$ (Corollary 1.3.6) and $g(x)=f(x)$. Therefore
+\[
+s\in\partial f(x)\iff g^*(s)+g(x)-\langle s,x\rangle=0,
+\]
+which expresses exactly that $s\in\partial g(x)$; (1.4.4) is proved.
+
+Finally, we know that $f^{**}=\overline{\operatorname{co}}\,f\le f$; so, when $s$ satisfies (1.4.2), we have
+\[
+f^*(s)+f^{**}(x)-\langle s,x\rangle
+= f^*(s)+(\overline{\operatorname{co}}\,f)(x)-\langle s,x\rangle\le 0,
+\]
+which means $x\in\partial f^*(s)$: we have just proved (1.4.5).
+\end{proof}
+
+\begin{corollary}\label{thm:1.4.4}
+If $f\in\operatorname{Conv}\mathbb{R}^n$, the following equivalences hold:
+\[
+f(x)+f^*(s)-\langle s,x\rangle=0\ (\text{or }\le 0)
+\quad\Longleftrightarrow\quad s\in\partial f(x)
+\quad\Longleftrightarrow\quad x\in\partial f^*(s).
+\]
+\end{corollary}
+
+\begin{proof}
+This is a rewriting of Theorem 1.4.1, taking into account (1.4.5) and the symmetric role played by $f$ and $f^*$ when $f\in\operatorname{Conv}\mathbb{R}^n$.
+\end{proof}

@@ -1,0 +1,310 @@
+\subsection{The fundamental correspondence}
+\begin{theorem}\label{thm:3.1.1}
+Let $\sigma$ be a closed sublinear function; then there is a linear function minorizing $\sigma$.  In fact, $\sigma$ is the supremum of the linear functions minorizing it.  In other words, $\sigma$ is the support function of the nonempty closed convex set
+\[
+S_\sigma := \{s\in\mathbb{R}^n : \langle s,d\rangle \le \sigma(d)\ \text{for all } d\in\mathbb{R}^n\}.
+\tag{3.1.1}
+\]
+\end{theorem}
+
+\begin{proof}
+Being convex, $\sigma$ is minorized by some affine function (Proposition B.1.2.1): for some $(s,r)\in\mathbb{R}^n\times\mathbb{R}$,
+\[
+\langle s,d\rangle - r \le \sigma(d)\qquad\text{for all } d\in\mathbb{R}^n.
+\tag{3.1.2}
+\]
+Because $\sigma(0)=0$, the above $r$ is nonnegative.  Also, by positive homogeneity,
+\[
+\langle s,d\rangle - \tfrac{1}{t}r \le \sigma(d)\qquad\text{for all } d\in\mathbb{R}^n\ \text{and all } t>0.
+\]
+Letting $t\to+\infty$, we see that $\sigma$ is actually minorized by a linear function:
+\[
+\langle s,d\rangle \le \sigma(d)\qquad\text{for all } d\in\mathbb{R}^n.
+\tag{3.1.3}
+\]
+Now observe that the minorization (3.1.3) is sharper than (3.1.2): when expressing the closed convex $\sigma$ as the supremum of all the affine functions minorizing it (Proposition B.1.2.8), we can restrict ourselves to linear functions.  In other words
+\[
+\sigma(d)=\sup\{\langle s,d\rangle :\ \text{the linear }\langle s,\cdot\rangle\ \text{minorizes }\sigma\};
+\]
+in the above index-set, we just recognize $S_\sigma$.
+\end{proof}
+
+\begin{corollary}\label{cor:3.1.2}
+For a nonempty closed convex set $S$ and a closed sublinear function $\sigma$, the following are equivalent:
+
+(i) \(\sigma\) is the support function of \(S\).
+
+(ii) \(S=\{s:\ \langle s,d\rangle\le\sigma(d)\text{ for all }d\in X\},\) where the set \(X\) can be indifferently taken as: the whole of \(\mathbb{R}^n\), the unit ball \(B(0,1)\) or its boundary, or \(\operatorname{dom}\sigma\).
+\end{corollary}
+
+\begin{proof}
+The case \(X=\mathbb{R}^n\) is just Theorem 3.1.1. The other cases are then clear.
+\end{proof}
+
+\begin{definition}[Direction Exposing a Face]\label{def:3.1.3}
+Let \(C\) be a nonempty closed convex set, with support function \(\sigma\). For given \(d\neq 0\), the set
+\[
+F_C(d):=\{x\in C:\ \langle x,d\rangle=\sigma(d)\}
+\]
+is called the exposed face of \(C\) associated with \(d\), or the face exposed by \(d\).
+\end{definition}
+
+\begin{proposition}\label{prop:3.1.4}
+For $x$ in a nonempty closed convex set $C$, it holds
+\[
+x\in F_C(d)\iff d\in N_C(x).
+\]
+\end{proposition}
+
+\begin{proposition}
+\label{prop:3.1.5}
+For a nonempty closed convex set $C$, it holds
+\[
+\operatorname{bd} C = \bigcup\{F_C(d):\; d\in X\}
+\]
+where $X$ can be indifferently taken as: $\mathbb{R}^n\setminus\{0\}$, the unit sphere $\widetilde{B}$, or $\operatorname{dom}\sigma_C\setminus\{0\}$.
+\end{proposition}
+
+\begin{proof}
+Observe from Definition 3.1.3 that the face exposed by \(d\neq 0\) does not depend on \(\|d\|\). This establishes the equivalence between the first two choices for \(X\). As for the third choice, it is due to the fact that \(F_C(d)=\varnothing\) if \(d\notin\operatorname{dom}\sigma_C\).
+
+Now, if \(x\) is interior to \(C\) and \(d\neq 0\), then \(x+\varepsilon d\in C\) and \(x\) cannot be a maximizer of \(\langle\cdot,d\rangle\); \(x\) is not in the face exposed by \(d\). Conversely, take \(x\) on the boundary of \(C\). Then \(N_C(x)\) contains a nonzero vector \(d\); by Proposition 3.1.4, \(x\in F_C(d)\).
+\end{proof}
+
+\subsection{Example: Norms and Their Duals, Polarity}
+
+\begin{proposition}
+\label{prop:3.2.1}
+Let $B$ and $B^*$ be defined by (3.2.1) and (3.2.2), where $\|\cdot\|$ is a norm on $\mathbb{R}^n$. The support function of $B$ and the gauge of $B^*$ are the same function $\|\cdot\|_* $ defined by
+\[
+\|s\|_* := \max\{\langle s,x\rangle : \|x\|\le 1\}. \tag{3.2.3}
+\]
+Furthermore, $\|\cdot\|_*$ is a norm on $\mathbb{R}^n$. The support function of its unit ball $B^*$ and the gauge of its supported set $B$ are the same function $\|\cdot\|$: there holds
+\[
+\|x\| = \max\{\langle s,x\rangle : \|s\|_* \le 1\}. \tag{3.2.4}
+\]
+\end{proposition}
+
+\begin{proof}
+It is a particular case of the results 3.2.4 and 3.2.5 below.
+\end{proof}
+
+\begin{proposition}
+Let $C$ be a closed convex set containing the origin. Its gauge $\gamma_C$ is the support function of a closed convex set containing the origin, namely
+\[
+C^\circ := \{ s\in\mathbb{R}^n : \langle s,d\rangle \le 1\ \text{for all } d\in C\},
+\tag{3.2.8}
+\]
+which defines the polar (set) of $C$.
+\end{proposition}
+
+\begin{proof}
+We know that $\gamma_C$ (which, by Theorem 1.2.5(i), is closed, sublinear and nonnegative) is the support function of some closed convex set containing the origin, say $D$; from (3.1.1),
+\[
+D=\{s\in\mathbb{R}^n:\ \langle s,d\rangle \le r\ \text{ for all }(d,r)\in\operatorname{epi}\gamma_C\}.
+\]
+As seen in (1.2.4), $\operatorname{epi}\gamma_C$ is the closed convex conical hull of $C\times\{1\}$; we can use positive homogeneity to write
+\[
+D=\{s\in\mathbb{R}^n:\ \langle s,d\rangle \le 1\ \text{ for all }d\ \text{such that }\gamma_C(d)\le 1\}.
+\]
+In view of Theorem 1.2.5(iii), the above index-set is just $C$; in other words, $D=C^\circ$.
+\end{proof}
+
+\begin{corollary}\label{cor:3.2.5}
+Let $C$ be a closed convex set containing the origin. Its support function $\sigma_C$ is the gauge of $C^\circ$.
+\end{corollary}
+
+\begin{proposition}
+\label{prop:3.2.7}
+Let $C$ be a nonempty compact convex set having $0$ in its interior, so that $C^\circ$ enjoys the same properties. Then, for all $d$ and $s$ in $\mathbb{R}^n$, the following statements are equivalent (the notation (3.2.9) is used)
+\begin{enumerate}
+\item[(i)] $H(s)$ is a supporting hyperplane to $C$ at $d$;
+\item[(ii)] $H(d)$ is a supporting hyperplane to $C^\circ$ at $s$;
+\item[(iii)] $d\in\operatorname{bd}C,\ s\in\operatorname{bd}C^\circ\text{ and }\langle s,d\rangle=1$;
+\item[(iv)] $d\in C,\ s\in C^\circ\text{ and }\langle s,d\rangle=1$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Left as an exercise; the assumptions are present to make sure that every nonzero vector in $\mathbb{R}^n$ does expose a face in each set.
+\end{proof}
+
+\subsection{Calculus with support functions}
+
+\begin{theorem}\label{thm:3.3.1}
+Let $S_1$ and $S_2$ be nonempty closed convex sets; call $\sigma_1$ and $\sigma_2$ their support functions. Then
+\[
+S_1\subset S_2 \iff \sigma_1(d)\le \sigma_2(d)\text{ for all }d\in\mathbb{R}^n.
+\]
+\end{theorem}
+
+\begin{proof}
+Apply the equivalence stated in Corollary 3.1.2:
+\[
+S_1\subset S_2 \iff s\in S_2\text{ for all }s\in S_1
+\]
+\[
+\iff \sigma_2(d)\ge\langle s,d\rangle\text{ for all }s\in S_1\text{ and all }d\in\mathbb{R}^n
+\]
+\[
+\iff \sigma_2(d)\ge\sup_{s\in S_1}\langle s,d\rangle\text{ for all }d\in\mathbb{R}^n.
+\]
+\end{proof}
+
+\begin{theorem}\label{thm:3.3.2}
+(i) Let $\sigma_1$ and $\sigma_2$ be the support functions of the nonempty closed convex sets $S_1$ and $S_2$. If $t_1$ and $t_2$ are positive, then
+\[
+t_1\sigma_1+t_2\sigma_2\ \text{is the support function of }\ \overline{(t_1S_1+t_2S_2)}.
+\]
+
+(ii) Let $\{\sigma_j\}_{j\in J}$ be the support functions of the family of nonempty closed convex sets $\{S_j\}_{j\in J}$. Then
+\[
+\sup_{j\in J}\sigma_j\text{ is the support function of }\overline{\operatorname{co}}\{\,\bigcup_{j\in J}S_j:\; j\in J\}.
+\]
+
+(iii) Let $\{\sigma_j\}_{j\in J}$ be the support functions of the family of closed convex sets $\{S_j\}_{j\in J}$. If
+\[
+S:=\bigcap_{j\in J}S_j\neq\varnothing,
+\]
+then
+\[
+\sigma_S=\overline{\operatorname{co}}\{\inf\sigma_j:\; j\in J\}.
+\]
+\end{theorem}
+
+\begin{proof}
+[(i)] Call $S$ the closed convex set $\operatorname{cl}(t_1S_1+t_2S_2)$. By definition, its support function is
+\[
+\sigma_S(d)=\sup\{\langle t_1s_1+t_2s_2,d\rangle:\; s_1\in S_1,\; s_2\in S_2\}.
+\]
+In the above expression, $s_1$ and $s_2$ run independently in their index sets $S_1$ and $S_2$, $t_1$ and $t_2$ are positive, so
+\[
+\sigma_S(d)=t_1\sup_{s\in S_1}\langle s,d\rangle+t_2\sup_{s\in S_2}\langle s,d\rangle.
+\]
+
+[(ii)] The support function of $S:=\bigcup_{j\in J}S_j$ is
+\[
+\sup_{s\in\bigcup_{j\in J}S_j}\langle s,d\rangle=\sup_{j\in J}\sup_{s_j\in S_j}\langle s_j,d\rangle=\sup_{j\in J}\sigma_j(d).
+\]
+This implies (ii) since $\sigma_S=\sigma_{\overline{\operatorname{co}}\,S}$.
+
+[(iii)] The set $S:=\bigcap_j S_j$ being nonempty, it has a support function $\sigma_S$. Now, from Corollary 3.1.2,
+\[
+s\in S\iff s\in S_j\text{ for all }j\in J
+\]
+\[
+\iff\langle s,\cdot\rangle\le\sigma_j\text{ for all }j\in J
+\]
+\[
+\iff\langle s,\cdot\rangle\le\inf_{j\in J}\sigma_j
+\]
+\[
+\iff\langle s,\cdot\rangle\le\overline{\operatorname{co}}\bigl(\inf_{j\in J}\sigma_j\bigr),
+\]
+where the last equivalence comes directly from the Definition B.2.5.3 of a closed convex hull. Again Corollary 3.1.2 tells us that the closed sublinear function $\overline{\operatorname{co}}(\inf\sigma_j)$ is just the support function of $S$.
+\end{proof}
+
+\begin{proposition}
+\label{prop:3.3.3}
+Let $A:\mathbb{R}^n\to\mathbb{R}^m$ be a linear operator, with adjoint $A^*$ (for some scalar product $\langle\cdot,\cdot\rangle$ in $\mathbb{R}^m$). For $S\subset\mathbb{R}^n$ nonempty, we have
+\[
+\sigma_{\mathrm{cl}\,A(S)}(y)=\sigma_{S}(A^*y)\qquad\text{for all }y\in\mathbb{R}^m.
+\]
+\end{proposition}
+
+\begin{proof}
+Just write the definitions
+\[
+\sigma_{A(S)}(y)=\sup_{s\in S}\langle As,y\rangle=\sup_{s\in S}\langle s,A^*y\rangle
+\]
+and use Proposition 2.2.1 to obtain the result.
+\end{proof}
+
+\begin{proposition}
+\label{prop:3.3.4}
+Let $A:\mathbb{R}^m\to\mathbb{R}^n$ be a linear operator, with adjoint $A^*$ (for some scalar product $\langle\cdot,\cdot\rangle$ in $\mathbb{R}^m$). Let $\sigma$ be the support function of a nonempty closed convex set $S\subset\mathbb{R}^m$. If $\sigma$ is minorized on the inverse image
+\[
+A^{-1}(d)=\{p\in\mathbb{R}^m:\;Ap=d\}\tag{3.3.3}
+\]
+of each $d\in\mathbb{R}^n$, then the support function of the set $(A^{-1})^*(S)$ is the closure of the image-function $A\sigma$.
+\end{proposition}
+
+\begin{proof}
+Our assumption is tailored to guarantee $A\sigma\in\operatorname{Conv}\mathbb{R}^n$ (Theorem B.2.4.2). The positive homogeneity of $A\sigma$ is clear: for $d\in\mathbb{R}^n$ and $t>0$,
+\[
+(A\sigma)(td)=\inf_{Ap=td}\sigma(p)=\inf_{A(p/t)=d}t\sigma(p/t)=t\inf_{Aq=d}\sigma(q)=t(A\sigma)(d).
+\]
+
+Thus, the closed sublinear function $\operatorname{cl}(A\sigma)$ supports some set $S'$; by definition,
+$s\in S'$ if and only if
+\[
+\langle s,d\rangle \le \inf\{\sigma(p):\;Ap=d\}\qquad\text{for all }d\in\mathbb R^n;
+\]
+but this just means
+\[
+\langle s,Ap\rangle \le \sigma(p)\qquad\text{for all }p\in\mathbb R^m,
+\]
+i.e.\ $A^*s\in S$, because $\langle s,Ap\rangle=\langle A^*s,p\rangle$.
+\end{proof}
+
+\begin{theorem}\label{thm:3.3.6}
+Let $S$ and $S'$ be two nonempty compact convex sets of $\mathbb{R}^n$. Then
+\[
+\Delta(\sigma_S,\sigma_{S'}) := \max_{\|d\|\le 1} |\sigma_S(d)-\sigma_{S'}(d)| = \Delta_H(S,S') .
+\tag{3.3.5}
+\]
+\end{theorem}
+
+\begin{proof}
+As mentioned in \S0.5.1, for all $r\ge 0$, the property
+\[
+\max\{d_S(d):\, d\in S'\}\le r
+\tag{3.3.6}
+\]
+simply means $S'\subset S+B(0,r)$.
+
+Now, the support function of $B(0,1)$ is $\|\cdot\|$ --- see (2.3.1). Calculus rules on support functions therefore tell us that (3.3.6) is also equivalent to
+\[
+\sigma_{S'}(d)\le \sigma_S(d)+r\|d\|\qquad\text{for all }d\in\mathbb{R}^n,
+\]
+which in turn can be written
+\[
+\max_{\|d\|\le 1}\big[\sigma_{S'}(d)-\sigma_S(d)\big]\le r.
+\]
+
+In summary, we have proved
+\[
+\max_{d\in S'} d_S(d) = \max_{\|d\|\le 1}\big[\sigma_{S'}(d)-\sigma_S(d)\big]
+\]
+and symmetrically
+\[
+\max_{d\in S} d_{S'}(d) = \max_{\|d\|\le 1}\big[\sigma_S(d)-\sigma_{S'}(d)\big];
+\]
+the result follows.
+\end{proof}
+
+\begin{proposition}
+\label{prop:3.3.7}
+A convex-compact-valued and locally bounded multifunction $F:\mathbb{R}^n\longrightarrow 2^{\mathbb{R}^n}$ is outer [resp.\ inner] semi-continuous at $x_0\in\operatorname{int}\dom F$ if and only if its support function $x\mapsto\sigma_{F(x)}(d)$ is upper [resp.\ lower] semi-continuous at $x_0$ for all $d$ of norm $1$.
+\end{proposition}
+
+\begin{proof}
+Calculus with support functions tells us that our definition (0.5.2) of outer semi-continuity is equivalent to
+\[
+\forall\varepsilon>0,\ \exists\delta>0:\ y\in B(x_0,\delta)\implies
+\;\sigma_{F(y)}(d)\le\sigma_{F(x_0)}(d)+\varepsilon\lVert d\rVert\quad\text{for all }d\in\mathbb{R}^n
+\]
+and division by $\lVert d\rVert$ shows that this is exactly upper semi-continuity of the support function for $\lVert d\rVert=1$. Same proof for inner/lower semi-continuity.
+\end{proof}
+
+\begin{corollary}
+\label{cor:3.3.8}
+Let $(S_k)$ be a sequence of nonempty convex compact sets and $S$ a nonempty convex compact set. When $k \to +\infty$, the following are equivalent
+\begin{enumerate}
+\item[(i)] $S_k \to S$ in the Hausdorff sense, i.e. $\Delta_H(S_k,S)\to 0$;
+\item[(ii)] $\sigma_{S_k}\to\sigma_S$ pointwise;
+\item[(iii)] $\sigma_{S_k}\to\sigma_S$ uniformly on each compact set of $\mathbb{R}^n$.
+\end{enumerate}
+\end{corollary}
+
+\subsection{Example: Support functions of closed convex polyhedra}

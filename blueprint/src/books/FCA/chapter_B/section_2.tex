@@ -1,0 +1,278 @@
+\subsection{Operations preserving closedness}
+
+\begin{proposition}
+\label{thm:2.1.1}
+Let $f_1,\dots,f_m$ be in $\Conv\R^n$ [resp.\ in $\overline{\Conv}\R^n$], let $t_1,\dots,t_m$ be positive numbers, and assume that there is a point where all the $f_j$'s are finite. Then the function $f:=\sum_{j=1}^m t_j f_j$ is in $\Conv\R^n$ [resp.\ in $\overline{\Conv}\R^n$].
+\end{proposition}
+
+\begin{proof}
+The convexity of $f$ is readily proved from the relation of definition (1.1.1). As for its closedness, start from
+\[
+\liminf_{y\to x} t_j f_j(y)=t_j\liminf_{y\to x} f_j(y)\ge t_j f_j(x)
+\]
+(valid for $t_j>0$ and $f_j$ closed); then note that the lim inf of a sum is not smaller than the sum of lim inf's.
+\end{proof}
+
+\begin{proposition}
+\label{prop:2.1.2}
+Let $\{f_j\}_{j\in J}$ be an arbitrary family of convex [resp.\ closed convex] functions. If there exists $x_0$ such that $\sup_{j} f_j(x_0) < +\infty$, then their pointwise supremum $f := \sup\{f_j : j\in J\}$ is in $\mathrm{Conv}\,\mathbb{R}^n$ [resp.\ in $\mathrm{Conv}_\mathrm{cl}\,\mathbb{R}^n$].
+\end{proposition}
+
+\begin{proof}
+The key property is that a supremum of functions corresponds to an intersection of epigraphs: $\operatorname{epi} f = \bigcap_{j\in J}\operatorname{epi} f_j$, which conserves convexity and closedness. The only needed restriction is nonemptiness of this intersection.
+\end{proof}
+
+\begin{proposition}
+\label{prop:2.1.4}
+Let $f\in\operatorname{Conv}\mathbb{R}^n$ [resp.\ $\overline{\operatorname{Conv}}\mathbb{R}^n$] and let $A$ be an affine mapping from $\mathbb{R}^m$ to $\mathbb{R}^n$ such that $\operatorname{Im}A\cap\operatorname{dom}f\neq\varnothing$.  Then the function
+\[
+f\circ A : \mathbb{R}^m \supseteq x\mapsto (f\circ A)(x)=f(A(x))
+\]
+is in $\operatorname{Conv}\mathbb{R}^m$ [resp.\ $\overline{\operatorname{Conv}}\mathbb{R}^m$].
+\end{proposition}
+
+\begin{proof}
+Clearly $(f\circ A)(x)>-\infty$ for all $x$; besides, there exists by assumption $y=A(x)\in\mathbb{R}^n$ such that $f(y)<+\infty$. To check convexity, it suffices to plug the relation
+\[
+A(\alpha x+(1-\alpha)x')=\alpha A(x)+(1-\alpha)A(x')
+\]
+into the analytical definition (1.1.1) of convexity. As for closedness, it comes readily from the continuity of $A$ when $f$ is itself closed.
+\end{proof}
+
+\begin{proposition}
+Let $f\in\operatorname{Conv}\mathbb{R}^n$ [resp.\ $\overline{\operatorname{Conv}}\mathbb{R}^n$] and let $g\in\operatorname{Conv}\mathbb{R}$ [resp.\ $\overline{\operatorname{Conv}}\mathbb{R}$] be increasing. Assume that there is $x_0\in\mathbb{R}^n$ such that $f(x_0)\in\operatorname{dom}g$, and set $g(+\infty):=+\infty$. Then the composite function $g\circ f:\;x\mapsto g(f(x))$ is in $\operatorname{Conv}\mathbb{R}^n$ [resp.\ in $\overline{\operatorname{Conv}}\mathbb{R}^n$].
+\end{proposition}
+
+\begin{proof}
+It suffices to check the inequalities of definition: (1.1.1) for convexity, (1.2.3) for closedness.
+\end{proof}
+
+\subsection{Dilations and perspectives of a functions}
+
+\begin{proposition}
+If $f\in\operatorname{Conv}\mathbb{R}^n$, its perspective $\tilde f$ is in $\operatorname{Conv}\mathbb{R}^{n+1}$.
+\end{proposition}
+
+\begin{proof}
+Here also, it is better to look at $\tilde f$ with ``geometric glasses'':
+\[
+\operatorname{epi}\tilde f=\{(u,x,r)\in\mathbb{R}_+^\times\times\mathbb{R}^n\times\mathbb{R}:\; f(x/u)\le r/u\}
+=\{u(1,x',r'):\;u>0,(x',r')\in\operatorname{epi}f\}
+\]
+\[
+=\bigcup_{u>0}u(\{1\}\times\operatorname{epi}f)=\mathbb{R}_+^\times(\{1\}\times\operatorname{epi}f)
+\]
+and $\operatorname{epi}\tilde f$ is therefore a convex cone.
+\end{proof}
+
+\begin{proposition}
+Let $f\in\operatorname{Conv}\mathbb{R}^n$ and let $x'\in\operatorname{ri}\dom f$. Then the closure $\overline{f}$ of its perspective is given as follows:
+\[
+(\cl\tilde f)(u,x)=
+\begin{cases}
+u f(x/u) & \text{if } u>0,\\[4pt]
+\lim_{\alpha\downarrow0}\alpha f(x'-x+\tfrac{x}{\alpha}) & \text{if } u=0,\\[4pt]
++\infty & \text{if } u<0.
+\end{cases}
+\]
+\end{proposition}
+
+\begin{proof}
+Suppose first $u<0$. For any $x$, it is clear that $(u,x)$ is outside $\cl\dom\tilde f$ and, in view of (1.2.8), $\cl\tilde f(u,x)=+\infty$.
+
+Now let $u\ge 0$. Using (2.2.1), the assumption on $x'$ and the results of \S A.2.1, we see that $(1,x')\in\ri\dom\tilde f$, so Proposition 1.2.5 allows us to write
+\[
+(\cl\tilde f)(u,x)=\lim_{\alpha\downarrow0}\tilde f\bigl((u,x)+\alpha[(1,x')-(u,x)]\bigr)
+\]
+\[
+\qquad=\lim_{\alpha\downarrow0}[u+\alpha(1-u)]\,f\!\Bigl(\frac{x+\alpha(x'-x)}{u+\alpha(1-u)}\Bigr).
+\]
+
+If $u=1$, this reads $\cl\tilde f(1,x)=\cl f(x)=f(x)$ (because $f$ is closed); if $u=0$, we just obtain our claimed relation.
+\end{proof}
+
+\subsection{Infimal convolution}
+
+\begin{definition}
+Let $f_1$ and $f_2$ be two functions from $\mathbb{R}^n$ to $\mathbb{R}\cup\{+\infty\}$. Their \emph{infimal convolution} is the function from $\mathbb{R}^n$ to $\mathbb{R}\cup\{\pm\infty\}$ defined by
+\begin{align}
+(f_1\infconv f_2)(x)&:=\inf\{f_1(x_1)+f_2(x_2):\;x_1+x_2=x\}\label{eq:2.3.1}\\
+&=\inf_{y\in\mathbb{R}^n}[\,f_1(y)+f_2(x-y)\,].\notag
+\end{align}
+\end{definition}
+
+We will also call ``infimal convolution'' the \emph{operation} expressed by \eqref{eq:2.3.1}. It is called exact at $x=\bar x_1+\bar x_2$ when the infimum is attained at $(\bar x_1,\bar x_2)$, not necessarily unique. \qed
+
+\begin{proposition}
+Let the functions $f_1$ and $f_2$ be in $\operatorname{Conv}\mathbb{R}^n$. Suppose that they have a common affine minorant: for some $(s,b)\in\mathbb{R}^n\times\mathbb{R}$,
+\[
+f_j(x)\ge\langle s,x\rangle - b\qquad\text{for }j=1,2\text{ and all }x\in\mathbb{R}^n.
+\]
+Then their infimal convolution is also in $\operatorname{Conv}\mathbb{R}^n$.
+\end{proposition}
+
+\begin{proof}
+For arbitrary $x\in\mathbb{R}^n$ and $x_1,x_2$ such that $x_1+x_2=x$, we have by assumption
+\[
+f_1(x_1)+f_2(x_2)\ge\langle s,x\rangle -2b>- \infty,
+\]
+and this inequality extends to the infimal value $(f_1\infconv f_2)(x)$.
+
+On the other hand, it suffices to choose particular values $x_j\in\dom f_j$, $j=1,2$, to obtain the point $x_1+x_2\in\dom(f_1\infconv f_2)$. Finally, the convexity of $f_1\infconv f_2$ results from the convexity of a lower-bound function, as seen in \S 1.3(g).
+\end{proof}
+
+\subsection{Image of a function under a linear mapping}
+
+\begin{definition}
+\label{def:2.4.1}
+(Image Function) Let $A:\mathbb{R}^m\to\mathbb{R}^n$ be a linear operator and let
+$g:\mathbb{R}^m\to\mathbb{R}\cup\{+\infty\}$. The image of $g$ under $A$ is the function $Ag:\mathbb{R}^n\to\mathbb{R}\cup\{\pm\infty\}$
+defined by
+\[
+(Ag)(x):=\inf\{\,g(y):\;Ay=x\,\}\tag{2.4.2}
+\]
+(here as always, $\inf\varnothing=+\infty$).
+\end{definition}
+
+\begin{theorem}\label{thm:2.4.2}
+Let $g$ of Definition 2.4.1 be in $\mathrm{Conv}\,\mathbb{R}^m$.  Assume also that, for all $x\in\mathbb{R}^n$, $g$ is bounded below on the inverse image $A^{-1}(x)=\{y\in\mathbb{R}^m:Ay=x\}$.  Then $Ag\in\mathrm{Conv}\,\mathbb{R}^n$.
+\end{theorem}
+
+\begin{proof}
+By assumption, $Ag$ is nowhere $-\infty$; also, $(Ag)(x)<+\infty$ whenever $x=Ay$, with $y\in\dom g$.  Now consider the extended operator
+\[
+A':\mathbb{R}^m\times\mathbb{R}\rightrightarrows(y,r)\mapsto A'(y,r):=(Ay,r)\in\mathbb{R}^n\times\mathbb{R}.
+\]
+The set $A'(\epi g)=:C$ is convex in $\mathbb{R}^n\times\mathbb{R}$; let us compute its lower-bound function (1.3.5): for given $x\in\mathbb{R}^n$,
+\[
+\inf_{r}\{r : (x,r)\in C\} = \inf_{y,r}\{r : Ay = x \ \text{and}\ g(y)\le r\}
+= \inf_{y}\{g(y) : Ay = x\} = (Ag)(x),
+\]
+and this proves the convexity of $Ag=\ell_C$.
+\end{proof}
+
+\begin{corollary}\label{thm:2.4.3}
+Let (2.4.1) have the following form: $U=\mathbb{R}^p$; $\varphi\in\Conv\mathbb{R}^p$; 
+$X=\mathbb{R}^n$ is equipped with the canonical basis; the mapping $c$ has its components 
+$c_j\in\Conv\mathbb{R}^p$ for $j=1,\dots,n$. Suppose also that the optimal value is $>-\infty$ for 
+all $x\in\mathbb{R}^n$, and that
+\[
+\dom\varphi\cap\dom c_1\cap\cdots\cap\dom c_n\neq\varnothing.
+\tag{2.4.4}
+\]
+Then the value function
+\[
+v_{\varphi,c}(x):=\inf\{\varphi(u):c_j(u)\le x_j,\ \text{for }j=1,\dots,n\}
+\]
+lies in $\Conv\mathbb{R}^n$.
+\end{corollary}
+
+\begin{proof}
+Note first that we have assumed $v_{\varphi,c}(x)>-\infty$ for all $x$. Take $u_0$ in the set (2.4.4) and set $M:=\max_j c_j(u_0)$; then take $x_0:=(M,\dots,M)\in\mathbb{R}^n$, so that $v_{\varphi,c}(x_0)\le\varphi(u_0)<+\infty$. Knowing that $v_{\varphi,c}$ is an image-function, we just have to prove the convexity of the set (2.4.3); but this in turn comes immediately from the convexity of each $c_j$.
+\end{proof}
+
+\begin{definition}
+\label{def:2.4.4}
+(Marginal Function) Let $g\in\operatorname{Conv}(\mathbb{R}^n\times\mathbb{R}^m)$. Then
+\[
+\mathbb{R}^n\ni x\mapsto \gamma(x):=\inf\{\,g(x,y):\;y\in\mathbb{R}^m\,\}
+\]
+is the marginal function of $g$.
+\end{definition}
+
+\begin{corollary}\label{cor:2.4.5}
+With the above notation, suppose that $g$ is bounded below on the set $\{x\}\times\mathbb{R}^m$, for all $x\in\mathbb{R}^n$. Then the marginal function $\gamma$ lies in $\operatorname{Conv}\mathbb{R}^n$.
+\end{corollary}
+
+\begin{proof}
+The marginal function $\gamma$ is the image of $g$ under the the linear operator $A$ projecting each $(x,y)\in\mathbb{R}^n\times\mathbb{R}^m$ onto $x\in\mathbb{R}^n$: $A(x,y)=x$. \qquad \qedhere
+\end{proof}
+
+\subsection{Convex hull and closed convex hull of a function}
+
+\begin{proposition}
+\label{prop:2.5.1}
+Let $g:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically $+\infty$, be minorized by some affine function: for some $(s,b)\in\mathbb{R}^n\times\mathbb{R}$,
+\[
+g(x)\ge\langle s,x\rangle - b\quad\text{for all }x\in\mathbb{R}^n .
+\tag{2.5.1}
+\]
+\end{proposition}
+
+Then, the following three functions \(f_1, f_2\) and \(f_3\) are convex and coincide on \(\mathbb{R}^n\):
+
+\[
+\begin{aligned}
+f_1(x) &:= \inf\{r : (x,r)\in\operatorname{co}\,\operatorname{epi} g\},\\
+f_2(x) &:= \sup\{h(x): h\in\operatorname{Conv}\mathbb{R}^n,\ h\le g\},\\
+f_3(x) &:= \inf\Big\{\sum_{j=1}^k \alpha_j g(x_j): k=1,2,\dots\\
+&\qquad\qquad\qquad \alpha\in\Delta_k,\ x_j\in\operatorname{dom} g,\ \sum_{j=1}^k \alpha_j x_j = x\Big\}.
+\end{aligned}
+\tag{2.5.2}
+\]
+
+\begin{proof}
+We denote by \(\Gamma\) the family of convex functions minorizing \(g\). By assumption, \(\Gamma\neq\varnothing\); then the convexity of \(f_1\) results from \S1.3(g).
+
+[\(f_2\le f_1\)] Consider the epigraph of any \(h\in\Gamma\): its lower-bound function \(\ell_{\mathrm{epi}\,h}\) is \(h\) itself; besides, it contains \(\mathrm{epi}\,g\), and \(\operatorname{co}(\mathrm{epi}\,g)\) as well (see Proposition A.1.3.4). In a word, there holds \(h=\ell_{\mathrm{epi}\,h}\le \ell_{\operatorname{co}\,\mathrm{epi}\,g}=f_1\) and we conclude \(f_2\le f_1\) since \(h\) was arbitrary in \(\Gamma\).
+
+[\(f_3\le f_2\)] We have to prove \(f_3\in\Gamma\), and the result will follow by definition of \(f_2\); clearly \(f_3\le g\) (take \(\alpha\in\Delta_1\)!), so it suffices to establish \(f_3\le\operatorname{Conv}\mathbb{R}^n\). First, with \((s,b)\) of (2.5.1) and all \(x,\ \{x_j\}\) and \(\{\alpha_j\}\) as described by (2.5.2),
+\[
+\sum_{j=1}^k \alpha_j g(x_j) \ge \sum_{j=1}^k \alpha_j(\langle s,x_j\rangle - b) = \langle s,x\rangle - b;
+\]
+hence \(f_3\) is minorized by the affine function \(\langle s,\cdot\rangle - b\). Now, take two points \((x,r)\) and \((x',r')\) in the strict epigraph of \(f_3\). By definition of \(f_3\), there are \(k,\ \{\alpha_j\},\ \{x_j\}\) as described in (2.5.2), and likewise \(k',\ \{\alpha'_j\},\ \{x'_j\}\), such that \(\sum_{j=1}^k \alpha_j g(x_j)<r\) and likewise \(\sum_{j=1}^{k'} \alpha'_j g(x'_j)<r'\).
+
+For arbitrary \(t\in]0,1[\), we obtain by convex combination
+\[
+\sum_{j=1}^k t\alpha_j g(x_j) + \sum_{j=1}^{k'} (1-t)\alpha'_j g(x'_j) < tr + (1-t)r'.
+\]
+
+Observe that
+\[
+\sum_{j=1}^k t\alpha_j x_j + \sum_{j=1}^{k'} (1-t)\alpha'_j x'_j = tx + (1-t)x',
+\]
+i.e. we have in the lefthand side a convex decomposition of \(tx+(1-t)x'\) in \(k+k'\) elements; therefore, by definition of \(f_3\):
+\[
+f_3(tx+(1-t)x') \le \sum_{j=1}^k t\alpha_j g(x_j) + \sum_{j=1}^{k'} (1-t)\alpha'_j g(x'_j)
+\]
+and we have proved that \(\mathrm{epi}_s f_3\) is a convex set: \(f_3\) is convex.
+
+Let \(x\in\mathbb{R}^n\) and take an arbitrary convex decomposition \(x=\sum_{j=1}^k \alpha_j x_j\),
+with \(\alpha_j\) and \(x_j\) as described in (2.5.2). Since \((x_j,g(x_j))\in\operatorname{epi} g\) for \(j=1,\ldots,k$,
+\[
+\biggl(x,\sum_{j=1}^k \alpha_j g(x_j)\biggr)\in\operatorname{co}\operatorname{epi} g
+\]
+and this implies \(f_1(x)\le\sum_{j=1}^k \alpha_j g(x_j)\) by definition of \(f_1\). Because the decomposition of \(x\) was arbitrary within (2.5.2), this implies \(f_1(x)\le f_3(x)\).
+\end{proof}
+
+\begin{proposition}
+\label{prop:2.5.2}
+Let $g$ satisfy the hypotheses of Proposition 2.5.1. Then the three functions below
+\[
+\bar f_1(x):=\inf\{r:(x,r)\in\overline{\operatorname{epi} g}\},
+\qquad
+\bar f_2(x):=\sup\{h(x):\ h\in\operatorname{Conv}\mathbb{R}^n,\ h\le g\},
+\]
+\[
+\bar f_3(x):=\sup\{\langle s,x\rangle-b:\ \langle s,y\rangle-b\le g(y)\text{ for all }y\in\mathbb{R}^n\}
+\]
+are closed, convex, and coincide on $\mathbb{R}^n$ with the closure of the function constructed in Proposition 2.5.1.
+\end{proposition}
+
+\begin{definition}[Convex Hulls of a Function]\label{def:2.5.3}
+Let \(g:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}\), not identically \(+\infty\), be minorized by an affine function. The common function \(f_1=f_2=f_3\) of Proposition 2.5.1 is called the \emph{convex hull} of \(g\), denoted by \(\operatorname{co}g\). The \emph{closed convex hull} of \(g\) is any of the functions described by Proposition 2.5.2; it is denoted by \(\overline{\operatorname{co}}\,g\) or \(\operatorname{cl}\,\operatorname{co}g\).
+\end{definition}
+
+\begin{proposition}
+\label{thm:2.5.4}
+Let $g_1,\dots,g_m$ be in $\operatorname{Conv}\mathbb{R}^n$, all minorized by the same affine function. Then the convex hull of their infimum is the function
+\[
+\mathbb{R}^n \ni x \mapsto [\operatorname{co}(\min_j g_j)](x)=
+\inf\Big\{\sum_{j=1}^m \alpha_j g_j(x_j)\;:\;\alpha\in\Delta_m,\;x_j\in\operatorname{dom} g_j,\;\sum_{j=1}^m\alpha_j x_j=x\Big\}.
+\tag{2.5.3}
+\]
+\end{proposition}
+
+\begin{proof}
+Apply Example A.1.3.5 to the convex sets $C_j=\operatorname{epi} g_j$.
+\end{proof}

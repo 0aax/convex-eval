@@ -1,0 +1,230 @@
+\subsection{First definition: Directional derivative}
+\begin{definition}
+\label{def:1.1.1}
+(Direction\-al Derivative) The directional derivative of $f$ at $x$ in the direction $d$ is
+\[
+f'(x,d):=\lim_{\{q(t):t\downarrow0\}}=\inf\{q(t):t>0\}.
+\tag{1.1.2}
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:1.1.2}
+For fixed $x$, the function $f'(x,\cdot)$ is finite sublinear.
+\end{proposition}
+
+\begin{proof}
+Let $d_1,d_2\in\mathbb{R}^n$, and positive $\alpha_1,\alpha_2$ with $\alpha_1+\alpha_2=1$. From the convexity of $f$:
+\[
+f\bigl(x+t(\alpha_1d_1+\alpha_2d_2)\bigr)-f(x)=
+\]
+\[
+f\bigl(\alpha_1(x+td_1)+\alpha_2(x+td_2)\bigr)-\alpha_1f(x)-\alpha_2f(x)\le
+\]
+\[
+\le\alpha_1\bigl[f(x+td_1)-f(x)\bigr]+\alpha_2\bigl[f(x+td_2)-f(x)\bigr].
+\]
+for all $t$. Dividing by $t>0$ and letting $t\downarrow0$, we obtain
+\[
+f'(x,\alpha_1d_1+\alpha_2d_2)\le\alpha_1f'(x,d_1)+\alpha_2f'(x,d_2)
+\]
+which establishes the convexity of $f'$ with respect to $d$. Its positive homogeneity is clear: for $\lambda>0$
+\[
+f'(x,\lambda d)=\lim_{t\downarrow0}\lambda\frac{f(x+\lambda td)-f(x)}{\lambda t}
+=\lambda\lim_{\tau\downarrow0}\frac{f(x+\tau d)-f(x)}{\tau}
+=\lambda f'(x,d).
+\]
+
+Finally suppose $\|d\|=1$. As a finite convex function, $f$ is Lipschitz continuous around $x$ (Theorem B.3.1.2); in particular there exist $\varepsilon>0$ and $L>0$ such that
+\[
+|f(x+td)-f(x)|\le Lt\quad\text{for }0\le t\le\varepsilon.
+\]
+Hence, $|f'(x,d)|\le L$ and we conclude with positive homogeneity:
+\[
+|f'(x,d)|\le L\|d\|\qquad\text{for all }d\in\mathbb{R}^n.
+\tag{1.1.5}
+\]
+\end{proof}
+
+\begin{definition}[Subdifferential I]\label{thm:1.1.4}
+The subdifferential $\partial f(x)$ of $f$ at $x$ is the nonempty compact convex set of $\mathbb{R}^n$ whose support function is $f'(x,\cdot)$, i.e.
+\[
+\partial f(x):=\{s\in\mathbb{R}^n:\;\langle s,d\rangle\le f'(x,d)\ \text{ for all } d\in\mathbb{R}^n\}.\tag{1.1.6}
+\]
+A vector $s\in\partial f(x)$ is called a \emph{subgradient} of $f$ at $x$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:1.1.6}
+The finite sublinear function $d\mapsto\sigma(d):=f'(x,d)$ satisfies
+\[
+\sigma'(0,\delta)=f'(x,\delta)\qquad\text{for all }\delta\in\mathbb{R}^n;
+\tag{1.1.8}
+\]
+\[
+\sigma(\delta)=\sigma(0)+\sigma'(0,\delta)=\sigma'(0,\delta)\qquad\text{for all }\delta\in\mathbb{R}^n;
+\tag{1.1.9}
+\]
+\[
+\partial\sigma(0)=\partial f(x).
+\tag{1.1.10}
+\]
+\end{proposition}
+
+\begin{proof}
+Because $\sigma$ is positively homogeneous and $\sigma(0)=0$,
+\[
+\frac{\sigma(t\delta)-\sigma(0)}{t}=\sigma(\delta)=f'(x,\delta)\qquad\text{for all }t>0.
+\]
+This implies immediately (1.1.8) and (1.1.9). Then (1.1.10) follows from uniqueness of the supported set.
+\end{proof}
+
+\subsection{Second definition: Minorization by affine functions}
+
+\begin{definition}
+\label{def:1.2.1}
+(Subdifferential II) The subdifferential of $f$ at $x$ is the set of vectors $s\in\mathbb{R}^n$ satisfying
+\[
+f(y)\ge f(x)+\langle s,y-x\rangle\qquad\text{for all }y\in\mathbb{R}^n.
+\tag{1.2.1}
+\]
+\end{definition}
+
+\begin{theorem}\label{thm:1.2.2}
+The definitions 1.1.4 and 1.2.1 are equivalent.
+\end{theorem}
+
+\begin{proof}
+Let $s$ satisfy (1.1.6), i.e.
+\[
+\langle s,d\rangle \le f'(x,d)\qquad\text{for all }d\in\mathbb{R}^n. \tag{1.2.2}
+\]
+
+The second equality in (1.1.2) makes it clear that (1.2.2) is equivalent to
+\[
+\langle s,d\rangle \le \frac{f(x+td)-f(x)}{t}\qquad\text{for all }d\in\mathbb{R}^n\text{ and }t>0. \tag{1.2.3}
+\]
+
+When $d$ describes $\mathbb{R}^n$ and $t$ describes $\mathbb{R}_+^*$, $y:=x+td$ describes $\mathbb{R}^n$ and we realize that (1.2.3) is just (1.2.1).
+\end{proof}
+
+\subsection{Geometric constructions and interpretations}
+
+\begin{proposition}
+\label{prop:1.3.1}
+(i) A vector $s\in\mathbb{R}^n$ is a subgradient of $f$ at $x$ if and only if $(s,-1)\in\mathbb{R}^n\times\mathbb{R}$ is normal to $\operatorname{epi}f$ at $(x,f(x))$.  In other words:
+\[
+N_{\operatorname{epi}f}(x,f(x))=\{(\lambda s,-\lambda): s\in\partial f(x),\ \lambda\ge 0\}.
+\]
+
+(ii) The tangent cone to the set $\operatorname{epi}f$ at $(x,f(x))$ is the epigraph of the directional-derivative function $d\mapsto f'(x,d)$:
+\[
+T_{\operatorname{epi}f}(x,f(x))=\{(d,r): r\ge f'(x,d)\}.
+\]
+\end{proposition}
+
+\begin{proof}
+[(i)] Apply Definition A.5.2.3 to see that $(s,-1)\in N_{\operatorname{epi}f}(x,f(x))$ means
+\[
+\langle s,y-x\rangle+(-1)[r-f(x)]\le 0\qquad\text{for all }y\in\mathbb{R}^n\text{ and }r\ge f(y)
+\]
+and the equivalence with (1.2.1) is clear.  The formula follows since the set of normals forms a cone containing the origin.
+
+[(ii)] The tangent cone to $\operatorname{epi}f$ is the polar of the above normal cone, i.e. the set of $(d,r)\in\mathbb{R}^n\times\mathbb{R}$ such that
+\[
+\langle\lambda s,d\rangle+(-\lambda)r\le 0\qquad\text{for all }s\in\partial f(x)\text{ and }\lambda\ge 0.
+\]
+Barring the trivial case $\lambda=0$, we divide by $\lambda>0$ to obtain
+\[
+r\ge\max\{\langle s,d\rangle: s\in\partial f(x)\}=f'(x,d).
+\]
+\end{proof}
+
+\begin{lemma}
+For the convex function $f:\mathbb{R}^n\to\mathbb{R}$ and the sublevel-set (1.3.1), we have
+\[
+T_{S_{f(x)} }(x)\subset\{d:\;f'(x,d)\le 0\}. \tag{1.3.2}
+\]
+\end{lemma}
+
+\begin{proof}
+Take arbitrary $y\in S_{f(x)},\ t>0$, and set $d:=t(y-x)$. Then, using the second equality in (1.1.2),
+\[
+0\ge t[f(y)-f(x)]=\frac{f(x+d/t)-f(x)}{1/t}\ge f'(x,d).
+\]
+So we have proved
+\[
+\mathbb{R}^+[S_{f(x)}-x]\subset\{d:\;f'(x,d)\le 0\} \tag{1.3.3}
+\]
+(note: the case $d=0$ is covered since $0\in S_{f(x)}-x$).
+
+Because $f'(\cdot,\cdot)$ is a closed function, the righthand set in (1.3.3) is closed. Knowing that $T_{S_{f(x)}}(x)$ is the closure of the lefthand side in (1.3.3) (Proposition A.5.2.1), we deduce the result by taking the closure of both sides in (1.3.3).
+\end{proof}
+
+\begin{proposition}
+\label{prop:1.3.3}
+Let $g:\mathbb{R}^n\to\mathbb{R}$ be convex and suppose that $g(x_0)<0$ for some $x_0\in\mathbb{R}^n$. Then
+\[
+\operatorname{cl}\{z: g(z)<0\}=\{z: g(z)\le 0\},\tag{1.3.4}
+\]
+\[
+\{z: g(z)<0\}=\operatorname{int}\{z: g(z)\le 0\}.\tag{1.3.5}
+\]
+It follows
+\[
+\operatorname{bd}\{z: g(z)\le 0\}=\{z: g(z)=0\}.\tag{1.3.6}
+\]
+\end{proposition}
+
+\begin{proof}
+Because $g$ is (lower semi-) continuous, the inclusion ``$\subset$'' automatically holds in (1.3.4). Conversely, let $\bar z$ be arbitrary with $g(\bar z)\le 0$ and, for $k>0$, set
+\[
+z_k:=\tfrac{1}{k}x_0+(1-\tfrac{1}{k})\bar z.
+\]
+By convexity of $g$, $g(z_k)<0$, so (1.3.4) is established by letting $k\to+\infty$.
+
+Now, take the interior of both sides in (1.3.4). The ``int cl'' on the left is actually an ``int'' (Proposition A.2.1.8), and this ``int''-operation is useless because $g$ is (upper semi-) continuous: (1.3.5) is established.
+\end{proof}
+
+\begin{theorem}
+\label{thm:1.3.4}
+Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex and suppose $0\notin\partial f(x)$. Then, $S_{f}(x)$ being the sublevel-set (1.3.1),
+\[
+T_{S_{f}(x)}(x)=\{d\in\mathbb{R}^n:\;f'(x,d)\le 0\}\tag{1.3.7}
+\]
+\[
+\operatorname{int}\big[T_{S_{f}(x)}(x)\big]=\{d\in\mathbb{R}^n:\;f'(x,d)<0\}\neq\varnothing.\tag{1.3.8}
+\]
+\end{theorem}
+
+\begin{proof}
+From the very definition (1.1.6), our assumption means that $f'(x,d)<0$ for some $d$, and (1.1.2) then implies that $f(x+td)<f(x)$ for $t>0$ small enough: our $d$ is of the form $(x+td-x)/t$ with $x+td\in S_{f}(x)$ and we have proved
+\[
+\{d:\;f'(x,d)<0\}\subset\mathbb{R}^+[S_{f}(x)-x]\subset T_{S_{f}(x)}(x).\tag{1.3.9}
+\]
+
+Now, we can apply (1.3.4) with $g=f'(x,\cdot)$:
+\[
+\operatorname{cl}\{d:\;f'(x,d)<0\}=\{d:\;f'(x,d)\le 0\},
+\]
+so (1.3.7) is proved by closing the sets in (1.3.9) and using (1.3.2). Finally, take the interior of both sides in (1.3.7) and apply (1.3.5) with $g=f'(x,\cdot)$ to prove (1.3.8).
+\end{proof}
+
+\begin{theorem}\label{thm:1.3.5}
+Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex and suppose $0\notin\partial f(x)$.  Then a direction $d$ is normal to $S f(x)$ at $x$ if and only if there is some $t\ge 0$ and some $s\in\partial f(x)$ such that $d=ts$:
+\[
+N_{S f(x)}(x)=\mathbb{R}^+ \partial f(x).
+\]
+\end{theorem}
+
+\begin{proof}
+Write (1.3.7) as
+\[
+T_{S f(x)}(x)=\{d\in\mathbb{R}^n:\langle s,d\rangle\le 0\ \text{for all }s\in\partial f(x)\}
+=\{d\in\mathbb{R}^n:\langle \lambda s,d\rangle\le 0\ \text{for all }\lambda\ge 0\ \text{and }s\in\partial f(x)\}=[\mathbb{R}^+\partial f(x)]^\circ.
+\]
+The result follows by taking the polar cone of both sides, and observing that the assumption implies closedness of $\mathbb{R}^+\partial f(x)$ (Proposition A.1.4.7):
+\[
+N_{S f(x)}(x)=\operatorname{cl}[\mathbb{R}^+\partial f(x)]=\mathbb{R}^+\partial f(x).
+\]
+\end{proof}

@@ -1,0 +1,283 @@
+\subsection{Definitions and first properties}
+\begin{definition}
+\label{def:1.1.1}
+A function $\sigma:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$ is said to be \emph{sublinear} if it is convex and positively homogeneous (of degree 1): $\sigma\in\mathrm{Conv}\,\mathbb{R}^n$ and
+\[
+\sigma(tx)=t\sigma(x)\qquad\text{for all }x\in\mathbb{R}^n\text{ and }t>0.
+\tag{1.1.1}
+\]
+\end{definition}
+
+\begin{proposition}
+A function \(\sigma:\mathbb R^n\to\mathbb R\cup\{+\infty\}\) is sublinear if and only if its epigraph \(\operatorname{epi}\sigma\) is a nonempty convex cone in \(\mathbb R^n\times\mathbb R\).
+\end{proposition}
+
+\begin{proof}
+We know that \(\sigma\) is a convex function if and only if \(\operatorname{epi}\sigma\) is a nonempty convex set in \(\mathbb R^n\times\mathbb R\) (Proposition B.1.1.6). Therefore, we just have to prove the equivalence between positive homogeneity and \(\operatorname{epi}\sigma\) being a cone.
+
+Let \(\sigma\) be positively homogeneous. For \((x,r)\in\operatorname{epi}\sigma\), the relation \(\sigma(x)\le r\) gives
+\[
+\sigma(tx)=t\sigma(x)\le tr\qquad\text{for all }t>0,
+\]
+so \(\operatorname{epi}\sigma\) is a cone. Conversely, if \(\operatorname{epi}\sigma\) is a cone in \(\mathbb R^n\times\mathbb R\), the property \((x,\sigma(x))\in\operatorname{epi}\sigma\) implies \((tx,t\sigma(x))\in\operatorname{epi}\sigma\), i.e.
+\[
+\sigma(tx)\le t\sigma(x)\qquad\text{for all }t>0.
+\]
+
+From Remark 1.1.2, this is just positive homogeneity.
+\end{proof}
+
+\begin{proposition}
+\label{prop:1.1.4}
+A function $\sigma:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically equal to $+\infty$, is sublinear if and only if one of the following two properties holds:
+\[
+\sigma(t_1x_1+t_2x_2)\le t_1\sigma(x_1)+t_2\sigma(x_2)\qquad\text{for all }x_1,x_2\in\mathbb{R}^n\text{ and }t_1,t_2>0,
+\tag{1.1.4}
+\]
+or
+\[
+\sigma\text{ is positively homogeneous and subadditive}.
+\tag{1.1.5}
+\]
+\end{proposition}
+
+\begin{proof}
+[sublinearity $\implies$ (1.1.4)] For $x_1,x_2\in\mathbb{R}^n$ and $t_1,t_2>0$, set $t:=t_1+t_2>0$; we have
+\[
+\begin{aligned}
+\sigma(t_1x_1+t_2x_2)&=\sigma\bigl(t\bigl[\tfrac{t_1}{t}x_1+\tfrac{t_2}{t}x_2\bigr]\bigr)\\
+&=t\sigma\bigl(\tfrac{t_1}{t}x_1+\tfrac{t_2}{t}x_2\bigr)\qquad\text{[positive homogeneity]}\\
+&\le t\bigl[\tfrac{t_1}{t}\sigma(x_1)+\tfrac{t_2}{t}\sigma(x_2)\bigr]\qquad\text{[convexity]},
+\end{aligned}
+\]
+and (1.1.4) is proved.
+
+[(1.1.4) $\implies$ (1.1.5)] A function satisfying (1.1.4) is obviously subadditive (take $t_1=t_2=1$) and satisfies (take $x_1=x_2=x$, $t_1=t_2=1/2t$)
+\[
+\sigma(tx)=t\sigma(x),
+\]
+i.e. it is positively homogeneous.
+
+[(1.1.5)$\Rightarrow\text{sublinearity}$] Take $t_1,t_2>0$ with $t_1+t_2=1$ and apply successively subadditivity and positive homogeneity:
+\[
+\sigma(t_1x_1+t_2x_2)\le\sigma(t_1x_1)+\sigma(t_2x_2)=t_1\sigma(x_1)+t_2\sigma(x_2),
+\]
+hence $\sigma$ is convex.
+\end{proof}
+
+\begin{corollary}\label{cor:1.1.5}
+If $\sigma$ is sublinear, then
+\[
+\sigma(x)+\sigma(-x)\ge 0\quad\text{for all }x\in\mathbb{R}^n.
+\tag{1.1.6}
+\]
+\end{corollary}
+
+\begin{proof}
+Take $x_2=-x_1$ in (1.1.3) and remember that $\sigma(0)\ge 0$.
+\end{proof}
+
+\begin{proposition}
+\label{thm:1.1.6}
+Let $\sigma$ be sublinear and suppose that there exist $x_1,\dots,x_m$ in $\dom\sigma$ such that
+\[
+\sigma(x_j)+\sigma(-x_j)=0\quad\text{for } j=1,\dots,m.
+\tag{1.1.7}
+\]
+Then $\sigma$ is linear on the subspace spanned by $x_1,\dots,x_m$.
+\end{proposition}
+
+\begin{proof}
+With $x_1,\dots,x_m$ as stated, each $-x_j$ is in $\dom\sigma$. Let $x:=\sum_{j=1}^m t_j x_j$ be an arbitrary linear combination of $x_1,\dots,x_m$; we must prove that $\sigma(x)=\sum_{j=1}^m t_j\sigma(x_j)$. Set
+\[
+J_1 := \{j : t_j > 0\},\qquad J_2 := \{j : t_j < 0\},
+\]
+and obtain (as usual, $\sum_\emptyset=0$):
+
+\begin{align}
+\sigma(x)
+&=\sigma\!\biggl(\sum_{j\in J_1} t_j x_j + \sum_{j\in J_2}(-t_j)(-x_j)\biggr)\\
+&\le \sum_{j\in J_1} t_j\sigma(x_j)+\sum_{j\in J_2}(-t_j)\sigma(-x_j) \tag*{[from (1.1.4)]}\\
+&= \sum_{j\in J_1} t_j\sigma(x_j)+\sum_{j\in J_2} t_j\sigma(x_j)=\sum_{j=1}^m t_j\sigma(x_j) \tag*{[from (1.1.7)]}\\
+&= -\sum_{j\in J_1} t_j\sigma(-x_j)-\sum_{j\in J_2}(-t_j)\sigma(x_j) \tag*{[from (1.1.7)]}\\
+&\le -\sigma\!\bigl(-\sum_{j=1}^m t_j x_j\bigr)\tag*{[from (1.1.4)]}\\
+&= -\sigma(-x)\le \sigma(x). \tag*{[from (1.1.6)]}
+\end{align}
+
+
+In summary, we have proved \(\sigma(x)\le \sum_{j=1}^m t_j\sigma(x_j)\le -\sigma(-x)\le\sigma(x).\) \qedhere
+\end{proof}
+
+\begin{proposition}
+\label{prop:1.1.7}
+Let $\sigma$ be sublinear. If $x\in U$, i.e.\ if
+\[
+\sigma(x)+\sigma(-x)=0,
+\]
+then there holds
+\[
+\sigma(x+y)=\sigma(x)+\sigma(y)\qquad\text{for all }y\in\mathbb{R}^n.
+\]
+\end{proposition}
+
+\begin{proof}
+In view of subadditivity, we just have to prove ``$\ge$'' in (1.1.10). Start from the identity $y=x+y-x$; apply successively subadditivity and (1.1.9) to obtain
+\[
+\sigma(y)\le\sigma(x+y)+\sigma(-x)=\sigma(x+y)-\sigma(x).
+\]
+\end{proof}
+
+\subsection{Some examples}
+
+\begin{definition}
+\label{def:1.2.4}
+(Gauge) Let $C$ be a closed convex set containing the origin. The function $\gamma_C$ defined by
+\[
+\gamma_C(x) := \inf\{\lambda>0 : x\in \lambda C\} \tag{1.2.2}
+\]
+is called the \emph{gauge} of $C$. As usual, we set $\gamma_C(x):=+\infty$ if $x\notin \lambda C$ for no $\lambda>0$.
+\end{definition}
+
+\begin{theorem}\label{thm:1.2.5}
+Let $C$ be a closed convex set containing the origin. Then
+\begin{enumerate}
+\item[(i)] its gauge $\gamma_C$ is a nonnegative closed sublinear function;
+\item[(ii)] $\gamma_C$ is finite everywhere if and only if $0$ lies in the interior of $C$;
+\item[(iii)] $C_\infty$ being the asymptotic cone of $C$,
+\[
+\{x\in\mathbb{R}^n:\ \gamma_C(x)\le r\}=rC\quad\text{for all }r>0,
+\qquad
+\{x\in\mathbb{R}^n:\ \gamma_C(x)=0\}=C_\infty.
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[(i) and (iii)] Nonnegativity and positive homogeneity are obvious from the definition of $\gamma_C$; also, $\gamma_C(0)=0$ because $0\in C$. We prove convexity via a geometric interpretation of (1.2.2). Let
+\[
+K_C:=\operatorname{cone}(C\times\{1\})=\{(\lambda c,\lambda)\in\mathbb{R}^n\times\mathbb{R}:\ c\in C,\ \lambda\ge 0\}
+\]
+be the convex conical hull of $C\times\{1\}\subset\mathbb{R}^n\times\mathbb{R}$. It is convex (beware that $K_C$ need not be closed) and $\gamma_C$ is clearly given by
+\[
+\gamma_C(x)=\inf\{\lambda:\ (x,\lambda)\in K_C\}.
+\]
+Thus, $\gamma_C$ is the lower-bound function of \S B.1.3(g), constructed on the convex set $K_C$; this establishes the convexity of $\gamma_C$, hence its sublinearity.
+
+Now we prove
+\begin{equation}\label{eq:1.2.3}
+\{x\in\mathbb{R}^n:\ \gamma_C(x)\le 1\}=C.
+\end{equation}
+This will imply the first part in (iii), thanks to positive homogeneity. Then the second part will follow because of (A.2.2.2): $C_\infty=\cap\{rC:\ r>0\}$ and closedness of $\gamma_C$ will also result from (iii) via Proposition B.1.2.2.
+
+So, to prove (1.2.3), observe first that $x\in C$ implies from (1.2.2) that certainly $\gamma_C(x)\le 1$. Conversely, let $x$ be such that $\gamma_C(x)\le 1$; we must prove that $x\in C$. For this we prove that $x_k:= (1-1/k)x\in C$ for $k=1,2,\dots$ (and then, the desired property will come from the closedness of $C$). By positive homogeneity, $\gamma_C(x_k)=(1-1/k)\gamma_C(x)\le 1$, so there is $\lambda_k\in[0,1]$ such that $x_k=\lambda_k C$, or equivalently $x_k/\lambda_k\in C$. Because $C$ is convex and contains the origin, $\lambda_k (x_k/\lambda_k)+(1-\lambda_k)0 = x_k$ is in $C$, which is what we want.
+\end{proof}
+
+\begin{proof}[(ii)] Assume $0\in\operatorname{int}C$. There is $\varepsilon>0$ such that for all $x\neq 0$, $x_\varepsilon := x/\|x\|\in C$; hence $\gamma_C(x_\varepsilon)\le 1$ because of (1.2.3). We deduce by positive homogeneity
+\[
+\gamma_C(x)=\frac{\|x\|}{\varepsilon}\,\gamma_C(x_\varepsilon)\le\frac{\|x\|}{\varepsilon}\,;
+\]
+this inequality actually holds for all $x\in\mathbb{R}^n$ ($\gamma_C(0)=0$) and $\gamma_C$ is a finite function.
+
+Conversely, suppose $\gamma_C$ is finite everywhere. By continuity (Theorem B.3.1.2), $\gamma_C$ has an upper bound $L>0$ on the unit ball:
+\[
+\|x\|\le 1 \quad\Longrightarrow\quad \gamma_C(x)\le L \quad\Longrightarrow\quad x\in L C,
+\]
+where the last implication comes from (iii). In other words, $B(0,1/L)\subset C$.
+\end{proof}
+
+\begin{corollary}\label{cor:1.2.6}
+C is compact if and only if $\gamma_C(x)>0$ for all $x\neq 0$.
+\end{corollary}
+
+\subsection{The convex cone of all closed sublinear functions}
+
+\begin{proposition}
+\label{prop:1.3.1}
+(i) If $\sigma_1$ and $\sigma_2$ are [closed] sublinear and $t_1,t_2$ are positive numbers, then $\sigma := t_1\sigma_1 + t_2\sigma_2$ is [closed] sublinear, if not identically $+\infty$.
+
+(ii) If $\{\sigma_j\}_{j\in J}$ is a family of [closed] sublinear functions, then $\sigma := \sup_{j\in J}\sigma_j$ is [closed] sublinear, if not identically $+\infty$.
+\end{proposition}
+
+\begin{proof}
+Concerning convexity and closedness, everything is known from \S B.2. Note in passing that a closed sublinear function is zero (hence finite) at zero. As for positive homogeneity, it is straightforward.
+\end{proof}
+
+\begin{proposition}
+Let $\{\sigma_j\}_{j\in J}$ be a family of sublinear functions all minorized by some linear function. Then
+
+(i) $\sigma := \operatorname{co}\big(\inf_{j\in J}\sigma_j\big)$ is sublinear.
+
+(ii) If $J=\{1,\dots,m\}$ is a finite set, we obtain the infimal convolution
+\[
+\operatorname{co}\min\{\sigma_1,\dots,\sigma_m\}=\sigma_1\infconv\cdots\infconv\sigma_m.
+\]
+\end{proposition}
+
+\begin{proof}
+[(i)] Once again, the only thing to prove for (i) is positive homogeneity. Actually, it suffices to multiply $x$ and each $x_j$ by $t>0$ in a formula giving $\operatorname{co}\big(\inf_j\sigma_j\big)(x)$, say (B.2.5.3).
+
+[(ii)] By definition, computing $\operatorname{co}\big(\min_j\sigma_j\big)(x)$ amounts to solving the minimization problem in the $m$ couples of variables $(x_j,\alpha_j)\in\operatorname{dom}\sigma_j\times\mathbb{R}$
+\[
+\begin{aligned}
+&\inf\sum_{j=1}^m\alpha_j\sigma_j(x_j)\qquad \alpha_j\ge 0\\
+&\sum_{j=1}^m\alpha_j=1,\ \sum_{j=1}^m\alpha_j x_j=x.
+\end{aligned}
+\tag{1.3.1}
+\]
+
+In view of positive homogeneity, the variables $\alpha_j$ play no role by themselves: the relevant variables are actually the products $\alpha_j x_j$ and (1.3.1) can be written -- denoting $\alpha_j x_j$ again by $x_j$:
+\[
+\operatorname{co}\big(\min_j\sigma_j\big)(x)=\inf\Big\{\sum_{j=1}^m\sigma_j(x_j):\sum_{j=1}^m x_j=x\Big\}.
+\]
+
+We recognize the infimal convolution of the $\sigma_j$'s.
+\end{proof}
+
+\begin{theorem}\label{thm:1.3.3}
+For $\sigma_1$ and $\sigma_2$ in the set $\Phi$ of sublinear functions that are finite everywhere, define
+\[
+\Delta(\sigma_1,\sigma_2):=\max_{\|x\|\le 1}|\sigma_1(x)-\sigma_2(x)|.
+\tag{1.3.2}
+\]
+Then $\Delta$ is a distance on $\Phi$.
+\end{theorem}
+
+\begin{proof}
+Clearly $\Delta(\sigma_1,\sigma_2)<+\infty$ and $\Delta(\sigma_1,\sigma_2)=\Delta(\sigma_2,\sigma_1)$. Now positive homogeneity of $\sigma_1$ and $\sigma_2$ gives for all $x\neq 0$
+\[
+|\sigma_1(x)-\sigma_2(x)|=\|x\|\Big|\sigma_1\Big(\frac{x}{\|x\|}\Big)-\sigma_2\Big(\frac{x}{\|x\|}\Big)\Big|
+\le \|x\|\max_{\|u\|=1}|\sigma_1(u)-\sigma_2(u)|
+\le \|x\|\,\Delta(\sigma_1,\sigma_2).
+\]
+
+In addition, $\sigma_1(0)=\sigma_2(0)=0$, so
+\[
+|\sigma_1(x)-\sigma_2(x)|\le\|x\|\,\Delta(\sigma_1,\sigma_2)\qquad\text{for all }x\in\mathbb R^n
+\]
+and $\Delta(\sigma_1,\sigma_2)=0$ if and only if $\sigma_1=\sigma_2$.
+
+As for the triangle inequality, we have for arbitrary $\sigma_1,\sigma_2,\sigma_3$ in $\Phi$
+\[
+|\sigma_1(x)-\sigma_3(x)|\le|\sigma_1(x)-\sigma_2(x)|+|\sigma_2(x)-\sigma_3(x)|\qquad\text{for all }x\in\mathbb R^n,
+\]
+so there holds
+\[
+\Delta(\sigma_1,\sigma_3)\le\max_{\|x\|=1}\big[|\sigma_1(x)-\sigma_2(x)|+|\sigma_2(x)-\sigma_3(x)|\big]
+\le\max_{\|x\|=1}|\sigma_1(x)-\sigma_2(x)|+\max_{\|x\|=1}|\sigma_2(x)-\sigma_3(x)|,
+\]
+which is the required inequality.
+\end{proof}
+
+\begin{theorem}\label{thm:1.3.5}
+Let $(\sigma_k)$ be a sequence of finite sublinear functions and let $\sigma$ be a finite function.  Then the following are equivalent when $k\to+\infty$:
+\begin{enumerate}
+\item[(i)] $(\sigma_k)$ converges pointwise to $\sigma$;
+\item[(ii)] $(\sigma_k)$ converges to $\sigma$ uniformly on each compact set of $\mathbb{R}^n$;
+\item[(iii)] $\Delta(\sigma_k,\sigma)\to 0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+First, the (finite) function $\sigma$ is of course sublinear whenever it is the pointwise limit of sublinear functions.  The equivalence between (i) and (ii) comes from the general Theorem B.3.1.4 on the convergence of convex functions.
+
+Now, (ii) clearly implies (iii).  Conversely $\Delta(\sigma_k,\sigma)\to 0$ is the uniform convergence on the unit ball, hence on any ball of radius $L>0$ (the maxmind in (1.3.2) is positively homogeneous), hence on any compact set.
+\end{proof}
