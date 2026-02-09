@@ -131,8 +131,8 @@ def liftWithTop {n : ℕ}
   EuclideanSpace ℝ (Fin n) → WithBot (WithTop ℝ)
   := fun x => (f x : WithBot (WithTop ℝ))
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.1.1 -/
-lemma FCA_HUL_1_1_1 {n : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.1.2 -/
+lemma FCA_HUL_1_1_2 {n : ℕ}
   (c : ℝ) (C : Set (EuclideanSpace ℝ (Fin n))) (f : EuclideanSpace ℝ (Fin n) → ℝ)
   (hC_nonempty : Set.Nonempty C) (hC_convex : Convex ℝ C)
   : StrongConvexOn C c f ↔ ConvexOn ℝ C (fun x => f x - (c/2) * ‖x‖^2)

@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1770672160.59624 "c:/Users/axie/Desktop/research/convex_eval/blueprint/src/web.tex" "web.pdf" "web" 1770672170.33508 2
+["pdflatex"] 1770678963.66949 "c:/Users/axie/Desktop/research/convex_eval/blueprint/src/web.tex" "web.pdf" "web" 1770678968.33857 2
   "blueprint.sty" 1770669395 64 041de65dd253d01ad50ada0ef6772cd2 ""
   "books/CAMA/chapter_3.tex" 1770672061 416 bb9cfc2ec3bb2fe9ed9785f003c49300 ""
   "books/CAMA/chapter_3/section_1.tex" 1770672061 10763 04dc7664df2603bb23d61be788327a28 ""
@@ -8,7 +8,7 @@
   "books/CAMA/chapter_3/section_4.tex" 1770672061 12229 f2f740e72147af9edb7da3c4c2074634 ""
   "books/CAMA/chapter_3/section_5.tex" 1770672061 5214 1942af7cd966baadd08472c87a852db8 ""
   "books/FCA/chapter_B.tex" 1770672059 395 7cfe90a1ccd32195f9abb022655c3e0a ""
-  "books/FCA/chapter_B/section_1.tex" 1770672060 15585 66442aaceb014dd2cd0c9cf8f4cd94c9 ""
+  "books/FCA/chapter_B/section_1.tex" 1770678954 15593 798c8c1622e04febdcfa09580db36c4d ""
   "books/FCA/chapter_B/section_2.tex" 1770672060 14173 6b82868cba9d49048943f348358a62bf ""
   "books/FCA/chapter_B/section_3.tex" 1770672060 11480 470e9e9a095c3ec86c64b8bdd4fe6195 ""
   "books/FCA/chapter_B/section_4.tex" 1770672060 9605 396df6cf5f3fcf627646feca7250efa6 ""
@@ -93,8 +93,8 @@
   "content.tex" 1770672143 520 1d8ce74e39f0b53108ca265407e14e62 ""
   "macros/common.tex" 1770672131 1289 c3a1eb0acbae142c16d7c54a5b101c9f ""
   "macros/web.tex" 1770669396 260 cdb7c9ac756cf5815dc98c2bb10a4f5b ""
-  "web.aux" 1770672168 25504 c834348fd5d753ba96545b5fed71cf99 "pdflatex"
-  "web.out" 1770672168 22761 74a0a55d806566d6966a53261c4778bd "pdflatex"
+  "web.aux" 1770678967 25504 c834348fd5d753ba96545b5fed71cf99 "pdflatex"
+  "web.out" 1770678967 22761 74a0a55d806566d6966a53261c4778bd "pdflatex"
   "web.tex" 1770669396 674 8f6c96f9fe04675fc3da6539621466c3 ""
   (generated)
   "web.aux"
