@@ -2,6 +2,7 @@
 
 \begin{proposition}
 \label{thm:2.1.1}
+\lean{FCA_chap_B_2_1_1}
 Let $f_1,\dots,f_m$ be in $\Conv\R^n$ [resp.\ in $\overline{\Conv}\R^n$], let $t_1,\dots,t_m$ be positive numbers, and assume that there is a point where all the $f_j$'s are finite. Then the function $f:=\sum_{j=1}^m t_j f_j$ is in $\Conv\R^n$ [resp.\ in $\overline{\Conv}\R^n$].
 \end{proposition}
 
@@ -15,6 +16,7 @@ The convexity of $f$ is readily proved from the relation of definition (1.1.1). 
 
 \begin{proposition}
 \label{prop:2.1.2}
+\lean{FCA_chap_B_2_1_2}
 Let $\{f_j\}_{j\in J}$ be an arbitrary family of convex [resp.\ closed convex] functions. If there exists $x_0$ such that $\sup_{j} f_j(x_0) < +\infty$, then their pointwise supremum $f := \sup\{f_j : j\in J\}$ is in $\mathrm{Conv}\,\mathbb{R}^n$ [resp.\ in $\mathrm{Conv}_\mathrm{cl}\,\mathbb{R}^n$].
 \end{proposition}
 
@@ -24,6 +26,7 @@ The key property is that a supremum of functions corresponds to an intersection 
 
 \begin{proposition}
 \label{prop:2.1.4}
+\lean{FCA_chap_B_2_1_4}
 Let $f\in\operatorname{Conv}\mathbb{R}^n$ [resp.\ $\overline{\operatorname{Conv}}\mathbb{R}^n$] and let $A$ be an affine mapping from $\mathbb{R}^m$ to $\mathbb{R}^n$ such that $\operatorname{Im}A\cap\operatorname{dom}f\neq\varnothing$.  Then the function
 \[
 f\circ A : \mathbb{R}^m \supseteq x\mapsto (f\circ A)(x)=f(A(x))
@@ -50,6 +53,8 @@ It suffices to check the inequalities of definition: (1.1.1) for convexity, (1.2
 \subsection{Dilations and perspectives of a functions}
 
 \begin{proposition}
+\label{prop:2.2.1}
+\lean{FCA_chap_B_2_2_1}
 If $f\in\operatorname{Conv}\mathbb{R}^n$, its perspective $\tilde f$ is in $\operatorname{Conv}\mathbb{R}^{n+1}$.
 \end{proposition}
 
@@ -66,6 +71,8 @@ and $\operatorname{epi}\tilde f$ is therefore a convex cone.
 \end{proof}
 
 \begin{proposition}
+\label{prop:2.2.2}
+\lean{FCA_chap_B_2_2_2}
 Let $f\in\operatorname{Conv}\mathbb{R}^n$ and let $x'\in\operatorname{ri}\dom f$. Then the closure $\overline{f}$ of its perspective is given as follows:
 \[
 (\cl\tilde f)(u,x)=
@@ -104,6 +111,8 @@ Let $f_1$ and $f_2$ be two functions from $\mathbb{R}^n$ to $\mathbb{R}\cup\{+\i
 We will also call ``infimal convolution'' the \emph{operation} expressed by \eqref{eq:2.3.1}. It is called exact at $x=\bar x_1+\bar x_2$ when the infimum is attained at $(\bar x_1,\bar x_2)$, not necessarily unique. \qed
 
 \begin{proposition}
+\label{prop:2.3.3}
+\lean{FCA_chap_B_2_3_3}
 Let the functions $f_1$ and $f_2$ be in $\operatorname{Conv}\mathbb{R}^n$. Suppose that they have a common affine minorant: for some $(s,b)\in\mathbb{R}^n\times\mathbb{R}$,
 \[
 f_j(x)\ge\langle s,x\rangle - b\qquad\text{for }j=1,2\text{ and all }x\in\mathbb{R}^n.
@@ -134,7 +143,9 @@ defined by
 (here as always, $\inf\varnothing=+\infty$).
 \end{definition}
 
-\begin{theorem}\label{thm:2.4.2}
+\begin{theorem}
+\label{thm:2.4.2}
+\lean{FCA_chap_B_2_4_2}
 Let $g$ of Definition 2.4.1 be in $\mathrm{Conv}\,\mathbb{R}^m$.  Assume also that, for all $x\in\mathbb{R}^n$, $g$ is bounded below on the inverse image $A^{-1}(x)=\{y\in\mathbb{R}^m:Ay=x\}$.  Then $Ag\in\mathrm{Conv}\,\mathbb{R}^n$.
 \end{theorem}
 
@@ -151,7 +162,9 @@ The set $A'(\epi g)=:C$ is convex in $\mathbb{R}^n\times\mathbb{R}$; let us comp
 and this proves the convexity of $Ag=\ell_C$.
 \end{proof}
 
-\begin{corollary}\label{thm:2.4.3}
+\begin{corollary}
+\label{thm:2.4.3}
+\lean{FCA_chap_B_2_4_3}
 Let (2.4.1) have the following form: $U=\mathbb{R}^p$; $\varphi\in\Conv\mathbb{R}^p$; 
 $X=\mathbb{R}^n$ is equipped with the canonical basis; the mapping $c$ has its components 
 $c_j\in\Conv\mathbb{R}^p$ for $j=1,\dots,n$. Suppose also that the optimal value is $>-\infty$ for 
@@ -180,7 +193,9 @@ Note first that we have assumed $v_{\varphi,c}(x)>-\infty$ for all $x$. Take $u_
 is the marginal function of $g$.
 \end{definition}
 
-\begin{corollary}\label{cor:2.4.5}
+\begin{corollary}
+\label{cor:2.4.5}
+\lean{FCA_chap_B_2_4_5}
 With the above notation, suppose that $g$ is bounded below on the set $\{x\}\times\mathbb{R}^m$, for all $x\in\mathbb{R}^n$. Then the marginal function $\gamma$ lies in $\operatorname{Conv}\mathbb{R}^n$.
 \end{corollary}
 
@@ -192,6 +207,7 @@ The marginal function $\gamma$ is the image of $g$ under the the linear operator
 
 \begin{proposition}
 \label{prop:2.5.1}
+\lean{FCA_chap_B_2_5_1}
 Let $g:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically $+\infty$, be minorized by some affine function: for some $(s,b)\in\mathbb{R}^n\times\mathbb{R}$,
 \[
 g(x)\ge\langle s,x\rangle - b\quad\text{for all }x\in\mathbb{R}^n .
@@ -245,6 +261,7 @@ and this implies \(f_1(x)\le\sum_{j=1}^k \alpha_j g(x_j)\) by definition of \(f_
 
 \begin{proposition}
 \label{prop:2.5.2}
+\lean{FCA_chap_B_2_5_2}
 Let $g$ satisfy the hypotheses of Proposition 2.5.1. Then the three functions below
 \[
 \bar f_1(x):=\inf\{r:(x,r)\in\overline{\operatorname{epi} g}\},

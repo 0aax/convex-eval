@@ -176,16 +176,18 @@ lemma FCA_chap_B_1_2_1 {n : ℕ}
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.2.2 -/
 lemma FCA_chap_B_1_2_2 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  : LowerSemicontinuousOn f Set.univ ↔ (
-      IsClosed (epigraph f) ↔ ∀ (r : ℝ), IsClosed (sublevelSet r f)
-    )
+  : List.TFAE [
+      LowerSemicontinuousOn f Set.univ,
+      IsClosed (epigraph f),
+      ∀ (r : ℝ), IsClosed (sublevelSet r f)
+  ]
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.2.5 -/
 lemma FCA_chap_B_1_2_5 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x₀ : EuclideanSpace ℝ (Fin n))
   (hf_convex : InConvRn f) (hx : x₀ ∈ intrinsicInterior ℝ (effDom (liftWithTop f)))
-  : ∀ x, Filter.Tendsto (fun t => f (x + t • (x₀ - x))) (𝓝 0) (𝓝 (lscHull f x))
+  : ∀ x, Filter.Tendsto (fun t => f (x + t • (x₀ - x))) (𝓝[>] 0) (𝓝 (lscHull f x))
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.2.6 -/
@@ -203,70 +205,40 @@ lemma FCA_chap_B_1_2_8 {n : ℕ}
                                 (v = inner ℝ z.1 x - z.2) ∧ (∀ y, (inner ℝ z.1 y) - z.2 ≤ f y)}
   := by sorry
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.3.1.i -/
-lemma FCA_chap_B_1_3_1_i {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n) × ℝ))
-  (hC_nonempty : Nonempty C) (hC_minorized : ∀ x, minorizedAt C x) (hC_convex : Convex ℝ C)
-  : InConvRn (lowerBoundFunction C)
-  := by sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.3.1.ii -/
-lemma FCA_chap_B_1_3_1_ii {n : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.3.1 -/
+lemma FCA_chap_B_1_3_1 {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n) × ℝ))
   (hC_nonempty : Nonempty C) (hC_minorized : ∀ x, minorizedAt C x)
-  (hC_convex : Convex ℝ C) (hC_closed : IsClosed C)
-  : (InClosedConvRn (lowerBoundFunction C))
+  : (Convex ℝ C → InConvRn (lowerBoundFunction C)) ∧
+    (Convex ℝ C ∧ IsClosed C → InClosedConvRn (lowerBoundFunction C))
   := by sorry
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.1.i -/
-lemma FCA_chap_B_2_1_1_i {n : ℕ} {m : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.1 -/
+lemma FCA_chap_B_2_1_1 {n : ℕ} {m : ℕ}
   (f : Fin m → (EuclideanSpace ℝ (Fin n) → WithTop ℝ)) (t : Fin m → ℝ)
-  (hf_convex : ∀ i, InConvRn (f i)) (ht_positive : ∀ i, (t i) > 0)
+  (ht_positive : ∀ i, (t i) > 0)
   : let g := fun x => ∑ i, (t i) * ((f i) x)
-    InConvRn g
+    (∀ i, InConvRn (f i) → InConvRn g) ∧
+    (∀ i, InClosedConvRn (f i) → InClosedConvRn g)
   := by sorry
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.1.ii -/
-lemma FCA_chap_B_2_1_1_ii {n : ℕ} {m : ℕ}
-  (f : Fin m → (EuclideanSpace ℝ (Fin n) → WithTop ℝ)) (t : Fin m → ℝ)
-  (hf_closedconvex : ∀ i, InClosedConvRn (f i)) (ht_positive : ∀ i, (t i) > 0)
-  : let g := fun x => ∑ i, (t i) * ((f i) x)
-    InClosedConvRn g
-  := by sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.2.i -/
-lemma FCA_chap_B_2_1_2_i {n : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.2 -/
+lemma FCA_chap_B_2_1_2 {n : ℕ}
   (J : Set ℕ) (f : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
-  (hf_convex : ∀ j ∈ J, ConvexOn ℝ Set.univ (f j)) (hx₀ : ∃ x₀, sSup {y | ∃ j, (j ∈ J) ∧ ((f j) x₀ = y)} < ⊤)
-  : let g := fun x => sSup {y | ∃ j, (j ∈ J) ∧ ((f j) x = y)}
-    InConvRn g
-  := by sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.2.ii -/
-lemma FCA_chap_B_2_1_2_ii {n : ℕ}
-  (J : Set ℕ) (f : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
-  (hf_convex : ∀ j ∈ J, ConvexOn ℝ Set.univ (f j)) (hf_closed : ∀ j ∈ J, ∀ x, (lscHull (f j)) x = (f j) x)
   (hx₀ : ∃ x₀, sSup {y | ∃ j, (j ∈ J) ∧ ((f j) x₀ = y)} < ⊤)
   : let g := fun x => sSup {y | ∃ j, (j ∈ J) ∧ ((f j) x = y)}
-    InClosedConvRn g
+    (∀ j ∈ J, ConvexOn ℝ Set.univ (f j) → InConvRn g) ∧
+    (∀ j ∈ J, ConvexOn ℝ Set.univ (f j) ∧ ∀ j ∈ J, ∀ x, (lscHull (f j)) x = (f j) x → InClosedConvRn g)
   := by sorry
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.4.i -/
-lemma FCA_chap_B_2_1_4_i {m n : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.4 -/
+lemma FCA_chap_B_2_1_4 {m n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (A : AffineMap ℝ (EuclideanSpace ℝ (Fin m)) (EuclideanSpace ℝ (Fin n)))
-  (hf_convex : InConvRn f) (hf_nonempty : (Set.range A) ∩ (effDom (liftWithTop f)) ≠ ∅)
+  (hf_nonempty : (Set.range A) ∩ (effDom (liftWithTop f)) ≠ ∅)
   : let g := fun x => f (A x)
-    InConvRn g
-  := by sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.4.ii -/
-lemma FCA_chap_B_2_1_4_ii {m n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (A : AffineMap ℝ (EuclideanSpace ℝ (Fin m)) (EuclideanSpace ℝ (Fin n)))
-  (hf_convex : InClosedConvRn f) (hf_nonempty : (Set.range A) ∩ (effDom (liftWithTop f)) ≠ ∅)
-  : let g := fun x => f (A x)
-    InClosedConvRn g
+    (InConvRn f → InConvRn g) ∧
+    (InClosedConvRn f → InClosedConvRn g)
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.2.1 -/
