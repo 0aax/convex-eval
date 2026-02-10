@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.8.22)  9 FEB 2026 15:44
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.8.22)  9 FEB 2026 22:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -267,92 +267,7 @@ File: l3backend-xetex.def 2025-06-09 L3 backend support: XeTeX
 \g__graphics_track_int=\count311
 \g__pdfannot_backend_int=\count312
 \g__pdfannot_backend_link_int=\count313
-) (./web.aux
-
-LaTeX Warning: Label `def:1.1.1' multiply defined.
-
-
-LaTeX Warning: Label `def:2.4.1' multiply defined.
-
-
-LaTeX Warning: Label `thm:4.1.1' multiply defined.
-
-
-LaTeX Warning: Label `thm:4.1.4' multiply defined.
-
-
-LaTeX Warning: Label `def:1.1.1' multiply defined.
-
-
-LaTeX Warning: Label `def:1.2.4' multiply defined.
-
-
-LaTeX Warning: Label `thm:1.2.5' multiply defined.
-
-
-LaTeX Warning: Label `def:2.1.1' multiply defined.
-
-
-LaTeX Warning: Label `prop:2.1.2' multiply defined.
-
-
-LaTeX Warning: Label `thm:3.1.1' multiply defined.
-
-
-LaTeX Warning: Label `prop:3.2.1' multiply defined.
-
-
-LaTeX Warning: Label `def:1.1.1' multiply defined.
-
-
-LaTeX Warning: Label `prop:1.1.2' multiply defined.
-
-
-LaTeX Warning: Label `prop:1.1.6' multiply defined.
-
-
-LaTeX Warning: Label `prop:1.3.1' multiply defined.
-
-
-LaTeX Warning: Label `thm:1.3.5' multiply defined.
-
-
-LaTeX Warning: Label `thm:2.3.4' multiply defined.
-
-
-LaTeX Warning: Label `thm:4.1.1' multiply defined.
-
-
-LaTeX Warning: Label `thm:4.3.1' multiply defined.
-
-
-LaTeX Warning: Label `thm:1.2.2' multiply defined.
-
-
-LaTeX Warning: Label `thm:2.1.1' multiply defined.
-
-
-LaTeX Warning: Label `cor:2.1.3' multiply defined.
-
-
-LaTeX Warning: Label `thm:2.2.1' multiply defined.
-
-
-LaTeX Warning: Label `thm:2.2.3' multiply defined.
-
-
-LaTeX Warning: Label `prop:3.2.1' multiply defined.
-
-
-LaTeX Warning: Label `thm:4.1.1' multiply defined.
-
-
-LaTeX Warning: Label `thm:4.2.1' multiply defined.
-
-
-LaTeX Warning: Label `thm:4.2.3' multiply defined.
-
-)
+) (./web.aux)
 \openout1 = `web.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
@@ -376,9 +291,12 @@ LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 Package hyperref Info: Link coloring OFF on input line 24.
- (./web.out) (./web.out)
 \@outlinefile=\write3
 \openout3 = `web.out'.
+
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 
 
@@ -432,11 +350,19 @@ Overfull \hbox (73.64679pt too wide) detected at line 57
 
 [6]
 
+LaTeX Warning: Reference `eq:2.1.2' on page 7 undefined on input line 94.
+
+
+
 [7]
 
 [8]
 
-[9]) (./books/CAMA/chapter_3/section_3.tex
+[9]
+
+LaTeX Warning: Reference `2.4.2' on page 10 undefined on input line 303.
+
+) (./books/CAMA/chapter_3/section_3.tex
 
 [10]
 
@@ -459,6 +385,10 @@ LaTeX Warning: Reference `4.3.4' on page 15 undefined on input line 177.
 
 [15]
 
+LaTeX Warning: Reference `eq:4.3.5' on page 16 undefined on input line 204.
+
+
+
 [16]) (./books/CAMA/chapter_3/section_5.tex
 
 [17]
@@ -478,89 +408,6 @@ Overfull \hbox (38.96617pt too wide) detected at line 107
 [19]
 Chapter 2.
 (./books/FCA/chapter_B/section_1.tex
-./books/FCA/chapter_B/section_1.tex:14: Undefined control sequence.
-l.14 \lean
-          {ConvexEval.FCA_chap_B.FCA_HUL_1_1_2}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./books/FCA/chapter_B/section_1.tex:14: Missing $ inserted.
-<inserted text> 
-                $
-l.14 \lean{ConvexEval.FCA_
-                          chap_B.FCA_HUL_1_1_2}
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./books/FCA/chapter_B/section_1.tex:14: Double subscript.
-l.14 \lean{ConvexEval.FCA_chap_B.FCA_HUL_1_
-                                           1_2}
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-./books/FCA/chapter_B/section_1.tex:14: Double subscript.
-l.14 \lean{ConvexEval.FCA_chap_B.FCA_HUL_1_1_
-                                             2}
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-./books/FCA/chapter_B/section_1.tex:14: Extra }, or forgotten $.
-l.14 \lean{ConvexEval.FCA_chap_B.FCA_HUL_1_1_2}
-                                               
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./books/FCA/chapter_B/section_1.tex:15: Missing $ inserted.
-<inserted text> 
-                $
-l.15 ...f and only if the function $f-\tfrac{1}{2}
-                                                  c\|\cdot\|^{2}$ is convex ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./books/FCA/chapter_B/section_1.tex:15: Extra }, or forgotten $.
-\genfrac  ...fi #3\relax #6}\genfrac@choice c{#2}}
-                                                  
-l.15 ...f and only if the function $f-\tfrac{1}{2}
-                                                  c\|\cdot\|^{2}$ is convex ...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-Overfull \hbox (243.47015pt too wide) in paragraph at lines 14--16
-[]\TU/lmr/bx/n/10 Proposition 2.1.1. \TU/lmr/m/it/10 ConvexEval.FCA$[]\OML/cmm/m/it/10 hap[]:FCA[]UL[][][]Thefunction$\TU/lmr/m/it/10 f$\OML/cmm/m/it/10 isstronglyconvexon$\TU/lmr/m/it/10 C$\OML/cmm/m/it/10 withmodulus$\TU/lmr/m/it/10 c$\OML/cmm/m/it/10 ifandonlyifthefunction$\TU/lmr/m/it/10 f-
- []
-
-./books/FCA/chapter_B/section_1.tex:16: Missing } inserted.
-<inserted text> 
-                }
-l.16 \end{proposition}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./books/FCA/chapter_B/section_1.tex:16: Missing } inserted.
-<inserted text> 
-                }
-l.16 \end{proposition}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
 
 [20
 
@@ -568,8 +415,18 @@ my insertion and my current dilemma will both disappear.
 
 [21]
 
+LaTeX Warning: Reference `eq:1.2.1' on page 22 undefined on input line 125.
+
+
+LaTeX Warning: Reference `eq:1.2.2' on page 22 undefined on input line 131.
+
+
+LaTeX Warning: Reference `eq:1.2.2' on page 22 undefined on input line 135.
+
+
+
 [22]
-Overfull \hbox (1.01672pt too wide) in paragraph at lines 166--167
+Overfull \hbox (1.01672pt too wide) in paragraph at lines 165--166
 []\TU/lmr/bx/n/10 Definition 2.1.6 \TU/lmr/m/n/10 (Closure of a Function)\TU/lmr/bx/n/10 . \TU/lmr/m/n/10 The \TU/lmr/m/it/10 closure \TU/lmr/m/n/10 (or lower semi-continuous
  []
 
@@ -579,10 +436,13 @@ Overfull \hbox (1.01672pt too wide) in paragraph at lines 166--167
 
 [24]
 
-LaTeX Warning: Reference `1.3.2' on page 25 undefined on input line 292.
+LaTeX Warning: Reference `1.3.2' on page 25 undefined on input line 291.
 
 
-LaTeX Warning: Reference `1.3.5' on page 25 undefined on input line 292.
+LaTeX Warning: Reference `1.3.5' on page 25 undefined on input line 291.
+
+
+LaTeX Warning: Reference `eq:1.3.7' on page 25 undefined on input line 315.
 
 ) (./books/FCA/chapter_B/section_2.tex
 
@@ -594,6 +454,10 @@ Overfull \hbox (30.86168pt too wide) detected at line 61
 
 
 [26]
+
+LaTeX Warning: Reference `eq:2.3.1' on page 27 undefined on input line 104.
+
+
 
 [27]
 Overfull \hbox (14.20537pt too wide) detected at line 150
@@ -839,16 +703,22 @@ L3 programming layer <2025-08-13>
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: File `web.out' has not changed.
-(rerunfilecheck)             Checksum: 74A0A55D806566D6966A53261C4778BD;22761.
+
+Package rerunfilecheck Warning: File `web.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `web.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  74A0A55D806566D6966A53261C4778BD;22761.
  ) 
 Here is how much of TeX's memory you used:
- 9446 strings out of 468440
- 145960 string characters out of 5449199
- 579212 words of memory out of 5000000
- 37726 multiletter control sequences out of 15000+600000
+ 9414 strings out of 468440
+ 145578 string characters out of 5449199
+ 549210 words of memory out of 5000000
+ 37698 multiletter control sequences out of 15000+600000
  633649 words of font info for 82 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  72i,16n,79p,839b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s

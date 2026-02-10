@@ -197,10 +197,7 @@ Let $g:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically $+\infty$, be 
 g(x)\ge\langle s,x\rangle - b\quad\text{for all }x\in\mathbb{R}^n .
 \tag{2.5.1}
 \]
-\end{proposition}
-
 Then, the following three functions \(f_1, f_2\) and \(f_3\) are convex and coincide on \(\mathbb{R}^n\):
-
 \[
 \begin{aligned}
 f_1(x) &:= \inf\{r : (x,r)\in\operatorname{co}\,\operatorname{epi} g\},\\
@@ -210,6 +207,7 @@ f_3(x) &:= \inf\Big\{\sum_{j=1}^k \alpha_j g(x_j): k=1,2,\dots\\
 \end{aligned}
 \tag{2.5.2}
 \]
+\end{proposition}
 
 \begin{proof}
 We denote by \(\Gamma\) the family of convex functions minorizing \(g\). By assumption, \(\Gamma\neq\varnothing\); then the convexity of \(f_1\) results from \S1.3(g).
@@ -238,7 +236,7 @@ f_3(tx+(1-t)x') \le \sum_{j=1}^k t\alpha_j g(x_j) + \sum_{j=1}^{k'} (1-t)\alpha'
 and we have proved that \(\mathrm{epi}_s f_3\) is a convex set: \(f_3\) is convex.
 
 Let \(x\in\mathbb{R}^n\) and take an arbitrary convex decomposition \(x=\sum_{j=1}^k \alpha_j x_j\),
-with \(\alpha_j\) and \(x_j\) as described in (2.5.2). Since \((x_j,g(x_j))\in\operatorname{epi} g\) for \(j=1,\ldots,k$,
+with \(\alpha_j\) and \(x_j\) as described in (2.5.2). Since \((x_j,g(x_j))\in\operatorname{epi} g\) for \(j=1,\ldots,k\),
 \[
 \biggl(x,\sum_{j=1}^k \alpha_j g(x_j)\biggr)\in\operatorname{co}\operatorname{epi} g
 \]
