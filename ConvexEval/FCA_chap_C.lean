@@ -1,183 +1,14 @@
 import Mathlib
 import Aesop
+import ConvexEval.definitions
 
 open BigOperators Real Nat Topology Rat
-
-/- Standard convention where 0*(+∞) = 0
-   The definition of ConvexOn involves uses SMul for both sides of the defining inequality.
- -/
-noncomputable instance : SMul ℝ (WithTop ℝ) where
-  smul t x := match x with
-    | ⊤ => if t = 0 then 0 else ⊤
-    | some r => some (t * r)
-
-/- Affine hull -/
-def affineHull {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n))) : Set (EuclideanSpace ℝ (Fin n))
-  := ⋃ (k : ℕ) (_ : k > 0) (x : (Fin k) → (EuclideanSpace ℝ (Fin n))) (_ : ∀ i, x i ∈ C),
-     {v : (EuclideanSpace ℝ (Fin n)) |
-      ∃ (a : (EuclideanSpace ℝ (Fin k))), (∑ i, a i = 1) ∧ (v = ∑ i, a i • x i)}
-
-/- Supporting hyperplane -/
-def IsSupportingHyperplane {n : ℕ}
-  (s : EuclideanSpace ℝ (Fin n)) (t : ℝ)
-  (C : Set (EuclideanSpace ℝ (Fin n))) : Prop :=
-  ∀ y ∈ C, inner ℝ s y ≤ t
-
-/- Hyperplane -/
-def Hyperplane {n : ℕ}
-  (s : EuclideanSpace ℝ (Fin n)) (t : ℝ) : Set (EuclideanSpace ℝ (Fin n)) :=
-  {x | inner ℝ s x ≤ t}
-
-/- Is cone -/
-def IsCone {E : Type*} [AddCommMonoid E] [SMul ℝ E]
-  (K : Set E) : Prop :=
-  ∀ x ∈ K, ∀ (s : ℝ), s > 0 → s • x ∈ K
-
-/- Is subadditive -/
-def IsSubadditive {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
-  ∀ (x₁ : EuclideanSpace ℝ (Fin n)), ∀ (x₂ : EuclideanSpace ℝ (Fin n)),
-  f (x₁ + x₂) ≤ (f x₁) + (f x₂)
-
-/- Epigraph of a function -/
-def epigraph {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Set (EuclideanSpace ℝ (Fin n) × ℝ)
-  := {p : EuclideanSpace ℝ (Fin n) × ℝ | f p.1 ≤ p.2}
-
-/- Effective domain -/
-def effDom {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Set (EuclideanSpace ℝ (Fin n))
-  := {x : EuclideanSpace ℝ (Fin n) | f x < ⊤}
-
-/- Set of extended real-valued convex functions on ℝ^n -/
-def InConvRn {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop
-  := (∃ x, f x < ⊤) ∧
-     (∀ x, ∀ y, ∀ (α : ℝ), (0 ≤ α) → (α ≤ 1) → f (α • x + (1 - α) • y) ≤ α • (f x) + (1 - α) • (f y))
-
-/- Closure (lower semi-continuous hull) of a function -/
-noncomputable def lscHull {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x : EuclideanSpace ℝ (Fin n)) : WithTop ℝ
-  := Filter.liminf f (𝓝 x)
-
-/- Is a closed function -/
-def IsClosedFun {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop
-  := (∀ x, (lscHull f) x = f x)
-
-/- Positively homogeneous with degree k -/
-def IsKPosHomogeneous {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (k : ℝ) : Prop :=
-  ∀ (x : EuclideanSpace ℝ (Fin n)), ∀ (t : ℝ),
-  t > 0 → f (t • x) = (t ^ k) • (f x)
-
-/- Sublinear function -/
-def IsSublinear {n : ℕ}
-  (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
-  (InConvRn σ) ∧
-  (∀ (x₁ x₂ : EuclideanSpace ℝ (Fin n)), ∀ (t₁ t₂ : ℝ),
-  t₁ > 0 → t₂ > 0 → σ (t₁ • x₁ + t₂ • x₂) ≤ t₁ • (σ x₁) + t₂ • (σ x₂))
-
-/- Linear function -/
-def IsLinearOn {n : ℕ}
-  (𝓧 : Set (EuclideanSpace ℝ (Fin n)))
-  (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
-  (InConvRn σ) ∧
-  (∀ (x₁ x₂ : EuclideanSpace ℝ (Fin n)), ∀ (t₁ t₂ : ℝ),
-  x₁ ∈ 𝓧 → x₂ ∈ 𝓧 → σ (t₁ • x₁ + t₂ • x₂) = t₁ • (σ x₁) + t₂ • (σ x₂))
-
-/- In the subspace spanned by m vectors -/
-def InSubspaceSpanVec {n : ℕ} (m : ℕ)
-  (x : ℕ → EuclideanSpace ℝ (Fin n))
-  (x' : EuclideanSpace ℝ (Fin n)) : Prop :=
-  ∃ (z : ℕ → EuclideanSpace ℝ (Fin n)),
-  ∃ (s : ℕ → ℝ),
-  (∀ i ∈ Finset.range m, ∃ j ∈ Finset.range m, z i = x j) ∧
-  (x' = ∑ i ∈ Finset.range m, (s i) • (z i))
-
-/- Distance -/
-noncomputable def DistOnFunctions {n : ℕ}
-  (σ₁ : EuclideanSpace ℝ (Fin n) → ℝ)
-  (σ₂ : EuclideanSpace ℝ (Fin n) → ℝ) : ℝ :=
-  sSup (Set.image
-       (fun x => AbsoluteValue.abs (σ₁ x - σ₂ x))
-       {x | ‖x‖ ≤ 1})
-
-/- Infimal convolution -/
-noncomputable def infimalConv {n : ℕ} (m : ℕ)
-  (f : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
-  (x : EuclideanSpace ℝ (Fin n)) : WithBot (WithTop ℝ)
-  := sInf {z : WithBot (WithTop ℝ) |
-           ∃ (y : ℕ → EuclideanSpace ℝ (Fin n)),
-           x = ∑ i ∈ Finset.range m, (y i) ∧
-           z = ∑ i ∈ Finset.range m, (f i) (y i)}
-
-/- Support function -/
-noncomputable def SupportFun {n : ℕ}
-  (S : Set (EuclideanSpace ℝ (Fin n)))
-  (x : EuclideanSpace ℝ (Fin n)) : WithTop ℝ :=
-  sSup (Set.image (fun v => inner ℝ v x) S)
-
-/- Polar cone -/
-def PolarCone {n : ℕ}
-  (K : Set (EuclideanSpace ℝ (Fin n))) : Set (EuclideanSpace ℝ (Fin n)) :=
-  {s : EuclideanSpace ℝ (Fin n) | ∀ x ∈ K, inner ℝ s x ≤ 0}
-
-/- Asymptotic cone -/
-def AsymptoticCone {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n)))
-  (x : EuclideanSpace ℝ (Fin n)) : Set (EuclideanSpace ℝ (Fin n)) :=
-  {d | ∀ t, t > 0 → x + t • d ∈ C}
-
-/- Normal cone -/
-def NormalCone {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n)))
-  (x : EuclideanSpace ℝ (Fin n)) : Set (EuclideanSpace ℝ (Fin n)) :=
-  {s | ∀ y ∈ C, inner ℝ s (y - x) ≤ 0}
-
-/- Direction exposing face
-  * note that d ≠ 0
--/
-def DirectionExposingFace {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n)))
-  (d : EuclideanSpace ℝ (Fin n))
-  : Set (EuclideanSpace ℝ (Fin n)) :=
-  let σ := SupportFun C
-  {x | (x ∈ C) ∧ (inner ℝ x d = σ d)}
-
-/- Scalar product -/
-def IsScalarProduct {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n) → ℝ) : Prop :=
-  (∀ (u v : EuclideanSpace ℝ (Fin n)), f u v = f v u) ∧
-  (∀ (u v : EuclideanSpace ℝ (Fin n)) (a : ℝ), f (a • u) v = a • (f v u)) ∧
-  (∀ (u v w : EuclideanSpace ℝ (Fin n)), f (u + w) v = f v u + f w v) ∧
-  (∀ (u : EuclideanSpace ℝ (Fin n)), f u u ≥ 0)
-
-/- Is minorized on set -/
-def IsMinorizedOn {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (C : Set (EuclideanSpace ℝ (Fin n))) : Prop :=
-  ∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ), ∀ x ∈ C, f x ≥ inner ℝ s x - b
-
-/- Image function -/
-noncomputable def ImageFunction {m n : ℕ}
-  (A : EuclideanSpace ℝ (Fin m) →ₗ[ℝ] EuclideanSpace ℝ (Fin n))
-  (g : EuclideanSpace ℝ (Fin m) → WithTop ℝ)
-  (x : EuclideanSpace ℝ (Fin n)) : WithTop ℝ :=
-  let A_inv := {y : EuclideanSpace ℝ (Fin m) | A y = x}
-  sInf (Set.image g A_inv)
-
-/- View a `ℝ`-valued function as a `WithTop ℝ`-valued one. -/
-def liftRealtoWT {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → ℝ) :
-  EuclideanSpace ℝ (Fin n) → WithTop ℝ
-  := fun x => (f x : WithTop ℝ)
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.1.3 -/
 lemma FCA_HUL_1_1_3 {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) :
-  let epi := epigraph σ
-  (IsSublinear σ) ↔
+  let epi := epigraph (liftWithToptoEReal σ)
+  (IsSublinear (liftWithToptoEReal σ)) ↔
   (Set.Nonempty epi ∧ Convex ℝ epi ∧ IsCone epi) := by
   sorry
 
@@ -185,7 +16,7 @@ lemma FCA_HUL_1_1_3 {n : ℕ}
 lemma FCA_HUL_1_1_4 {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hσ : ∃ x, σ x ≠ ⊤) :
-  (IsSublinear σ) ↔
+  (IsSublinear (liftWithToptoEReal σ)) ↔
   ((∀ (x₁ x₂ : EuclideanSpace ℝ (Fin n)), ∀ (t₁ t₂ : ℝ),
    t₁ > 0 → t₂ > 0 → σ (t₁ • x₁ + t₂ • x₂) ≤ t₁ • (σ x₁) + t₂ • (σ x₂)) ∨
    ((IsKPosHomogeneous σ 1) ∧ (IsSubadditive σ))) := by
@@ -194,7 +25,7 @@ lemma FCA_HUL_1_1_4 {n : ℕ}
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.1.5 -/
 lemma FCA_HUL_1_1_5 {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) :
-  (IsSublinear σ) →
+  (IsSublinear (liftWithToptoEReal σ)) →
   (∀ (x : EuclideanSpace ℝ (Fin n)), σ x + σ (-x) ≥ 0) := by
   sorry
 
@@ -202,7 +33,7 @@ lemma FCA_HUL_1_1_5 {n : ℕ}
 lemma FCA_HUL_1_1_6 {m n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (x : ℕ → EuclideanSpace ℝ (Fin n))
-  (hσ : IsSublinear σ)
+  (hσ : IsSublinear (liftWithToptoEReal σ))
   (h_eq_0 : ∀ j ∈ Finset.range m, σ (x j) + σ (-1 • (x j)) = 0) :
   let 𝓧 := {v | InSubspaceSpanVec m x v}
   (IsLinearOn 𝓧 σ):= by
@@ -212,7 +43,7 @@ lemma FCA_HUL_1_1_6 {m n : ℕ}
 lemma FCA_HUL_1_1_7 {m n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (x : EuclideanSpace ℝ (Fin n))
-  (hσ : IsSublinear σ) :
+  (hσ : IsSublinear (liftWithToptoEReal σ)) :
   (σ x + σ (-1 • x) = 0) →
   ∀ (y : EuclideanSpace ℝ (Fin n)), σ (x + y) = σ x + σ y := by
   sorry
@@ -223,7 +54,7 @@ lemma FCA_HUL_1_2_5 {m n : ℕ}
   (hC_closed : IsClosed C) (hC_convex : Convex ℝ C) (hC_origin : 0 ∈ C) :
   let g : EuclideanSpace ℝ (Fin n) → WithTop ℝ := fun x => gauge C x
   List.TFAE [
-    (∀ x, g x ≥ 0) ∧ (IsSublinear g) ∧ (IsClosedFun g),
+    (∀ x, g x ≥ 0) ∧ (IsSublinear (liftWithToptoEReal g)) ∧ (IsClosedFun g),
     (∀ x, g x ≠ ⊤) ↔ (0 ∈ interior C)
   ] := by
   sorry
@@ -240,71 +71,71 @@ lemma FCA_HUL_1_2_6 {n : ℕ}
 lemma FCA_HUL_1_3_1_i {n : ℕ}
   (σ₁ σ₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (t₁ t₂ : ℝ)
-  (hσ : IsSublinear σ₁ ∧ IsSublinear σ₂)
+  (hσ : IsSublinear (liftWithToptoEReal σ₁) ∧ IsSublinear (liftWithToptoEReal σ₂))
   (ht : t₁ > 0 ∧ t₂ > 0) :
   let σ := t₁ • σ₁ + t₂ • σ₂
   ∀ x, σ x ≠ ⊤ →
-  IsSublinear σ := by
+  IsSublinear (liftWithToptoEReal σ) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (ii) -/
 lemma FCA_HUL_1_3_1_ii {n : ℕ}
   (σ₁ σ₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (t₁ t₂ : ℝ)
-  (hσ_sublinear : IsSublinear σ₁ ∧ IsSublinear σ₂)
+  (hσ_sublinear : IsSublinear (liftWithToptoEReal σ₁) ∧ IsSublinear (liftWithToptoEReal σ₂))
   (hσ_closed : IsClosedFun σ₁ ∧ IsClosedFun σ₂)
   (ht : t₁ > 0 ∧ t₂ > 0) :
   let σ := t₁ • σ₁ + t₂ • σ₂
   ∀ x, σ x ≠ ⊤ →
-  IsSublinear σ ∧ IsClosedFun σ:= by
+  IsSublinear (liftWithToptoEReal σ) ∧ IsClosedFun σ:= by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (iii) -/
 lemma FCA_HUL_1_3_1_iii {n : ℕ}
   (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
   (J : Set ℕ)
-  (hσ_sublinear : ∀ j ∈ J, IsSublinear (σ j)) :
+  (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j))) :
   let σ' := fun x => sSup (⋃ j ∈ J, {(σ j) x})
   ∀ x, σ' x ≠ ⊤ →
-  IsSublinear σ' := by
+  IsSublinear (liftWithToptoEReal σ') := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (iv) -/
 lemma FCA_HUL_1_3_1_iv {n : ℕ}
   (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
   (J : Set ℕ)
-  (hσ_sublinear : ∀ j ∈ J, IsSublinear (σ j))
+  (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j)))
   (hσ_closed : ∀ j ∈ J, IsClosedFun (σ j)) :
   let σ' := fun x => sSup (⋃ j ∈ J, {(σ j) x})
   ∀ x, σ' x ≠ ⊤ →
-  IsSublinear σ' ∧ IsClosedFun σ' := by
+  IsSublinear (liftWithToptoEReal σ') ∧ IsClosedFun σ' := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.2 (i) -/
 lemma FCA_HUL_1_3_2_i {n : ℕ}
   (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
   (J : Set ℕ)
-  (hσ_sublinear : ∀ j ∈ J, IsSublinear (σ j))
+  (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j)))
   (hσ_minorized : ∃ (s : EuclideanSpace ℝ (Fin n)), ∃ (b : ℝ),
                   ∀ j ∈ J, ∀ (x : EuclideanSpace ℝ (Fin n)),
                   (σ j) x ≥ (inner ℝ s x) + b) :
   let σ_inf := fun x => sInf (⋃ j ∈ J, {(σ j) x})
   let σ' := lscHull σ_inf
-  IsSublinear σ' := by
+  IsSublinear (liftWithToptoEReal σ') := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.2 (ii) -/
 lemma FCA_HUL_1_3_2_ii {m n : ℕ}
   (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
   (J : ℕ → ℕ)
-  (hσ_sublinear : ∀ i, i ≤ m → IsSublinear (σ (J i)))
+  (hσ_sublinear : ∀ i, i ≤ m → IsSublinear (liftWithToptoEReal (σ (J i))))
   (hσ_minorized : ∃ (s : EuclideanSpace ℝ (Fin n)), ∃ (b : ℝ),
                   ∀ i, i ≤ m → ∀ (x : EuclideanSpace ℝ (Fin n)),
                   (σ (J i)) x ≥ (inner ℝ s x) + b) :
-  let σ_infconv := infimalConv m σ
+  let σ_infconv := multiInfimalConv m σ
   let σ_min := fun x => sInf (⋃ i ∈ Finset.range m, {(σ (J i)) x})
   let σ' := lscHull σ_min
-  ∀ x, σ_infconv x = σ' x := by
+  ∀ x, σ_infconv x = (liftWithToptoEReal σ') x := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.5 -/
@@ -325,7 +156,7 @@ lemma FCA_HUL_2_1_2 {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (hS : Set.Nonempty S) :
   let support_fun := SupportFun S
-  (IsSublinear support_fun) ∧ (IsClosedFun support_fun)
+  (IsSublinear (liftWithToptoEReal support_fun)) ∧ (IsClosedFun support_fun)
   := by
   sorry
 
@@ -401,13 +232,13 @@ lemma FCA_HUL_2_2_4 {n : ℕ}
   (hS_convex : Convex ℝ S) :
   let σS := SupportFun S
   let Sinfty := AsymptoticCone S x
-  PolarCone (closure (effDom σS)) = Sinfty := by
+  PolarCone (closure (effDom (liftWithToptoEReal σS))) = Sinfty := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.1 (i) -/
 lemma FCA_HUL_3_1_1_i {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (hσ_closed : IsClosedFun σ) (hσ_sublinear: IsSublinear σ) :
+  (hσ_closed : IsClosedFun σ) (hσ_sublinear: IsSublinear (liftWithToptoEReal σ)) :
   (∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ),
   ∀ x, inner ℝ s x + b ≤ σ x)  := by
   sorry
@@ -415,7 +246,7 @@ lemma FCA_HUL_3_1_1_i {n : ℕ}
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.1 (ii) -/
 lemma FCA_HUL_3_1_1_ii {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (hσ_closed : IsClosedFun σ) (hσ_sublinear: IsSublinear σ) :
+  (hσ_closed : IsClosedFun σ) (hσ_sublinear: IsSublinear (liftWithToptoEReal σ)) :
   let Sσ := {s | ∀ d, inner ℝ s d ≤ σ d}
   ∀ x, σ x = SupportFun Sσ x := by
   sorry
@@ -425,7 +256,7 @@ lemma FCA_HUL_3_1_2 {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hS_nonempty : Set.Nonempty S) (hS_closed : IsClosed S) (hS_convex : Convex ℝ S)
-  (hσ_closed : IsClosedFun σ) (hσ_sublinear : IsSublinear σ) :
+  (hσ_closed : IsClosedFun σ) (hσ_sublinear : IsSublinear (liftWithToptoEReal σ)) :
   let support_fun := SupportFun S
   let S' := {s | ∀ (d : EuclideanSpace ℝ (Fin n)), inner ℝ s d ≤ σ d}
   List.TFAE [
@@ -440,7 +271,7 @@ lemma FCA_HUL_3_1_4 {n : ℕ}
   (x : EuclideanSpace ℝ (Fin n)) (d : EuclideanSpace ℝ (Fin n))
   (hC_nonempty : Set.Nonempty C) (hC_closed : IsClosed C) (hC_convex : Convex ℝ C)
   (hx : x ∈ C) (hd : d ≠ 0) :
-  x ∈ DirectionExposingFace C d ↔ d ∈ NormalCone C x:= by
+  x ∈ DirectionExposingFace C d ↔ d ∈ NormalCone x C := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.2.4 -/
@@ -531,7 +362,7 @@ lemma FCA_HUL_3_3_2_iii {n : ℕ}
   let σ := fun j => SupportFun (S j)
   let S := ⋂ j ∈ J, S j
   let σ_inf := fun x => sInf (⋃ j ∈ J, {(σ j) x})
-  let co_σ_inf := fun (x : EuclideanSpace ℝ (Fin n)) => sInf {r : ℝ | (x, r) ∈ epigraph σ_inf}
+  let co_σ_inf := fun (x : EuclideanSpace ℝ (Fin n)) => sInf {r : ℝ | (x, r) ∈ epigraph (liftWithToptoEReal σ_inf)}
   S ≠ ∅ → (∀ x, SupportFun S x = lscHull (liftRealtoWT co_σ_inf) x) := by
   sorry
 

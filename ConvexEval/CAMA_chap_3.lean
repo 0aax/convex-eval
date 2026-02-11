@@ -1,171 +1,9 @@
 import Mathlib
 import Aesop
 
+import ConvexEval.definitions
+
 open BigOperators Real Nat Topology Rat
-
-/- Add two sets  -/
-def set_add {n : ℕ}
-    (C : Set (EuclideanSpace ℝ (Fin n))) (K : Set (EuclideanSpace ℝ (Fin n)))
-    : Set (EuclideanSpace ℝ (Fin n))
-    := {v : EuclideanSpace ℝ (Fin n) | ∃ c ∈ C, ∃ k ∈ K, v = c + k}
-
-/- Unit Simplex -/
-def Δκ (k : ℕ) : Set (EuclideanSpace ℝ (Fin k))
-    := {v : (EuclideanSpace ℝ (Fin k)) | (∀ i, 0 ≤ v i) ∧ (∑ i, v i = 1)}
-
-def conv {n : ℕ} (S : Set (EuclideanSpace ℝ (Fin n))) : Set (EuclideanSpace ℝ (Fin n))
-    := ⋃ (k : ℕ) (_ : k > 0) (x : (Fin k) → (EuclideanSpace ℝ (Fin n))) (_ : ∀ i, x i ∈ S),
-         {v : (EuclideanSpace ℝ (Fin n)) |
-          ∃ (a : (EuclideanSpace ℝ (Fin k))),
-          (a ∈ (Δκ k)) ∧ (v = ∑ i, a i • x i)}
-
-/- Conical hull -/
-def cone {m n : ℕ} (x : Fin m → EuclideanSpace ℝ (Fin n))
-    : Set (EuclideanSpace ℝ (Fin n))
-    := {v : EuclideanSpace ℝ (Fin n) |
-        ∃ (α : EuclideanSpace ℝ (Fin m)) (_ : ∀ i, α i ≥ 0), v = ∑ i, α i • x i}
-
-/- Asymptotic (recession) cone, defined for closed convex sets C -/
-def C_infinity_x {n : ℕ} (x : EuclideanSpace ℝ (Fin n)) (C : Set (EuclideanSpace ℝ (Fin n)))
-    : Set (EuclideanSpace ℝ (Fin n))
-    := {d : EuclideanSpace ℝ (Fin n) | ∀ (t : ℝ) (_ : t > 0), x + t • d ∈ C}
-
-/- Face -/
-def Face {n : ℕ} (C : Set (EuclideanSpace ℝ (Fin n))) (F : Set (EuclideanSpace ℝ (Fin n))) : Prop
-    := (F ⊆ C) ∧ (Set.Nonempty F) ∧ (Convex ℝ F) ∧
-       ∀ (x₁ x₂ : EuclideanSpace ℝ (Fin n)) (_ : x₁ ∈ C ∧ x₂ ∈ C)
-       (α : ℝ) (_ : α > 0 ∧ α < 1) (_ : α • x₁ + (1 - α) • x₂ ∈ F),
-       {v : EuclideanSpace ℝ (Fin n) | ∃ θ, (θ ≥ 0) ∧ (θ ≤ 1) ∧ (v = θ • x₁ + (1-θ) • x₂)} ⊆ F
-
-/- Hyperplane -/
-def H_sr {n : ℕ} (s : EuclideanSpace ℝ (Fin n)) (r : ℝ) : Set (EuclideanSpace ℝ (Fin n))
-  := {y : EuclideanSpace ℝ (Fin n) | inner ℝ s y ≤ r}
-
-/- Indexing set of hyperplanes -/
-def I_C {n : ℕ} (C : Set (EuclideanSpace ℝ (Fin n))) : Set (EuclideanSpace ℝ (Fin n) × ℝ)
-    := {(s, r) : EuclideanSpace ℝ (Fin n) × ℝ | C ⊆ H_sr s r}
-
-/- Supporting hyperplane at point -/
-def SupportingHyperplaneAt {n : ℕ} (s x : EuclideanSpace ℝ (Fin n)) (r : ℝ)
-  (C : Set (EuclideanSpace ℝ (Fin n))) : Prop
-  := (s ≠ 0) ∧ (x ∈ C) ∧ (C ⊆ H_sr s r) ∧ (x ∈ H_sr s r) ∧ (inner ℝ s x = r)
-
-/- ExposedFace -/
-def ExposedFace {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n))) (F : Set (EuclideanSpace ℝ (Fin n))) : Prop
-  := (F ⊆ C) ∧
-     ∃ (s : EuclideanSpace ℝ (Fin n)) (r : ℝ), (∀ y ∈ C, inner ℝ s y ≤ r) ∧
-     (F = C ∩ H_sr s r) ∧ (s ≠ 0)
-
-/- Argmax -/
-def Argmax {n : ℕ} (f : (EuclideanSpace ℝ (Fin n)) → ℝ) (C : Set (EuclideanSpace ℝ (Fin n)))
-  : Set (EuclideanSpace ℝ (Fin n))
-  := {x : EuclideanSpace ℝ (Fin n) | (x ∈ C) ∧ (∀ y ∈ C, f y ≤ f x)}
-
-/- Polar cone -/
-def PolarCone {n : ℕ} (K : Set (EuclideanSpace ℝ (Fin n))) : Set (EuclideanSpace ℝ (Fin n))
-    := {s : EuclideanSpace ℝ (Fin n) | ∀ x ∈ K, inner ℝ s x ≤ 0}
-
-/- Polar cone is convex -/
-lemma polarCone_isConvex {n : ℕ}
-    {K : Set (EuclideanSpace ℝ (Fin n))}
-    : Convex ℝ (PolarCone K) := by
-    intro x hx y hy a b ha hb hab
-    have h_combo : ∀ z ∈ K, inner ℝ (a • x + b • y) z ≤ 0 := by
-        intro z hz
-        simp [inner_add_left, inner_smul_left_eq_star_smul]
-        have hx' : a * (inner ℝ x z) ≤ 0 := by
-            have non_mul_x := hx.out z hz
-            have := mul_le_mul_of_nonneg_left non_mul_x ha
-            simpa [mul_zero] using this
-        have hy' : b * (inner ℝ y z) ≤ 0 := by
-            have non_mul_y := hy.out z hz
-            have := mul_le_mul_of_nonneg_left non_mul_y hb
-            simpa [mul_zero] using this
-        have := add_le_add hx' hy'
-        simpa [add_zero] using this
-    exact h_combo
-
-/- Polar cone is closed -/
-lemma polarCone_isClosed {n : ℕ}
-    {K : Set (EuclideanSpace ℝ (Fin n))}
-    : IsClosed (PolarCone K) := by
-    have pc_intersection : (PolarCone K) = ⋂ x ∈ K,
-        {s : EuclideanSpace ℝ (Fin n) | inner ℝ s x ≤ 0} := by
-        ext s
-        simp [PolarCone]
-    rw [pc_intersection]
-    have h_cont (x : EuclideanSpace ℝ (Fin n)) : Continuous (fun s => inner ℝ s x) :=
-        continuous_inner.comp (continuous_id.prodMk (continuous_const : Continuous (fun _ => x)))
-    have h_closed : ∀ x ∈ K, IsClosed {s : EuclideanSpace ℝ (Fin n) | inner ℝ s x ≤ 0} := by
-        intro x _
-        exact IsClosed.preimage (h_cont x) isClosed_Iic
-    exact isClosed_biInter h_closed
-
-/- Polar cone is nonempty -/
-lemma polarCone_isNonempty {n : ℕ}
-    {K : Set (EuclideanSpace ℝ (Fin n))}
-    : Set.Nonempty (PolarCone K) := ⟨0, by simp [PolarCone]⟩
-
-/- Convex cone criteria -/
-def IsConvexCone {n : ℕ} (C : Set (EuclideanSpace ℝ (Fin n))) : Prop
-    := ∀ x ∈ C, ∀ y ∈ C, ∀ (α : ℝ) (_ : α ≥ 0), ∀ (β : ℝ) (_ : β ≥ 0), α • x + β • y ∈ C
-
-/- Convex cone is convex -/
-lemma convexCone_isConvex {n : ℕ}
-    {C : Set (EuclideanSpace ℝ (Fin n))} (hC : IsConvexCone C)
-    : Convex ℝ C := by
-    intro x hx y hy a b ha hb hab
-    exact hC x hx y hy a ha b hb
-
-/- Normal -/
-def IsNormal {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-    (s : E) (C : Set E)
-    (x : E)
-    : Prop
-    := ∀ y ∈ C, inner ℝ s (y - x) ≤ 0
-
-/- Normal cone -/
-def NormalCone {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-    (x : E) (C : Set E)
-    : Set E
-    := {s : E | IsNormal s C x}
-
-/- Projection -/
-noncomputable def pC {n : ℕ}
-    (x : EuclideanSpace ℝ (Fin n)) (C : Set (EuclideanSpace ℝ (Fin n)))
-    (hC₁ : IsClosed C) (hC₂ : Convex ℝ C) (hC₃ : Set.Nonempty C)
-    : EuclideanSpace ℝ (Fin n)
-    := Classical.choose (exists_norm_eq_iInf_of_complete_convex hC₃ hC₁.isComplete hC₂ x)
-
-/- Tangent -/
-def IsTangent {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-  (d : E) (S : Set E)
-  (x : E)
-  : Prop
-  := ∃ (s : ℕ → E) (t : ℕ → ℝ),
-     (∀ i, s i ∈ S) ∧ (Filter.Tendsto s Filter.atTop (𝓝 x)) ∧
-     (∀ i, t i > 0) ∧ (Filter.Tendsto t Filter.atTop (𝓝[>] 0)) ∧
-     (Filter.Tendsto (fun i => (t i)⁻¹ • (s i - x)) Filter.atTop (𝓝 d))
-
-/- Tangent cone -/
-def TangentCone {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-    (x : E) (S : Set E) : Set E
-    := {d : E | IsTangent d S x}
-
-/- Cone of set -/
-def GenCone {n : ℕ} (S : Set (EuclideanSpace ℝ (Fin n)))
-  : Set (EuclideanSpace ℝ (Fin n))
-  := {v : EuclideanSpace ℝ (Fin n) |
-      ∃ (α : ℝ) (_ : α ≥ 0),
-      ∃ (x : EuclideanSpace ℝ (Fin n)) (_ : x ∈ S),
-      v = α • x}
-
-/- Translate a set -/
-def translate_set {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n))) (x : EuclideanSpace ℝ (Fin n))
-  : Set (EuclideanSpace ℝ (Fin n))
-  := {v : EuclideanSpace ℝ (Fin n) | ∃ c ∈ C, v = (c - x)}
 
 /- Hiriart-Urruty Lemarechal, Proposition 1.2.1 -/
 lemma CAMA_chap_3_1_2_1 {n : ℕ}
@@ -258,14 +96,14 @@ lemma CAMA_chap_3_2_1_12 {n : ℕ} {m : ℕ}
 lemma CAMA_chap_3_2_2_1 {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n))) (x₁ x₂ : EuclideanSpace ℝ (Fin n))
   (hC₀ : IsClosed C) (hC₁ : Convex ℝ C) (hx₁ : x₁ ∈ C) (hx₂ : x₂ ∈ C) :
-  (C_infinity_x x₁ C) = (C_infinity_x x₂ C) := by
+  (AsymptoticCone C x₁) = (AsymptoticCone C x₂) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal, Proposition 2.2.3 -/
 lemma CAMA_chap_3_2_2_3 {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n)))
   (hC₀ : IsClosed C) (hC₁ : Convex ℝ C) (hC₂ : Set.Nonempty C)
-  : (IsCompact C) ↔ ∀ x ∈ C, (C_infinity_x x C) = {0} := by
+  : (IsCompact C) ↔ ∀ x ∈ C, (AsymptoticCone C x) = {0} := by
   sorry
 
 /- Hiriart-Urruty Lemarechal, Proposition 2.3.3 -/
@@ -292,7 +130,7 @@ lemma CAMA_chap_3_2_3_7 {n : ℕ}
 /- Hiriart-Urruty Lemarechal, Proposition 2.4.3 -/
 lemma CAMA_chap_3_2_4_3 {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n))) (F : Set (EuclideanSpace ℝ (Fin n)))
-  (hC_nonempty : Set.Nonempty C) (hC_convex : Convex ℝ C) (hF : ExposedFace C F)
+  (hC_nonempty : Set.Nonempty C) (hC_convex : Convex ℝ C) (hF : IsExposedFace C F)
   : Face C F := by
   sorry
 
@@ -386,7 +224,7 @@ lemma CAMA_chap_3_4_2_3 {n : ℕ}
 lemma CAMA_chap_3_4_2_4 {n : ℕ}
     (C : Set (EuclideanSpace ℝ (Fin n)))
     (hC₀ : Convex ℝ C) (hC₁ : Set.Nonempty C) (hC₂ : C ⊂ Set.univ)
-    : closure C = ⋂ v ∈ (I_C C), H_sr v.1 v.2
+    : closure C = ⋂ v ∈ (I_C C), Hyperplane v.1 v.2
     := by sorry
 
 /- Hiriart-Urruty Lemarechal, Proposition 4.2.7 -/
