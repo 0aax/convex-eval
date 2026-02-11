@@ -6,7 +6,9 @@ The set $C \subset \mathbb{R}^n$ is said to be convex if $ \alpha x + (1-\alpha)
 
 \subsection{Convexity preserving operations on sets}
 
-\begin{proposition}\label{prop:1.2.1}
+\begin{proposition}
+\label{prop:1.2.1}
+\lean{CAMA_chap_3_1_2_1}
 Let \(\{C_j\}_{j\in J}\) be an arbitrary family of convex sets. Then
 \[
 C:=\bigcap\{C_j:\; j\in J\}
@@ -20,6 +22,7 @@ Immediate from the very Definition 1.1.1.
 
 \begin{proposition}
 \label{prop:1.2.3}
+\lean{CAMA_chap_3_1_2_3}
 For $i=1,\dots,k$, let $C_i\subset\mathbb{R}^{n_i}$ be convex sets. Then $C_1\times\cdots\times C_k$ is a convex set of $\mathbb{R}^{n_1}\times\cdots\times\mathbb{R}^{n_k}$.
 \end{proposition}
 
@@ -29,6 +32,7 @@ Straightforward.
 
 \begin{proposition}
 \label{prop:1.2.4}
+\lean{CAMA_chap_3_1_2_4}
 Let $A:\mathbb{R}^n\to\mathbb{R}^m$ be an affine mapping and $C$ a convex set of $\mathbb{R}^n$. The image $A(C)$ of $C$ under $A$ is convex in $\mathbb{R}^m$.
 
 If $D$ is a convex set of $\mathbb{R}^m$, the inverse image
@@ -43,6 +47,8 @@ For $x$ and $x'$ in $\mathbb{R}^n$, the image under $A$ of the segment $[x,x']$ 
 \end{proof}
 
 \begin{proposition}
+\label{prop:1.2.7}
+\lean{CAMA_chap_3_1_2_7}
 If $C$ is convex, so are its interior $\operatorname{int}C$ and its closure $\overline{C}$.
 \end{proposition}
 
@@ -69,6 +75,8 @@ where
 \end{definition}
 
 \begin{proposition}
+\label{prop:1.3.3}
+\lean{CAMA_chap_3_1_3_3}
 A set $C\subset\mathbb{R}^n$ is convex if and only if it contains every convex combination of its elements.
 \end{proposition}
 
@@ -92,6 +100,7 @@ y_k:=\frac{\alpha_1+\cdots+\alpha_{k-1}}{1}y_{k-1}+\frac{\alpha_k}{1}x_k
 
 \begin{proposition}
 \label{prop:1.3.4}
+\lean{CAMA_chap_3_1_3_4}
 The convex hull can also be described as the set of all convex combinations:
 \[
 \operatorname{co}S:=\bigcap\{C: C\ \text{is convex and contains }S\}
@@ -115,6 +124,7 @@ $\lambda\in[0,1]$. Then $\lambda x+(1-\lambda)y$ is a certain combination of $k+
 
 \begin{theorem}
 \label{thm:1.3.6}
+\lean{CAMA_chap_3_1_3_6}
 (C. Carathéodory) Any $x\in\operatorname{co}S\subset\mathbb{R}^n$ can be represented as a convex combination of $n+1$ elements of $S$.
 \end{theorem}
 
@@ -149,7 +159,8 @@ In other words, we have expressed $x$ as a convex combination of $k-1$ among the
 Now, if $k-1=n+1$, the proof is finished. If not, we can apply the above construction to the convex combination $x=\sum_{i=1}^{k-1}\alpha_i' x_i$ and so on. The process can be continued until there remain only $n+1$ elements (which may be affinely independent).
 \end{proof}
 
-\begin{theorem}\label{thm:1.3.7}
+\begin{theorem}
+\label{thm:1.3.7}
 (W. Fenchel and L. Bunt) If $S\subset\mathbb{R}^n$ has no more than $n$ connected components (in particular, if $S$ is connected), then any $x\in\operatorname{co}S$ can be expressed as a convex combination of $n$ elements of $S$.
 \end{theorem}
 
@@ -168,7 +179,9 @@ The closed convex hull \(\overline{\operatorname{co}}S\) of Definition 1.4.1 is 
 Because \(\operatorname{cl}(\operatorname{co}S)\) is a closed convex set containing \(S\), it contains \(\overline{\operatorname{co}}S\) as well. On the other hand, take a closed convex set \(C\) containing \(S\); being convex, \(C\) contains \(\operatorname{co}S\); being closed, it contains also the closure of \(\operatorname{co}S\). Since \(C\) was arbitrary, we conclude \(\bigcap C \supset\operatorname{cl}\operatorname{co}S\).
 \end{proof}
 
-\begin{theorem}\label{thm:1.4.3}
+\begin{theorem}
+\label{thm:1.4.3}
+\lean{CAMA_chap_3_1_4_3}
 If $S$ is bounded [resp.\ compact], then $\operatorname{co}S$ is bounded [resp.\ compact].
 \end{theorem}
 
