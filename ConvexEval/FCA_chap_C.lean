@@ -74,41 +74,20 @@ lemma FCA_chap_C_1_3_1_i {n : ℕ}
   (hσ : IsSublinear (liftWithToptoEReal σ₁) ∧ IsSublinear (liftWithToptoEReal σ₂))
   (ht : t₁ > 0 ∧ t₂ > 0) :
   let σ := t₁ • σ₁ + t₂ • σ₂
-  ∀ x, σ x ≠ ⊤ →
-  IsSublinear (liftWithToptoEReal σ) := by
+  (∀ x, σ x ≠ ⊤ → IsSublinear (liftWithToptoEReal σ)) ∧
+  (IsClosedFun σ₁ ∧ IsClosedFun σ₂ → ∀ x, σ x ≠ ⊤ →
+  IsSublinear (liftWithToptoEReal σ) ∧ IsClosedFun σ):= by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (ii) -/
 lemma FCA_chap_C_1_3_1_ii {n : ℕ}
-  (σ₁ σ₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (t₁ t₂ : ℝ)
-  (hσ_sublinear : IsSublinear (liftWithToptoEReal σ₁) ∧ IsSublinear (liftWithToptoEReal σ₂))
-  (hσ_closed : IsClosedFun σ₁ ∧ IsClosedFun σ₂)
-  (ht : t₁ > 0 ∧ t₂ > 0) :
-  let σ := t₁ • σ₁ + t₂ • σ₂
-  ∀ x, σ x ≠ ⊤ →
-  IsSublinear (liftWithToptoEReal σ) ∧ IsClosedFun σ:= by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (iii) -/
-lemma FCA_chap_C_1_3_1_iii {n : ℕ}
   (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
   (J : Set ℕ)
   (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j))) :
   let σ' := fun x => sSup (⋃ j ∈ J, {(σ j) x})
-  ∀ x, σ' x ≠ ⊤ →
-  IsSublinear (liftWithToptoEReal σ') := by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (iv) -/
-lemma FCA_chap_C_1_3_1_iv {n : ℕ}
-  (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
-  (J : Set ℕ)
-  (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j)))
-  (hσ_closed : ∀ j ∈ J, IsClosedFun (σ j)) :
-  let σ' := fun x => sSup (⋃ j ∈ J, {(σ j) x})
-  ∀ x, σ' x ≠ ⊤ →
-  IsSublinear (liftWithToptoEReal σ') ∧ IsClosedFun σ' := by
+  (∀ x, σ' x ≠ ⊤ → IsSublinear (liftWithToptoEReal σ')) ∧
+  (∀ j ∈ J, IsClosedFun (σ j) → ∀ x, σ' x ≠ ⊤ →
+  IsSublinear (liftWithToptoEReal σ') ∧ IsClosedFun σ') := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.2 (i) -/
