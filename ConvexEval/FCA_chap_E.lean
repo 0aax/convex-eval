@@ -5,21 +5,21 @@ import ConvexEval.definitions
 open BigOperators Real Nat Topology Rat
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.1.2 -/
-lemma FCA_HUL_1_1_2 {n : ℕ}
+lemma FCA_chap_E_1_1_2 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hf_nondegenerate : IsNondegenerate f) :
   InClosedConvRn (Conjugate f) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Example 1.2.1.i -/
-lemma FCA_HUL_1_2_1_i {n : ℕ}
+lemma FCA_chap_E_1_2_1_i {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hf_nondegenerate : IsNondegenerate f) :
   Conjugate f = fun s => sSup {z : WithTop ℝ | ∃ (x : EuclideanSpace ℝ (Fin n)) (r : ℝ), (z = inner ℝ s x - r) ∧ ((x, r) ∈ epigraph (liftWithToptoEReal f))} := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Example 1.2.1.ii -/
-lemma FCA_HUL_1_2_1_ii {n : ℕ}
+lemma FCA_chap_E_1_2_1_ii {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hf_nondegenerate : IsNondegenerate f) :
   let f_conj := fun s => Conjugate f s
@@ -33,7 +33,7 @@ lemma FCA_HUL_1_2_1_ii {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.2.2 -/
-lemma FCA_HUL_1_2_2 {n : ℕ}
+lemma FCA_chap_E_1_2_2 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x₀ : EuclideanSpace ℝ (Fin n))
   (hf_nondegenerate : IsNondegenerate f) (hf_closed_convex : InClosedConvRn f)
   (hx₀ : f x₀ ≠ ⊤) :
@@ -46,7 +46,7 @@ lemma FCA_HUL_1_2_2 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.i -/
-lemma FCA_HUL_1_3_1_i {n : ℕ}
+lemma FCA_chap_E_1_3_1_i {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (r : ℝ) (hf_nondegenerate : IsNondegenerate f) :
   let g := fun x => f x + r
   let f_conj := fun s => Conjugate f s
@@ -55,7 +55,7 @@ lemma FCA_HUL_1_3_1_i {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.ii -/
-lemma FCA_HUL_1_3_1_ii {n : ℕ}
+lemma FCA_chap_E_1_3_1_ii {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (t : ℝ)
   (hf_nondegenerate : IsNondegenerate f) (ht_pos : t > 0)
   : let g := fun x => t • f x
@@ -65,7 +65,7 @@ lemma FCA_HUL_1_3_1_ii {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.iii -/
-lemma FCA_HUL_1_3_1_iii {n : ℕ}
+lemma FCA_chap_E_1_3_1_iii {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (t : ℝ)
   (hf_nondegenerate : IsNondegenerate f) (ht_nonzero : t ≠ 0)
   : let g := fun x => f (t • x)
@@ -75,7 +75,7 @@ lemma FCA_HUL_1_3_1_iii {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.iv -/
-lemma FCA_HUL_1_3_1_iv {n : ℕ}
+lemma FCA_chap_E_1_3_1_iv {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (A : (EuclideanSpace ℝ (Fin n)) ≃ₗ[ℝ] (EuclideanSpace ℝ (Fin n)))
   (hf_nondegenerate : IsNondegenerate f)
   : let g := fun x => f (A x)
@@ -85,7 +85,7 @@ lemma FCA_HUL_1_3_1_iv {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.v -/
-lemma FCA_HUL_1_3_1_v {n : ℕ}
+lemma FCA_chap_E_1_3_1_v {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x₀ : EuclideanSpace ℝ (Fin n))
   (hf_nondegenerate : IsNondegenerate f)
   : let g := fun x => f (x - x₀)
@@ -93,7 +93,7 @@ lemma FCA_HUL_1_3_1_v {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.vi -/
-lemma FCA_HUL_1_3_1_vi {n : ℕ}
+lemma FCA_chap_E_1_3_1_vi {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (s₀ : EuclideanSpace ℝ (Fin n))
   (hf_nondegenerate : IsNondegenerate f)
   : let g := fun x => f x + inner ℝ s₀ x
@@ -101,7 +101,7 @@ lemma FCA_HUL_1_3_1_vi {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.vii -/
-lemma FCA_HUL_1_3_1_vii {n : ℕ}
+lemma FCA_chap_E_1_3_1_vii {n : ℕ}
   (f₁ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (f₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hf_nondegenerate : IsNondegenerate f₁ ∧ IsNondegenerate f₂)
   (hf₁_minorizes : Minorizes f₁ f₂)
@@ -109,7 +109,7 @@ lemma FCA_HUL_1_3_1_vii {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.viii -/
-lemma FCA_HUL_1_3_1_viii {n : ℕ}
+lemma FCA_chap_E_1_3_1_viii {n : ℕ}
   (f₁ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (f₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (α : ℝ)
   (hf_nondegenerate : IsNondegenerate f₁ ∧ IsNondegenerate f₂)
   : Set.Nonempty (effDom (liftWithToptoEReal f₁) ∩ effDom (liftWithToptoEReal f₂)) → α ∈ Set.Ioo 0 1 →
@@ -118,7 +118,7 @@ lemma FCA_HUL_1_3_1_viii {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.2 -/
-lemma FCA_HUL_1_3_2 {n : ℕ}
+lemma FCA_chap_E_1_3_2 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (H : Subspace ℝ (EuclideanSpace ℝ (Fin n)))
   (hf_nondegenerate : IsNondegenerate f)
   : let pH : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n) := fun x => Submodule.orthogonalProjection H x
@@ -127,7 +127,7 @@ lemma FCA_HUL_1_3_2 {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.4 -/
-lemma FCA_HUL_1_3_4 {n : ℕ}
+lemma FCA_chap_E_1_3_4 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (V : Subspace ℝ (EuclideanSpace ℝ (Fin n)))
   (hf_nondegenerate : IsNondegenerate f) (hV_contains_affdom : affineSpan ℝ (effDom (liftWithToptoEReal f)))
   : let U := Vᗮ
@@ -138,82 +138,82 @@ lemma FCA_HUL_1_3_4 {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.3.5 -/
-lemma FCA_HUL_1_3_5 {n : ℕ}
+lemma FCA_chap_E_1_3_5 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (hf_nondegenerate : IsNondegenerate f)
   : epigraph (liftWithToptoEReal (Biconjugate f)) = closure (convexHull ℝ (epigraph (liftWithToptoEReal f)))
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.3.6.i -/
-lemma FCA_HUL_1_3_6_i {n : ℕ}
+lemma FCA_chap_E_1_3_6_i {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (g : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hg : (Minorizes (Biconjugate f) g) ∧ (Minorizes g f))
   : ∀ s, Conjugate g s = Conjugate f s
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.3.6.ii -/
-lemma FCA_HUL_1_3_6_ii {n : ℕ}
+lemma FCA_chap_E_1_3_6_ii {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   : (Biconjugate f = f) ↔ (InClosedConvRn f)
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.8 -/
-lemma FCA_HUL_1_3_8 {n : ℕ}
+lemma FCA_chap_E_1_3_8 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hf_nondegenerate : IsNondegenerate f) (hf_coercive : IsOneCoerciveFun f)
   : ∀ s, Conjugate f s < ⊤
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.9.i -/
-lemma FCA_HUL_1_3_9_i {n : ℕ}
+lemma FCA_chap_E_1_3_9_i {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x₀ : EuclideanSpace ℝ (Fin n))
   (hf_nondegenerate : IsNondegenerate f)
   : x₀ ∈ interior (effDom (liftWithToptoEReal f)) → IsZeroCoerciveFun (fun x => Conjugate f x - inner ℝ x₀ x)
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.9.ii -/
-lemma FCA_HUL_1_3_9_ii {n : ℕ}
+lemma FCA_chap_E_1_3_9_ii {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hf_nondegenerate : IsNondegenerate f)
   : ∀ x, f x ≠ ⊤ → IsOneCoerciveFun (Conjugate f)
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Remark 1.3.10.i -/
-lemma FCA_HUL_1_3_10_i {n : ℕ}
+lemma FCA_chap_E_1_3_10_i {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x₀ : EuclideanSpace ℝ (Fin n))
   (hf_nondegenerate : IsNondegenerate f) (hf_closed_convex : InClosedConvRn f)
   : x₀ ∈ interior (effDom (liftWithToptoEReal f)) ↔ IsZeroCoerciveFun (fun x => Conjugate f x - inner ℝ x₀ x)
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Remark 1.3.10.ii -/
-lemma FCA_HUL_1_3_10_ii {n : ℕ}
+lemma FCA_chap_E_1_3_10_ii {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hf_nondegenerate : IsNondegenerate f) (hf_closed_convex : InClosedConvRn f)
   : ∀ (x : EuclideanSpace ℝ (Fin n)), x ∈ (effDom (liftWithToptoEReal f)) ↔ IsOneCoerciveFun (Conjugate f)
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.4.1 -/
-lemma FCA_HUL_1_4_1 {n : ℕ}
+lemma FCA_chap_E_1_4_1 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x s : EuclideanSpace ℝ (Fin n))
   (hf_nondegenerate : IsNondegenerate f)
   : s ∈ SubdifferentialAt f x ↔ (Conjugate f s) + f x - (inner ℝ s x) = 0
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.4.2 -/
-lemma FCA_HUL_1_4_2 {n : ℕ}
+lemma FCA_chap_E_1_4_2 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x : EuclideanSpace ℝ (Fin n))
   (hf_convex : InConvRn f)
   : x ∈ intrinsicInterior ℝ (effDom (liftWithToptoEReal f)) → Set.Nonempty (SubdifferentialAt f x)
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.4.3.i -/
-lemma FCA_HUL_1_4_3_i {n : ℕ}
+lemma FCA_chap_E_1_4_3_i {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x : EuclideanSpace ℝ (Fin n))
   (hf_nondegenerate : IsNondegenerate f)
   : Set.Nonempty (SubdifferentialAt f x) → Biconjugate f x = f x
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.4.3.ii -/
-lemma FCA_HUL_1_4_3_ii {n : ℕ}
+lemma FCA_chap_E_1_4_3_ii {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (g : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (x : EuclideanSpace ℝ (Fin n))
   (hf_nondegenerate : IsNondegenerate f)
@@ -221,14 +221,14 @@ lemma FCA_HUL_1_4_3_ii {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.4.3.iii -/
-lemma FCA_HUL_1_4_3_iii {n : ℕ}
+lemma FCA_chap_E_1_4_3_iii {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x s : EuclideanSpace ℝ (Fin n))
   (hf_nondegenerate : IsNondegenerate f)
   : s ∈ SubdifferentialAt f x → x ∈ SubdifferentialAt (Conjugate f) s
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Corollary 1.4.4 -/
-lemma FCA_HUL_1_4_4 {n : ℕ}
+lemma FCA_chap_E_1_4_4 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x s : EuclideanSpace ℝ (Fin n))
   (hf_closed_convex : InClosedConvRn f)
   : List.TFAE [
@@ -239,7 +239,7 @@ lemma FCA_HUL_1_4_4 {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Corollary 2.1.1 -/
-lemma FCA_HUL_2_1_1 {m n : ℕ}
+lemma FCA_chap_E_2_1_1 {m n : ℕ}
   (g : EuclideanSpace ℝ (Fin m) → WithTop ℝ)
   (A : (EuclideanSpace ℝ (Fin m)) →ₗ[ℝ] (EuclideanSpace ℝ (Fin n)))
   (hg_nondegenerate : IsNondegenerate g)
@@ -249,7 +249,7 @@ lemma FCA_HUL_2_1_1 {m n : ℕ}
   := by sorry
 
 -- /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Corollary 2.1.3 -/
--- lemma FCA_HUL_2_1_3 {n : ℕ}
+-- lemma FCA_chap_E_2_1_3 {n : ℕ}
 --   (f₁ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (f₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
 --   (hf_not_infinity : ∃ x₁, f₁ x₁ ≠ ⊤ ∧ ∃ x₂, f₂ x₂ ≠ ⊤)
 --   (h_nonempty_domain : Set.Nonempty (effDom (Conjugate (liftWTtoEReal f₁)) ∩ effDom (Conjugate (liftWTtoEReal f₂))))

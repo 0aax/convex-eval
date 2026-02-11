@@ -5,7 +5,7 @@ import ConvexEval.definitions
 open BigOperators Real Nat Topology Rat
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.1.3 -/
-lemma FCA_HUL_1_1_3 {n : ℕ}
+lemma FCA_chap_C_1_1_3 {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) :
   let epi := epigraph (liftWithToptoEReal σ)
   (IsSublinear (liftWithToptoEReal σ)) ↔
@@ -13,7 +13,7 @@ lemma FCA_HUL_1_1_3 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.1.4 -/
-lemma FCA_HUL_1_1_4 {n : ℕ}
+lemma FCA_chap_C_1_1_4 {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hσ : ∃ x, σ x ≠ ⊤) :
   (IsSublinear (liftWithToptoEReal σ)) ↔
@@ -23,14 +23,14 @@ lemma FCA_HUL_1_1_4 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.1.5 -/
-lemma FCA_HUL_1_1_5 {n : ℕ}
+lemma FCA_chap_C_1_1_5 {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) :
   (IsSublinear (liftWithToptoEReal σ)) →
   (∀ (x : EuclideanSpace ℝ (Fin n)), σ x + σ (-x) ≥ 0) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.1.6 -/
-lemma FCA_HUL_1_1_6 {m n : ℕ}
+lemma FCA_chap_C_1_1_6 {m n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (x : ℕ → EuclideanSpace ℝ (Fin n))
   (hσ : IsSublinear (liftWithToptoEReal σ))
@@ -40,7 +40,7 @@ lemma FCA_HUL_1_1_6 {m n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.1.7 -/
-lemma FCA_HUL_1_1_7 {m n : ℕ}
+lemma FCA_chap_C_1_1_7 {m n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (x : EuclideanSpace ℝ (Fin n))
   (hσ : IsSublinear (liftWithToptoEReal σ)) :
@@ -49,7 +49,7 @@ lemma FCA_HUL_1_1_7 {m n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.2.5 -/
-lemma FCA_HUL_1_2_5 {m n : ℕ}
+lemma FCA_chap_C_1_2_5 {m n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n)))
   (hC_closed : IsClosed C) (hC_convex : Convex ℝ C) (hC_origin : 0 ∈ C) :
   let g : EuclideanSpace ℝ (Fin n) → WithTop ℝ := fun x => gauge C x
@@ -60,7 +60,7 @@ lemma FCA_HUL_1_2_5 {m n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.2.6 -/
-lemma FCA_HUL_1_2_6 {n : ℕ}
+lemma FCA_chap_C_1_2_6 {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n)))
   (hC_closed : IsClosed C) (hC_convex : Convex ℝ C) (hC_origin : 0 ∈ C) :
   let g : EuclideanSpace ℝ (Fin n) → WithTop ℝ := fun x => gauge C x
@@ -68,7 +68,7 @@ lemma FCA_HUL_1_2_6 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (i) -/
-lemma FCA_HUL_1_3_1_i {n : ℕ}
+lemma FCA_chap_C_1_3_1_i {n : ℕ}
   (σ₁ σ₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (t₁ t₂ : ℝ)
   (hσ : IsSublinear (liftWithToptoEReal σ₁) ∧ IsSublinear (liftWithToptoEReal σ₂))
@@ -79,7 +79,7 @@ lemma FCA_HUL_1_3_1_i {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (ii) -/
-lemma FCA_HUL_1_3_1_ii {n : ℕ}
+lemma FCA_chap_C_1_3_1_ii {n : ℕ}
   (σ₁ σ₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (t₁ t₂ : ℝ)
   (hσ_sublinear : IsSublinear (liftWithToptoEReal σ₁) ∧ IsSublinear (liftWithToptoEReal σ₂))
@@ -91,7 +91,7 @@ lemma FCA_HUL_1_3_1_ii {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (iii) -/
-lemma FCA_HUL_1_3_1_iii {n : ℕ}
+lemma FCA_chap_C_1_3_1_iii {n : ℕ}
   (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
   (J : Set ℕ)
   (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j))) :
@@ -101,7 +101,7 @@ lemma FCA_HUL_1_3_1_iii {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (iv) -/
-lemma FCA_HUL_1_3_1_iv {n : ℕ}
+lemma FCA_chap_C_1_3_1_iv {n : ℕ}
   (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
   (J : Set ℕ)
   (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j)))
@@ -112,7 +112,7 @@ lemma FCA_HUL_1_3_1_iv {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.2 (i) -/
-lemma FCA_HUL_1_3_2_i {n : ℕ}
+lemma FCA_chap_C_1_3_2_i {n : ℕ}
   (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
   (J : Set ℕ)
   (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j)))
@@ -125,7 +125,7 @@ lemma FCA_HUL_1_3_2_i {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.2 (ii) -/
-lemma FCA_HUL_1_3_2_ii {m n : ℕ}
+lemma FCA_chap_C_1_3_2_ii {m n : ℕ}
   (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
   (J : ℕ → ℕ)
   (hσ_sublinear : ∀ i, i ≤ m → IsSublinear (liftWithToptoEReal (σ (J i))))
@@ -139,7 +139,7 @@ lemma FCA_HUL_1_3_2_ii {m n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.5 -/
-lemma FCA_HUL_1_3_5 {n : ℕ}
+lemma FCA_chap_C_1_3_5 {n : ℕ}
   (σk : ℕ → (EuclideanSpace ℝ (Fin n) → ℝ))
   (σ : EuclideanSpace ℝ (Fin n) → ℝ) :
   let d := fun k => DistOnFunctions (σk k) σ
@@ -152,7 +152,7 @@ lemma FCA_HUL_1_3_5 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.1.2 -/
-lemma FCA_HUL_2_1_2 {n : ℕ}
+lemma FCA_chap_C_2_1_2 {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (hS : Set.Nonempty S) :
   let support_fun := SupportFun S
@@ -161,7 +161,7 @@ lemma FCA_HUL_2_1_2 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.1.3 -/
-lemma FCA_HUL_2_1_3 {n : ℕ}
+lemma FCA_chap_C_2_1_3 {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (hS : Set.Nonempty S) :
   let support_fun := SupportFun S
@@ -170,7 +170,7 @@ lemma FCA_HUL_2_1_3 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.1 -/
-lemma FCA_HUL_2_2_1 {n : ℕ}
+lemma FCA_chap_C_2_2_1 {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (hS : Set.Nonempty S) :
   let sf_S := SupportFun S
@@ -184,7 +184,7 @@ lemma FCA_HUL_2_2_1 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.2 -/
-lemma FCA_HUL_2_2_2 {n : ℕ}
+lemma FCA_chap_C_2_2_2 {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (s : EuclideanSpace ℝ (Fin n))
   (hS : Set.Nonempty S) :
@@ -194,7 +194,7 @@ lemma FCA_HUL_2_2_2 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.3 (i) -/
-lemma FCA_HUL_2_2_3_i {n : ℕ}
+lemma FCA_chap_C_2_2_3_i {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (s : EuclideanSpace ℝ (Fin n))
   (hS : Set.Nonempty S) :
@@ -204,7 +204,7 @@ lemma FCA_HUL_2_2_3_i {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.3 (ii) -/
-lemma FCA_HUL_2_2_3_ii {n : ℕ}
+lemma FCA_chap_C_2_2_3_ii {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (s : EuclideanSpace ℝ (Fin n))
   (hS : Set.Nonempty S) :
@@ -214,7 +214,7 @@ lemma FCA_HUL_2_2_3_ii {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.3 (iii) -/
-lemma FCA_HUL_2_2_3_iii {n : ℕ}
+lemma FCA_chap_C_2_2_3_iii {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (s : EuclideanSpace ℝ (Fin n))
   (hS : Set.Nonempty S) :
@@ -224,7 +224,7 @@ lemma FCA_HUL_2_2_3_iii {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.4 -/
-lemma FCA_HUL_2_2_4 {n : ℕ}
+lemma FCA_chap_C_2_2_4 {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (x : EuclideanSpace ℝ (Fin n))
   (hS_nonempty : Set.Nonempty S)
@@ -236,7 +236,7 @@ lemma FCA_HUL_2_2_4 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.1 (i) -/
-lemma FCA_HUL_3_1_1_i {n : ℕ}
+lemma FCA_chap_C_3_1_1_i {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hσ_closed : IsClosedFun σ) (hσ_sublinear: IsSublinear (liftWithToptoEReal σ)) :
   (∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ),
@@ -244,7 +244,7 @@ lemma FCA_HUL_3_1_1_i {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.1 (ii) -/
-lemma FCA_HUL_3_1_1_ii {n : ℕ}
+lemma FCA_chap_C_3_1_1_ii {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hσ_closed : IsClosedFun σ) (hσ_sublinear: IsSublinear (liftWithToptoEReal σ)) :
   let Sσ := {s | ∀ d, inner ℝ s d ≤ σ d}
@@ -252,7 +252,7 @@ lemma FCA_HUL_3_1_1_ii {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.2 -/
-lemma FCA_HUL_3_1_2 {n : ℕ}
+lemma FCA_chap_C_3_1_2 {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (hS_nonempty : Set.Nonempty S) (hS_closed : IsClosed S) (hS_convex : Convex ℝ S)
@@ -266,7 +266,7 @@ lemma FCA_HUL_3_1_2 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.4 -/
-lemma FCA_HUL_3_1_4 {n : ℕ}
+lemma FCA_chap_C_3_1_4 {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n)))
   (x : EuclideanSpace ℝ (Fin n)) (d : EuclideanSpace ℝ (Fin n))
   (hC_nonempty : Set.Nonempty C) (hC_closed : IsClosed C) (hC_convex : Convex ℝ C)
@@ -275,7 +275,7 @@ lemma FCA_HUL_3_1_4 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.2.4 -/
-lemma FCA_HUL_3_2_4 {n : ℕ}
+lemma FCA_chap_C_3_2_4 {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n)))
   (hC_closed : IsClosed C) (hC_convex : Convex ℝ C) (hC_origin : 0 ∈ C) :
   let γC := gauge C
@@ -285,7 +285,7 @@ lemma FCA_HUL_3_2_4 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.2.5 -/
-lemma FCA_HUL_3_2_5 {n : ℕ}
+lemma FCA_chap_C_3_2_5 {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n)))
   (hC_closed : IsClosed C) (hC_convex : Convex ℝ C) (hC_origin : 0 ∈ C) :
   let C' := {s | ∀ d ∈ C, inner ℝ s d ≤ 1}
@@ -295,7 +295,7 @@ lemma FCA_HUL_3_2_5 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.2.7 -/
-lemma FCA_HUL_3_2_7 {n : ℕ}
+lemma FCA_chap_C_3_2_7 {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n)))
   (d s : EuclideanSpace ℝ (Fin n))
   (hC_nonempty : Set.Nonempty C)
@@ -314,7 +314,7 @@ lemma FCA_HUL_3_2_7 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.1 -/
-lemma FCA_HUL_3_3_1 {n : ℕ}
+lemma FCA_chap_C_3_3_1 {n : ℕ}
   (S₁ S₂ : Set (EuclideanSpace ℝ (Fin n)))
   (hS_nonempty : Set.Nonempty S₁ ∧ Set.Nonempty S₂)
   (hS_closed : IsClosed S₁ ∧ IsClosed S₂)
@@ -325,7 +325,7 @@ lemma FCA_HUL_3_3_1 {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.2 (i) -/
-lemma FCA_HUL_3_3_2_i {n : ℕ}
+lemma FCA_chap_C_3_3_2_i {n : ℕ}
   (S₁ S₂ : Set (EuclideanSpace ℝ (Fin n)))
   (t₁ t₂ : ℝ)
   (hS_nonempty : Set.Nonempty S₁ ∧ Set.Nonempty S₂)
@@ -341,7 +341,7 @@ lemma FCA_HUL_3_3_2_i {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.2 (ii) -/
-lemma FCA_HUL_3_3_2_ii {n : ℕ}
+lemma FCA_chap_C_3_3_2_ii {n : ℕ}
   (S : ℕ → Set (EuclideanSpace ℝ (Fin n)))
   (J : Set ℕ)
   (hS_nonempty : ∀ j ∈ J, Set.Nonempty (S j))
@@ -354,7 +354,7 @@ lemma FCA_HUL_3_3_2_ii {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.2 (iii) -/
-lemma FCA_HUL_3_3_2_iii {n : ℕ}
+lemma FCA_chap_C_3_3_2_iii {n : ℕ}
   (S : ℕ → Set (EuclideanSpace ℝ (Fin n)))
   (J : Set ℕ)
   (hS_closed : ∀ j ∈ J, IsClosed (S j))
@@ -367,7 +367,7 @@ lemma FCA_HUL_3_3_2_iii {n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.3 -/
-lemma FCA_HUL_3_3_3 {m n : ℕ}
+lemma FCA_chap_C_3_3_3 {m n : ℕ}
   (A : EuclideanSpace ℝ (Fin n) →ₗ[ℝ] EuclideanSpace ℝ (Fin m))
   (s : EuclideanSpace ℝ (Fin m) → EuclideanSpace ℝ (Fin m) → ℝ)
   (S : Set (EuclideanSpace ℝ (Fin n)))
@@ -381,7 +381,7 @@ lemma FCA_HUL_3_3_3 {m n : ℕ}
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.4 -/
-lemma FCA_HUL_3_3_4 {m n : ℕ}
+lemma FCA_chap_C_3_3_4 {m n : ℕ}
   (A : EuclideanSpace ℝ (Fin m) →ₗ[ℝ] EuclideanSpace ℝ (Fin n))
   (s : EuclideanSpace ℝ (Fin m) → EuclideanSpace ℝ (Fin m) → ℝ)
   (S : Set (EuclideanSpace ℝ (Fin m)))
