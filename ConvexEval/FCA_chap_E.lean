@@ -194,7 +194,7 @@ lemma FCA_chap_E_1_4_2 {n : ℕ}
   := by sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.4.3 -/
-lemma FCA_chap_E_1_4_3_i {n : ℕ}
+lemma FCA_chap_E_1_4_3 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (g : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (x s : EuclideanSpace ℝ (Fin n))
