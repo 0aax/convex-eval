@@ -9,6 +9,8 @@ A function $\sigma:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$ is said to be \emph
 \end{definition}
 
 \begin{proposition}
+\label{prop:1.1.3}
+\lean{FCA_chap_C_1_1_3}
 A function \(\sigma:\mathbb R^n\to\mathbb R\cup\{+\infty\}\) is sublinear if and only if its epigraph \(\operatorname{epi}\sigma\) is a nonempty convex cone in \(\mathbb R^n\times\mathbb R\).
 \end{proposition}
 
@@ -29,6 +31,7 @@ From Remark 1.1.2, this is just positive homogeneity.
 
 \begin{proposition}
 \label{prop:1.1.4}
+\lean{FCA_chap_C_1_1_4}
 A function $\sigma:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically equal to $+\infty$, is sublinear if and only if one of the following two properties holds:
 \[
 \sigma(t_1x_1+t_2x_2)\le t_1\sigma(x_1)+t_2\sigma(x_2)\qquad\text{for all }x_1,x_2\in\mathbb{R}^n\text{ and }t_1,t_2>0,
@@ -65,7 +68,9 @@ i.e. it is positively homogeneous.
 hence $\sigma$ is convex.
 \end{proof}
 
-\begin{corollary}\label{cor:1.1.5}
+\begin{corollary}
+\label{cor:1.1.5}
+\lean{FCA_chap_C_1_1_5}
 If $\sigma$ is sublinear, then
 \[
 \sigma(x)+\sigma(-x)\ge 0\quad\text{for all }x\in\mathbb{R}^n.
@@ -79,6 +84,7 @@ Take $x_2=-x_1$ in (1.1.3) and remember that $\sigma(0)\ge 0$.
 
 \begin{proposition}
 \label{thm:1.1.6}
+\lean{FCA_chap_C_1_1_6}
 Let $\sigma$ be sublinear and suppose that there exist $x_1,\dots,x_m$ in $\dom\sigma$ such that
 \[
 \sigma(x_j)+\sigma(-x_j)=0\quad\text{for } j=1,\dots,m.
@@ -110,6 +116,7 @@ In summary, we have proved \(\sigma(x)\le \sum_{j=1}^m t_j\sigma(x_j)\le -\sigma
 
 \begin{proposition}
 \label{prop:1.1.7}
+\lean{FCA_chap_C_1_1_7}
 Let $\sigma$ be sublinear. If $x\in U$, i.e.\ if
 \[
 \sigma(x)+\sigma(-x)=0,
@@ -138,7 +145,9 @@ In view of subadditivity, we just have to prove ``$\ge$'' in (1.1.10). Start fro
 is called the \emph{gauge} of $C$. As usual, we set $\gamma_C(x):=+\infty$ if $x\notin \lambda C$ for no $\lambda>0$.
 \end{definition}
 
-\begin{theorem}\label{thm:1.2.5}
+\begin{theorem}
+\label{thm:1.2.5}
+\lean{FCA_chap_C_1_2_5}
 Let $C$ be a closed convex set containing the origin. Then
 \begin{enumerate}
 \item[(i)] its gauge $\gamma_C$ is a nonnegative closed sublinear function;
@@ -169,9 +178,8 @@ Now we prove
 This will imply the first part in (iii), thanks to positive homogeneity. Then the second part will follow because of (A.2.2.2): $C_\infty=\cap\{rC:\ r>0\}$ and closedness of $\gamma_C$ will also result from (iii) via Proposition B.1.2.2.
 
 So, to prove (1.2.3), observe first that $x\in C$ implies from (1.2.2) that certainly $\gamma_C(x)\le 1$. Conversely, let $x$ be such that $\gamma_C(x)\le 1$; we must prove that $x\in C$. For this we prove that $x_k:= (1-1/k)x\in C$ for $k=1,2,\dots$ (and then, the desired property will come from the closedness of $C$). By positive homogeneity, $\gamma_C(x_k)=(1-1/k)\gamma_C(x)\le 1$, so there is $\lambda_k\in[0,1]$ such that $x_k=\lambda_k C$, or equivalently $x_k/\lambda_k\in C$. Because $C$ is convex and contains the origin, $\lambda_k (x_k/\lambda_k)+(1-\lambda_k)0 = x_k$ is in $C$, which is what we want.
-\end{proof}
 
-\begin{proof}[(ii)] Assume $0\in\operatorname{int}C$. There is $\varepsilon>0$ such that for all $x\neq 0$, $x_\varepsilon := x/\|x\|\in C$; hence $\gamma_C(x_\varepsilon)\le 1$ because of (1.2.3). We deduce by positive homogeneity
+[(ii)] Assume $0\in\operatorname{int}C$. There is $\varepsilon>0$ such that for all $x\neq 0$, $x_\varepsilon := x/\|x\|\in C$; hence $\gamma_C(x_\varepsilon)\le 1$ because of (1.2.3). We deduce by positive homogeneity
 \[
 \gamma_C(x)=\frac{\|x\|}{\varepsilon}\,\gamma_C(x_\varepsilon)\le\frac{\|x\|}{\varepsilon}\,;
 \]
@@ -184,7 +192,9 @@ Conversely, suppose $\gamma_C$ is finite everywhere. By continuity (Theorem B.3.
 where the last implication comes from (iii). In other words, $B(0,1/L)\subset C$.
 \end{proof}
 
-\begin{corollary}\label{cor:1.2.6}
+\begin{corollary}
+\label{cor:1.2.6}
+\lean{FCA_chap_C_1_2_6}
 C is compact if and only if $\gamma_C(x)>0$ for all $x\neq 0$.
 \end{corollary}
 
@@ -192,9 +202,12 @@ C is compact if and only if $\gamma_C(x)>0$ for all $x\neq 0$.
 
 \begin{proposition}
 \label{prop:1.3.1}
-(i) If $\sigma_1$ and $\sigma_2$ are [closed] sublinear and $t_1,t_2$ are positive numbers, then $\sigma := t_1\sigma_1 + t_2\sigma_2$ is [closed] sublinear, if not identically $+\infty$.
-
-(ii) If $\{\sigma_j\}_{j\in J}$ is a family of [closed] sublinear functions, then $\sigma := \sup_{j\in J}\sigma_j$ is [closed] sublinear, if not identically $+\infty$.
+\lean{FCA_chap_C_1_3_1_i}
+\lean{FCA_chap_C_1_3_1_ii}
+\begin{enumerate}
+    \item[(i)] If $\sigma_1$ and $\sigma_2$ are [closed] sublinear and $t_1,t_2$ are positive numbers, then $\sigma := t_1\sigma_1 + t_2\sigma_2$ is [closed] sublinear, if not identically $+\infty$.
+    \item[(ii)] If $\{\sigma_j\}_{j\in J}$ is a family of [closed] sublinear functions, then $\sigma := \sup_{j\in J}\sigma_j$ is [closed] sublinear, if not identically $+\infty$.
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
@@ -202,14 +215,17 @@ Concerning convexity and closedness, everything is known from \S B.2. Note in pa
 \end{proof}
 
 \begin{proposition}
+\label{prop:1.3.2}
+\lean{FCA_chap_C_1_3_2_i}
+\lean{FCA_chap_C_1_3_2_ii}
 Let $\{\sigma_j\}_{j\in J}$ be a family of sublinear functions all minorized by some linear function. Then
-
-(i) $\sigma := \operatorname{co}\big(\inf_{j\in J}\sigma_j\big)$ is sublinear.
-
-(ii) If $J=\{1,\dots,m\}$ is a finite set, we obtain the infimal convolution
-\[
-\operatorname{co}\min\{\sigma_1,\dots,\sigma_m\}=\sigma_1\infconv\cdots\infconv\sigma_m.
-\]
+\begin{enumerate}
+    \item[(i)] $\sigma := \operatorname{co}\big(\inf_{j\in J}\sigma_j\big)$ is sublinear.
+    \item[(ii)] If $J=\{1,\dots,m\}$ is a finite set, we obtain the infimal convolution
+    \[
+    \operatorname{co}\min\{\sigma_1,\dots,\sigma_m\}=\sigma_1\infconv\cdots\infconv\sigma_m.
+    \]
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
