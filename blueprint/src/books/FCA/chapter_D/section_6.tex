@@ -2,6 +2,7 @@
 
 \begin{proposition}
 \label{prop:6.1.1}
+\lean{FCA_chap_D_6_1_1}
 The subdifferential mapping is monotone in the sense that, for all $x_1$ and $x_2$ in $\mathbb{R}^n$,
 \begin{equation}\tag{6.1.1}
 \langle s_2 - s_1, x_2 - x_1\rangle \ge 0\quad\text{for all } s_i\in\partial f(x_i),\; i=1,2.
@@ -19,7 +20,9 @@ f(x_1)\ge f(x_2)+\langle s_2, x_1-x_2\rangle\quad\text{for all }s_2\in\partial f
 give the result simply by addition.
 \end{proof}
 
-\begin{theorem}\label{thm:6.1.2}
+\begin{theorem}
+\label{thm:6.1.2}
+\lean{FCA_chap_D_6_1_2}
 A necessary and sufficient for a convex function $f:\mathbb{R}^n\to\mathbb{R}$ to be strongly convex with modulus $c>0$ on a convex set $C$ is: for all $x_1,x_2$ in $C$,
 \begin{equation}\tag{6.1.3}
 f(x_2)\ge f(x_1)+\langle s,x_2-x_1\rangle+\frac{c}{2}\|x_2-x_1\|^2\quad\text{for all }s\in\partial f(x_1),
@@ -77,6 +80,7 @@ The result follows by using this inequality to minorize the integral in (6.1.5).
 
 \begin{proposition}
 \label{prop:6.1.3}
+\lean{FCA_chap_D_6_1_3}
 A necessary and sufficient condition for a convex function $f:\mathbb{R}^n\to\mathbb{R}$ to be strictly convex on a convex set $C$ is: for all $x_1,x_2\in C$ with $x_2\neq x_1$,
 \[
 f(x_2)>f(x_1)+\langle s,x_2-x_1\rangle\quad\text{for all } s\in\partial f(x_1)
@@ -95,6 +99,7 @@ Copy the proof of Theorem 6.1.2 with $c=0$ and the relevant ``$ \ge $''-signs re
 
 \begin{proposition}
 \label{prop:6.2.1}
+\lean{FCA_chap_D_6_2_1}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. The graph of its subdifferential mapping is closed in $\mathbb{R}^n\times\mathbb{R}^n$.
 \end{proposition}
 
@@ -108,6 +113,7 @@ pass to the limit on $k$, using continuity of $f$ and of the scalar product.
 
 \begin{proposition}
 \label{prop:6.2.2}
+\lean{FCA_chap_D_6_2_2}
 The mapping $\partial f$ is locally bounded, i.e.\ the image $\partial f(B)$ of a bounded set $B\subset\mathbb{R}^n$ is a bounded set in $\mathbb{R}^n$.
 \end{proposition}
 
@@ -117,6 +123,7 @@ For arbitrary $x$ in $B$ and $s\neq 0$ in $\partial f(x)$, the subgradient inequ
 
 \begin{theorem}
 \label{thm:6.2.4}
+\lean{FCA_chap_D_6_2_4}
 The subdifferential mapping of a convex function $f:\mathbb{R}^n\to\mathbb{R}$ is outer semi-continuous at any $x\in\mathbb{R}^n$, i.e.
 \[
 \forall\varepsilon>0,\ \exists\delta>0:\quad y\in B(x,\delta)\implies \partial f(y)\subset \partial f(x)+B(0,\varepsilon).
@@ -135,7 +142,9 @@ s_k\in\partial f(x_k),\ s_k\not\in\partial f(x)+B(0,\varepsilon)\quad\text{for }
 A subsequence of the bounded $(s_k)$ (Proposition 6.2.2) converges to $s\in\partial f(x)$ (Proposition 6.2.1). This contradicts (6.2.2), which implies $s\not\in\partial f(x)+B(0,1/2\varepsilon)$.
 \end{proof}
 
-\begin{corollary}\label{cor:6.2.5}
+\begin{corollary}
+\label{cor:6.2.5}
+\lean{FCA_chap_D_6_2_5}
 For $f:\mathbb{R}^n\to\mathbb{R}$ convex, the function $f'(\cdot,d)$ is upper semicontinuous: at all $x\in\mathbb{R}^n$,
 \[
 f'(x,d)=\limsup_{y\to x} f'(y,d)\qquad\text{for all }d\in\mathbb{R}^n.
@@ -146,7 +155,9 @@ f'(x,d)=\limsup_{y\to x} f'(y,d)\qquad\text{for all }d\in\mathbb{R}^n.
 Use Theorem 6.2.4, in conjunction with Proposition C.3.3.7.
 \end{proof}
 
-\begin{theorem}\label{thm:6.2.7}
+\begin{theorem}
+\label{thm:6.2.7}
+\lean{FCA_chap_D_6_2_7}
 Let $(f_k)$ be a sequence of (finite) convex functions converging pointwise to $f:\mathbb{R}^n\to\mathbb{R}$ and let $(x_k)$ converge to $x\in\mathbb{R}^n$. For any $\varepsilon>0$,
 \[
 \partial f_k(x_k)\subset\partial f(x)+B(0,\varepsilon)\qquad\text{for $k$ large enough.}
@@ -176,6 +187,7 @@ and pass to the limit (on a further subsequence such that $s_k\to s$): pointwise
 
 \begin{corollary}
 \label{cor:6.2.8}
+\lean{FCA_chap_D_6_2_8}
 Let $(f_k)$ be a sequence of (finite) differentiable convex functions converging pointwise to the differentiable $f:\mathbb{R}^n\to\mathbb{R}$. Then $\nabla f_k$ converges to $\nabla f$ uniformly on every compact set of $\mathbb{R}^n$.
 \end{corollary}
 
@@ -189,7 +201,9 @@ Extracting a subsequence if necessary, we may suppose $x_k\to x\in S$; Theorem 6
 
 \subsection{Subdifferentials and limits of subgradients}
 
-\begin{theorem}\label{thm:6.3.1}
+\begin{theorem}
+\label{thm:6.3.1}
+\lean{FCA_chap_D_6_3_1}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. With the notation (6.3.1), $\partial f(x)=\operatorname{co}\gamma f(x)$ for all $x\in\mathbb{R}^n$.
 \end{theorem}
 

@@ -172,34 +172,15 @@ lemma FCA_chap_C_2_2_2 {n : ℕ}
   (∀ (d : EuclideanSpace ℝ (Fin n)), inner ℝ s d ≤ sf_S d) := by
   sorry
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.3 (i) -/
-lemma FCA_chap_C_2_2_3_i {n : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.3 -/
+lemma FCA_chap_C_2_2_3 {n : ℕ}
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (s : EuclideanSpace ℝ (Fin n))
   (hS : Set.Nonempty S) :
   let σS := SupportFun S
-  (s ∈ affineHull S) ↔
-  (∀ d, σS d + σS (-1 • d) = 0 → inner ℝ s d = σS d):= by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.3 (ii) -/
-lemma FCA_chap_C_2_2_3_ii {n : ℕ}
-  (S : Set (EuclideanSpace ℝ (Fin n)))
-  (s : EuclideanSpace ℝ (Fin n))
-  (hS : Set.Nonempty S) :
-  let σS := SupportFun S
-  (s ∈ intrinsicInterior ℝ S) ↔
-  (∀ d, σS d + σS (-1 • d) > 0 → inner ℝ s d < σS d):= by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.3 (iii) -/
-lemma FCA_chap_C_2_2_3_iii {n : ℕ}
-  (S : Set (EuclideanSpace ℝ (Fin n)))
-  (s : EuclideanSpace ℝ (Fin n))
-  (hS : Set.Nonempty S) :
-  let σS := SupportFun S
-  (s ∈ interior S) ↔
-  (∀ d, d ≠ 0 → inner ℝ s d < σS d):= by
+  ((s ∈ affineHull S) ↔ (∀ d, σS d + σS (-1 • d) = 0 → inner ℝ s d = σS d)) ∧
+  ((s ∈ intrinsicInterior ℝ S) ↔ (∀ d, σS d + σS (-1 • d) > 0 → inner ℝ s d < σS d)) ∧
+  ((s ∈ interior S) ↔ (∀ d, d ≠ 0 → inner ℝ s d < σS d)):= by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.4 -/
@@ -214,20 +195,13 @@ lemma FCA_chap_C_2_2_4 {n : ℕ}
   PolarCone (closure (effDom (liftWithToptoEReal σS))) = Sinfty := by
   sorry
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.1 (i) -/
-lemma FCA_chap_C_3_1_1_i {n : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.1 -/
+lemma FCA_chap_C_3_1_1 {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (hσ_closed : IsClosedFun σ) (hσ_sublinear: IsSublinear (liftWithToptoEReal σ)) :
-  (∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ),
-  ∀ x, inner ℝ s x + b ≤ σ x)  := by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.1 (ii) -/
-lemma FCA_chap_C_3_1_1_ii {n : ℕ}
-  (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (hσ_closed : IsClosedFun σ) (hσ_sublinear: IsSublinear (liftWithToptoEReal σ)) :
+  (hσ_closed : IsClosedFun σ) (hσ_sublinear : IsSublinear (liftWithToptoEReal σ)) :
   let Sσ := {s | ∀ d, inner ℝ s d ≤ σ d}
-  ∀ x, σ x = SupportFun Sσ x := by
+  ((∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ), ∀ x, inner ℝ s x + b ≤ σ x)) ∧
+  (∀ x, σ x = SupportFun Sσ x) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.2 -/

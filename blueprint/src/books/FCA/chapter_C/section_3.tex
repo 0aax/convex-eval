@@ -1,6 +1,8 @@
 \subsection{The fundamental correspondence}
-\begin{theorem}\label{thm:3.1.1}
-Let $\sigma$ be a closed sublinear function; then there is a linear function minorizing $\sigma$.  In fact, $\sigma$ is the supremum of the linear functions minorizing it.  In other words, $\sigma$ is the support function of the nonempty closed convex set
+\begin{theorem}
+\label{thm:3.1.1}
+\lean{FCA_chap_C_3_1_1}
+Let $\sigma$ be a closed sublinear function; then there is a linear function minorizing $\sigma$.  In fact, $\sigma$ is the supremum of the linear functions minorizing it. In other words, $\sigma$ is the support function of the nonempty closed convex set
 \[
 S_\sigma := \{s\in\mathbb{R}^n : \langle s,d\rangle \le \sigma(d)\ \text{for all } d\in\mathbb{R}^n\}.
 \tag{3.1.1}
@@ -29,12 +31,14 @@ Now observe that the minorization (3.1.3) is sharper than (3.1.2): when expressi
 in the above index-set, we just recognize $S_\sigma$.
 \end{proof}
 
-\begin{corollary}\label{cor:3.1.2}
+\begin{corollary}
+\label{cor:3.1.2}
+\lean{FCA_chap_C_3_1_2}
 For a nonempty closed convex set $S$ and a closed sublinear function $\sigma$, the following are equivalent:
-
-(i) \(\sigma\) is the support function of \(S\).
-
-(ii) \(S=\{s:\ \langle s,d\rangle\le\sigma(d)\text{ for all }d\in X\},\) where the set \(X\) can be indifferently taken as: the whole of \(\mathbb{R}^n\), the unit ball \(B(0,1)\) or its boundary, or \(\operatorname{dom}\sigma\).
+\begin{enumerate}
+    \item[(i)] \(\sigma\) is the support function of \(S\).
+    \item[(ii)] \(S=\{s:\ \langle s,d\rangle\le\sigma(d)\text{ for all }d\in X\},\) where the set \(X\) can be indifferently taken as: the whole of \(\mathbb{R}^n\), the unit ball \(B(0,1)\) or its boundary, or \(\operatorname{dom}\sigma\).
+\end{enumerate}
 \end{corollary}
 
 \begin{proof}
@@ -49,7 +53,9 @@ F_C(d):=\{x\in C:\ \langle x,d\rangle=\sigma(d)\}
 is called the exposed face of \(C\) associated with \(d\), or the face exposed by \(d\).
 \end{definition}
 
-\begin{proposition}\label{prop:3.1.4}
+\begin{proposition}
+\label{prop:3.1.4}
+\lean{FCA_chap_C_3_1_4}
 For $x$ in a nonempty closed convex set $C$, it holds
 \[
 x\in F_C(d)\iff d\in N_C(x).
@@ -90,6 +96,8 @@ It is a particular case of the results 3.2.4 and 3.2.5 below.
 \end{proof}
 
 \begin{proposition}
+\label{prop:3.2.4}
+\lean{FCA_chap_C_3_2_4}
 Let $C$ be a closed convex set containing the origin. Its gauge $\gamma_C$ is the support function of a closed convex set containing the origin, namely
 \[
 C^\circ := \{ s\in\mathbb{R}^n : \langle s,d\rangle \le 1\ \text{for all } d\in C\},
@@ -110,12 +118,15 @@ D=\{s\in\mathbb{R}^n:\ \langle s,d\rangle \le 1\ \text{ for all }d\ \text{such t
 In view of Theorem 1.2.5(iii), the above index-set is just $C$; in other words, $D=C^\circ$.
 \end{proof}
 
-\begin{corollary}\label{cor:3.2.5}
+\begin{corollary}
+\label{cor:3.2.5}
+\lean{FCA_chap_C_3_2_5}
 Let $C$ be a closed convex set containing the origin. Its support function $\sigma_C$ is the gauge of $C^\circ$.
 \end{corollary}
 
 \begin{proposition}
 \label{prop:3.2.7}
+\lean{FCA_chap_C_3_2_7}
 Let $C$ be a nonempty compact convex set having $0$ in its interior, so that $C^\circ$ enjoys the same properties. Then, for all $d$ and $s$ in $\mathbb{R}^n$, the following statements are equivalent (the notation (3.2.9) is used)
 \begin{enumerate}
 \item[(i)] $H(s)$ is a supporting hyperplane to $C$ at $d$;
@@ -131,7 +142,9 @@ Left as an exercise; the assumptions are present to make sure that every nonzero
 
 \subsection{Calculus with support functions}
 
-\begin{theorem}\label{thm:3.3.1}
+\begin{theorem}
+\label{thm:3.3.1}
+\lean{FCA_chap_C_3_3_1}
 Let $S_1$ and $S_2$ be nonempty closed convex sets; call $\sigma_1$ and $\sigma_2$ their support functions. Then
 \[
 S_1\subset S_2 \iff \sigma_1(d)\le \sigma_2(d)\text{ for all }d\in\mathbb{R}^n.
@@ -151,25 +164,29 @@ S_1\subset S_2 \iff s\in S_2\text{ for all }s\in S_1
 \]
 \end{proof}
 
-\begin{theorem}\label{thm:3.3.2}
-(i) Let $\sigma_1$ and $\sigma_2$ be the support functions of the nonempty closed convex sets $S_1$ and $S_2$. If $t_1$ and $t_2$ are positive, then
-\[
-t_1\sigma_1+t_2\sigma_2\ \text{is the support function of }\ \overline{(t_1S_1+t_2S_2)}.
-\]
-
-(ii) Let $\{\sigma_j\}_{j\in J}$ be the support functions of the family of nonempty closed convex sets $\{S_j\}_{j\in J}$. Then
-\[
-\sup_{j\in J}\sigma_j\text{ is the support function of }\overline{\operatorname{co}}\{\,\bigcup_{j\in J}S_j:\; j\in J\}.
-\]
-
-(iii) Let $\{\sigma_j\}_{j\in J}$ be the support functions of the family of closed convex sets $\{S_j\}_{j\in J}$. If
-\[
-S:=\bigcap_{j\in J}S_j\neq\varnothing,
-\]
-then
-\[
-\sigma_S=\overline{\operatorname{co}}\{\inf\sigma_j:\; j\in J\}.
-\]
+\begin{theorem}
+\label{thm:3.3.2}
+\lean{FCA_chap_C_3_3_2_i}
+\lean{FCA_chap_C_3_3_2_ii}
+\lean{FCA_chap_C_3_3_2_iii}
+\begin{enumerate}
+    \item[(i)] Let $\sigma_1$ and $\sigma_2$ be the support functions of the nonempty closed convex sets $S_1$ and $S_2$. If $t_1$ and $t_2$ are positive, then
+    \[
+    t_1\sigma_1+t_2\sigma_2\ \text{is the support function of }\ \overline{(t_1S_1+t_2S_2)}.
+    \]
+    \item[(ii)] Let $\{\sigma_j\}_{j\in J}$ be the support functions of the family of nonempty closed convex sets $\{S_j\}_{j\in J}$. Then
+    \[
+    \sup_{j\in J}\sigma_j\text{ is the support function of }\overline{\operatorname{co}}\{\,\bigcup_{j\in J}S_j:\; j\in J\}.
+    \]
+    \item[(iii)] Let $\{\sigma_j\}_{j\in J}$ be the support functions of the family of closed convex sets $\{S_j\}_{j\in J}$. If
+    \[
+    S:=\bigcap_{j\in J}S_j\neq\varnothing,
+    \]
+    then
+    \[
+    \sigma_S=\overline{\operatorname{co}}\{\inf\sigma_j:\; j\in J\}.
+    \]
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
@@ -206,6 +223,7 @@ where the last equivalence comes directly from the Definition B.2.5.3 of a close
 
 \begin{proposition}
 \label{prop:3.3.3}
+\lean{FCA_chap_C_3_3_3}
 Let $A:\mathbb{R}^n\to\mathbb{R}^m$ be a linear operator, with adjoint $A^*$ (for some scalar product $\langle\cdot,\cdot\rangle$ in $\mathbb{R}^m$). For $S\subset\mathbb{R}^n$ nonempty, we have
 \[
 \sigma_{\mathrm{cl}\,A(S)}(y)=\sigma_{S}(A^*y)\qquad\text{for all }y\in\mathbb{R}^m.
@@ -222,6 +240,7 @@ and use Proposition 2.2.1 to obtain the result.
 
 \begin{proposition}
 \label{prop:3.3.4}
+\lean{FCA_chap_C_3_3_4}
 Let $A:\mathbb{R}^m\to\mathbb{R}^n$ be a linear operator, with adjoint $A^*$ (for some scalar product $\langle\cdot,\cdot\rangle$ in $\mathbb{R}^m$). Let $\sigma$ be the support function of a nonempty closed convex set $S\subset\mathbb{R}^m$. If $\sigma$ is minorized on the inverse image
 \[
 A^{-1}(d)=\{p\in\mathbb{R}^m:\;Ap=d\}\tag{3.3.3}
@@ -247,7 +266,8 @@ but this just means
 i.e.\ $A^*s\in S$, because $\langle s,Ap\rangle=\langle A^*s,p\rangle$.
 \end{proof}
 
-\begin{theorem}\label{thm:3.3.6}
+\begin{theorem}
+\label{thm:3.3.6}
 Let $S$ and $S'$ be two nonempty compact convex sets of $\mathbb{R}^n$. Then
 \[
 \Delta(\sigma_S,\sigma_{S'}) := \max_{\|d\|\le 1} |\sigma_S(d)-\sigma_{S'}(d)| = \Delta_H(S,S') .

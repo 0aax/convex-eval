@@ -10,6 +10,7 @@ f'(x,d):=\lim_{\{q(t):t\downarrow0\}}=\inf\{q(t):t>0\}.
 
 \begin{proposition}
 \label{prop:1.1.2}
+\lean{FCA_chap_D_1_1_2}
 For fixed $x$, the function $f'(x,\cdot)$ is finite sublinear.
 \end{proposition}
 
@@ -46,7 +47,7 @@ Hence, $|f'(x,d)|\le L$ and we conclude with positive homogeneity:
 \]
 \end{proof}
 
-\begin{definition}[Subdifferential I]\label{thm:1.1.4}
+\begin{definition}[Subdifferential I]\label{def:1.1.4}
 The subdifferential $\partial f(x)$ of $f$ at $x$ is the nonempty compact convex set of $\mathbb{R}^n$ whose support function is $f'(x,\cdot)$, i.e.
 \[
 \partial f(x):=\{s\in\mathbb{R}^n:\;\langle s,d\rangle\le f'(x,d)\ \text{ for all } d\in\mathbb{R}^n\}.\tag{1.1.6}
@@ -56,6 +57,7 @@ A vector $s\in\partial f(x)$ is called a \emph{subgradient} of $f$ at $x$.
 
 \begin{proposition}
 \label{prop:1.1.6}
+\lean{FCA_chap_D_1_1_6}
 The finite sublinear function $d\mapsto\sigma(d):=f'(x,d)$ satisfies
 \[
 \sigma'(0,\delta)=f'(x,\delta)\qquad\text{for all }\delta\in\mathbb{R}^n;
@@ -90,7 +92,9 @@ f(y)\ge f(x)+\langle s,y-x\rangle\qquad\text{for all }y\in\mathbb{R}^n.
 \]
 \end{definition}
 
-\begin{theorem}\label{thm:1.2.2}
+\begin{theorem}
+\label{thm:1.2.2}
+\lean{FCA_chap_D_1_2_2}
 The definitions 1.1.4 and 1.2.1 are equivalent.
 \end{theorem}
 
@@ -112,15 +116,17 @@ When $d$ describes $\mathbb{R}^n$ and $t$ describes $\mathbb{R}_+^*$, $y:=x+td$ 
 
 \begin{proposition}
 \label{prop:1.3.1}
-(i) A vector $s\in\mathbb{R}^n$ is a subgradient of $f$ at $x$ if and only if $(s,-1)\in\mathbb{R}^n\times\mathbb{R}$ is normal to $\operatorname{epi}f$ at $(x,f(x))$.  In other words:
-\[
-N_{\operatorname{epi}f}(x,f(x))=\{(\lambda s,-\lambda): s\in\partial f(x),\ \lambda\ge 0\}.
-\]
-
-(ii) The tangent cone to the set $\operatorname{epi}f$ at $(x,f(x))$ is the epigraph of the directional-derivative function $d\mapsto f'(x,d)$:
-\[
-T_{\operatorname{epi}f}(x,f(x))=\{(d,r): r\ge f'(x,d)\}.
-\]
+\lean{FCA_chap_D_1_3_1}
+\begin{enumerate}
+    \item[(i)] A vector $s\in\mathbb{R}^n$ is a subgradient of $f$ at $x$ if and only if $(s,-1)\in\mathbb{R}^n\times\mathbb{R}$ is normal to $\operatorname{epi}f$ at $(x,f(x))$.  In other words:
+    \[
+    N_{\operatorname{epi}f}(x,f(x))=\{(\lambda s,-\lambda): s\in\partial f(x),\ \lambda\ge 0\}.
+    \]
+    \item[(ii)] The tangent cone to the set $\operatorname{epi}f$ at $(x,f(x))$ is the epigraph of the directional-derivative function $d\mapsto f'(x,d)$:
+    \[
+    T_{\operatorname{epi}f}(x,f(x))=\{(d,r): r\ge f'(x,d)\}.
+    \]
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
@@ -141,6 +147,8 @@ r\ge\max\{\langle s,d\rangle: s\in\partial f(x)\}=f'(x,d).
 \end{proof}
 
 \begin{lemma}
+\label{lem:1.3.2}
+\lean{FCA_chap_D_1_3_2}
 For the convex function $f:\mathbb{R}^n\to\mathbb{R}$ and the sublevel-set (1.3.1), we have
 \[
 T_{S_{f(x)} }(x)\subset\{d:\;f'(x,d)\le 0\}. \tag{1.3.2}
@@ -163,6 +171,7 @@ Because $f'(\cdot,\cdot)$ is a closed function, the righthand set in (1.3.3) is 
 
 \begin{proposition}
 \label{prop:1.3.3}
+\lean{FCA_chap_C_1_3_3}
 Let $g:\mathbb{R}^n\to\mathbb{R}$ be convex and suppose that $g(x_0)<0$ for some $x_0\in\mathbb{R}^n$. Then
 \[
 \operatorname{cl}\{z: g(z)<0\}=\{z: g(z)\le 0\},\tag{1.3.4}
@@ -188,6 +197,7 @@ Now, take the interior of both sides in (1.3.4). The ``int cl'' on the left is a
 
 \begin{theorem}
 \label{thm:1.3.4}
+\lean{FCA_chap_D_1_3_4}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex and suppose $0\notin\partial f(x)$. Then, $S_{f}(x)$ being the sublevel-set (1.3.1),
 \[
 T_{S_{f}(x)}(x)=\{d\in\mathbb{R}^n:\;f'(x,d)\le 0\}\tag{1.3.7}
@@ -210,7 +220,9 @@ Now, we can apply (1.3.4) with $g=f'(x,\cdot)$:
 so (1.3.7) is proved by closing the sets in (1.3.9) and using (1.3.2). Finally, take the interior of both sides in (1.3.7) and apply (1.3.5) with $g=f'(x,\cdot)$ to prove (1.3.8).
 \end{proof}
 
-\begin{theorem}\label{thm:1.3.5}
+\begin{theorem}
+\label{thm:1.3.5}
+\lean{FCA_chap_D_1_3_5}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex and suppose $0\notin\partial f(x)$.  Then a direction $d$ is normal to $S f(x)$ at $x$ if and only if there is some $t\ge 0$ and some $s\in\partial f(x)$ such that $d=ts$:
 \[
 N_{S f(x)}(x)=\mathbb{R}^+ \partial f(x).

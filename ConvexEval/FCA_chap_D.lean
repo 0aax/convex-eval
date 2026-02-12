@@ -13,34 +13,16 @@ lemma FCA_chap_D_1_1_2 {n : ℕ}
   (∀ (z : EuclideanSpace ℝ (Fin n)), f' z < ⊤ ∧ f' z > ⊥) ∧ (IsSublinear f') := by
   sorry
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.1.6 (i) -/
-lemma FCA_chap_D_1_1_6_i {n : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.1.6 -/
+lemma FCA_chap_D_1_1_6 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → ℝ)
   (x : EuclideanSpace ℝ (Fin n))
   (hf : ConvexOn ℝ Set.univ f) :
   let σ := fun (d : EuclideanSpace ℝ (Fin n)) => directionalDeriv (liftRealtoEReal f) x d
   let σ' := fun (d : EuclideanSpace ℝ (Fin n)) => directionalDeriv σ 0 d
-  ∀ (δ : EuclideanSpace ℝ (Fin n)), σ' δ = σ δ := by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.1.6 (ii) -/
-lemma FCA_chap_D_1_1_6_ii {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → ℝ)
-  (x : EuclideanSpace ℝ (Fin n))
-  (hf : ConvexOn ℝ Set.univ f) :
-  let σ := fun (d : EuclideanSpace ℝ (Fin n)) => directionalDeriv (liftRealtoEReal f) x d
-  let σ' := fun d => directionalDeriv σ 0 d
-  ∀ (δ : EuclideanSpace ℝ (Fin n)), (σ δ = σ 0 + σ' δ) ∧ (σ δ = σ' δ) := by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.1.6 (iii) -/
-lemma FCA_chap_D_1_1_6_iii {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → ℝ)
-  (x : EuclideanSpace ℝ (Fin n))
-  (hf : ConvexOn ℝ Set.univ f) :
-  let σ := fun (d : EuclideanSpace ℝ (Fin n)) => directionalDeriv (liftRealtoEReal f) x d
-  let σ' := fun d => directionalDeriv σ 0 d
-  SubdifferentialI σ 0 = SubdifferentialI (liftRealtoEReal f) x := by
+  (∀ (δ : EuclideanSpace ℝ (Fin n)), σ' δ = σ δ) ∧
+  (∀ (δ : EuclideanSpace ℝ (Fin n)), (σ δ = σ 0 + σ' δ) ∧ (σ δ = σ' δ)) ∧
+  (SubdifferentialI σ 0 = SubdifferentialI (liftRealtoEReal f) x) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.2.2 -/
@@ -51,19 +33,8 @@ lemma FCA_chap_D_1_2_2 {n : ℕ}
   s ∈ SubdifferentialI (liftRealtoEReal f) x ↔ s ∈ SubdifferentialII (liftRealtoEReal f) x := by
   sorry
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.3.1 (i) -/
-lemma FCA_chap_D_1_3_1_i {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → ℝ)
-  (x s : EuclideanSpace ℝ (Fin n))
-  (hf : ConvexOn ℝ Set.univ f) :
-  let epi_concat := {v : EuclideanSpace ℝ (Fin (n + 1)) |
-                         ∃ z ∈ (epigraph (liftRealtoEReal f)), v = Fin.snoc z.1 z.2}
-  let s' : EuclideanSpace ℝ (Fin (n + 1)) := Fin.snoc s (-1)
-  IsSubgradientAt (liftRealtoEReal f) x s ↔ IsNormalTo epi_concat (Fin.snoc x (f x)) s' := by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.3.1 (ii) -/
-lemma FCA_chap_D_1_3_1_ii {n : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.3.1 -/
+lemma FCA_chap_D_1_3_1 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → ℝ)
   (x s : EuclideanSpace ℝ (Fin n))
   (hf : ConvexOn ℝ Set.univ f) :
@@ -72,7 +43,9 @@ lemma FCA_chap_D_1_3_1_ii {n : ℕ}
                      ∃ z ∈ (epigraph (f' x)), v = Fin.snoc z.1 z.2}
   let epi_concat := {v : EuclideanSpace ℝ (Fin (n + 1)) |
                          ∃ z ∈ (epigraph (liftRealtoEReal f)), v = Fin.snoc z.1 z.2}
-  tangentConeAt ℝ epi_concat (Fin.snoc x (f x)) = f'_epi := by
+  let s' : EuclideanSpace ℝ (Fin (n + 1)) := Fin.snoc s (-1)
+  (IsSubgradientAt (liftRealtoEReal f) x s ↔ IsNormalTo epi_concat (Fin.snoc x (f x)) s') ∧
+  (tangentConeAt ℝ epi_concat (Fin.snoc x (f x)) = f'_epi) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 1.3.2 -/
@@ -84,28 +57,14 @@ lemma FCA_chap_D_1_3_2 {n : ℕ}
   tangentConeAt ℝ S x ⊆ {d | directionalDeriv (liftRealtoEReal f) x d ≤ 0} := by
   sorry
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 1.3.3 (i) -/
-lemma FCA_chap_D_1_3_3_i {n : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 1.3.3 -/
+lemma FCA_chap_D_1_3_3 {n : ℕ}
   (g : EuclideanSpace ℝ (Fin n) → ℝ)
   (hg_convex : ConvexOn ℝ Set.univ g)
   (hg_neg : ∃ (x₀ : EuclideanSpace ℝ (Fin n)), g x₀ < 0):
-  closure {z | g z < 0} = {z | g z ≤ 0} := by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 1.3.3 (ii) -/
-lemma FCA_chap_D_1_3_3_ii {n : ℕ}
-  (g : EuclideanSpace ℝ (Fin n) → ℝ)
-  (hg_convex : ConvexOn ℝ Set.univ g)
-  (hg_neg : ∃ (x₀ : EuclideanSpace ℝ (Fin n)), g x₀ < 0):
-  {z | g z < 0} = interior {z | g z ≤ 0} := by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 1.3.3 (iii) -/
-lemma FCA_chap_D_1_3_3_iii {n : ℕ}
-  (g : EuclideanSpace ℝ (Fin n) → ℝ)
-  (hg_convex : ConvexOn ℝ Set.univ g)
-  (hg_neg : ∃ (x₀ : EuclideanSpace ℝ (Fin n)), g x₀ < 0):
-  frontier {z | g z < 0} = {z | g z = 0} := by
+  (closure {z | g z < 0} = {z | g z ≤ 0}) ∧
+  ({z | g z < 0} = interior {z | g z ≤ 0}) ∧
+  (frontier {z | g z < 0} = {z | g z = 0}) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 1.3.4 -/
@@ -145,24 +104,15 @@ lemma FCA_chap_D_2_1_1 {n : ℕ}
   abs (f (x + h) - f x - realDirectionalDeriv f x h) ≤ ε • ‖h‖) := by
   sorry
 
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 2.1.3 (i) -/
-lemma FCA_chap_D_2_1_3_i {n : ℕ}
+/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 2.1.3 -/
+lemma FCA_chap_D_2_1_3 {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → ℝ)
   (s h : EuclideanSpace ℝ (Fin n))
   (hf_convex : ConvexOn ℝ Set.univ f) :
-  ∀ (x : EuclideanSpace ℝ (Fin n)),
-  (h ∈ normalConeAt (SubdifferentialI (liftRealtoEReal f) x) s) →
-  Asymptotics.IsLittleO (𝓝 0) (fun h => f (x + h) - f x - inner ℝ s h) (fun h => ‖h‖) := by
-  sorry
-
-/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 2.1.3 (ii) -/
-lemma FCA_chap_D_2_1_3_ii {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → ℝ)
-  (s h : EuclideanSpace ℝ (Fin n))
-  (hf_convex : ConvexOn ℝ Set.univ f) :
-  ∀ (x : EuclideanSpace ℝ (Fin n)),
-  (s ∈ exposedFace (SubdifferentialI (liftRealtoEReal f) x) h) →
-  Asymptotics.IsLittleO (𝓝 0) (fun h => f (x + h) - f x - inner ℝ s h) (fun h => ‖h‖) := by
+  (∀ (x : EuclideanSpace ℝ (Fin n)), (h ∈ normalConeAt (SubdifferentialI (liftRealtoEReal f) x) s) →
+  Asymptotics.IsLittleO (𝓝 0) (fun h => f (x + h) - f x - inner ℝ s h) (fun h => ‖h‖)) ∧
+  (∀ (x : EuclideanSpace ℝ (Fin n)), (s ∈ exposedFace (SubdifferentialI (liftRealtoEReal f) x) h) →
+  Asymptotics.IsLittleO (𝓝 0) (fun h => f (x + h) - f x - inner ℝ s h) (fun h => ‖h‖)) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 2.1.5  -/

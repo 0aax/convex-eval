@@ -154,6 +154,7 @@ For $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, the following three properties
 \end{proposition}
 
 \begin{proof}
+
 [(i) $\Rightarrow$ (ii)] Let $(y_k,r_k)_k$ be a sequence of $\operatorname{epi} f$ converging to $(x,r)$ for $k\to+\infty$. Since $f(y_k)\le r_k$ for all $k$, the l.s.c.\ relation (1.2.3) readily gives
 \[
 r=\lim r_k \ge \liminf f(y_k)\ge \liminf_{y\to x} f(y)\ge f(x),
@@ -163,6 +164,7 @@ i.e.\ $(x,r)\in\operatorname{epi} f$.
 [(ii) $\Rightarrow$ (iii)] Construct the sublevel-sets $S_r(f)$ as in Remark 1.1.7: the closed sets $\operatorname{epi} f$ and $\mathbb{R}^n\times\{r\}$ have a closed intersection.
 
 [(iii) $\Rightarrow$ (i)] Suppose $f$ is not lower semi-continuous at some $x$: there is a (sub)sequence $(y_k)$ converging to $x$ such that $f(y_k)$ converges to $\rho<f(x)\le +\infty$. Pick $r\in[\rho,f(x))$: for $k$ large enough, $f(y_k)\le r< f(x)$; hence $S_r(f)$ contains the tail of $(y_k)$ but not its limit $x$. Consequently, this $S_r(f)$ is not closed.
+
 \end{proof}
 
 \begin{definition}

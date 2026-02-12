@@ -2,6 +2,7 @@
 
 \begin{lemma}
 \label{lem:2.1.1}
+\lean{FCA_chap_D_2_1_1}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex and $x\in\mathbb{R}^n$. For any $\varepsilon>0$, there exists $\delta>0$ such that $\|h\|\le\delta$ implies
 \[
 \big|f(x+h)-f(x)-f'(x,h)\big|\le\varepsilon\|h\|.
@@ -31,7 +32,9 @@ Extracting a subsequence if necessary, assume that $h_k/t_k\to d$ for some $d$ o
 Divide by $t_k>0$ and pass to the limit to obtain the contradiction $\varepsilon\le 0$.
 \end{proof}
 
-\begin{corollary}\label{cor:2.1.3}
+\begin{corollary}
+\label{cor:2.1.3}
+\lean{FCA_chap_D_2_1_3}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. At any $x$,
 \[
 f(x+h)=f(x)+\langle s,h\rangle+o(\|h\|)
@@ -42,12 +45,14 @@ s\in\partial f(x)(h)\iff h\in N_{\partial f(x)}(s)\iff s=p_{\partial f(x)}(s+h).
 \]
 \end{corollary}
 
-\begin{corollary}\label{cor:2.1.4}
+\begin{corollary}
+\label{cor:2.1.4}
 If the convex $f$ is (G\^ateaux) differentiable at $x$, its only subgradient at $x$ is its gradient $\nabla f(x)$. Conversely, if $\partial f(x)$ contains only one element $s$, then $f$ is (Fr\'echet) differentiable at $x$, with $\nabla f(x)=s$.
 \end{corollary}
 
 \begin{proposition}
 \label{prop:2.1.5}
+\lean{FCA_chap_D_2_1_5}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. For all $x$ and $d$ in $\mathbb{R}^n$, we have
 \[
 F_{\partial f(x)}(d)=\partial[f'(x,\cdot)](d).
@@ -69,18 +74,21 @@ f'(x,d)+f'(x,d'')\ge f'(x,d')\ge f'(x,d)+\langle s,d''\rangle\qquad\text{for all
 which implies $f'(x,\cdot)\ge\langle s,\cdot\rangle$, hence $s\in\partial f(x)$. Also, putting $d'=0$ in (2.1.4) shows that $\langle s,d\rangle\ge f'(x,d)$. Altogether, we have $s\in F_{\partial f(x)}(d)$. \qedhere
 \end{proof}
 
-\begin{definition}\label{def:2.1.6}
+\begin{definition}
+\label{def:2.1.6}
 A point $x$ at which $\partial f(x)$ has more than one element --- i.e.\ at which $f$ is not differentiable --- is called a \emph{kink} (or corner-point) of $f$.
 \end{definition}
 
 \subsection{Minimality conditions}
 
-\begin{theorem}\label{thm:2.2.1}
+\begin{theorem}
+\label{thm:2.2.1}
+\lean{FCA_chap_D_2_2_1}
 For $f:\mathbb{R}^n\to\mathbb{R}$ convex, the following three properties are equivalent:
-\begin{enumerate}[(i)]
-\item $f$ is minimized at $x$ over $\mathbb{R}^n$, i.e., $f(y)\ge f(x)$ for all $y\in\mathbb{R}^n$;
-\item $0\in\partial f(x)$;
-\item $f'(x,d)\ge 0$ for all $d\in\mathbb{R}^n$.
+\begin{enumerate}
+\item[(i)] $f$ is minimized at $x$ over $\mathbb{R}^n$, i.e., $f(y)\ge f(x)$ for all $y\in\mathbb{R}^n$;
+\item[(ii)] $0\in\partial f(x)$;
+\item[(iii)] $f'(x,d)\ge 0$ for all $d\in\mathbb{R}^n$.
 \end{enumerate}
 \end{theorem}
 
@@ -92,6 +100,7 @@ The equivalence (i) $\Leftrightarrow$ (ii) [resp.\ (ii) $\Leftrightarrow$ (iii)]
 
 \begin{lemma}
 \label{lem:2.3.1}
+\lean{FCA_chap_D_2_3_1}
 The subdifferential of $\varphi$ defined by (2.3.1) is
 \[
 \partial\varphi(t)=\{\;s,y-x\;:\;s\in\partial f(x_t)\;\}
@@ -120,7 +129,9 @@ f'(x_t,y-x)=\max_{s\in\partial f(x_t)}\langle s,y-x\rangle,
 we obtain \(\partial\varphi(t):=[D_{-}\varphi(t),D_{+}\varphi(t)]=\{\langle s,y-x\rangle : s\in\partial f(x)\}.\)
 \end{proof}
 
-\begin{theorem}\label{thm:2.3.3}
+\begin{theorem}
+\label{thm:2.3.3}
+\lean{FCA_chap_C_2_3_3}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. Given two points $x\neq y$ in $\mathbb{R}^n$, there exist $t\in ]0,1[$ and $s\in\partial f(x_t)$ such that
 \[
 f(y)-f(x)=\langle s,\,y-x\rangle.
@@ -143,7 +154,8 @@ which is clearly convex. Computing directional derivatives gives easily $\partia
 \]
 \end{proof}
 
-\begin{theorem}\label{thm:2.3.4}
+\begin{theorem}
+\label{thm:2.3.4}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. For $x,y\in\mathbb{R}^n$,
 \[
 f(y)-f(x)=\int_0^1\langle\partial f(xt),\,y-x\rangle\,dt.

@@ -202,8 +202,7 @@ C is compact if and only if $\gamma_C(x)>0$ for all $x\neq 0$.
 
 \begin{proposition}
 \label{prop:1.3.1}
-\lean{FCA_chap_C_1_3_1_i}
-\lean{FCA_chap_C_1_3_1_ii}
+\lean{FCA_chap_C_1_3_1_i,FCA_chap_C_1_3_1_ii}
 \begin{enumerate}
     \item[(i)] If $\sigma_1$ and $\sigma_2$ are [closed] sublinear and $t_1,t_2$ are positive numbers, then $\sigma := t_1\sigma_1 + t_2\sigma_2$ is [closed] sublinear, if not identically $+\infty$.
     \item[(ii)] If $\{\sigma_j\}_{j\in J}$ is a family of [closed] sublinear functions, then $\sigma := \sup_{j\in J}\sigma_j$ is [closed] sublinear, if not identically $+\infty$.
@@ -216,8 +215,7 @@ Concerning convexity and closedness, everything is known from \S B.2. Note in pa
 
 \begin{proposition}
 \label{prop:1.3.2}
-\lean{FCA_chap_C_1_3_2_i}
-\lean{FCA_chap_C_1_3_2_ii}
+\lean{FCA_chap_C_1_3_2_i,FCA_chap_C_1_3_2_ii}
 Let $\{\sigma_j\}_{j\in J}$ be a family of sublinear functions all minorized by some linear function. Then
 \begin{enumerate}
     \item[(i)] $\sigma := \operatorname{co}\big(\inf_{j\in J}\sigma_j\big)$ is sublinear.
@@ -248,7 +246,8 @@ In view of positive homogeneity, the variables $\alpha_j$ play no role by themse
 We recognize the infimal convolution of the $\sigma_j$'s.
 \end{proof}
 
-\begin{theorem}\label{thm:1.3.3}
+\begin{theorem}
+\label{thm:1.3.3}
 For $\sigma_1$ and $\sigma_2$ in the set $\Phi$ of sublinear functions that are finite everywhere, define
 \[
 \Delta(\sigma_1,\sigma_2):=\max_{\|x\|\le 1}|\sigma_1(x)-\sigma_2(x)|.
@@ -283,7 +282,9 @@ so there holds
 which is the required inequality.
 \end{proof}
 
-\begin{theorem}\label{thm:1.3.5}
+\begin{theorem}
+\label{thm:1.3.5}
+\lean{FCA_chap_C_1_3_5}
 Let $(\sigma_k)$ be a sequence of finite sublinear functions and let $\sigma$ be a finite function.  Then the following are equivalent when $k\to+\infty$:
 \begin{enumerate}
 \item[(i)] $(\sigma_k)$ converges pointwise to $\sigma$;

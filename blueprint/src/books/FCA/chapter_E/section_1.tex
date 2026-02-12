@@ -11,7 +11,9 @@ For simplicity, we may also let $x$ run over the whole space instead of $\operat
 The mapping $f\mapsto f^{*}$ will often be called the \emph{conjugacy} operation, or the Legendre–Fenchel transform.
 \end{definition}
 
-\begin{theorem}\label{thm:1.1.2}
+\begin{theorem}
+\label{thm:1.1.2}
+\lean{FCA_chap_E_1_1_2}
 For $f$ satisfying (1.1.1), the conjugate $f^*$ is a closed convex function: $f^*\in\Conv\mathbb{R}^n$.
 \end{theorem}
 
@@ -22,13 +24,13 @@ See Example B.2.1.3.
 \subsection{Interpretations}
 
 \begin{proposition}
+\label{prop:1.2.1}
+\lean{FCA_chap_E_1_2_1}
 There holds for all $x\in\mathbb{R}^n$
 \[
 f^*(s)=\sigma_{\mathrm{epi}\,f}(s,-1)=\sup\{\langle s,x\rangle - r : (x,r)\in\mathrm{epi}\,f\}.
 \tag{1.2.1}
 \]
-\end{proposition}
-
 It follows that the support function of $\mathrm{epi}\,f$ has the expression
 \[
 \sigma_{\mathrm{epi}\,f}(s,-u)=
@@ -39,6 +41,7 @@ u\,f^*\!\bigl(\tfrac{1}{u}s\bigr) & \text{if } u>0,\\[4pt]
 \end{cases}
 \tag{1.2.2}
 \]
+\end{proposition}
 
 \begin{proof}
 In (1.2.1), the right-most term can be written
@@ -57,7 +60,9 @@ Finally, for $u=0$, we have by definition
 and we recognize $\sigma_{\operatorname{dom} f}(s)$.
 \end{proof}
 
-\begin{proposition}\label{thm:1.2.2}
+\begin{proposition}
+\label{thm:1.2.2}
+\lean{FCA_chap_E_1_2_2}
 For $f\in\operatorname{Conv}\mathbb{R}^n$,
 \[
 \sigma_{\operatorname{dom} f}(s)=\sigma_{\operatorname{epi} f}(s,0)=(f^*)^\infty(s)\quad\text{for all }s\in\mathbb{R}^n.
@@ -71,39 +76,43 @@ Use direct calculations; or see Proposition B.2.2.2 and the calculations in Exam
 
 \subsection{First properties}
 
-\begin{proposition}{1.3.1}
+\begin{proposition}
+\label{prop:1.3.1}
+\lean{FCA_chap_E_1_3_1_i}
+\lean{FCA_chap_E_1_3_1_ii}
+\lean{FCA_chap_E_1_3_1_iii}
+\lean{FCA_chap_E_1_3_1_iv}
+\lean{FCA_chap_E_1_3_1_v}
+\lean{FCA_chap_E_1_3_1_vi}
+\lean{FCA_chap_E_1_3_1_vii}
+\lean{FCA_chap_E_1_3_1_viii}
 The functions $f$, $f_j$ appearing below are assumed to satisfy (1.1.1).
-
-(i) The conjugate of the function $g(x):=f(x)+r$ is $g^*(s)=f^*(s)-r$.
-
-(ii) With $t>0$, the conjugate of the function $g(x):=tf(x)$ is $g^*(s)=t f^*(s/t)$.
-
-(iii) With $t\neq0$, the conjugate of the function $g(x):=f(tx)$ is $g^*(s)=f^*(s/t)$.
-
-(iv) More generally: if $A$ is an invertible linear operator, $(f\circ A)^*=f^*\circ (A^{-1})^*$.
-
-(v) The conjugate of the function $g(x):=f(x-x_{0})$ is $g^{*}(s)=f^{*}(s)+\langle s,x_{0}\rangle$.
-
-(vi) The conjugate of the function $g(x):=f(x)+\langle s_{0},x\rangle$ is $g^{*}(s)=f^{*}(s-s_{0})$.
-
-(vii) If $f_{1}\le f_{2}$, then $f_{1}^{*}\ge f_{2}^{*}$.
-
-(viii) ``Convexity'' of the conjugation: if $\mathrm{dom}\,f_{1}\cap\mathrm{dom}\,f_{2}\neq\varnothing$ and $\alpha\in]0,1[$,
-\[
-[\alpha f_{1}+(1-\alpha)f_{2}]^{*}\le \alpha f_{1}^{*}+(1-\alpha)f_{2}^{*};
-\]
-
-(ix) The Legendre-Fenchel transform preserves decomposition: with
-\[
-\mathbb{R}^{n}:=\mathbb{R}^{n_{1}}\times\cdots\times\mathbb{R}^{n_{m}}\ni x\mapsto f(x):=\sum_{j=1}^{m}f_{j}(x_{j})
-\]
-and assuming that $\mathbb{R}^{n}$ has the scalar product of a product-space, there holds
-\[
-f^{*}(s_{1},\dots,s_{m})=\sum_{j=1}^{m}f_{j}^{*}(s_{j}) .
-\]
+\begin{enumerate}
+    \item[(i)] The conjugate of the function $g(x):=f(x)+r$ is $g^*(s)=f^*(s)-r$.
+    \item[(ii)] With $t>0$, the conjugate of the function $g(x):=tf(x)$ is $g^*(s)=t f^*(s/t)$.
+    \item[(iii)] With $t\neq0$, the conjugate of the function $g(x):=f(tx)$ is $g^*(s)=f^*(s/t)$.
+    \item[(iv)] More generally: if $A$ is an invertible linear operator, $(f\circ A)^*=f^*\circ (A^{-1})^*$.
+    \item[(v)] The conjugate of the function $g(x):=f(x-x_{0})$ is $g^{*}(s)=f^{*}(s)+\langle s,x_{0}\rangle$.
+    \item[(vi)] The conjugate of the function $g(x):=f(x)+\langle s_{0},x\rangle$ is $g^{*}(s)=f^{*}(s-s_{0})$.
+    \item[(vii)] If $f_{1}\le f_{2}$, then $f_{1}^{*}\ge f_{2}^{*}$.
+    \item[(viii)] ``Convexity'' of the conjugation: if $\mathrm{dom}\,f_{1}\cap\mathrm{dom}\,f_{2}\neq\varnothing$ and $\alpha\in]0,1[$,
+    \[
+    [\alpha f_{1}+(1-\alpha)f_{2}]^{*}\le \alpha f_{1}^{*}+(1-\alpha)f_{2}^{*};
+    \]
+    \item[(ix)] The Legendre-Fenchel transform preserves decomposition: with
+    \[
+    \mathbb{R}^{n}:=\mathbb{R}^{n_{1}}\times\cdots\times\mathbb{R}^{n_{m}}\ni x\mapsto f(x):=\sum_{j=1}^{m}f_{j}(x_{j})
+    \]
+    and assuming that $\mathbb{R}^{n}$ has the scalar product of a product-space, there holds
+    \[
+    f^{*}(s_{1},\dots,s_{m})=\sum_{j=1}^{m}f_{j}^{*}(s_{j}) .
+    \]
+\end{enumerate}
 \end{proposition}
 
-\begin{proposition}\label{prop:1.3.2}
+\begin{proposition}
+\label{prop:1.3.2}
+\lean{FCA_chap_E_1_3_2}
 Let $f$ satisfy (1.1.1), let $H$ be a subspace of $\mathbb{R}^n$, and call $p_H$ the operator of orthogonal projection onto $H$. Suppose that there is a point in $H$ where $f$ is finite. Then $f+p_{iH}$ satisfies (1.1.1) and its conjugate is
 \[
 (f+p_{iH})^*=(f\circ p_H)^*\circ p_H .
@@ -121,6 +130,8 @@ When $y$ describes $\mathbb{R}^n$, $p_H y$ describes $H$ so we can write, knowin
 \end{proof}
 
 \begin{proposition}
+\label{prop:1.3.4}
+\lean{FCA_chap_E_1_3_4}
 For $f$ satisfying (1.1.1), let a subspace $V$ contain the subspace parallel to $\operatorname{aff\,dom}f$ and set $U:=V^{\perp}$. For any $z\in\operatorname{aff\,dom}f$ and any $s\in\mathbb{R}^{n}$ decomposed as $s=s_{U}+s_{V}$, there holds
 \[
 f^{*}(s)=\langle s_{U},z\rangle+f^{*}(s_{V}).
@@ -139,6 +150,8 @@ f^{*}(s)&=\sup_{v\in V}[\langle s_{U}+s_{V},z+v\rangle-f(z+v)]\\
 \end{proof}
 
 \begin{theorem}
+\label{thm:1.3.5}
+\lean{FCA_chap_E_1_3_5}
 For $f$ satisfying (1.1.1), the function $f^{**}$ of (1.3.2) is the pointwise supremum of all the affine functions on $\mathbb{R}^n$ majorized by $f$.  In other words
 \[
 \operatorname{epi} f^{**}=\overline{\operatorname{co}}\bigl(\operatorname{epi} f\bigr).
@@ -170,8 +183,10 @@ Then we obtain, for $x\in\mathbb{R}^n$,
 Geometrically, the epigraphs of the affine functions associated with $(s,r)\in\Sigma$ are the (non-vertical) closed half-spaces containing $\operatorname{epi} f$.  From §B.2.5, the epigraph of their supremum is the closed convex hull of $\operatorname{epi} f$, and this proves (1.3.3).
 \end{proof}
 
-\begin{corollary}\label{cor:1.3.6}
-If $g$ is a function satisfying $\overline{\operatorname{co}}\,f \le g \le f$, then $g^* = f^*$. The function $f$ is equal to its biconjugate $f^{**}$ if and only if $f\in\operatorname{Conv}\mathbb{R}^n$.
+\begin{corollary}
+\label{cor:1.3.6}
+\lean{FCA_chap_E_1_3_6}
+If $g$ is a function satisfying $\overline{\operatorname{co}}\,f \le g \le f$, then $g^* = f^*$. The function $f$ is equal to its biconjugate $f^{**}$ if and only if $f\in\overline{\operatorname{Conv}}\mathbb{R}^n$.
 \end{corollary}
 
 \begin{proof}
@@ -189,6 +204,7 @@ A function $f$ satisfying (1.1.1) is said to be coercive [resp.\ 1-coercive] whe
 
 \begin{proposition}
 \label{prop:1.3.8}
+\lean{FCA_chap_E_1_3_8}
 If $f$ satisfying (1.1.1) is 1-coercive, then $f^*(s) < +\infty$ for all $s \in \mathbb{R}^n$.
 \end{proposition}
 
@@ -206,6 +222,7 @@ Altogether, $f^*(s) \le \max\{0,M\}$. \qed
 
 \begin{proposition}
 \label{prop:1.3.9}
+\lean{FCA_chap_E_1_3_9}
 For $f$ satisfying (1.1.1), the following holds:
 \begin{enumerate}
 \item[(i)] If $x_0\in\operatorname{int}\dom f$ then $f^*-\langle x_0,\cdot\rangle$ is $0$-coercive;
@@ -223,7 +240,9 @@ Then, as demonstrated in Definition B.3.2.5, $0$-coercivity of $f^*-\langle x_0,
 
 \subsection{Subdifferentials and extended-valued functions}
 
-\begin{theorem}\label{thm:1.4.1}
+\begin{theorem}
+\label{thm:1.4.1}
+\lean{FCA_chap_E_1_4_1}
 For $f$ satisfying (1.1.1) and $\partial f$ defined by (1.4.1), $s\in\partial f(x)$ if and only if
 \[
 f^*(s)+f(x)-\langle s,x\rangle=0\quad(\text{or }\le 0).
@@ -239,7 +258,9 @@ To say that $s$ lies in the set (1.4.1) is to say that
 i.e.\ $f^*(s)\le\langle s,x\rangle-f(x)$; but this is indeed an equality, in view of Fenchel's inequality (1.1.3).
 \end{proof}
 
-\begin{theorem}\label{thm:1.4.2}
+\begin{theorem}
+\label{thm:1.4.2}
+\lean{FCA_chap_E_1_4_2}
 Let $f\in\operatorname{Conv}\mathbb{R}^n$.  Then $\partial f(x)\neq\varnothing$ whenever $x\in\operatorname{ri}\dom f$.
 \end{theorem}
 
@@ -249,6 +270,7 @@ This is Proposition B.1.2.1.
 
 \begin{proposition}
 \label{prop:1.4.3}
+\lean{FCA_chap_E_1_4_3}
 For $f$ satisfying (1.1.1), the following properties hold:
 \[
 \partial f(x)\neq\varnothing \quad\Longrightarrow\quad (\overline{\operatorname{co}}\,f)(x)=f(x);\tag{1.4.3}
@@ -279,7 +301,9 @@ f^*(s)+f^{**}(x)-\langle s,x\rangle
 which means $x\in\partial f^*(s)$: we have just proved (1.4.5).
 \end{proof}
 
-\begin{corollary}\label{thm:1.4.4}
+\begin{corollary}
+\label{thm:1.4.4}
+\lean{FCA_chap_E_1_4_4}
 If $f\in\operatorname{Conv}\mathbb{R}^n$, the following equivalences hold:
 \[
 f(x)+f^*(s)-\langle s,x\rangle=0\ (\text{or }\le 0)
