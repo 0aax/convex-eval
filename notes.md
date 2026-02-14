@@ -14,3 +14,8 @@
     - `IsKPosHomogeneous` check raising to a real power `t ^ k`.
     - The section on subgradients is for convex f, now the question is whether this constraint should be encoded in the defs.
     - `Biconjugate`
+- Sublinearity
+    - C.1.1.4
+    - C.1.3.1.i/ii
+    - C.1.3.2
+    - `C.3.3.3` is for a general scalar product, the formalization is for the standard Euclidean inner product.

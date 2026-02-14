@@ -1,7 +1,7 @@
 \subsection{Separation between convex sets}
 
 \begin{theorem}
-\label{thm:4.1.1}
+\label{thm:CAMA-chap3-4.1.1}
 \lean{CAMA_chap_3_4_1_1}
 Let \(C\subset\mathbb{R}^n\) be nonempty closed convex, and let \(x\notin C\). Then there exists \(s\in\mathbb{R}^n\) such that
 \[
@@ -23,7 +23,7 @@ and our $s$ is a convenient answer for (4.1.1).
 \end{proof}
 
 \begin{corollary}[Strict Separation of Convex Sets]
-\label{cor:4.1.3}
+\label{cor:CAMA-chap3-4.1.3}
 \lean{CAMA_chap_3_4_1_3}
 Let $C_1,\,C_2$ be two nonempty closed convex sets with $C_1\cap C_2=\varnothing$. If $C_2$ is bounded, there exists $s\in\mathbb{R}^n$ such that
 \[
@@ -46,7 +46,7 @@ Because $C_2$ is bounded, the last infimum (is a min and) is finite and can be m
 \end{proof}
 
 \begin{theorem}[Proper Separation of Convex Sets]
-\label{thm:4.1.4}
+\label{thm:CAMA-chap3-4.1.4}
 \lean{CAMA_chap_3_4_1_4}
 If the two nonempty convex sets $C_1$ and $C_2$ satisfy $\operatorname{ri}C_1\cap(\operatorname{ri}C_2)=\varnothing$, they can be properly separated.
 \end{theorem}
@@ -54,7 +54,7 @@ If the two nonempty convex sets $C_1$ and $C_2$ satisfy $\operatorname{ri}C_1\ca
 \subsection{First consequences of the separation properties}
 
 \begin{lemma}
-\label{lem:4.2.1}
+\label{lem:CAMA-chap3-4.2.1}
 \lean{CAMA_chap_3_4_2_1}
 Let $x\in\partial C$, where $C\neq\varnothing$ is convex in $\mathbb{R}^n$ (naturally $C\neq\mathbb{R}^n$). There exists a hyperplane supporting $C$ at $x$.
 \end{lemma}
@@ -78,7 +78,7 @@ which is the required result $\langle s,x\rangle=r\ge\langle s,y\rangle$ for all
 \end{proof}
 
 \begin{proposition}
-\label{prop:4.2.3}
+\label{prop:CAMA-chap3-4.2.3}
 \lean{CAMA_chap_3_4_2_3}
 Let $S\subset\mathbb{R}^n$ and $C:=\operatorname{co}S$. Any $x\in C\cap\operatorname{bd}C$ can be represented as a convex combination of $n$ elements of $S$.
 \end{proposition}
@@ -99,7 +99,7 @@ so each $\langle s,x_i\rangle - r$ is actually $0$. Each $x_i$ is therefore not 
 \end{proof}
 
 \begin{theorem}
-\label{thm:4.2.4}
+\label{thm:CAMA-chap3-4.2.4}
 \lean{CAMA_chap_3_4_2_4}
 Let $\varnothing\neq C\subseteq\mathbb{R}^n$ be convex. The set $C^*$ defined above is the closure of $C$.
 \end{theorem}
@@ -113,7 +113,7 @@ Then $(s_0,r_0)\in\Sigma_C$; but $x\notin H_{s_0,r_0}$, hence $x\notin C^*$.
 \end{proof}
 
 \begin{corollary}
-\label{cor:4.2.5}
+\label{cor:CAMA-chap3-4.2.5}
 The data $(s_j,r_j)\in\mathbb{R}^n\times\mathbb{R}$ for $j$ in an arbitrary index set $J$ is equivalent to the data of a closed convex set $C$ via the relation
 \[
 C=\bigcap_{j\in J}\{x\in\mathbb{R}^n:\langle s_j,x\rangle\le r_j\}.
@@ -124,7 +124,7 @@ C=\bigcap_{j\in J}\{x\in\mathbb{R}^n:\langle s_j,x\rangle\le r_j\}.
 If $C$ is given, define $\{(s_j,r_j)\}_{J}:=\Sigma_C$ as in (4.2.2). If $\{(s_j,r_j)\}_J$ is given, the intersection of the corresponding half-spaces is a closed convex set. Note here that we can define at the same time the whole of $\mathbb{R}^n$ and the empty sets as two extreme cases.
 \end{proof}
 
-\begin{definition}[Polyhedral Sets]\label{def:4.2.6}
+\begin{definition}[Polyhedral Sets]\label{def:CAMA-chap3-4.2.6}
 A \emph{closed convex polyhedron} is an intersection of finitely many half-spaces.  Take $(s_1,r_1),\ldots,(s_m,r_m)$ in $\mathbb{R}^n\times\mathbb{R}$, with $s_i\neq 0$ for $i=1,\ldots,m$; then define
 \[
 P := \{x\in\mathbb{R}^n : \langle s_j,x\rangle \le r_j\ \text{ for } j=1,\ldots,m\},
@@ -139,7 +139,7 @@ A \emph{closed convex polyhedral cone} is the special case where $b=0$.
 \end{definition}
 
 \begin{proposition}
-\label{prop:4.2.7}
+\label{prop:CAMA-chap3-4.2.7}
 \lean{CAMA_chap_3_4_2_7}
 Let $K$ be a convex cone with polar $K^{\circ}$; then, the polar $K^{\circ\circ}$ of $K^{\circ}$ is the closure of $K$.
 \end{proposition}
@@ -171,7 +171,7 @@ in which we recognize the definition of $K^{\circ\circ}$.
 \subsection{The lemma of Minkowski and Farkas}
 
 \begin{lemma}[Farkas I]
-\label{lem:4.3.1}
+\label{lem:CAMA-chap3-4.3.1}
 \lean{CAMA_chap_3_4_3_1}
 Let $b,s_1,\dots,s_m$ be given in $\mathbb{R}^n$. The set
 \[
@@ -191,7 +191,7 @@ b\in\operatorname{cone}\{s_1,\dots,s_m\}.
 \end{lemma}
 
 \begin{lemma}[Farkas II]
-\label{lem:4.3.2}
+\label{lem:CAMA-chap3-4.3.2}
 \lean{CAMA_chap_3_4_3_2}
 Let $b,s_1,\dots,s_m$ be given in $\mathbb{R}^n$. Then exactly one of the following statements is true.
 \begin{enumerate}
@@ -210,7 +210,7 @@ has a solution $x\in\mathbb{R}^n$.
 \end{lemma}
 
 \begin{lemma}[Farkas III]
-\label{lem:4.3.3}
+\label{lem:CAMA-chap3-4.3.3}
 \lean{CAMA_chap_3_4_3_3}
 Let $s_1,\dots,s_m$ be given in $\mathbb{R}^n$. Then the convex cone
 \[
@@ -246,7 +246,7 @@ Now, if there is some $i$ such that the generators of $K_i$ are linearly depende
 \end{proof}
 
 \begin{theorem}[Generalized Farkas]
-\label{thm:4.3.4}
+\label{thm:CAMA-chap3-4.3.4}
 Let be given $(b,r)$ and $(s_j,\rho_j)$ in $\mathbb{R}^n\times\mathbb{R}$, where $j$ varies in an (arbitrary) index set $J$. Suppose that the system of inequalities
 \[
 \langle s_j,x\rangle \le \rho_j\qquad\text{for all }j\in J

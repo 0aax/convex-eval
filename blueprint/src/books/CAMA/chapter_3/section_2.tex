@@ -1,6 +1,6 @@
 \subsection{Relative interior}
 
-\begin{definition}\label{def:2.1.1}
+\begin{definition}\label{def:CAMA-chap3-2.1.1}
 The \emph{relative interior} \(\operatorname{ri} C\) (or \(\operatorname{relint} C\)) of a convex set \(C \subset \mathbb{R}^n\) is the interior of \(C\) for the topology relative to the affine hull of \(C\).  In other words: \(x \in \operatorname{ri} C\) if and only if
 \[
 x \in \operatorname{aff} C \quad\text{and}\quad \exists \delta>0\ \text{such that}\ (\operatorname{aff} C)\cap B(x,\delta)\subset C .
@@ -9,7 +9,7 @@ The \emph{dimension} of a convex set \(C\) is the dimension of its affine hull, 
 \end{definition}
 
 \begin{theorem}
-\label{thm:2.1.3}
+\label{thm:CAMA-chap3-2.1.3}
 \lean{CAMA_chap_3_2_1_3}
 If $C\neq\varnothing$, then $\operatorname{ri}C\neq\varnothing$.  In fact, $\dim(\operatorname{ri}C)=\dim C$.
 \end{theorem}
@@ -66,7 +66,7 @@ B(x'',\varepsilon)\subset \alpha C + (1-\alpha)C = C
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.1.8}
+\label{prop:CAMA-chap3-2.1.8}
 \lean{CAMA_chap_3_2_1_8}
 The three convex sets $\operatorname{ri}C$, $C$ and $\operatorname{cl}C$ have the same affine hull (and hence the same dimension), the same relative interior and the same closure (and hence the same relative boundary).
 \end{proposition}
@@ -78,7 +78,7 @@ Thus, we have to prove that $\operatorname{cl}C\subset\operatorname{cl}(\operato
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.1.10}
+\label{prop:CAMA-chap3-2.1.10}
 \lean{CAMA_chap_3_2_1_10}
 Let the two convex sets $C_1$ and $C_2$ satisfy $\operatorname{ri}C_1\cap\operatorname{ri}C_2\neq\varnothing$. Then
 \begin{align}
@@ -127,7 +127,7 @@ It suffices to apply Definition 2.1.1 alone, observing that
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.1.12}
+\label{prop:CAMA-chap3-2.1.12}
 \lean{CAMA_chap_3_2_1_12}
 Let $A:\mathbb{R}^n\to\mathbb{R}^m$ be an affine mapping and $C$ a convex set of $\mathbb{R}^n$. Then
 \[
@@ -164,7 +164,7 @@ The proof of (2.1.4) uses the same technique.
 \subsection{The asymptotic cone}
 
 \begin{proposition}
-\label{prop:2.2.1}
+\label{prop:CAMA-chap3-2.2.1}
 \lean{CAMA_chap_3_2_2_1}
 The closed convex cone $C_{\infty}(x)$ does not depend on $x\in C$.
 \end{proposition}
@@ -185,12 +185,12 @@ x_2 + t d = \lim_{\varepsilon\downarrow 0}\bar{x}_\varepsilon \in \overline{C}.
 \]
 \end{proof}
 
-\begin{definition}\label{def:2.2.2}
+\begin{definition}\label{def:CAMA-chap3-2.2.2}
 The asymptotic cone, or recession cone of the closed convex set $C$ is the closed convex cone $C_{\infty}$ defined by (2.2.1) or (2.2.2), in which Proposition 2.2.1 is exploited.
 \end{definition}
 
 \begin{proposition}
-\label{prop:2.2.3}
+\label{prop:CAMA-chap3-2.2.3}
 \lean{CAMA_chap_3_2_2_3}
 A closed convex set $C$ is compact if and only if $C_\infty=\{0\}$.
 \end{proposition}
@@ -206,7 +206,7 @@ is in the closed convex set $C$, hence $d\in C_\infty$.
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.2.5}
+\label{prop:CAMA-chap3-2.2.5}
 \begin{itemize}
 \item If $\{C_j\}_{j\in J}$ is a family of closed convex sets having a point in common, then
 \[
@@ -232,12 +232,12 @@ A(C_\infty)\subset [A(C)]_\infty .
 
 \subsection{Extreme points}
 
-\begin{definition}\label{def:2.3.1}
+\begin{definition}\label{def:CAMA-chap3-2.3.1}
 We say that $x\in C$ is an \emph{extreme point} of $C$ if there are no two different points $x_1$ and $x_2$ in $C$ such that $x=\tfrac{1}{2}(x_1+x_2)$.
 \end{definition}
 
 \begin{proposition}
-\label{prop:2.3.3}
+\label{prop:CAMA-chap3-2.3.3}
 \lean{CAMA_chap_3_2_3_3}
 If $C$ is compact, then $\operatorname{ext}C\neq\varnothing$.
 \end{proposition}
@@ -250,7 +250,7 @@ Because $C$ is compact, there is $\bar x\in C$ maximizing the continuous functio
 \end{proof}
 
 \begin{theorem}
-\label{thm:2.3.4}
+\label{thm:CAMA-chap3-2.3.4}
 \lean{CAMA_chap_3_2_3_4}
 (H. Minkowski) Let $C$ be compact, convex in $\mathbb{R}^n$. Then $C$ is the convex hull of its extreme points: $C=\operatorname{co}(\operatorname{ext}C)$.
 \end{theorem}
@@ -269,7 +269,7 @@ A nonempty convex subset $F\subset C$ is a \emph{face} of $C$ if it satisfies th
 \end{definition}
 
 \begin{proposition}
-\label{prop:2.3.7}
+\label{prop:CAMA-chap3-2.3.7}
 \lean{CAMA_chap_3_2_3_7}
 Let $F$ be a face of $C$. Then any extreme point of $F$ is an extreme point of $C$.
 \end{proposition}
@@ -281,7 +281,7 @@ Take \(x\in F\subset C\) and assume that \(x\) is not an extreme point of \(C\):
 
 \subsection{Exposed faces}
 
-\begin{definition}[Supporting Hyperplane]\label{def:2.4.1}
+\begin{definition}[Supporting Hyperplane]\label{def:CAMA-chap3-2.4.1}
 An affine hyperplane $H_{s,r}$ is said to \emph{support} the set $C$ when $C$ is entirely contained in one of the two closed half-spaces delimited by $H_{s,r}$: say
 \[
 \langle s,y\rangle \le r\qquad\text{for all }y\in C.
@@ -293,14 +293,14 @@ It is said to support $C$ at $x\in C$ when, in addition, $x\in H_{s,r}$; (2.4.1)
 \]
 \end{definition}
 
-\begin{definition}\label{def:2.4.2}
+\begin{definition}\label{def:CAMA-chap3-2.4.2}
 The set $F\subset C$ is an \emph{exposed face} of $C$ if there is a supporting hyperplane $H_{s,r}$ of $C$ such that $F=C\cap H_{s,r}$.
 
 An \emph{exposed point}, or \emph{vertex}, is a $0$-dimensional exposed face, i.e.\ a point $x\in C$ at which there is a supporting hyperplane $H_{s,r}$ of $C$ such that $H_{s,r}\cap C$ reduces to $\{x\}$.
 \end{definition}
 
 \begin{proposition}
-\label{prop:2.4.3}
+\label{prop:CAMA-chap3-2.4.3}
 \lean{CAMA_chap_3_2_4_3}
 An exposed face is a face.
 \end{proposition}
@@ -323,7 +323,7 @@ a contradiction.
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.4.6}
+\label{prop:CAMA-chap3-2.4.6}
 \lean{CAMA_chap_3_2_4_6}
 Let $C$ be convex and compact. For $s\in\mathbb{R}^n$, there holds
 \[

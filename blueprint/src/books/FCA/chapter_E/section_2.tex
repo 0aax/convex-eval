@@ -1,7 +1,7 @@
 \subsection{Image of a function under a linear mapping}
 
 \begin{theorem}
-\label{thm:2.1.1}
+\label{thm:FCA-chapE-2.1.1}
 \lean{FCA_chap_E_2_1_1}
 With the above notation, assume that $\operatorname{Im}A^* \cap \dom g^* \neq\varnothing$. Then $Ag$ satisfies (1.1.1) and its conjugate is
 \[
@@ -25,7 +25,7 @@ Then we have for $s\in\mathbb R^n$
 \end{proof}
 
 \begin{corollary}
-\label{cor:2.1.2}
+\label{cor:FCA-chapE-2.1.2}
 With $g:\mathbb{R}^n\times\mathbb{R}^p=\mathbb{R}^m\to\mathbb{R}\cup\{+\infty\}$ not identically $+\infty$, let $g^*$ be associated with a scalar product preserving the structure of $\mathbb{R}^m$ as a product space: $\langle\cdot,\cdot\rangle_m=\langle\cdot,\cdot\rangle_n+\langle\cdot,\cdot\rangle_p$. If there exists $s_0\in\mathbb{R}^n$ such that $(s_0,0)\in\operatorname{dom} g^*$, then the conjugate of $f$ defined by (2.1.2) is
 \[
 f^*(s)=g^*(s,0)\qquad\text{for all }s\in\mathbb{R}^n.
@@ -40,7 +40,7 @@ It suffices to observe that, $A$ being the projection defined above, there holds
 which defines the adjoint $A^*x=(x,0)$ for all $x\in\mathbb{R}^n$. Then apply Theorem 2.1.1.
 \end{proof}
 
-\begin{corollary}\label{cor:2.1.3}
+\begin{corollary}\label{cor:FCA-chapE-2.1.3}
 Let $f_1$ and $f_2$ be two functions from $\mathbb{R}^n$ to $\mathbb{R}\cup\{+\infty\}$, not identically $+\infty$, and satisfying $\operatorname{dom} f_1^*\cap\operatorname{dom} f_2^*\neq\varnothing$. Then their inf-convolution satisfies (1.1.1), and $(f_1\infconv f_2)^*=f_1^*+f_2^*$.
 \end{corollary}
 
@@ -50,7 +50,7 @@ Equip $\mathbb{R}^n\times\mathbb{R}^n$ with the scalar product $\langle\cdot,\cd
 
 \subsection{Pre-composition with an affine mapping}
 
-\begin{theorem}\label{thm:2.2.1}
+\begin{theorem}\label{thm:FCA-chapE-2.2.1}
 Take $g\in\Conv\mathbb{R}^m$, $A_0$ linear from $\mathbb{R}^n$ to $\mathbb{R}^m$ and consider the affine operator $A(x):=A_0x+y_0\in\mathbb{R}^m$. Suppose that $A(\mathbb{R}^n)\cap\dom g\neq\emptyset$. Then
 $g\circ A\in\Conv\mathbb{R}^n$ and its conjugate is the closure of the convex function
 \[
@@ -119,7 +119,7 @@ To prove boundedness of $q_k$, use the assumption: for some $\varepsilon>0$, $B_
 We conclude that $\sup\{\langle q_k, z\rangle : k=1,2,\dots\}$ is bounded for any $z\in B_m(0,\varepsilon)\cap V$, which implies that $q_k$ is bounded; this is Proposition V.2.1.3 in the vector space $V$.
 \end{proof}
 
-\begin{theorem}\label{thm:2.2.3}
+\begin{theorem}\label{thm:FCA-chapE-2.2.3}
 Take $g\in\operatorname{Conv}\mathbb{R}^m$, $A_0$ linear from $\mathbb{R}^n$ to $\mathbb{R}^m$ and consider the affine operator $A(x):=A_0x+y_0\in\mathbb{R}^m$. Make the following assumption:
 \[
 A(\mathbb{R}^n)\cap\operatorname{ri}\operatorname{dom}g\neq\varnothing.
@@ -159,7 +159,7 @@ where the minimum is attained at some $\bar p$. Using again the calculus rule 1.
 
 \subsection{Sum of two functions}
 
-\begin{theorem}\label{thm:2.3.1}
+\begin{theorem}\label{thm:FCA-chapE-2.3.1}
 Let $g_1,g_2$ be in $\operatorname{Conv}\mathbb{R}^n$ and assume that $\operatorname{dom}g_1\cap\operatorname{dom}g_2\neq\varnothing$. The conjugate $(g_1+g_2)^*$ of their sum is the closure of the convex function $g_1^*\infconv g_2^*$.
 \end{theorem}
 
@@ -167,7 +167,7 @@ Let $g_1,g_2$ be in $\operatorname{Conv}\mathbb{R}^n$ and assume that $\operator
 Call $f_i^*:=g_i$, for $i=1,2$; apply Corollary 2.1.3: $(g_1^*\infconv g_2^*)^*=g_1+g_2$; then take the conjugate again.
 \end{proof}
 
-\begin{theorem}\label{thm:2.3.2}
+\begin{theorem}\label{thm:FCA-chapE-2.3.2}
 Let $g_1,g_2$ be in $\Conv\R^n$ and assume that
 \[
 \begin{aligned}
@@ -211,7 +211,7 @@ For closedness of the infimal convolution, we set $g_i:=f_i^*$, $i=1,2$; because
 
 \subsection{Infima and suprema}
 
-\begin{theorem}\label{thm:2.4.1}
+\begin{theorem}\label{thm:FCA-chapE-2.4.1}
 Let $\{f_j\}_{j\in J}$ be a collection of functions satisfying (1.1.1) and having a common affine minorant: $\sup_{j\in J} f_j^*(s) < +\infty$ for some $s\in\mathbb{R}^n$.
 Then their infimum $f := \inf_{j\in J} f_j$ satisfies (1.1.1), and its conjugate is the supremum of the $f_j^*$'s:
 \[
@@ -232,7 +232,7 @@ f^*(s)
 \]
 \end{proof}
 
-\begin{theorem}\label{thm:2.4.4}
+\begin{theorem}\label{thm:FCA-chapE-2.4.4}
 Let $\{g_j\}_{j\in J}$ be a collection of functions in \(\Conv\mathbb{R}^n\).  If their supremum \(g:=\sup_{j\in J} g_j\) is not identically \(+\infty\), it is in \(\Conv\mathbb{R}^n\), and its conjugate is the closed convex hull of the \(g_j^*\)'s:
 \[
 \bigl(\sup_{j\in J} g_j\bigr)^* = \overline{\co}\bigl(\inf_{j\in J} g_j^*\bigr).
@@ -246,7 +246,7 @@ Call \(f_j:=g_j^*\), hence \(f_j^*=g_j\), and \(g\) is nothing but the \(f^*\) o
 
 \subsection{Post-composition with an increasing convex function}
 
-\begin{theorem}\label{thm:2.5.1}
+\begin{theorem}\label{thm:FCA-chapE-2.5.1}
 With $f$ and $g$ defined as above, assume that $f(\mathbb R^n)\cap\operatorname{int}\operatorname{dom}g\neq\varnothing$. For all $s\in\operatorname{dom}(g\circ f)^*$, define the function $\psi_s\in\operatorname{Conv}\mathbb R$ by
 \[
 \mathbb R\ni\alpha\mapsto\psi_s(\alpha):=

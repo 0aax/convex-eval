@@ -1,6 +1,6 @@
 \subsection{First definition: Directional derivative}
 \begin{definition}
-\label{def:1.1.1}
+\label{def:FCA-chapD-1.1.1}
 (Direction\-al Derivative) The directional derivative of $f$ at $x$ in the direction $d$ is
 \[
 f'(x,d):=\lim_{\{q(t):t\downarrow0\}}=\inf\{q(t):t>0\}.
@@ -9,7 +9,7 @@ f'(x,d):=\lim_{\{q(t):t\downarrow0\}}=\inf\{q(t):t>0\}.
 \end{definition}
 
 \begin{proposition}
-\label{prop:1.1.2}
+\label{prop:FCA-chapD-1.1.2}
 \lean{FCA_chap_D_1_1_2}
 For fixed $x$, the function $f'(x,\cdot)$ is finite sublinear.
 \end{proposition}
@@ -47,7 +47,7 @@ Hence, $|f'(x,d)|\le L$ and we conclude with positive homogeneity:
 \]
 \end{proof}
 
-\begin{definition}[Subdifferential I]\label{def:1.1.4}
+\begin{definition}[Subdifferential I]\label{def:FCA-chapD-1.1.4}
 The subdifferential $\partial f(x)$ of $f$ at $x$ is the nonempty compact convex set of $\mathbb{R}^n$ whose support function is $f'(x,\cdot)$, i.e.
 \[
 \partial f(x):=\{s\in\mathbb{R}^n:\;\langle s,d\rangle\le f'(x,d)\ \text{ for all } d\in\mathbb{R}^n\}.\tag{1.1.6}
@@ -56,7 +56,7 @@ A vector $s\in\partial f(x)$ is called a \emph{subgradient} of $f$ at $x$.
 \end{definition}
 
 \begin{proposition}
-\label{prop:1.1.6}
+\label{prop:FCA-chapD-1.1.6}
 \lean{FCA_chap_D_1_1_6}
 The finite sublinear function $d\mapsto\sigma(d):=f'(x,d)$ satisfies
 \[
@@ -84,7 +84,7 @@ This implies immediately (1.1.8) and (1.1.9). Then (1.1.10) follows from uniquen
 \subsection{Second definition: Minorization by affine functions}
 
 \begin{definition}
-\label{def:1.2.1}
+\label{def:FCA-chapD-1.2.1}
 (Subdifferential II) The subdifferential of $f$ at $x$ is the set of vectors $s\in\mathbb{R}^n$ satisfying
 \[
 f(y)\ge f(x)+\langle s,y-x\rangle\qquad\text{for all }y\in\mathbb{R}^n.
@@ -93,7 +93,7 @@ f(y)\ge f(x)+\langle s,y-x\rangle\qquad\text{for all }y\in\mathbb{R}^n.
 \end{definition}
 
 \begin{theorem}
-\label{thm:1.2.2}
+\label{thm:FCA-chapD-1.2.2}
 \lean{FCA_chap_D_1_2_2}
 The definitions 1.1.4 and 1.2.1 are equivalent.
 \end{theorem}
@@ -115,7 +115,7 @@ When $d$ describes $\mathbb{R}^n$ and $t$ describes $\mathbb{R}_+^*$, $y:=x+td$ 
 \subsection{Geometric constructions and interpretations}
 
 \begin{proposition}
-\label{prop:1.3.1}
+\label{prop:FCA-chapD-1.3.1}
 \lean{FCA_chap_D_1_3_1}
 \begin{enumerate}
     \item[(i)] A vector $s\in\mathbb{R}^n$ is a subgradient of $f$ at $x$ if and only if $(s,-1)\in\mathbb{R}^n\times\mathbb{R}$ is normal to $\operatorname{epi}f$ at $(x,f(x))$.  In other words:
@@ -147,7 +147,7 @@ r\ge\max\{\langle s,d\rangle: s\in\partial f(x)\}=f'(x,d).
 \end{proof}
 
 \begin{lemma}
-\label{lem:1.3.2}
+\label{lem:FCA-chapD-1.3.2}
 \lean{FCA_chap_D_1_3_2}
 For the convex function $f:\mathbb{R}^n\to\mathbb{R}$ and the sublevel-set (1.3.1), we have
 \[
@@ -170,7 +170,7 @@ Because $f'(\cdot,\cdot)$ is a closed function, the righthand set in (1.3.3) is 
 \end{proof}
 
 \begin{proposition}
-\label{prop:1.3.3}
+\label{prop:FCA-chapD-1.3.3}
 \lean{FCA_chap_D_1_3_3}
 Let $g:\mathbb{R}^n\to\mathbb{R}$ be convex and suppose that $g(x_0)<0$ for some $x_0\in\mathbb{R}^n$. Then
 \[
@@ -196,7 +196,7 @@ Now, take the interior of both sides in (1.3.4). The ``int cl'' on the left is a
 \end{proof}
 
 \begin{theorem}
-\label{thm:1.3.4}
+\label{thm:FCA-chapD-1.3.4}
 \lean{FCA_chap_D_1_3_4}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex and suppose $0\notin\partial f(x)$. Then, $S_{f}(x)$ being the sublevel-set (1.3.1),
 \[
@@ -221,7 +221,7 @@ so (1.3.7) is proved by closing the sets in (1.3.9) and using (1.3.2). Finally, 
 \end{proof}
 
 \begin{theorem}
-\label{thm:1.3.5}
+\label{thm:FCA-chapD-1.3.5}
 \lean{FCA_chap_D_1_3_5}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex and suppose $0\notin\partial f(x)$.  Then a direction $d$ is normal to $S f(x)$ at $x$ if and only if there is some $t\ge 0$ and some $s\in\partial f(x)$ such that $d=ts$:
 \[

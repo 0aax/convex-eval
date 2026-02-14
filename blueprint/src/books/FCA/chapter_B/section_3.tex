@@ -1,6 +1,6 @@
 \subsection{Continuity properties}
 \begin{lemma}
-\label{lem:3.1.1}
+\label{lem:FCA-chapB-3.1.1}
 Let $f\in\operatorname{Conv}\mathbb{R}^n$ and suppose there are $x_0,\ \delta,\ m$ and $M$ such that
 \[
 m\le f(x)\le M\quad\text{for all }x\in B(x_0,2\delta).
@@ -29,7 +29,7 @@ f(y')-f(y)\le\frac{\|y'-y\|}{\delta+\|y'-y\|}\bigl[f(y'')-f(y)\bigr]\le\frac{1}{
 Then, it suffices to exchange $y$ and $y'$ to prove (3.1.1).
 \end{proof}
 
-\begin{theorem}\label{thm:3.1.2}
+\begin{theorem}\label{thm:FCA-chapB-3.1.2}
 With $f\in\operatorname{Conv}\mathbb{R}^n$, let $S$ be a convex compact subset of \(\operatorname{ri}\dom f\). Then there exists \(L=L(S)\ge 0\) such that
 \[
 |f(x)-f(x')|\le L\|x-x'\|\quad\text{for all }x\text{ and }x'\text{ in }S.
@@ -58,7 +58,7 @@ f(y)\le\sum_{i=0}^n\alpha_i f(v_i)\le\max\{f(v_0),\dots,f(v_n)\} =: M .
 On the other hand, Proposition 1.2.1 tells us that $f$ is bounded from below, say by $m$, on this very same $B(x_0,2\delta)$. Our claim is proved: we have singled out $\delta>0$ such that $m\le f(y)\le M$ for all $y\in B(x_0,2\delta)$.
 \end{proof}
 
-\begin{theorem}\label{thm:3.1.4}
+\begin{theorem}\label{thm:FCA-chapB-3.1.4}
 Let the convex functions $f_k:\mathbb{R}^n\to\mathbb{R}$ converge pointwise for $k\to+\infty$ to $f:\mathbb{R}^n\to\mathbb{R}$. Then $f$ is convex and, for each compact set $S$, the convergence of $f_k$ to $f$ is uniform on $S$.
 \end{theorem}
 
@@ -99,7 +99,7 @@ k\ge \max\{k_{1,\varepsilon},\ldots,k_{m,\varepsilon}\} =: k_\varepsilon.
 \subsection{Behavior at infinity}
 
 \begin{proposition}
-\label{prop:3.2.1}
+\label{prop:FCA-chapB-3.2.1}
 For $f\in\overline{\operatorname{Conv}}\mathbb{R}^n$, the asymptotic cone of $\operatorname{epi} f$ is the epigraph of the function $f'_{\infty}\in\overline{\operatorname{Conv}}\mathbb{R}^n$ defined by
 \[
 d\mapsto f'_{\infty}(d):=\sup_{t>0}\frac{f(x_0+td)-f(x_0)}{t}
@@ -121,7 +121,7 @@ In other words, $(\operatorname{epi} f)_\infty$ is the epigraph of the function 
 \end{proof}
 
 \begin{definition}
-\label{def:3.2.2}
+\label{def:FCA-chapB-3.2.2}
 (Asymptotic function) The function $f'_{\infty}$ of Proposition 3.2.1 is called the \emph{asymptotic function}, or recession function, of $f$.
 \end{definition}
 
@@ -153,7 +153,7 @@ A particular case is when the sublevel-set $S_0(f^\infty_\circ)$ is reduced to t
 \end{proof}
 
 \begin{definition}
-\label{def:3.2.5}
+\label{def:FCA-chapB-3.2.5}
 (Coercivity) The functions $f\in\operatorname{Conv}\mathbb{R}^n$ satisfying (i), (ii) or (iii) are called $0$-coercive. Equivalently, the $0$-coercive functions are those that ``increase at infinity'':
 \[
 f(x)\to +\infty\qquad\text{whenever}\qquad \|x\|\to +\infty,
@@ -169,7 +169,7 @@ An important particular case is when $f'_\infty(d)=+\infty$ for all $d\neq 0$, i
 \end{definition}
 
 \begin{proposition}
-\label{prop:3.2.6}
+\label{prop:FCA-chapB-3.2.6}
 A function $f\in\operatorname{Conv}\mathbb{R}^n$ is Lipschitzian on the whole of $\mathbb{R}^n$ if and only if $f'_\infty$ is finite on the whole of $\mathbb{R}^n$. The best Lipschitz constant for $f$ is then
 \[
 \sup\{f'_\infty(d):\|d\|=1\}.
@@ -202,7 +202,7 @@ It follows that $f'_\infty$ is finite everywhere, and the value (3.2.4) does not
 \end{proof}
 
 \begin{proposition}[3.2.8]
-\label{thm:3.2.8}
+\label{thm:FCA-chapB-3.2.8}
 \begin{enumerate}
 \item Let $f_1,\dots,f_m$ be $m$ functions of $\Conv\R^n$, and $t_1,\dots,t_m$ be positive numbers. Assume that there is $x_0$ at which each $f_j$ is finite. Then,
 \[

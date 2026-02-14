@@ -1,6 +1,6 @@
 \subsection{First-order differentiability}
 
-\begin{theorem}\label{thm:4.1.1}
+\begin{theorem}\label{thm:FCA-chapE-4.1.1}
 Let $f\in\operatorname{Conv}\R^n$ be strictly convex. Then $\operatorname{int}\dom f^*\neq\varnothing$ and $f^*$ is continuously differentiable on $\operatorname{int}\dom f^*$.
 \end{theorem}
 
@@ -26,7 +26,7 @@ f^*(s)+\sum_{i=1}^2\alpha_i f(x_i)=\langle s,\sum_{i=1}^2\alpha_i x_i\rangle\le 
 which implies that $f$ is affine on $[x_1,x_2]$, a contradiction. In other words, $\partial f^*$ is single-valued on $\int\dom f^*$, and this means that $f^*$ is continuously differentiable there (Remark 6.2.6).
 \end{proof}
 
-\begin{theorem}\label{thm:4.1.2}
+\begin{theorem}\label{thm:FCA-chapE-4.1.2}
 Let $f\in\operatorname{Conv}\mathbb{R}^n$ be differentiable on the set $\Omega:=\operatorname{int}\operatorname{dom}f$.  Then $f^*$ is strictly convex on each convex subset $C\subset\nabla f(\Omega)$.
 \end{theorem}
 
@@ -53,7 +53,7 @@ Let $f:\mathbb{R}^n\to\mathbb{R}$ be strictly convex, differentiable and 1-coerc
 
 \subsection{Lipschitz continuity of the gradient mapping}
 
-\begin{theorem}\label{thm:4.2.1}
+\begin{theorem}\label{thm:FCA-chapE-4.2.1}
 Assume that $f:\mathbb{R}^n\to\mathbb{R}$ is strongly convex with modulus $c>0$ on $\mathbb{R}^n$: for all $(x_1,x_2)\in\mathbb{R}^n\times\mathbb{R}^n$ and $\alpha\in]0,1[$,
 \[
 f(\alpha x_1+(1-\alpha)x_2)\le \alpha f(x_1)+(1-\alpha)f(x_2)-\tfrac{1}{2}c\alpha(1-\alpha)\|x_1-x_2\|^2.
@@ -73,7 +73,7 @@ f(x_0+td)\ge f(x_0)+t\langle s_0,d\rangle+\tfrac{1}{2}ct^2\|d\|^2,
 hence $f'_+(d)=\sigma_{\operatorname{dom} f^*}(d)=+\infty$, i.e.\ $\operatorname{dom} f^*=\mathbb{R}^n$. Also, $f$ is in particular strictly convex, so we know from Theorem 4.1.1 that $f^*$ is differentiable (on $\mathbb{R}^n$). Finally, strong convexity of $f$ can also be written $(s_1-s_2,x_1-x_2)\ge c\|x_1-x_2\|^2$, in which we have $s_i\in\partial f(x_i)$, i.e.\ $s_i=\nabla f^*(s_i)$, for $i=1,2$. The rest follows from the Cauchy--Schwarz inequality.
 \end{proof}
 
-\begin{theorem}\label{thm:4.2.2}
+\begin{theorem}\label{thm:FCA-chapE-4.2.2}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex and have a gradient-mapping Lipschitzian with constant $L>0$ on $\mathbb{R}^n$: for all $(x_1,x_2)\in\mathbb{R}^n\times\mathbb{R}^n$,
 \[
 \|\nabla f(x_1)-\nabla f(x_2)\|\le L\|x_1-x_2\|.
@@ -100,7 +100,7 @@ f(y)&=f(x)+\langle\nabla f(x),\,y-x\rangle+\int_0^1\langle\nabla f(x+t(y-x))-\na
 f^*(s')\ge f^*(s)+\sup_y\big[\,\langle s'-s,y\rangle-\tfrac12 L\|y-x\|^2\big].
 \]
 Observe that the last supremum is nothing but the value at $s'-s$ of the conjugate of $\tfrac12 L\|\,\cdot\,\|^2$. Using the calculus rule 1.3.1, we have therefore proved
-\begin{equation}\label{thm:4.2.3}
+\begin{equation}\label{thm:FCA-chapE-4.2.3}
 f^*(s')\ge f^*(s)+\langle s'-s,x\rangle+\tfrac1{2L}\|s'-s\|^2
 \end{equation}
 for all $s,s'$ in $[s_1,s_2]$ and all $x\in\partial f^*(s)$. Replacing $s'$ in (4.2.3) by $s_1$ and by $s_2$, and setting $s=\alpha s_1+(1-\alpha)s_2$, the strong convexity (4.2.1) for $f^*$ is established by convex combination.

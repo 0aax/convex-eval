@@ -1,6 +1,6 @@
 \subsection{Definitions and first properties}
 \begin{definition}
-\label{def:1.1.1}
+\label{def:FCA-chapC-1.1.1}
 A function $\sigma:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$ is said to be \emph{sublinear} if it is convex and positively homogeneous (of degree 1): $\sigma\in\mathrm{Conv}\,\mathbb{R}^n$ and
 \[
 \sigma(tx)=t\sigma(x)\qquad\text{for all }x\in\mathbb{R}^n\text{ and }t>0.
@@ -9,7 +9,7 @@ A function $\sigma:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$ is said to be \emph
 \end{definition}
 
 \begin{proposition}
-\label{prop:1.1.3}
+\label{prop:FCA-chapC-1.1.3}
 \lean{FCA_chap_C_1_1_3}
 A function \(\sigma:\mathbb R^n\to\mathbb R\cup\{+\infty\}\) is sublinear if and only if its epigraph \(\operatorname{epi}\sigma\) is a nonempty convex cone in \(\mathbb R^n\times\mathbb R\).
 \end{proposition}
@@ -30,7 +30,7 @@ From Remark 1.1.2, this is just positive homogeneity.
 \end{proof}
 
 \begin{proposition}
-\label{prop:1.1.4}
+\label{prop:FCA-chapC-1.1.4}
 \lean{FCA_chap_C_1_1_4}
 A function $\sigma:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically equal to $+\infty$, is sublinear if and only if one of the following two properties holds:
 \[
@@ -69,7 +69,7 @@ hence $\sigma$ is convex.
 \end{proof}
 
 \begin{corollary}
-\label{cor:1.1.5}
+\label{cor:FCA-chapC-1.1.5}
 \lean{FCA_chap_C_1_1_5}
 If $\sigma$ is sublinear, then
 \[
@@ -83,7 +83,7 @@ Take $x_2=-x_1$ in (1.1.3) and remember that $\sigma(0)\ge 0$.
 \end{proof}
 
 \begin{proposition}
-\label{thm:1.1.6}
+\label{thm:FCA-chapC-1.1.6}
 \lean{FCA_chap_C_1_1_6}
 Let $\sigma$ be sublinear and suppose that there exist $x_1,\dots,x_m$ in $\dom\sigma$ such that
 \[
@@ -115,7 +115,7 @@ In summary, we have proved \(\sigma(x)\le \sum_{j=1}^m t_j\sigma(x_j)\le -\sigma
 \end{proof}
 
 \begin{proposition}
-\label{prop:1.1.7}
+\label{prop:FCA-chapC-1.1.7}
 \lean{FCA_chap_C_1_1_7}
 Let $\sigma$ be sublinear. If $x\in U$, i.e.\ if
 \[
@@ -137,7 +137,7 @@ In view of subadditivity, we just have to prove ``$\ge$'' in (1.1.10). Start fro
 \subsection{Some examples}
 
 \begin{definition}
-\label{def:1.2.4}
+\label{def:FCA-chapC-1.2.4}
 (Gauge) Let $C$ be a closed convex set containing the origin. The function $\gamma_C$ defined by
 \[
 \gamma_C(x) := \inf\{\lambda>0 : x\in \lambda C\} \tag{1.2.2}
@@ -146,7 +146,7 @@ is called the \emph{gauge} of $C$. As usual, we set $\gamma_C(x):=+\infty$ if $x
 \end{definition}
 
 \begin{theorem}
-\label{thm:1.2.5}
+\label{thm:FCA-chapC-1.2.5}
 \lean{FCA_chap_C_1_2_5}
 Let $C$ be a closed convex set containing the origin. Then
 \begin{enumerate}
@@ -193,7 +193,7 @@ where the last implication comes from (iii). In other words, $B(0,1/L)\subset C$
 \end{proof}
 
 \begin{corollary}
-\label{cor:1.2.6}
+\label{cor:FCA-chapC-1.2.6}
 \lean{FCA_chap_C_1_2_6}
 C is compact if and only if $\gamma_C(x)>0$ for all $x\neq 0$.
 \end{corollary}
@@ -201,7 +201,7 @@ C is compact if and only if $\gamma_C(x)>0$ for all $x\neq 0$.
 \subsection{The convex cone of all closed sublinear functions}
 
 \begin{proposition}
-\label{prop:1.3.1}
+\label{prop:FCA-chapC-1.3.1}
 \lean{FCA_chap_C_1_3_1_i,FCA_chap_C_1_3_1_ii}
 \begin{enumerate}
     \item[(i)] If $\sigma_1$ and $\sigma_2$ are [closed] sublinear and $t_1,t_2$ are positive numbers, then $\sigma := t_1\sigma_1 + t_2\sigma_2$ is [closed] sublinear, if not identically $+\infty$.
@@ -214,7 +214,7 @@ Concerning convexity and closedness, everything is known from \S B.2. Note in pa
 \end{proof}
 
 \begin{proposition}
-\label{prop:1.3.2}
+\label{prop:FCA-chapC-1.3.2}
 \lean{FCA_chap_C_1_3_2_i,FCA_chap_C_1_3_2_ii}
 Let $\{\sigma_j\}_{j\in J}$ be a family of sublinear functions all minorized by some linear function. Then
 \begin{enumerate}
@@ -247,7 +247,7 @@ We recognize the infimal convolution of the $\sigma_j$'s.
 \end{proof}
 
 \begin{theorem}
-\label{thm:1.3.3}
+\label{thm:FCA-chapC-1.3.3}
 For $\sigma_1$ and $\sigma_2$ in the set $\Phi$ of sublinear functions that are finite everywhere, define
 \[
 \Delta(\sigma_1,\sigma_2):=\max_{\|x\|\le 1}|\sigma_1(x)-\sigma_2(x)|.
@@ -283,7 +283,7 @@ which is the required inequality.
 \end{proof}
 
 \begin{theorem}
-\label{thm:1.3.5}
+\label{thm:FCA-chapC-1.3.5}
 \lean{FCA_chap_C_1_3_5}
 Let $(\sigma_k)$ be a sequence of finite sublinear functions and let $\sigma$ be a finite function.  Then the following are equivalent when $k\to+\infty$:
 \begin{enumerate}

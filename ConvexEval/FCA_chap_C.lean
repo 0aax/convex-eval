@@ -53,10 +53,8 @@ lemma FCA_chap_C_1_2_5 {m n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n)))
   (hC_closed : IsClosed C) (hC_convex : Convex ℝ C) (hC_origin : 0 ∈ C) :
   let g : EuclideanSpace ℝ (Fin n) → WithTop ℝ := fun x => gauge C x
-  List.TFAE [
-    (∀ x, g x ≥ 0) ∧ (IsSublinear (liftWithToptoEReal g)) ∧ (IsClosedFun g),
-    (∀ x, g x ≠ ⊤) ↔ (0 ∈ interior C)
-  ] := by
+  ((∀ x, g x ≥ 0) ∧ (IsSublinear (liftWithToptoEReal g)) ∧ (IsClosedFun g)) ∧
+  ((∀ x, g x ≠ ⊤) ↔ (0 ∈ interior C)) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.2.6 -/
@@ -74,9 +72,8 @@ lemma FCA_chap_C_1_3_1_i {n : ℕ}
   (hσ : IsSublinear (liftWithToptoEReal σ₁) ∧ IsSublinear (liftWithToptoEReal σ₂))
   (ht : t₁ > 0 ∧ t₂ > 0) :
   let σ := t₁ • σ₁ + t₂ • σ₂
-  (∀ x, σ x ≠ ⊤ → IsSublinear (liftWithToptoEReal σ)) ∧
-  (IsClosedFun σ₁ ∧ IsClosedFun σ₂ → ∀ x, σ x ≠ ⊤ →
-  IsSublinear (liftWithToptoEReal σ) ∧ IsClosedFun σ):= by
+  (IsSublinear (liftWithToptoEReal σ)) ∧
+  (IsClosedFun σ₁ ∧ IsClosedFun σ₂ → (IsSublinear (liftWithToptoEReal σ)) ∧ (IsClosedFun σ)):= by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (ii) -/
@@ -85,9 +82,8 @@ lemma FCA_chap_C_1_3_1_ii {n : ℕ}
   (J : Set ℕ)
   (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j))) :
   let σ' := fun x => sSup (⋃ j ∈ J, {(σ j) x})
-  (∀ x, σ' x ≠ ⊤ → IsSublinear (liftWithToptoEReal σ')) ∧
-  (∀ j ∈ J, IsClosedFun (σ j) → ∀ x, σ' x ≠ ⊤ →
-  IsSublinear (liftWithToptoEReal σ') ∧ IsClosedFun σ') := by
+  (IsSublinear (liftWithToptoEReal σ')) ∧
+  (∀ j ∈ J, IsClosedFun (σ j) → (IsSublinear (liftWithToptoEReal σ')) ∧ (IsClosedFun σ')) := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.2 (i) -/
@@ -124,8 +120,7 @@ lemma FCA_chap_C_1_3_5 {n : ℕ}
   let d := fun k => DistOnFunctions (σk k) σ
   List.TFAE [
     (∀ x, Filter.Tendsto (fun k => (σk k) x) Filter.atTop (𝓝 (σ x))),
-    (∀ (K : Set (EuclideanSpace ℝ (Fin n))), IsCompact K →
-    TendstoUniformlyOn σk σ Filter.atTop K),
+    (∀ (K : Set (EuclideanSpace ℝ (Fin n))), IsCompact K → TendstoUniformlyOn σk σ Filter.atTop K),
     (Filter.Tendsto d Filter.atTop (𝓝 0))
   ] := by
   sorry
@@ -322,9 +317,7 @@ lemma FCA_chap_C_3_3_2_iii {n : ℕ}
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.3 -/
 lemma FCA_chap_C_3_3_3 {m n : ℕ}
   (A : EuclideanSpace ℝ (Fin n) →ₗ[ℝ] EuclideanSpace ℝ (Fin m))
-  (s : EuclideanSpace ℝ (Fin m) → EuclideanSpace ℝ (Fin m) → ℝ)
   (S : Set (EuclideanSpace ℝ (Fin n)))
-  (hs : IsScalarProduct s)
   (hS_nonempty : Set.Nonempty S) :
   let A_adj := A.adjoint
   let cl_AS := closure (Set.image A S)

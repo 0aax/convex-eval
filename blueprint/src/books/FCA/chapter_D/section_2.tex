@@ -1,7 +1,7 @@
 \subsection{First-order developments}
 
 \begin{lemma}
-\label{lem:2.1.1}
+\label{lem:FCA-chapD-2.1.1}
 \lean{FCA_chap_D_2_1_1}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex and $x\in\mathbb{R}^n$. For any $\varepsilon>0$, there exists $\delta>0$ such that $\|h\|\le\delta$ implies
 \[
@@ -33,7 +33,7 @@ Divide by $t_k>0$ and pass to the limit to obtain the contradiction $\varepsilon
 \end{proof}
 
 \begin{corollary}
-\label{cor:2.1.3}
+\label{cor:FCA-chapD-2.1.3}
 \lean{FCA_chap_D_2_1_3}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. At any $x$,
 \[
@@ -46,12 +46,12 @@ s\in\partial f(x)(h)\iff h\in N_{\partial f(x)}(s)\iff s=p_{\partial f(x)}(s+h).
 \end{corollary}
 
 \begin{corollary}
-\label{cor:2.1.4}
+\label{cor:FCA-chapD-2.1.4}
 If the convex $f$ is (G\^ateaux) differentiable at $x$, its only subgradient at $x$ is its gradient $\nabla f(x)$. Conversely, if $\partial f(x)$ contains only one element $s$, then $f$ is (Fr\'echet) differentiable at $x$, with $\nabla f(x)=s$.
 \end{corollary}
 
 \begin{proposition}
-\label{prop:2.1.5}
+\label{prop:FCA-chapD-2.1.5}
 \lean{FCA_chap_D_2_1_5}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. For all $x$ and $d$ in $\mathbb{R}^n$, we have
 \[
@@ -75,14 +75,14 @@ which implies $f'(x,\cdot)\ge\langle s,\cdot\rangle$, hence $s\in\partial f(x)$.
 \end{proof}
 
 \begin{definition}
-\label{def:2.1.6}
+\label{def:FCA-chapD-2.1.6}
 A point $x$ at which $\partial f(x)$ has more than one element --- i.e.\ at which $f$ is not differentiable --- is called a \emph{kink} (or corner-point) of $f$.
 \end{definition}
 
 \subsection{Minimality conditions}
 
 \begin{theorem}
-\label{thm:2.2.1}
+\label{thm:FCA-chapD-2.2.1}
 \lean{FCA_chap_D_2_2_1}
 For $f:\mathbb{R}^n\to\mathbb{R}$ convex, the following three properties are equivalent:
 \begin{enumerate}
@@ -99,7 +99,7 @@ The equivalence (i) $\Leftrightarrow$ (ii) [resp.\ (ii) $\Leftrightarrow$ (iii)]
 \subsection{Mean-value theorems}
 
 \begin{lemma}
-\label{lem:2.3.1}
+\label{lem:FCA-chapD-2.3.1}
 \lean{FCA_chap_D_2_3_1}
 The subdifferential of $\varphi$ defined by (2.3.1) is
 \[
@@ -130,7 +130,7 @@ we obtain \(\partial\varphi(t):=[D_{-}\varphi(t),D_{+}\varphi(t)]=\{\langle s,y-
 \end{proof}
 
 \begin{theorem}
-\label{thm:2.3.3}
+\label{thm:FCA-chapD-2.3.3}
 \lean{FCA_chap_D_2_3_3}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. Given two points $x\neq y$ in $\mathbb{R}^n$, there exist $t\in ]0,1[$ and $s\in\partial f(x_t)$ such that
 \[
@@ -155,7 +155,7 @@ which is clearly convex. Computing directional derivatives gives easily $\partia
 \end{proof}
 
 \begin{theorem}
-\label{thm:2.3.4}
+\label{thm:FCA-chapD-2.3.4}
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be convex. For $x,y\in\mathbb{R}^n$,
 \[
 f(y)-f(x)=\int_0^1\langle\partial f(xt),\,y-x\rangle\,dt.

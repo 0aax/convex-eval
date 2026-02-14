@@ -1,7 +1,7 @@
 \subsection{Operations preserving closedness}
 
 \begin{proposition}
-\label{thm:2.1.1}
+\label{thm:FCA-chapB-2.1.1}
 \lean{FCA_chap_B_2_1_1}
 Let $f_1,\dots,f_m$ be in $\Conv\R^n$ [resp.\ in $\overline{\Conv}\R^n$], let $t_1,\dots,t_m$ be positive numbers, and assume that there is a point where all the $f_j$'s are finite. Then the function $f:=\sum_{j=1}^m t_j f_j$ is in $\Conv\R^n$ [resp.\ in $\overline{\Conv}\R^n$].
 \end{proposition}
@@ -15,7 +15,7 @@ The convexity of $f$ is readily proved from the relation of definition (1.1.1). 
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.1.2}
+\label{prop:FCA-chapB-2.1.2}
 \lean{FCA_chap_B_2_1_2}
 Let $\{f_j\}_{j\in J}$ be an arbitrary family of convex [resp.\ closed convex] functions. If there exists $x_0$ such that $\sup_{j} f_j(x_0) < +\infty$, then their pointwise supremum $f := \sup\{f_j : j\in J\}$ is in $\mathrm{Conv}\,\mathbb{R}^n$ [resp.\ in $\mathrm{Conv}_\mathrm{cl}\,\mathbb{R}^n$].
 \end{proposition}
@@ -25,7 +25,7 @@ The key property is that a supremum of functions corresponds to an intersection 
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.1.4}
+\label{prop:FCA-chapB-2.1.4}
 \lean{FCA_chap_B_2_1_4}
 Let $f\in\operatorname{Conv}\mathbb{R}^n$ [resp.\ $\overline{\operatorname{Conv}}\mathbb{R}^n$] and let $A$ be an affine mapping from $\mathbb{R}^m$ to $\mathbb{R}^n$ such that $\operatorname{Im}A\cap\operatorname{dom}f\neq\varnothing$.  Then the function
 \[
@@ -53,7 +53,7 @@ It suffices to check the inequalities of definition: (1.1.1) for convexity, (1.2
 \subsection{Dilations and perspectives of a functions}
 
 \begin{proposition}
-\label{prop:2.2.1}
+\label{prop:FCA-chapB-2.2.1}
 \lean{FCA_chap_B_2_2_1}
 If $f\in\operatorname{Conv}\mathbb{R}^n$, its perspective $\tilde f$ is in $\operatorname{Conv}\mathbb{R}^{n+1}$.
 \end{proposition}
@@ -71,7 +71,7 @@ and $\operatorname{epi}\tilde f$ is therefore a convex cone.
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.2.2}
+\label{prop:FCA-chapB-2.2.2}
 \lean{FCA_chap_B_2_2_2}
 Let $f\in\operatorname{Conv}\mathbb{R}^n$ and let $x'\in\operatorname{ri}\dom f$. Then the closure $\overline{f}$ of its perspective is given as follows:
 \[
@@ -111,7 +111,7 @@ Let $f_1$ and $f_2$ be two functions from $\mathbb{R}^n$ to $\mathbb{R}\cup\{+\i
 We will also call ``infimal convolution'' the \emph{operation} expressed by \eqref{eq:2.3.1}. It is called exact at $x=\bar x_1+\bar x_2$ when the infimum is attained at $(\bar x_1,\bar x_2)$, not necessarily unique. \qed
 
 \begin{proposition}
-\label{prop:2.3.3}
+\label{prop:FCA-chapB-2.3.3}
 \lean{FCA_chap_B_2_3_3}
 Let the functions $f_1$ and $f_2$ be in $\operatorname{Conv}\mathbb{R}^n$. Suppose that they have a common affine minorant: for some $(s,b)\in\mathbb{R}^n\times\mathbb{R}$,
 \[
@@ -133,7 +133,7 @@ On the other hand, it suffices to choose particular values $x_j\in\dom f_j$, $j=
 \subsection{Image of a function under a linear mapping}
 
 \begin{definition}
-\label{def:2.4.1}
+\label{def:FCA-chapB-2.4.1}
 (Image Function) Let $A:\mathbb{R}^m\to\mathbb{R}^n$ be a linear operator and let
 $g:\mathbb{R}^m\to\mathbb{R}\cup\{+\infty\}$. The image of $g$ under $A$ is the function $Ag:\mathbb{R}^n\to\mathbb{R}\cup\{\pm\infty\}$
 defined by
@@ -144,7 +144,7 @@ defined by
 \end{definition}
 
 \begin{theorem}
-\label{thm:2.4.2}
+\label{thm:FCA-chapB-2.4.2}
 \lean{FCA_chap_B_2_4_2}
 Let $g$ of Definition 2.4.1 be in $\mathrm{Conv}\,\mathbb{R}^m$.  Assume also that, for all $x\in\mathbb{R}^n$, $g$ is bounded below on the inverse image $A^{-1}(x)=\{y\in\mathbb{R}^m:Ay=x\}$.  Then $Ag\in\mathrm{Conv}\,\mathbb{R}^n$.
 \end{theorem}
@@ -163,7 +163,7 @@ and this proves the convexity of $Ag=\ell_C$.
 \end{proof}
 
 \begin{corollary}
-\label{thm:2.4.3}
+\label{thm:FCA-chapB-2.4.3}
 \lean{FCA_chap_B_2_4_3}
 Let (2.4.1) have the following form: $U=\mathbb{R}^p$; $\varphi\in\Conv\mathbb{R}^p$; 
 $X=\mathbb{R}^n$ is equipped with the canonical basis; the mapping $c$ has its components 
@@ -185,7 +185,7 @@ Note first that we have assumed $v_{\varphi,c}(x)>-\infty$ for all $x$. Take $u_
 \end{proof}
 
 \begin{definition}
-\label{def:2.4.4}
+\label{def:FCA-chapB-2.4.4}
 (Marginal Function) Let $g\in\operatorname{Conv}(\mathbb{R}^n\times\mathbb{R}^m)$. Then
 \[
 \mathbb{R}^n\ni x\mapsto \gamma(x):=\inf\{\,g(x,y):\;y\in\mathbb{R}^m\,\}
@@ -194,7 +194,7 @@ is the marginal function of $g$.
 \end{definition}
 
 \begin{corollary}
-\label{cor:2.4.5}
+\label{cor:FCA-chapB-2.4.5}
 \lean{FCA_chap_B_2_4_5}
 With the above notation, suppose that $g$ is bounded below on the set $\{x\}\times\mathbb{R}^m$, for all $x\in\mathbb{R}^n$. Then the marginal function $\gamma$ lies in $\operatorname{Conv}\mathbb{R}^n$.
 \end{corollary}
@@ -206,7 +206,7 @@ The marginal function $\gamma$ is the image of $g$ under the the linear operator
 \subsection{Convex hull and closed convex hull of a function}
 
 \begin{proposition}
-\label{prop:2.5.1}
+\label{prop:FCA-chapB-2.5.1}
 \lean{FCA_chap_B_2_5_1}
 Let $g:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically $+\infty$, be minorized by some affine function: for some $(s,b)\in\mathbb{R}^n\times\mathbb{R}$,
 \[
@@ -260,7 +260,7 @@ and this implies \(f_1(x)\le\sum_{j=1}^k \alpha_j g(x_j)\) by definition of \(f_
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.5.2}
+\label{prop:FCA-chapB-2.5.2}
 \lean{FCA_chap_B_2_5_2}
 Let $g$ satisfy the hypotheses of Proposition 2.5.1. Then the three functions below
 \[
@@ -274,12 +274,12 @@ Let $g$ satisfy the hypotheses of Proposition 2.5.1. Then the three functions be
 are closed, convex, and coincide on $\mathbb{R}^n$ with the closure of the function constructed in Proposition 2.5.1.
 \end{proposition}
 
-\begin{definition}[Convex Hulls of a Function]\label{def:2.5.3}
+\begin{definition}[Convex Hulls of a Function]\label{def:FCA-chapB-2.5.3}
 Let \(g:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}\), not identically \(+\infty\), be minorized by an affine function. The common function \(f_1=f_2=f_3\) of Proposition 2.5.1 is called the \emph{convex hull} of \(g\), denoted by \(\operatorname{co}g\). The \emph{closed convex hull} of \(g\) is any of the functions described by Proposition 2.5.2; it is denoted by \(\overline{\operatorname{co}}\,g\) or \(\operatorname{cl}\,\operatorname{co}g\).
 \end{definition}
 
 \begin{proposition}
-\label{thm:2.5.4}
+\label{thm:FCA-chapB-2.5.4}
 Let $g_1,\dots,g_m$ be in $\operatorname{Conv}\mathbb{R}^n$, all minorized by the same affine function. Then the convex hull of their infimum is the function
 \[
 \mathbb{R}^n \ni x \mapsto [\operatorname{co}(\min_j g_j)](x)=

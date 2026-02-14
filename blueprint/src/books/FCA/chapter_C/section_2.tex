@@ -1,7 +1,7 @@
 \subsection{Definitions, Interpretations}
 
 \begin{definition}
-\label{def:2.1.1}
+\label{def:FCA-chapC-2.1.1}
 ( Support Function) Let $S$ be a nonempty set in $\mathbb{R}^n$. The function
 \[
 \sigma_S:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}
@@ -14,7 +14,7 @@ is called the \emph{support function} of $S$.
 \end{definition}
 
 \begin{proposition}
-\label{prop:2.1.2}
+\label{prop:FCA-chapC-2.1.2}
 \lean{FCA_chap_C_2_1_2}
 A support function is closed and sublinear.
 \end{proposition}
@@ -24,7 +24,7 @@ This results from Proposition 1.3.1(ii) (a linear form is closed and convex!). O
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.1.3}
+\label{prop:FCA-chapC-2.1.3}
 \lean{FCA_chap_C_2_1_3}
 The support function of $S$ is finite everywhere if and only if $S$ is bounded.
 \end{proposition}
@@ -44,7 +44,7 @@ If $s\neq 0$, we can take $x=s/\|s\|$ in the above relation, which implies \(\|s
 \end{proof}
 
 \begin{definition}
-\label{def:2.1.4}
+\label{def:FCA-chapC-2.1.4}
 (Breadth of a Set) The \emph{breadth} of a nonempty set $S$ along $x\neq0$ is
 \[
 \sigma_S(x)+\sigma_S(-x)=\sup_{s\in S}\langle s,x\rangle-\inf_{s\in S}\langle s,x\rangle,
@@ -59,7 +59,7 @@ which in particular contains $S$. The intersection of all these hyperplanes is j
 \subsection{Basic properties}
 
 \begin{proposition}
-\label{prop:2.2.1}
+\label{prop:FCA-chapC-2.2.1}
 \lean{FCA_chap_C_2_2_2}
 For \(S\subset\mathbb{R}^n\) nonempty, there holds \(\sigma_S=\sigma_{\operatorname{cl} S}=\sigma_{\operatorname{co} S}\); whence
 \[
@@ -73,8 +73,8 @@ The continuity [resp.\ linearity, hence convexity] of the function \(\langle s,\
 \end{proof}
 
 \begin{theorem}
-\label{thm:2.2.2}
-\label{FCA_chap_C_2_2_2}
+\label{thm:FCA-chapC-2.2.2}
+\lean{FCA_chap_C_2_2_2}
 For the nonempty $S\subset\mathbb{R}^n$ and its support function $\sigma_S$, there holds
 \[
 s\in\overline{\operatorname{co}}S\iff\bigl[\langle s,d\rangle\le\sigma_S(d)\quad\text{for all }d\in X\bigr],
@@ -94,7 +94,7 @@ where the last equality is (2.2.1). Our result is proved by contradiction.
 \end{proof}
 
 \begin{theorem}
-\label{thm:2.2.3}
+\label{thm:FCA-chapC-2.2.3}
 \lean{FCA_chap_C_2_2_3}
 Let $S$ be a nonempty closed convex set in $\mathbb{R}^n$. Then
 \begin{enumerate}
@@ -171,7 +171,7 @@ Then, (ii) is just (iii) written in the subspace \(V\).
 \end{proof}
 
 \begin{proposition}
-\label{prop:2.2.4}
+\label{prop:FCA-chapC-2.2.4}
 \lean{FCA_chap_C_2_2_4}
 Let $S$ be a nonempty closed convex set in $\mathbb{R}^n$. Then $\overline{\operatorname{dom}\sigma_S}$ and the asymptotic cone $S_\infty$ of $S$ are mutually polar cones.
 \end{proposition}

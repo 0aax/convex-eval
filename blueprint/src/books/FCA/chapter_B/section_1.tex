@@ -1,7 +1,7 @@
 \subsection{The definitions of a Convex Function}
 
 \begin{definition}
-\label{def:1.1.1}
+\label{def:FCA-chapB-1.1.1}
 Let $C$ be a nonempty convex set in $\mathbb{R}^n$.  A function $f : C \to \mathbb{R}$ is said to be \emph{convex on $C$} when, for all pairs $(x,x')\in C\times C$ and all $\alpha\in[0,1]$, there holds
 \[
 f(\alpha x + (1-\alpha)x') \le \alpha f(x) + (1-\alpha) f(x').
@@ -10,7 +10,7 @@ f(\alpha x + (1-\alpha)x') \le \alpha f(x) + (1-\alpha) f(x').
 \end{definition}
 
 \begin{proposition}
-\label{prop:1.1.2}
+\label{prop:FCA-chapB-1.1.2}
 \lean{FCA_chap_B_1_1_2}
 The function $f$ is strongly convex on $C$ with modulus $c$ if and only if the function $f-\tfrac{1}{2}c\|\cdot\|^{2}$ is convex on $C$.
 \end{proposition}
@@ -26,7 +26,7 @@ f(\alpha x+(1-\alpha)x')-\tfrac{1}{2}c\|\alpha x+(1-\alpha)x'\|^{2}\le
 \end{proof}
 
 \begin{definition}
-\label{def:1.1.3}
+\label{def:FCA-chapB-1.1.3}
 (The Set $\operatorname{Conv}\mathbb{R}^n$) A function $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically $+\infty$, is said to be convex when, for all $(x,x')\in\mathbb{R}^n\times\mathbb{R}^n$ and all $\alpha\in[0,1]$, there holds
 \[
 f\big(\alpha x+(1-\alpha)x'\big)\le \alpha f(x)+(1-\alpha)f(x'),
@@ -37,7 +37,7 @@ The class of such functions is denoted by $\operatorname{Conv}\mathbb{R}^n$.
 \end{definition}
 
 \begin{definition}
-\label{def:1.1.4}
+\label{def:FCA-chapB-1.1.4}
 (Domain of a Function) The \emph{domain} (or also effective domain) of $f\in\Conv\mathbb{R}^n$ is the nonempty set
 \[
 \dom f := \{x\in\mathbb{R}^n : f(x) < +\infty\}.
@@ -45,7 +45,7 @@ The class of such functions is denoted by $\operatorname{Conv}\mathbb{R}^n$.
 \end{definition}
 
 \begin{definition}
-\label{def:1.1.5}
+\label{def:FCA-chapB-1.1.5}
 (Epigraph of a Function) Given $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, not identically equal to $+\infty$, the \emph{epigraph} of $f$ is the nonempty set
 \[
 \operatorname{epi} f := \{(x,r)\in\mathbb{R}^n\times\mathbb{R} : r \ge f(x)\}.
@@ -54,7 +54,7 @@ Its \emph{strict epigraph} $\operatorname{epi}_s f$ is defined likewise, with ``
 \end{definition}
 
 \begin{proposition}
-\label{prop:1.1.6}
+\label{prop:FCA-chapB-1.1.6}
 \lean{FCA_chap_B_1_1_6}
 Let $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$ be not identically equal to $+\infty$. The three properties below are equivalent:
 \begin{enumerate}
@@ -69,7 +69,7 @@ Left as an exercise.
 \end{proof}
 
 \begin{theorem}
-\label{thm:1.1.8}
+\label{thm:FCA-chapB-1.1.8}
 \lean{FCA_chap_B_1_1_8}
 (Inequality of Jensen) Let $f\in\operatorname{Conv}\mathbb{R}^n$. Then, for all collections $\{x_1,\dots,x_k\}$ of points in $\dom f$ and all $\alpha=(\alpha_1,\dots,\alpha_k)$ in the unit simplex of $\mathbb{R}^k$, there holds (inequality of Jensen in summation form)
 \[
@@ -86,7 +86,7 @@ is also in $\epi f$ (Proposition A.1.3.3). This is just the claimed inequality.
 \end{proof}
 
 \begin{proposition}
-\label{prop:1.1.9}
+\label{prop:FCA-chapB-1.1.9}
 \lean{FCA_chap_B_1_1_9}
 Let $f\in\Conv\R^n$.  The relative interior of $\operatorname{epi}f$ is the union over $x\in\operatorname{ri}\,\operatorname{dom}f$ of the open half-lines with bottom endpoints at $f(x)$:
 \[
@@ -108,7 +108,7 @@ In summary, we have proved that, for $x\in\operatorname{ri}\operatorname{dom}f$,
 \subsection{Special convex functions: Affinity and Closedness}
 
 \begin{proposition}
-\label{thm:1.2.1}
+\label{thm:FCA-chapB-1.2.1}
 \lean{FCA_chap_B_1_2_1}
 Any $f\in\operatorname{Conv}\mathbb{R}^n$ is minorized by some affine function.  More precisely: for any $x_0\in\operatorname{ri}\operatorname{dom}f$, there is $s$ in the subspace parallel to $\operatorname{aff}\operatorname{dom}f$ such that
 \[
@@ -143,7 +143,7 @@ this shows $\alpha\neq 0$ (otherwise, both $s$ and $\alpha$ would be zero).  Wit
 \end{proof}
 
 \begin{proposition}
-\label{prop:1.2.2}
+\label{prop:FCA-chapB-1.2.2}
 \lean{FCA_chap_B_1_2_2}
 For $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, the following three properties are equivalent:
 \begin{enumerate}
@@ -168,11 +168,11 @@ i.e.\ $(x,r)\in\operatorname{epi} f$.
 \end{proof}
 
 \begin{definition}
-\label{def:1.2.3}
+\label{def:FCA-chapB-1.2.3}
 (Closed Functions) The function $f:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$ is said to be closed if it is lower semi-continuous everywhere, or if its epigraph is closed, or if its sublevel-sets are closed.
 \end{definition}
 
-\begin{definition}[Closure of a Function]\label{def:1.2.4}
+\begin{definition}[Closure of a Function]\label{def:FCA-chapB-1.2.4}
 The \emph{closure} (or lower semi-continuous hull) of a function $f$ is the function $\operatorname{cl}f:\mathbb{R}^n\to\mathbb{R}\cup\{\pm\infty\}$ defined by:
 \[
 \operatorname{cl}f(x):=\liminf_{y\to x} f(y)\qquad\text{for all }x\in\mathbb{R}^n,
@@ -186,7 +186,7 @@ or equivalently by
 \end{definition}
 
 \begin{proposition}
-\label{prop:1.2.5}
+\label{prop:FCA-chapB-1.2.5}
 \lean{FCA_chap_B_1_2_5}
 Let $f\in\operatorname{Conv}\mathbb{R}^n$ and $x'\in\operatorname{ri}\operatorname{dom}f$. There holds (in $\mathbb{R}\cup\{+\infty\}$)
 \[
@@ -220,7 +220,7 @@ and our required inequality follows by letting $t\downarrow 0$.
 \end{proof}
 
 \begin{proposition}
-\label{prop:1.2.6}
+\label{prop:FCA-chapB-1.2.6}
 \lean{FCA_chap_B_1_2_6}
 For $f\in\Conv\R^n$, there holds
 \[
@@ -242,7 +242,7 @@ On the other hand, suppose $x\in\ri\dom f$. Then the one-dimensional function $\
 Notation 1.2.7 (The Set $\overline{\operatorname{Conv}}\mathbb{R}^n$) The set of closed convex functions on $\mathbb{R}^n$ is denoted by $\overline{\operatorname{Conv}}\mathbb{R}^n$. \qed
 
 \begin{proposition}
-\label{thm:1.2.8}
+\label{thm:FCA-chapB-1.2.8}
 \lean{FCA_chap_B_1_2_8}
 The closure of $f\in\Conv\R^n$ is the supremum of all affine functions minorizing $f$:
 \[
@@ -304,7 +304,7 @@ i.e.\ $(x,r)\in H^-$. Conversely, take $(x,r)\in H^-$. Set $t=0$ in (1.2.12) to 
 
 \subsection{First examples}
 \begin{theorem}
-\label{thm:1.3.1}
+\label{thm:FCA-chapB-1.3.1}
 \lean{FCA_chap_B_1_3_1}
 Let $C$ be a nonempty subset of $\mathbb{R}^n\times\mathbb{R}$ satisfying \eqref{1.3.2}, and let its lower-bound function $\ell_C$ be defined by \eqref{1.3.5}.
 \begin{enumerate}[(i)]
