@@ -259,8 +259,8 @@ lemma FCA_chap_C_3_2_7 {n : ℕ}
   let Hs := {y | inner ℝ s y = 1}
   let Hd := {y | inner ℝ d y = 1}
   List.TFAE [
-    ∃ (s' : EuclideanSpace ℝ (Fin n)) (t' : ℝ), (IsSupportingHyperplane s' t' C) ∧ (inner ℝ s' d = t') ∧ (Hyperplane s' t' = Hs),
-    ∃ (d' : EuclideanSpace ℝ (Fin n)) (t' : ℝ), (IsSupportingHyperplane d' t' C) ∧ (inner ℝ d' s = t') ∧ (Hyperplane d' t' = Hd),
+    ∃ (s' : EuclideanSpace ℝ (Fin n)) (t' : ℝ), (SupportingHyperplaneAt s' d t' C) ∧ (AffineHyperplane s' t' = Hs),
+    ∃ (d' : EuclideanSpace ℝ (Fin n)) (t' : ℝ), (SupportingHyperplaneAt d' s t' C) ∧ (AffineHyperplane d' t' = Hd),
     (d ∈ frontier C) ∧ (s ∈ frontier C') ∧ (inner ℝ s d = 1),
     (d ∈ C) ∧ (s ∈ C') ∧ (inner ℝ s d = 1)
   ] := by

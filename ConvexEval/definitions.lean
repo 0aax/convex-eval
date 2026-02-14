@@ -46,108 +46,137 @@ def affineHull {n : ℕ}
      {v : (EuclideanSpace ℝ (Fin n)) |
       ∃ (a : (EuclideanSpace ℝ (Fin k))), (∑ i, a i = 1) ∧ (v = ∑ i, a i • x i)}
 
-/- Asymptotic (recession) cone, defined for closed convex sets C -/
+/- Asymptotic (recession) cone, defined for closed convex sets C
+  NOTE: assumes x ∈ C
+-/
 def AsymptoticCone {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n)))
   (x : EuclideanSpace ℝ (Fin n)) : Set (EuclideanSpace ℝ (Fin n)) :=
   {d | ∀ t, t > 0 → x + t • d ∈ C}
 
-/- Face -/
-def Face {n : ℕ} (C : Set (EuclideanSpace ℝ (Fin n))) (F : Set (EuclideanSpace ℝ (Fin n))) : Prop
-    := (F ⊆ C) ∧ (Set.Nonempty F) ∧ (Convex ℝ F) ∧
-       ∀ (x₁ x₂ : EuclideanSpace ℝ (Fin n)) (_ : x₁ ∈ C ∧ x₂ ∈ C)
-       (α : ℝ) (_ : α > 0 ∧ α < 1) (_ : α • x₁ + (1 - α) • x₂ ∈ F),
-       {v : EuclideanSpace ℝ (Fin n) | ∃ θ, (θ ≥ 0) ∧ (θ ≤ 1) ∧ (v = θ • x₁ + (1-θ) • x₂)} ⊆ F
+/- Face:
+  for any segment of C, having in its relint an element of face F, is
+  entirely contained in F.
+-/
+def Face {n : ℕ}
+  (C : Set (EuclideanSpace ℝ (Fin n)))
+  (F : Set (EuclideanSpace ℝ (Fin n))) : Prop :=
+  (F ⊆ C) ∧ (Set.Nonempty F) ∧ (Convex ℝ F) ∧
+  ∀ (x₁ x₂ : EuclideanSpace ℝ (Fin n)), (x₁ ∈ C ∧ x₂ ∈ C) →
+  ∀ (α : ℝ), (α ∈ Set.Ioo 0 1) → (α • x₁ + (1 -  α) • x₂ ∈ F) →
+  {v : EuclideanSpace ℝ (Fin n) | ∃ θ, (θ ∈ Set.Icc 0 1) ∧ (v = θ • x₁ + (1-θ) • x₂)} ⊆ F
 
-/- Hyperplane -/
-def Hyperplane {n : ℕ}
+/- Affine Hyperplane -/
+def AffineHyperplane {n : ℕ}
+  (s : EuclideanSpace ℝ (Fin n)) (t : ℝ) : Set (EuclideanSpace ℝ (Fin n)) :=
+  {x | inner ℝ s x = t}
+
+/- Affine Hyperplane -/
+def HyperplaneHalfspace {n : ℕ}
   (s : EuclideanSpace ℝ (Fin n)) (t : ℝ) : Set (EuclideanSpace ℝ (Fin n)) :=
   {x | inner ℝ s x ≤ t}
 
 /- Indexing set of hyperplanes -/
 def I_C {n : ℕ} (C : Set (EuclideanSpace ℝ (Fin n))) : Set (EuclideanSpace ℝ (Fin n) × ℝ)
-    := {(s, r) : EuclideanSpace ℝ (Fin n) × ℝ | C ⊆ Hyperplane s r}
-
-/- Supporting hyperplane at point -/
-def SupportingHyperplaneAt {n : ℕ} (s x : EuclideanSpace ℝ (Fin n)) (r : ℝ)
-  (C : Set (EuclideanSpace ℝ (Fin n))) : Prop
-  := (s ≠ 0) ∧ (x ∈ C) ∧ (C ⊆ Hyperplane s r) ∧ (x ∈ Hyperplane s r) ∧ (inner ℝ s x = r)
+    := {(s, r) : EuclideanSpace ℝ (Fin n) × ℝ | C ⊆ HyperplaneHalfspace s r}
 
 /- Supporting hyperplane -/
 def IsSupportingHyperplane {n : ℕ}
   (s : EuclideanSpace ℝ (Fin n)) (t : ℝ)
   (C : Set (EuclideanSpace ℝ (Fin n))) : Prop :=
-  ∀ y ∈ C, inner ℝ s y ≤ t
+  C ⊆ HyperplaneHalfspace s t
 
-/- ExposedFace -/
-def IsExposedFace {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n))) (F : Set (EuclideanSpace ℝ (Fin n))) : Prop
-  := (F ⊆ C) ∧
-     ∃ (s : EuclideanSpace ℝ (Fin n)) (r : ℝ), (∀ y ∈ C, inner ℝ s y ≤ r) ∧
-     (F = C ∩ Hyperplane s r) ∧ (s ≠ 0)
+/- Supporting hyperplane at point -/
+def SupportingHyperplaneAt {n : ℕ}
+  (s x : EuclideanSpace ℝ (Fin n)) (r : ℝ)
+  (C : Set (EuclideanSpace ℝ (Fin n))) : Prop :=
+  (s ≠ 0) ∧ (x ∈ C) ∧
+  (IsSupportingHyperplane s r C) ∧
+  (x ∈ AffineHyperplane s r)
 
-/- Exposed face -/
-def exposedFace {n : ℕ}
+/- Exposed face
+  NOTE: an alternative definition of exposed face
+-/
+def ExposedFace {n : ℕ}
   (C : Set (EuclideanSpace ℝ (Fin n)))
   (s : EuclideanSpace ℝ (Fin n)) : Set (EuclideanSpace ℝ (Fin n)) :=
-  {x : EuclideanSpace ℝ (Fin n) | inner ℝ s x = sSup (Set.image (fun y => inner ℝ s y) C)}
+  {x : EuclideanSpace ℝ (Fin n) | (x ∈ C) ∧
+  (inner ℝ s x = sSup (Set.image (fun y => inner ℝ s y) C))}
+
+/- ExposedFace
+  NOTE: Hyperplane def of exposed face
+-/
+def IsExposedFace {n : ℕ}
+  (C : Set (EuclideanSpace ℝ (Fin n)))
+  (F : Set (EuclideanSpace ℝ (Fin n))) : Prop :=
+  (F ⊆ C) ∧
+  ∃ (s : EuclideanSpace ℝ (Fin n)) (r : ℝ),
+    (IsSupportingHyperplane s r C) ∧
+    (F = C ∩ AffineHyperplane s r) ∧
+    (s ≠ 0)
 
 /- Convex cone criteria -/
-def IsConvexCone {n : ℕ} (C : Set (EuclideanSpace ℝ (Fin n))) : Prop
-    := ∀ x ∈ C, ∀ y ∈ C, ∀ (α : ℝ) (_ : α ≥ 0), ∀ (β : ℝ) (_ : β ≥ 0), α • x + β • y ∈ C
+def IsConvexCone {n : ℕ}
+  (C : Set (EuclideanSpace ℝ (Fin n))) : Prop :=
+  ∀ x ∈ C, ∀ y ∈ C,
+  ∀ (α : ℝ) (_ : α ≥ 0), ∀ (β : ℝ) (_ : β ≥ 0), α • x + β • y ∈ C
 
-/- Normal -/
-def IsNormal {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-  (s : E) (C : Set E)
-  (x : E) : Prop :=
+/- Normal
+  NOTE: assumes x ∈ C
+-/
+def IsNormalTo {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+  (C : Set E) (x s : E) : Prop :=
   ∀ y ∈ C, inner ℝ s (y - x) ≤ 0
 
-/- Tangent -/
-def IsTangent {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-  (d : E) (S : Set E)
-  (x : E)
-  : Prop
-  := ∃ (s : ℕ → E) (t : ℕ → ℝ),
-     (∀ i, s i ∈ S) ∧ (Filter.Tendsto s Filter.atTop (𝓝 x)) ∧
-     (∀ i, t i > 0) ∧ (Filter.Tendsto t Filter.atTop (𝓝[>] 0)) ∧
-     (Filter.Tendsto (fun i => (t i)⁻¹ • (s i - x)) Filter.atTop (𝓝 d))
+/- Normal cone
+  NOTE: assumes x ∈ C
+-/
+def NormalCone {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+  (x : E) (C : Set E) : Set E :=
+  {s : E | IsNormalTo C x s}
+
+/- Normal cone
+  NOTE: assumes x ∈ C
+-/
+def normalConeAt {n : ℕ}
+  (C : Set (EuclideanSpace ℝ (Fin n)))
+  (x : EuclideanSpace ℝ (Fin n)) : Set (EuclideanSpace ℝ (Fin n)) :=
+  {s : EuclideanSpace ℝ (Fin n) | IsNormalTo C x s}
+
+/- Tangent
+  NOTE: assumes x ∈ S
+-/
+def IsTangentTo {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+  (S : Set E)
+  (x d : E) : Prop :=
+  ∃ (s : ℕ → E) (t : ℕ → ℝ),
+  (∀ i, s i ∈ S) ∧ (Filter.Tendsto s Filter.atTop (𝓝 x)) ∧
+  (∀ i, t i > 0) ∧ (Filter.Tendsto t Filter.atTop (𝓝[>] 0)) ∧
+  (Filter.Tendsto (fun i => (t i)⁻¹ • (s i - x)) Filter.atTop (𝓝 d))
+
+/- Tangent cone
+  NOTE: assumes x ∈ S
+-/
+def TangentCone {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+  (x : E) (S : Set E) : Set E :=
+  {d : E | IsTangentTo S x d}
 
 /- Polar cone -/
 def PolarCone {n : ℕ}
   (K : Set (EuclideanSpace ℝ (Fin n))) : Set (EuclideanSpace ℝ (Fin n)) :=
   {s : EuclideanSpace ℝ (Fin n) | ∀ x ∈ K, inner ℝ s x ≤ 0}
 
-/- Normal cone -/
-def NormalCone {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-  (x : E) (C : Set E) : Set E :=
-  {s : E | IsNormal s C x}
-
-/- Is normal to -/
-def IsNormalTo {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n)))
-  (x s : EuclideanSpace ℝ (Fin n)) : Prop :=
-  ∀ y ∈ C, inner ℝ s (y - x) ≤ 0
-
-/- Normal cone -/
-def normalConeAt {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n)))
-  (x : EuclideanSpace ℝ (Fin n)) : Set (EuclideanSpace ℝ (Fin n)) :=
-  {s : EuclideanSpace ℝ (Fin n) | IsNormalTo C x s}
-
-/- Tangent cone -/
-def TangentCone {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-    (x : E) (S : Set E) : Set E
-    := {d : E | IsTangent d S x}
-
 /- Cone of set -/
-def GenCone {n : ℕ} (S : Set (EuclideanSpace ℝ (Fin n)))
-  : Set (EuclideanSpace ℝ (Fin n))
-  := {v : EuclideanSpace ℝ (Fin n) |
-      ∃ (α : ℝ) (_ : α ≥ 0),
-      ∃ (x : EuclideanSpace ℝ (Fin n)) (_ : x ∈ S),
-      v = α • x}
+def GenCone {n : ℕ}
+  (S : Set (EuclideanSpace ℝ (Fin n))) : Set (EuclideanSpace ℝ (Fin n)) :=
+  {v : EuclideanSpace ℝ (Fin n) | ∃ (k : ℕ) (α : ℕ → ℝ) (x : ℕ → EuclideanSpace ℝ (Fin n)),
+   (∀ i ∈ Finset.range k, α i ≥ 0) ∧
+   (∀ i ∈ Finset.range k, x i ∈ S) ∧
+   (v = ∑ i ∈ Finset.range k, (α i) • (x i))}
 
-/- Is cone -/
+/- Is cone
+  set such that the open half-line {ax : a > 0} is contained in the set
+-/
 def IsCone {E : Type*} [AddCommMonoid E] [SMul ℝ E]
   (K : Set E) : Prop :=
   ∀ x ∈ K, ∀ (s : ℝ), s > 0 → s • x ∈ K
@@ -231,7 +260,6 @@ def DirectionExposingFace {n : ℕ}
   let σ := SupportFun C
   {x | (x ∈ C) ∧ (inner ℝ x d = σ d)}
 
-
 /-
   Other definitions
 -/
@@ -295,9 +323,10 @@ noncomputable def DistOnFunctions {n : ℕ}
 def IsScalarProduct {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n) → ℝ) : Prop :=
   (∀ (u v : EuclideanSpace ℝ (Fin n)), f u v = f v u) ∧
-  (∀ (u v : EuclideanSpace ℝ (Fin n)) (a : ℝ), f (a • u) v = a • (f v u)) ∧
-  (∀ (u v w : EuclideanSpace ℝ (Fin n)), f (u + w) v = f v u + f w v) ∧
-  (∀ (u : EuclideanSpace ℝ (Fin n)), f u u ≥ 0)
+  (∀ (u v : EuclideanSpace ℝ (Fin n)) (a : ℝ), f (a • u) v = a • (f u v)) ∧
+  (∀ (u v w : EuclideanSpace ℝ (Fin n)), f (u + w) v = f u v + f w v) ∧
+  (∀ (u : EuclideanSpace ℝ (Fin n)), f u u ≥ 0) ∧
+  (∀ (u : EuclideanSpace ℝ (Fin n)), f u u = 0 → u = 0)
 
 /- Helper for getting the first n-coordinates -/
 def vecHead {n : ℕ}
@@ -328,59 +357,67 @@ def strictEpigraph {n : ℕ}
 
 /- Lower semi-continuous at -/
 noncomputable def lscAt {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → EReal) (x : EuclideanSpace ℝ (Fin n)) : Prop
+  (f : EuclideanSpace ℝ (Fin n) → EReal)
+  (x : EuclideanSpace ℝ (Fin n)) : Prop
   := Filter.liminf f (𝓝 x) ≥ f x
 
+/- Lower semi-continuous hull -/
 noncomputable def lscHull {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x : EuclideanSpace ℝ (Fin n)) : WithTop ℝ
+  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
+  (x : EuclideanSpace ℝ (Fin n)) : WithTop ℝ
   := Filter.liminf f (𝓝 x)
 
 def InConvRn {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop
-  := (∃ x, f x < ⊤) ∧
-     (∀ x, ∀ y, ∀ (α : ℝ), (0 ≤ α) → (α ≤ 1) → f (α • x + (1 - α) • y) ≤ α • (f x) + (1 - α) • (f y))
+  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
+  (∃ x, f x < ⊤) ∧
+  (∀ x, ∀ y, ∀ (α : ℝ), (0 ≤ α) → (α ≤ 1) → f (α • x + (1 - α) • y) ≤ α • (f x) + (1 - α) • (f y))
 
 def InProperConvRn {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → EReal) : Prop
-  := (∃ x, f x < ⊤) ∧ (∀ x, f x ≠ ⊥) ∧
-     (∀ x, ∀ y, ∀ (α : ℝ), (0 ≤ α) → (α ≤ 1) → f (α • x + (1 - α) • y) ≤ α • (f x) + (1 - α) • (f y))
+  (f : EuclideanSpace ℝ (Fin n) → EReal) : Prop :=
+  (∃ x, f x < ⊤) ∧ (∀ x, f x ≠ ⊥) ∧
+  (∀ x, ∀ y, ∀ (α : ℝ), (0 ≤ α) → (α ≤ 1) → f (α • x + (1 - α) • y) ≤ α • (f x) + (1 - α) • (f y))
 
 def InClosedConvRn {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop
-  := (∃ x, f x < ⊤) ∧
-     (∀ x, ∀ y, ∀ (α : ℝ), (0 ≤ α) → (α ≤ 1) → f (α • x + (1 - α) • y) ≤ α • (f x) + (1 - α) • (f y)) ∧
-     (∀ x, (lscHull f) x = f x)
+  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
+  (∃ x, f x < ⊤) ∧
+  (∀ x, ∀ y, ∀ (α : ℝ), (0 ≤ α) → (α ≤ 1) → f (α • x + (1 - α) • y) ≤ α • (f x) + (1 - α) • (f y)) ∧
+  (∀ x, (lscHull f) x = f x)
 
 def sublevelSet {n : ℕ}
-  (r : ℝ) (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  : Set (EuclideanSpace ℝ (Fin n))
-  := {x : EuclideanSpace ℝ (Fin n) | f x ≤ r}
+  (r : ℝ) (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) :
+  Set (EuclideanSpace ℝ (Fin n)) :=
+  {x : EuclideanSpace ℝ (Fin n) | f x ≤ r}
 
 def parallelSubspace {n : ℕ}
-  (S : Set (EuclideanSpace ℝ (Fin n))) : Set (EuclideanSpace ℝ (Fin n))
-  := {v : EuclideanSpace ℝ (Fin n) | ∃ x, ∃ y, (x ∈ S) ∧ (y ∈ S) ∧ (v = x - y)}
+  (S : Set (EuclideanSpace ℝ (Fin n))) : Set (EuclideanSpace ℝ (Fin n)) :=
+  {v : EuclideanSpace ℝ (Fin n) | ∃ x, ∃ y, (x ∈ S) ∧ (y ∈ S) ∧ (v = x - y)}
 
 noncomputable def lowerBoundFunction {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n) × ℝ)) (x : EuclideanSpace ℝ (Fin n)) : WithTop ℝ
-  := sInf {r : WithTop ℝ | ∃ (z : EuclideanSpace ℝ (Fin n) × ℝ), (z ∈ C) ∧ (x = z.1) ∧ (r = z.2)}
+  (C : Set (EuclideanSpace ℝ (Fin n) × ℝ)) (x : EuclideanSpace ℝ (Fin n)) : WithTop ℝ :=
+  sInf {r : WithTop ℝ | ∃ (z : EuclideanSpace ℝ (Fin n) × ℝ), (z ∈ C) ∧ (x = z.1) ∧ (r = z.2)}
 
 def minorizedAt {n : ℕ}
-  (C : Set (EuclideanSpace ℝ (Fin n) × ℝ)) (x : EuclideanSpace ℝ (Fin n)) : Prop
-  := let K := {r : ℝ | ∃ (z : EuclideanSpace ℝ (Fin n) × ℝ), (z ∈ C) ∧ (x = z.1) ∧ (r = z.2)}
-     ∃ (k₀ : ℝ), ∀ r ∈ K, r ≥ k₀
+  (C : Set (EuclideanSpace ℝ (Fin n) × ℝ)) (x : EuclideanSpace ℝ (Fin n)) : Prop :=
+  let K := {r : ℝ | ∃ (z : EuclideanSpace ℝ (Fin n) × ℝ), (z ∈ C) ∧ (x = z.1) ∧ (r = z.2)}
+  ∃ (k₀ : ℝ), ∀ r ∈ K, r ≥ k₀
 
 def Minorizes {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (g : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  : Prop
-  := ∀ x, f x ≤ g x
+  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (g : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
+  ∀ x, f x ≤ g x
 
 /-
   Specific functions
 -/
+
+/- Perspective
+  g(u, x) := {
+    u f(x / u), if u > 0
+    +∞, if not.
+  }
+-/
 noncomputable def perspective {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (u : ℝ) (x : EuclideanSpace ℝ (Fin n))
-  : WithTop ℝ :=
+  (u : ℝ) (x : EuclideanSpace ℝ (Fin n)) : WithTop ℝ :=
   if u > 0 then
     u * f (u⁻¹ • x)
   else
@@ -389,35 +426,35 @@ noncomputable def perspective {n : ℕ}
 noncomputable def imageFun {m n : ℕ}
   (A : (EuclideanSpace ℝ (Fin m)) →ₗ[ℝ] (EuclideanSpace ℝ (Fin n)))
   (g : EuclideanSpace ℝ (Fin m) → EReal)
-  (x : EuclideanSpace ℝ (Fin n)) : EReal
-  := sInf (Set.image g {y : EuclideanSpace ℝ (Fin m) | A y = x})
+  (x : EuclideanSpace ℝ (Fin n)) : EReal :=
+  sInf (Set.image g {y : EuclideanSpace ℝ (Fin m) | A y = x})
 
 noncomputable def valueFun {p n : ℕ}
   (phi : EuclideanSpace ℝ (Fin p) → EReal)
   (c : (Fin n) → (EuclideanSpace ℝ (Fin p) → EReal))
-  (x : EuclideanSpace ℝ (Fin n)) : EReal
-  := sInf (Set.image phi {u | ∀ j, (c j) u ≤ x j})
+  (x : EuclideanSpace ℝ (Fin n)) : EReal :=
+  sInf (Set.image phi {u | ∀ j, (c j) u ≤ x j})
 
 noncomputable def marginalFun {n m : ℕ}
   (g : EuclideanSpace ℝ (Fin (n + m)) → EReal)
-  (x : EuclideanSpace ℝ (Fin n)) : EReal
-  := let g_concat : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin m) → EReal := fun a b
-                     => g (Fin.append (α := ℝ) a b)
-     sInf (Set.range (g_concat x))
+  (x : EuclideanSpace ℝ (Fin n)) : EReal :=
+  let g_concat : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin m) → EReal := fun a b
+  => g (Fin.append (α := ℝ) a b)
+  sInf (Set.range (g_concat x))
 
 /- Asymptotic (recession) function -/
 noncomputable def AsymptoticFun {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (x₀ d : EuclideanSpace ℝ (Fin n)) : WithTop ℝ
-  := limUnder Filter.atTop (fun (t : ℝ) => t⁻¹ • (f (x₀ + t • d) - f x₀))
+  (x₀ d : EuclideanSpace ℝ (Fin n)) : WithTop ℝ :=
+  limUnder Filter.atTop (fun (t : ℝ) => t⁻¹ • (f (x₀ + t • d) - f x₀))
 
 /- Indicator function -/
 noncomputable def Indicator {n : ℕ}
   (H : Subspace ℝ (EuclideanSpace ℝ (Fin n)))
   (x : EuclideanSpace ℝ (Fin n))
   : WithTop ℝ := by
-    classical
-    exact if x ∈ H then 0 else ⊤
+  classical
+  exact if x ∈ H then 0 else ⊤
 
 /- Image function -/
 noncomputable def ImageFunction {m n : ℕ}
@@ -432,17 +469,17 @@ noncomputable def infimalConv {n : ℕ}
   (f₁ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (f₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
   (x : EuclideanSpace ℝ (Fin n)) : EReal
-  := sInf { z : WithBot (WithTop ℝ) | ∃ y : EuclideanSpace ℝ (Fin n),
-                                      z = ((f₁ y + f₂ (x - y) : WithTop ℝ) : WithBot (WithTop ℝ)) }
+  := sInf {z : WithBot (WithTop ℝ) | ∃ y : EuclideanSpace ℝ (Fin n),
+  z = ((f₁ y + f₂ (x - y) : WithTop ℝ) : WithBot (WithTop ℝ)) }
 
 /- Infimal convolution -/
 noncomputable def multiInfimalConv {n : ℕ} (m : ℕ)
   (f : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))
-  (x : EuclideanSpace ℝ (Fin n)) : WithBot (WithTop ℝ)
-  := sInf {z : WithBot (WithTop ℝ) |
-           ∃ (y : ℕ → EuclideanSpace ℝ (Fin n)),
-           x = ∑ i ∈ Finset.range m, (y i) ∧
-           z = ∑ i ∈ Finset.range m, (f i) (y i)}
+  (x : EuclideanSpace ℝ (Fin n)) : WithBot (WithTop ℝ) :=
+  sInf {z : WithBot (WithTop ℝ) |
+        ∃ (y : ℕ → EuclideanSpace ℝ (Fin n)),
+        (x = ∑ i ∈ Finset.range m, (y i)) ∧
+        (z = ∑ i ∈ Finset.range m, (f i) (y i))}
 
 /- Sublevel set -/
 def sublevelSetFun {n : ℕ}
@@ -461,8 +498,9 @@ def Im {m n : ℕ}
 
 /- Nondegeneracy conditions for functions -/
 def IsNondegenerate {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop
-  := (∃ x, f x ≠ ⊤) ∧ (∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ), ∀ x, f x ≥ inner ℝ s x - b)
+  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
+  (∃ x, f x ≠ ⊤) ∧
+  (∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ), ∀ x, f x ≥ inner ℝ s x - b)
 
 /- Is subadditive -/
 def IsSubadditive {n : ℕ}
@@ -472,8 +510,8 @@ def IsSubadditive {n : ℕ}
 
 /- Is a closed function -/
 def IsClosedFun {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop
-  := (∀ x, (lscHull f) x = f x)
+  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
+  (∀ x, (lscHull f) x = f x)
 
 /- Positively homogeneous with degree k -/
 def IsKPosHomogeneous {n : ℕ}
@@ -481,13 +519,18 @@ def IsKPosHomogeneous {n : ℕ}
   ∀ (x : EuclideanSpace ℝ (Fin n)), ∀ (t : ℝ),
   t > 0 → f (t • x) = (t ^ k) • (f x)
 
-/- Linear function -/
+/- Linear function
+  for all (x₁, x₂) ∈ 𝓧 × 𝓧 and (t₁, t₂) ∈ ℝ × ℝ,
+  such that t₁x₁ + t₂x₂ ∈ 𝓧, then
+  σ(t₁x₁ + t₂x₂) = t₁σ(x₁) + t₂σ(x₂)
+-/
 def IsLinearOn {n : ℕ}
   (𝓧 : Set (EuclideanSpace ℝ (Fin n)))
   (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
   (InConvRn σ) ∧
   (∀ (x₁ x₂ : EuclideanSpace ℝ (Fin n)), ∀ (t₁ t₂ : ℝ),
-  x₁ ∈ 𝓧 → x₂ ∈ 𝓧 → σ (t₁ • x₁ + t₂ • x₂) = t₁ • (σ x₁) + t₂ • (σ x₂))
+  x₁ ∈ 𝓧 → x₂ ∈ 𝓧 → t₁ • x₁ + t₂ • x₂ ∈ 𝓧 →
+  σ (t₁ • x₁ + t₂ • x₂) = t₁ • (σ x₁) + t₂ • (σ x₂))
 
 /- In the subspace spanned by m vectors -/
 def InSubspaceSpanVec {n : ℕ} (m : ℕ)
@@ -503,7 +546,10 @@ def IsMinorizedOn {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (C : Set (EuclideanSpace ℝ (Fin n))) : Prop :=
   ∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ), ∀ x ∈ C, f x ≥ inner ℝ s x - b
 
-/- Sublinear function -/
+/- Sublinear function
+  for all (x₁, x₂) ∈ ℝ^n × ℝ^n and (t₁, t₂) ∈ ℝ^+ × ℝ^+,
+  σ(t₁x₁ + t₂x₂) ≤ t₁σ(x₁) + t₂σ(x₂)
+-/
 def IsSublinear {n : ℕ}
   (σ : EuclideanSpace ℝ (Fin n) → EReal) : Prop :=
   (∀ (x₁ x₂ : EuclideanSpace ℝ (Fin n)), ∀ (t₁ t₂ : ℝ),
@@ -514,7 +560,7 @@ def IsSublinear {n : ℕ}
 -/
 
 /- Difference quotient
-  * t > 0
+  NOTE: assume t > 0
 -/
 noncomputable def differenceQuotient {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → EReal)
@@ -522,14 +568,18 @@ noncomputable def differenceQuotient {n : ℕ}
   (d : EuclideanSpace ℝ (Fin n)) (t : ℝ) : EReal :=
   (f (x + t • d) - f x) / t
 
-/- Directional derivative -/
+/- Directional derivative
+  NOTE: assumes convexity of f
+-/
 noncomputable def directionalDeriv {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → EReal)
   (x : EuclideanSpace ℝ (Fin n))
   (d : EuclideanSpace ℝ (Fin n)) : EReal :=
   limUnder (𝓝[>] 0) (fun t => differenceQuotient f x d t)
 
-/- If f is convex and finite, then f'(x, ·) is finite -/
+/- If f is convex and finite, then f'(x, ·) is finite
+  NOTE: This is more of a helper function to get real rather than EReal.
+-/
 noncomputable def realDirectionalDeriv {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → ℝ)
   (x : EuclideanSpace ℝ (Fin n))
@@ -559,30 +609,33 @@ def SubdifferentialII {n : ℕ}
 def IsFinite (z : EReal) : Prop :=
   ∃ r : ℝ, z = (r : EReal)
 
-/- Conjugate of a function (Legendre-Fenchel transform) -/
+/- Conjugate of a function (Legendre-Fenchel transform)
+  NOTE: avoid subtraction by ±∞ by restricting to effective domain.
+-/
 noncomputable def Conjugate {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (s : EuclideanSpace ℝ (Fin n)) : WithTop ℝ
-  := sSup {z : WithTop ℝ | ∃ x ∈ effDom (liftWithToptoEReal f), z = inner ℝ s x - f x}
+  (s : EuclideanSpace ℝ (Fin n)) : WithTop ℝ :=
+  sSup {z : WithTop ℝ | ∃ x ∈ effDom (liftWithToptoEReal f),
+  z = inner ℝ s x - f x}
 
 /- Biconjugate of a function -/
 noncomputable def Biconjugate {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (x : EuclideanSpace ℝ (Fin n)) : WithTop ℝ
-  := sSup {z : WithTop ℝ | ∃ s, z = inner ℝ s x - (Conjugate f s)}
+  (x : EuclideanSpace ℝ (Fin n)) : WithTop ℝ :=
+  Conjugate (fun s => Conjugate f s) x
 
 /- Subdifferential -/
 def SubdifferentialAt {n : ℕ}
   (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)
-  (x : EuclideanSpace ℝ (Fin n)) : Set (EuclideanSpace ℝ (Fin n))
-  := {s | ∀ y, f y ≥ f x + inner ℝ s (y - x)}
+  (x : EuclideanSpace ℝ (Fin n)) : Set (EuclideanSpace ℝ (Fin n)) :=
+  {s | ∀ y, f y ≥ f x + inner ℝ s (y - x)}
 
 /- 0-coercive function -/
 noncomputable def IsZeroCoerciveFun {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop
-  := Filter.Tendsto f (Filter.comap norm Filter.atTop) Filter.atTop
+  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
+  Filter.Tendsto f (Filter.comap norm Filter.atTop) Filter.atTop
 
 /- 1-coercive function -/
 noncomputable def IsOneCoerciveFun {n : ℕ}
-  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop
-  := Filter.Tendsto (fun x => (norm x)⁻¹ • f x) (Filter.comap norm Filter.atTop) Filter.atTop
+  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) : Prop :=
+  Filter.Tendsto (fun x => (norm x)⁻¹ • f x) (Filter.comap norm Filter.atTop) Filter.atTop

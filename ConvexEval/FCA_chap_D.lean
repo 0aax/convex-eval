@@ -111,7 +111,7 @@ lemma FCA_chap_D_2_1_3 {n : ℕ}
   (hf_convex : ConvexOn ℝ Set.univ f) :
   (∀ (x : EuclideanSpace ℝ (Fin n)), (h ∈ normalConeAt (SubdifferentialI (liftRealtoEReal f) x) s) →
   Asymptotics.IsLittleO (𝓝 0) (fun h => f (x + h) - f x - inner ℝ s h) (fun h => ‖h‖)) ∧
-  (∀ (x : EuclideanSpace ℝ (Fin n)), (s ∈ exposedFace (SubdifferentialI (liftRealtoEReal f) x) h) →
+  (∀ (x : EuclideanSpace ℝ (Fin n)), (s ∈ ExposedFace (SubdifferentialI (liftRealtoEReal f) x) h) →
   Asymptotics.IsLittleO (𝓝 0) (fun h => f (x + h) - f x - inner ℝ s h) (fun h => ‖h‖)) := by
   sorry
 
@@ -121,7 +121,7 @@ lemma FCA_chap_D_2_1_5 {n : ℕ}
   (x d : EuclideanSpace ℝ (Fin n))
   (hf_convex : ConvexOn ℝ Set.univ f) :
   let f' := fun (d : EuclideanSpace ℝ (Fin n)) => directionalDeriv (liftRealtoEReal f) x d
-  SubdifferentialI f' d = exposedFace (SubdifferentialI (liftRealtoEReal f) x) d := by
+  SubdifferentialI f' d = ExposedFace (SubdifferentialI (liftRealtoEReal f) x) d := by
   sorry
 
 /- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 2.2.1  -/

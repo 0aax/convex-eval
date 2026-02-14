@@ -296,7 +296,7 @@ lemma CAMA_chap_3_4_2_4 {n : ℕ}
   (hC₀ : Convex ℝ C)
   (hC₁ : Set.Nonempty C)
   (hC₂ : C ⊂ Set.univ) :
-  closure C = ⋂ v ∈ (I_C C), Hyperplane v.1 v.2 := by
+  closure C = ⋂ v ∈ (I_C C), HyperplaneHalfspace v.1 v.2 := by
   sorry
 
 /- Hiriart-Urruty Lemarechal, Proposition 4.2.7 -/
@@ -344,7 +344,7 @@ lemma CAMA_chap_3_5_1_2 {n : ℕ}
   (d : EuclideanSpace ℝ (Fin n))
   (S : Set (EuclideanSpace ℝ (Fin n)))
   (x : EuclideanSpace ℝ (Fin n)) :
-  IsTangent d S x ↔
+  IsTangentTo S x d ↔
   ∃ (dk : ℕ → EuclideanSpace ℝ (Fin n)), ∃ (tk : ℕ → ℝ),
   (Filter.Tendsto dk Filter.atTop (𝓝 d)) ∧
   (Filter.Tendsto tk Filter.atTop (𝓝 0)) ∧
