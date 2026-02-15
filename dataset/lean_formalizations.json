@@ -1,0 +1,742 @@
+[
+    {
+        "lean_tag": "CAMA_chap_3_1_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 1.2.1 -/",
+        "content": "lemma CAMA_chap_3_1_2_1 {n : ℕ}\n  (J : Set ℕ)\n  (C : ℕ → Set (EuclideanSpace ℝ (Fin n)))\n  (hC : ∀ i, Convex ℝ (C i)) :\n  Convex ℝ (⋂ (j : ℕ) (_ : j ∈ J), (C j)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_1_2_4",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 1.2.4 -/",
+        "content": "lemma CAMA_chap_3_1_2_4 {m n : ℕ}\n  (A : AffineMap ℝ (EuclideanSpace ℝ (Fin n)) (EuclideanSpace ℝ (Fin m)))\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (D : Set (EuclideanSpace ℝ (Fin m)))\n  (hC : Convex ℝ C)\n  (hD : Convex ℝ D) :\n  Convex ℝ (Set.image A C) ∧\n  (Convex ℝ (Set.preimage A D)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_1_2_7",
+        "comment": "/- Hiriart-Urruty Lemarechal Proposition 1.2.7 -/",
+        "content": "lemma CAMA_chap_3_1_2_7 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC : Convex ℝ C) :\n  Convex ℝ (interior C) ∧ Convex ℝ (closure C):= by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_1_3_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 1.3.3 -/",
+        "content": "lemma CAMA_chap_3_1_3_3 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n))) :\n  (Convex ℝ C) ↔ (∀ z ∈ (conv C), z ∈ C) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_1_3_4",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 1.3.4 -/",
+        "content": "lemma CAMA_chap_3_1_3_4 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n))) :\n  (convexHull ℝ C) = (conv C) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_1_3_6",
+        "comment": "/- Hiriart-Urruty Lemarechal, lemma 1.3.6 (Caratheodory) -/",
+        "content": "lemma CAMA_chap_3_1_3_6 {n : ℕ}\n  (S : Set (EuclideanSpace ℝ (Fin n))) :\n  ∀ x ∈ (convexHull ℝ S),\n  ∃ (v : Fin (n + 1) → EuclideanSpace ℝ (Fin n)) (a : EuclideanSpace ℝ (Fin (n + 1))),\n  (∀ i, v i ∈ S) ∧ (a ∈ Δκ (n + 1)) ∧ (x = ∑ i, a i • v i) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_1_4_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, lemma 1.4.3 -/",
+        "content": "lemma CAMA_chap_3_1_4_3 {n : ℕ}\n  (S : Set (EuclideanSpace ℝ (Fin n))) :\n  (Bornology.IsBounded S → Bornology.IsBounded (convexHull ℝ S)) ∧\n  (IsCompact S → IsCompact (convexHull ℝ S)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_1_10",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 2.1.10 -/",
+        "content": "lemma CAMA_chap_3_2_1_10 {n : ℕ}\n  (C₁ : Set (EuclideanSpace ℝ (Fin n)))\n  (C₂ : Set (EuclideanSpace ℝ (Fin n)))\n  (hC₁ : Convex ℝ C₁)\n  (hC₂ : Convex ℝ C₂)\n  (hC : Set.Nonempty (intrinsicInterior ℝ C₁ ∩ intrinsicInterior ℝ C₂)) :\n  (intrinsicInterior ℝ (C₁ ∩ C₂) = intrinsicInterior ℝ C₁ ∩ intrinsicInterior ℝ C₂) ∧\n  (closure (C₁ ∩ C₂) = closure C₁ ∩ closure C₂):= by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_1_12",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 2.1.12 -/",
+        "content": "lemma CAMA_chap_3_2_1_12 {n : ℕ} {m : ℕ}\n  (A : AffineMap ℝ (EuclideanSpace ℝ (Fin n)) (EuclideanSpace ℝ (Fin m)))\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (D : Set (EuclideanSpace ℝ (Fin m)))\n  (hC : Convex ℝ C)\n  (hD₀ : Convex ℝ D)\n  (hD₁ : Set.Nonempty (Set.preimage A (intrinsicInterior ℝ D))) :\n  (intrinsicInterior ℝ (Set.image A C) = Set.image A (intrinsicInterior ℝ C)) ∧\n  (intrinsicInterior ℝ (Set.preimage A D) = Set.preimage A (intrinsicInterior ℝ D)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_1_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, lemma 2.1.3 -/",
+        "content": "lemma CAMA_chap_3_2_1_3 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC₀ : Nonempty C)\n  (hC₁ : Convex ℝ C) :\n  (Set.Nonempty (intrinsicInterior ℝ C)) ∧\n  (Module.finrank ℝ (affineSpan ℝ C).direction) =\n  (Module.finrank ℝ (affineSpan ℝ (intrinsicInterior ℝ C)).direction) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_1_6",
+        "comment": "/- Hiriart-Urruty Lemarechal, Lemma 2.1.6 -/",
+        "content": "lemma CAMA_chap_3_2_1_6 {n : ℕ}\n  (x₁ : EuclideanSpace ℝ (Fin n))\n  (x₂ : EuclideanSpace ℝ (Fin n))\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC_nonempty : Set.Nonempty C)\n  (hC_convex : Convex ℝ C)\n  (hx₁ : x₁ ∈ closure C)\n  (hx₂ : x₂ ∈ (intrinsicInterior ℝ C)) :\n  {v : EuclideanSpace ℝ (Fin n) | ∃ (α : ℝ), (0 ≤ α) ∧ (α < 1) ∧\n                                  (v = α • x₁ + (1-α) • x₂)} ⊆ intrinsicInterior ℝ C := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_1_8",
+        "comment": "/- Hiriart-Urruty Lemarechal, Lemma 2.1.8 -/",
+        "content": "lemma CAMA_chap_3_2_1_8 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC_nonempty : Set.Nonempty C)\n  (hC_convex : Convex ℝ C) :\n  (closure (intrinsicInterior ℝ C) = closure C) ∧\n  (intrinsicInterior ℝ (closure C) = intrinsicInterior ℝ C) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 2.2.1 -/",
+        "content": "lemma CAMA_chap_3_2_2_1 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (x₁ x₂ : EuclideanSpace ℝ (Fin n))\n  (hC₀ : IsClosed C)\n  (hC₁ : Convex ℝ C)\n  (hx₁ : x₁ ∈ C)\n  (hx₂ : x₂ ∈ C) :\n  (AsymptoticCone C x₁) = (AsymptoticCone C x₂) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_2_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 2.2.3 -/",
+        "content": "lemma CAMA_chap_3_2_2_3 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC₀ : IsClosed C)\n  (hC₁ : Convex ℝ C)\n  (hC₂ : Set.Nonempty C) :\n  (IsCompact C) ↔ ∀ x ∈ C, (AsymptoticCone C x) = {0} := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_3_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 2.3.3 -/",
+        "content": "lemma CAMA_chap_3_2_3_3 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC₀ : Set.Nonempty C)\n  (hC₁ : Convex ℝ C)\n  (hC₂ : IsCompact C) :\n  Set.Nonempty (Set.extremePoints ℝ C) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_3_4",
+        "comment": "/- Hiriart-Urruty Lemarechal, lemma 2.3.4 (Minkowski) -/",
+        "content": "lemma CAMA_chap_3_2_3_4 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC₀ : Set.Nonempty C)\n  (hC₁ : Convex ℝ C)\n  (hC₂ : IsCompact C) :\n  C = convexHull ℝ (Set.extremePoints ℝ C) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_3_7",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 2.3.7 -/",
+        "content": "lemma CAMA_chap_3_2_3_7 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (F : Set (EuclideanSpace ℝ (Fin n)))\n  (hF : Face C F)\n  (hC₀ : Set.Nonempty C)\n  (hC₁ : Convex ℝ C) :\n  ∀ (x : EuclideanSpace ℝ (Fin n)) (_ : x ∈ (Set.extremePoints ℝ F)),\n  x ∈ (Set.extremePoints ℝ C) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_4_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 2.4.3 -/",
+        "content": "lemma CAMA_chap_3_2_4_3 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (F : Set (EuclideanSpace ℝ (Fin n)))\n  (hC_nonempty : Set.Nonempty C)\n  (hC_convex : Convex ℝ C)\n  (hF : IsExposedFace C F) :\n  Face C F := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_2_4_6",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 2.4.6 (max) -/",
+        "content": "lemma CAMA_chap_3_2_4_6 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (s : EuclideanSpace ℝ (Fin n))\n  (hC₀ : IsCompact C)\n  (hC₁ : Convex ℝ C)\n  (hC₂ : Set.Nonempty C) :\n  (sSup (Set.image (fun x ↦ inner ℝ s x) C) =\n  sSup (Set.image (fun x ↦ inner ℝ s x) (Set.extremePoints ℝ C))) ∧\n  (Argmax (fun x ↦ inner ℝ s x) C =\n  convexHull ℝ (Argmax (fun x ↦ inner ℝ s x) (Set.extremePoints ℝ C))) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_3_1_1",
+        "comment": "/- Hiriart-Urruty Lemarechal, lemma 3.1.1 -/",
+        "content": "lemma CAMA_chap_3_3_1_1 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (x y : EuclideanSpace ℝ (Fin n))\n  (hC₀ : IsClosed C)\n  (hC₁ : Convex ℝ C)\n  (hC₂ : Set.Nonempty C)\n  (hy : y ∈ C) :\n  y = pC x C hC₀ hC₁ hC₂ ↔ ∀ z ∈ C, inner ℝ (x - y) (z - y) ≤ 0 := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_3_1_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 3.1.3 -/",
+        "content": "lemma CAMA_chap_3_3_1_3 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (x₁ x₂ : EuclideanSpace ℝ (Fin n))\n  (hC₀ : IsClosed C)\n  (hC₁ : Convex ℝ C)\n  (hC₂ : Set.Nonempty C) :\n  ‖(pC x₁ C hC₀ hC₁ hC₂) - (pC x₂ C hC₀ hC₁ hC₂)‖ ^ 2\n  ≤ inner ℝ ((pC x₁ C hC₀ hC₁ hC₂) - (pC x₂ C hC₀ hC₁ hC₂)) (x₁ - x₂) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_3_2_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 3.2.3 -/",
+        "content": "lemma CAMA_chap_3_3_2_3 {n : ℕ}\n  (K : Set (EuclideanSpace ℝ (Fin n)))\n  (x y : EuclideanSpace ℝ (Fin n))\n  (hK₀ : IsConvexCone K)\n  (hK₁ : IsClosed K)\n  (hK₂ : Set.Nonempty K) :\n  y = pC x K hK₁ (convexCone_isConvex hK₀) hK₂ ↔\n  (y ∈ K) ∧ (x - y ∈ PolarCone K) ∧ (inner ℝ (x - y) y = 0) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_3_2_5",
+        "comment": "/- Hiriary-Urruty Lemarechal, lemma 3.2.5 (J.-J. Moreau) -/",
+        "content": "lemma CAMA_chap_3_3_2_5 {n : ℕ}\n  (K : Set (EuclideanSpace ℝ (Fin n)))\n  (x x₁ x₂ : EuclideanSpace ℝ (Fin n))\n  (hK₀ : IsConvexCone K)\n  (hK₁ : IsClosed K)\n  (hK₂ : Set.Nonempty K) :\n  let K' := (PolarCone K)\n  x = x₁ + x₂ ∧ x₁ ∈ K ∧ x₂ ∈ K' ∧ inner ℝ x₁ x₂ = 0 ↔\n  x₁ = pC x K hK₁ (convexCone_isConvex hK₀) hK₂ ∧\n  x₂ = pC x K' polarCone_isClosed polarCone_isConvex polarCone_isNonempty := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_4_1_1",
+        "comment": "/- Hiriart-Urruty Lemarechal, lemma 4.1.1 -/",
+        "content": "lemma CAMA_chap_3_4_1_1 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hC_nonempty : Set.Nonempty C)\n  (hC_closed : IsClosed C)\n  (hC_convex : Convex ℝ C)\n  (hx : x ∉ C) :\n  ∃ (s : EuclideanSpace ℝ (Fin n)), (s ≠ 0) ∧ (inner ℝ s x > ⨆ y ∈ C, inner ℝ s y) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_4_1_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Corollary 4.1.3 (Strict separation of Convex ℝ sets ) -/",
+        "content": "lemma CAMA_chap_3_4_1_3 {n : ℕ}\n  (C₁ C₂ : Set (EuclideanSpace ℝ (Fin n)))\n  (hC₁ : Set.Nonempty C₁)\n  (hC₁' : IsClosed C₁)\n  (hC₁'' : Convex ℝ C₁)\n  (hC₂ : Set.Nonempty C₂)\n  (hC₂' : IsClosed C₂)\n  (hC₂'' : Convex ℝ C₂)\n  (hI : (C₁ ∩ C₂) = ∅)\n  (h_bounded : Bornology.IsBounded C₂) :\n  ∃ (s : EuclideanSpace ℝ (Fin n)),\n  ⨆ y ∈ C₁, inner ℝ s y < ⨅ y ∈ C₂, inner ℝ s y := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_4_1_4",
+        "comment": "/- Hiriart Urruty Lemarechal, lemma 4.1.4 (Proper separation of Convex ℝ sets) -/",
+        "content": "lemma CAMA_chap_3_4_1_4 {n : ℕ}\n  (C₁ C₂ : Set (EuclideanSpace ℝ (Fin n)))\n  (hC₁ : Set.Nonempty C₁)\n  (hC₁' : Convex ℝ C₁)\n  (hC₂ : Set.Nonempty C₂)\n  (hC₂' : Convex ℝ C₂)\n  (hI : (intrinsicInterior ℝ C₁ ∩ intrinsicInterior ℝ C₂) = ∅) :\n  ∃ (s : EuclideanSpace ℝ (Fin n)),\n  ⨆ y₁ ∈ C₁, inner ℝ s y₁ ≤ ⨅ y₂ ∈ C₂, inner ℝ s y₂ ∧\n  ⨅ y₁ ∈ C₁, inner ℝ s y₁ < ⨆ y₂ ∈ C₂, inner ℝ s y₂ := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_4_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal, Lemma 4.2.1 -/",
+        "content": "lemma CAMA_chap_3_4_2_1 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hC_convex : Convex ℝ C)\n  (hC_nonempty : Set.Nonempty C)\n  (hC_closed : IsClosed C)\n  (hx : x ∈ frontier C) :\n  ∃ (r : ℝ) (s : EuclideanSpace ℝ (Fin n)), SupportingHyperplaneAt s x r C := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_4_2_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 4.2.3 -/",
+        "content": "lemma CAMA_chap_3_4_2_3 {n : ℕ}\n  (S C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC : C = convexHull ℝ S) :\n  ∀ x ∈ C ∩ (frontier C),\n  ∃ (v : Fin n → EuclideanSpace ℝ (Fin n)) (a : EuclideanSpace ℝ (Fin n)),\n  (∀ i, v i ∈ S) ∧ (a ∈ Δκ n) ∧ (x = ∑ i, a i • v i) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_4_2_4",
+        "comment": "/- Hiriary-Urruty Lemarechal, lemma 4.2.4 -/",
+        "content": "lemma CAMA_chap_3_4_2_4 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC₀ : Convex ℝ C)\n  (hC₁ : Set.Nonempty C)\n  (hC₂ : C ⊂ Set.univ) :\n  closure C = ⋂ v ∈ (I_C C), HyperplaneHalfspace v.1 v.2 := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_4_2_7",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 4.2.7 -/",
+        "content": "lemma CAMA_chap_3_4_2_7 {n : ℕ}\n  (K : Set (EuclideanSpace ℝ (Fin n)))\n  (hK_convex_cone : IsConvexCone K)\n  (hK_nonempty : Set.Nonempty K) :\n  PolarCone (PolarCone K) = closure K := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_4_3_1",
+        "comment": "/- Hiriart-Urruty Lemarechal, Lemma 4.3.1 (Farkas I) -/",
+        "content": "lemma CAMA_chap_3_4_3_1 {m n : ℕ}\n  (b : EuclideanSpace ℝ (Fin n))\n  (s : Fin m → EuclideanSpace ℝ (Fin n)) :\n  {x : EuclideanSpace ℝ (Fin n) | ∀ j, inner ℝ (s j) x ≤ 0} ⊆\n  {x : EuclideanSpace ℝ (Fin n) | inner ℝ b x ≤ 0} ↔ b ∈ cone s := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_4_3_2",
+        "comment": "/- Hiriary-Urruty Lemarechal, Lemma 4.3.2 (Farkas II) -/",
+        "content": "lemma CAMA_chap_3_4_3_2 {m n : ℕ}\n  (b : EuclideanSpace ℝ (Fin n))\n  (s : Fin m → EuclideanSpace ℝ (Fin n)) :\n  let P := b ∈ cone s\n  let Q := ∃ (x : EuclideanSpace ℝ (Fin n)), (inner ℝ b x > 0) ∧ (∀ j, inner ℝ (s j) x ≤ 0)\n  (P ∨ Q) ∧ ¬(P ∧ Q) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_4_3_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Lemma 4.3.3 (Farkas III) -/",
+        "content": "lemma CAMA_chap_3_4_3_3 {m n : ℕ}\n  (s : Fin m → EuclideanSpace ℝ (Fin n)) :\n  IsClosed (cone s) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_5_1_2",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 5.1.2 -/",
+        "content": "lemma CAMA_chap_3_5_1_2 {n : ℕ}\n  (d : EuclideanSpace ℝ (Fin n))\n  (S : Set (EuclideanSpace ℝ (Fin n)))\n  (x : EuclideanSpace ℝ (Fin n)) :\n  IsTangentTo S x d ↔\n  ∃ (dk : ℕ → EuclideanSpace ℝ (Fin n)), ∃ (tk : ℕ → ℝ),\n  (Filter.Tendsto dk Filter.atTop (𝓝 d)) ∧\n  (Filter.Tendsto tk Filter.atTop (𝓝 0)) ∧\n  (∀ i, tk i > 0) ∧\n  (∀ k, x + (tk k) • (dk k) ∈ S) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_5_1_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 5.1.3 -/",
+        "content": "lemma CAMA_chap_3_5_1_3 {n : ℕ}\n  (S : Set (EuclideanSpace ℝ (Fin n)))\n  (x : EuclideanSpace ℝ (Fin n)) :\n  IsClosed (TangentCone x S) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_5_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 5.2.1 -/",
+        "content": "lemma CAMA_chap_3_5_2_1 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hx_inC : x ∈ C)\n  (hC_closed : IsClosed C)\n  (hC_convex : Convex ℝ C) :\n  TangentCone x C = closure (GenCone (translate_set C x)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_5_2_4",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 5.2.4 -/",
+        "content": "lemma CAMA_chap_3_5_2_4 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hX_inC : x ∈ C)\n  (hC_closed : IsClosed C)\n  (hC_convex : Convex ℝ C) :\n  NormalCone x C = PolarCone (TangentCone x C) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_5_2_5",
+        "comment": "/- Hiriart-Urruty Lemarechal, Corollary 5.2.5 -/",
+        "content": "lemma CAMA_chap_3_5_2_5 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hx_inC : x ∈ C)\n  (hC_closed : IsClosed C)\n  (hC_convex : Convex ℝ C) :\n  TangentCone x C = PolarCone (NormalCone x C) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_5_3_1",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 5.3.1 -/",
+        "content": "lemma CAMA_chap_3_5_3_1 {n : ℕ}\n  (x : EuclideanSpace ℝ (Fin n))\n  (C₁ : Set (EuclideanSpace ℝ (Fin n)))\n  (C₂ : Set (EuclideanSpace ℝ (Fin n)))\n  (hC₁₀ : Set.Nonempty C₁)\n  (hC₁₁ : IsClosed C₁)\n  (hC₁₂ : Convex ℝ C₁)\n  (hC₂₀ : Set.Nonempty C₂)\n  (hC₂₁ : IsClosed C₂)\n  (hC₂₂ : Convex ℝ C₂) :\n  x ∈ C₁ ∩ C₂ → TangentCone x (C₁ ∩ C₂) ⊆ TangentCone x C₁ ∩ TangentCone x C₂ ∧\n  NormalCone x (C₁ ∩ C₂) ⊇ set_add (NormalCone x C₁) (NormalCone x C₂) := by\n  sorry"
+    },
+    {
+        "lean_tag": "CAMA_chap_3_5_3_3",
+        "comment": "/- Hiriart-Urruty Lemarechal, Proposition 5.3.3 -/",
+        "content": "lemma CAMA_chap_3_5_3_3 {n : ℕ}\n  (x : EuclideanSpace ℝ (Fin n))\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (s : EuclideanSpace ℝ (Fin n))\n  (hC_nonempty : Set.Nonempty C)\n  (hC_closed : IsClosed C)\n  (hC_convex : Convex ℝ C)\n  (hx_in_C : x ∈ C) :\n  List.TFAE [\n    s ∈ NormalCone x C,\n    (inner ℝ s x) = ⨆ y ∈ C, inner ℝ s y,\n    x = pC (x + s) C hC_closed hC_convex hC_nonempty\n  ] := by\n  sorry\n"
+    },
+    {
+        "lean_tag": "FCA_chap_B_1_1_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.1.2 -/",
+        "content": "lemma FCA_chap_B_1_1_2 {n : ℕ}\n  (c : ℝ) (C : Set (EuclideanSpace ℝ (Fin n))) (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (hC_nonempty : Set.Nonempty C) (hC_convex : Convex ℝ C)\n  : StrongConvexOn C c f ↔ ConvexOn ℝ C (fun x => f x - (c/2) * ‖x‖^2)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_1_1_6",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.1.6 -/",
+        "content": "lemma FCA_chap_B_1_1_6 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (hf_nonemptyDomain : ∃ x, f x < ⊤)\n  : List.TFAE [\n    ConvexOn ℝ Set.univ f,\n    Convex ℝ (epigraph (liftWithToptoEReal f)),\n    Convex ℝ (strictEpigraph f)\n  ]\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_1_1_8",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Theorem 1.1.8 (Jensen's Inequality) -/",
+        "content": "lemma FCA_chap_B_1_1_8 {n : ℕ}\n  (k : ℕ) (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hC_convex : InConvRn f)\n  : ∀ (x : Fin k → EuclideanSpace ℝ (Fin n)), ∀ (α : EuclideanSpace ℝ (Fin k)),\n    α ∈ Δκ k → f (∑ i, (α i) • (x i)) ≤ ∑ i, (α i) • f (x i)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_1_1_9",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.1.9 -/",
+        "content": "lemma FCA_chap_B_1_1_9 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hf_convex : InConvRn f)\n  : intrinsicInterior ℝ (epigraph (liftWithToptoEReal f)) =\n    {p : EuclideanSpace ℝ (Fin n) × ℝ | p.1 ∈ intrinsicInterior ℝ (effDom (liftWithToptoEReal f)) ∧ p.2 > f p.1}\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_1_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.2.1 -/",
+        "content": "lemma FCA_chap_B_1_2_1 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hf_convex : InConvRn f)\n  : ∀ (x₀ : EuclideanSpace ℝ (Fin n)), (x₀ ∈ intrinsicInterior ℝ (effDom (liftWithToptoEReal f))) →\n    ∃ (s : EuclideanSpace ℝ (Fin n)), ∀ (x : EuclideanSpace ℝ (Fin n)),\n    (s ∈ parallelSubspace (affineHull (effDom (liftWithToptoEReal f)))) ∧ (f x ≥ f x₀ + inner ℝ s (x - x₀))\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_1_2_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.2.2 -/",
+        "content": "lemma FCA_chap_B_1_2_2 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  : List.TFAE [\n      LowerSemicontinuousOn f Set.univ,\n      IsClosed (epigraph (liftWithToptoEReal f)),\n      ∀ (r : ℝ), IsClosed (sublevelSet r f)\n  ]\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_1_2_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.2.5 -/",
+        "content": "lemma FCA_chap_B_1_2_5 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x₀ : EuclideanSpace ℝ (Fin n))\n  (hf_convex : InConvRn f) (hx : x₀ ∈ intrinsicInterior ℝ (effDom (liftWithToptoEReal f)))\n  : ∀ x, Filter.Tendsto (fun t => f (x + t • (x₀ - x))) (𝓝[>] 0) (𝓝 (lscHull f x))\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_1_2_6",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.2.6 -/",
+        "content": "lemma FCA_chap_B_1_2_6 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (hf_convex : InConvRn f)\n  : let cl_f := lscHull f\n    (InConvRn cl_f) ∧ (∀ x ∈ intrinsicInterior ℝ (effDom (liftWithToptoEReal f)), cl_f x = f x)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_1_2_8",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.2.8 -/",
+        "content": "lemma FCA_chap_B_1_2_8 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (hf_convex : InConvRn f)\n  : let cl_f := lscHull f\n    ∀ x, cl_f x = sSup {v : ℝ | ∃ (z : EuclideanSpace ℝ (Fin n) × ℝ),\n                                (v = inner ℝ z.1 x - z.2) ∧ (∀ y, (inner ℝ z.1 y) - z.2 ≤ f y)}\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_1_3_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 1.3.1 -/",
+        "content": "lemma FCA_chap_B_1_3_1 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n) × ℝ))\n  (hC_nonempty : Nonempty C) (hC_minorized : ∀ x, minorizedAt C x)\n  : (Convex ℝ C → InConvRn (lowerBoundFunction C)) ∧\n    (Convex ℝ C ∧ IsClosed C → InClosedConvRn (lowerBoundFunction C))\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_1_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.1 -/",
+        "content": "lemma FCA_chap_B_2_1_1 {n : ℕ} {m : ℕ}\n  (f : Fin m → (EuclideanSpace ℝ (Fin n) → WithTop ℝ)) (t : Fin m → ℝ)\n  (ht_positive : ∀ i, (t i) > 0)\n  : let g := fun x => ∑ i, (t i) * ((f i) x)\n    (∀ i, InConvRn (f i) → InConvRn g) ∧\n    (∀ i, InClosedConvRn (f i) → InClosedConvRn g)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_1_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.2 -/",
+        "content": "lemma FCA_chap_B_2_1_2 {n : ℕ}\n  (J : Set ℕ) (f : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))\n  (hx₀ : ∃ x₀, sSup {y | ∃ j, (j ∈ J) ∧ ((f j) x₀ = y)} < ⊤)\n  : let g := fun x => sSup {y | ∃ j, (j ∈ J) ∧ ((f j) x = y)}\n    (∀ j ∈ J, ConvexOn ℝ Set.univ (f j) → InConvRn g) ∧\n    (∀ j ∈ J, ConvexOn ℝ Set.univ (f j) ∧ ∀ j ∈ J, ∀ x, (lscHull (f j)) x = (f j) x → InClosedConvRn g)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_1_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.1.4 -/",
+        "content": "lemma FCA_chap_B_2_1_4 {m n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (A : AffineMap ℝ (EuclideanSpace ℝ (Fin m)) (EuclideanSpace ℝ (Fin n)))\n  (hf_nonempty : (Set.range A) ∩ (effDom (liftWithToptoEReal f)) ≠ ∅)\n  : let g := fun x => f (A x)\n    (InConvRn f → InConvRn g) ∧\n    (InClosedConvRn f → InClosedConvRn g)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.2.1 -/",
+        "content": "lemma FCA_chap_B_2_2_1 {m n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (hf_convex : InConvRn f)\n  : InConvRn (fun x => (perspective f) (x 0) (Matrix.vecTail x))\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_2_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.2.2 -/",
+        "content": "lemma FCA_chap_B_2_2_2 {m n : ℕ} [NeZero n]\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x' : EuclideanSpace ℝ (Fin n))\n  (hf_convex : InClosedConvRn f) (hx : x' ∈ intrinsicInterior ℝ (effDom (liftWithToptoEReal f)))\n  : let pers := fun z => (perspective f) (z 0) (Matrix.vecTail z)\n    let x : EuclideanSpace ℝ (Fin (n + 1)) := (Matrix.vecCons 1 x')\n  ∀ (z : EuclideanSpace ℝ (Fin (n + 1))), (z 0 ≥ 0) →\n    Filter.Tendsto (fun α => pers (z + α • (x - z))) (𝓝[>] 0) (𝓝 (lscHull pers z))\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_3_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.3.3  -/",
+        "content": "lemma FCA_chap_B_2_3_3 {m n : ℕ}\n  (f₁ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (f₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hf_convex : InConvRn f₁ ∧ InConvRn f₂)\n  (h_common_affine_minorant : ∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ),\n                              (∀ x, f₁ x ≥ (inner ℝ s x) - b) ∧ (∀ x, f₂ x ≥ (inner ℝ s x) - b))\n  : InProperConvRn (infimalConv f₁ f₂)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_4_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Theorem 2.4.2 -/",
+        "content": "lemma FCA_chap_B_2_4_2 {m n : ℕ}\n  (A : (EuclideanSpace ℝ (Fin m)) →ₗ[ℝ] (EuclideanSpace ℝ (Fin n)))\n  (g : EuclideanSpace ℝ (Fin m) → WithBot (WithTop ℝ))\n  (hg_convex : InProperConvRn g) (hg_bounded : ∀ x, sInf (Set.image g {y | A y = x}) > ⊥)\n  : InProperConvRn (imageFun A g)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_4_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Corollary 2.4.3 -/",
+        "content": "lemma FCA_chap_B_2_4_3 {p n : ℕ}\n  (phi : EuclideanSpace ℝ (Fin p) → WithBot (WithTop ℝ))\n  (c : (Fin n) → (EuclideanSpace ℝ (Fin p) → WithBot (WithTop ℝ)))\n  (h_phi_convex : InProperConvRn phi) (hc_convex : ∀ j, InProperConvRn (c j))\n  (h_nonempty_dom : Set.Nonempty (effDom phi ∩ (⋂ j, effDom (c j))))\n  (h_noninf_val : ∀ x, (valueFun phi c x) > ⊥)\n  : InProperConvRn (valueFun phi c)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_4_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Corollary 2.4.5 -/",
+        "content": "lemma FCA_chap_B_2_4_5 {n m : ℕ}\n  (g : EuclideanSpace ℝ (Fin (n + m)) → WithBot (WithTop ℝ))\n  (hg_convex : InProperConvRn g)\n  (hg_bounded : ∀ (x : EuclideanSpace ℝ (Fin n)), sInf (Set.image g {z : EuclideanSpace ℝ (Fin (n + m)) | ∃ (y : EuclideanSpace ℝ (Fin m)), z = Fin.append x y}) > ⊥)\n  : InProperConvRn (marginalFun g)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_5_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.5.1 -/",
+        "content": "lemma FCA_chap_B_2_5_1 {n : ℕ}\n  (g : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hg_minorized : ∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ), ∀ x, g x ≥ inner ℝ s x - b)\n  : let f₁ := fun x => sInf {r : WithTop ℝ | ∃ z ∈ convexHull ℝ (epigraph (liftWithToptoEReal g)), z.1 = x ∧ z.2 = r}\n    let f₂ := fun x => sSup {z : WithTop ℝ | ∃ (h : EuclideanSpace ℝ (Fin n) → WithTop ℝ),\n                                               (InConvRn h) ∧ (Minorizes h g) ∧ (z = h x)}\n    let f₃ := fun x => sInf (⋃ k, {z | ∃ (α : EuclideanSpace ℝ (Fin k))\n                                          (x₀ : (Fin k) → EuclideanSpace ℝ (Fin n)),\n                                          (α ∈ Δκ k) ∧ (∀ j, x₀ j ∈ effDom (liftWithToptoEReal g)) ∧\n                                          (x = ∑ j, (α j) • (x₀ j)) ∧\n                                          (z = ∑ j, (α j) • g (x₀ j))})\n    (InConvRn f₁) ∧ (InConvRn f₂) ∧ (InConvRn f₃) ∧\n    (∀ x, (f₁ x = f₂ x) ∧ (f₂ x = f₃ x))\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_B_2_5_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section B, Proposition 2.5.2 -/",
+        "content": "lemma FCA_chap_B_2_5_2 {n : ℕ}\n  (g : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hg_minorized : ∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ), ∀ x, g x ≥ inner ℝ s x - b)\n  : let f₁ := fun x => sInf {r : WithTop ℝ | ∃ z ∈ closure (convexHull ℝ (epigraph (liftWithToptoEReal g))), z.1 = x ∧ z.2 = r}\n    let f₂ := fun x => sSup {z : WithTop ℝ | ∃ (h : EuclideanSpace ℝ (Fin n) → WithTop ℝ),\n                                               (InClosedConvRn h) ∧ (Minorizes h g) ∧ (z = h x)}\n    let f₃ := fun x => sSup {z : WithTop ℝ | ∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ),\n                                               (∀ y, inner ℝ s y - b ≤ g y) ∧ (z = inner ℝ s x - b)}\n    (InClosedConvRn f₁) ∧ (InClosedConvRn f₂) ∧ (InClosedConvRn f₃) ∧\n    (∀ x, (f₁ x = f₂ x) ∧ (f₂ x = f₃ x))\n  := by sorry\n"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_1_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.1.3 -/",
+        "content": "lemma FCA_chap_C_1_1_3 {n : ℕ}\n  (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) :\n  let epi := epigraph (liftWithToptoEReal σ)\n  (IsSublinear (liftWithToptoEReal σ)) ↔\n  (Set.Nonempty epi ∧ Convex ℝ epi ∧ IsCone epi) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_1_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.1.4 -/",
+        "content": "lemma FCA_chap_C_1_1_4 {n : ℕ}\n  (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hσ : ∃ x, σ x ≠ ⊤) :\n  (IsSublinear (liftWithToptoEReal σ)) ↔\n  ((∀ (x₁ x₂ : EuclideanSpace ℝ (Fin n)), ∀ (t₁ t₂ : ℝ),\n   t₁ > 0 → t₂ > 0 → σ (t₁ • x₁ + t₂ • x₂) ≤ t₁ • (σ x₁) + t₂ • (σ x₂)) ∨\n   ((IsKPosHomogeneous σ 1) ∧ (IsSubadditive σ))) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_1_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.1.5 -/",
+        "content": "lemma FCA_chap_C_1_1_5 {n : ℕ}\n  (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) :\n  (IsSublinear (liftWithToptoEReal σ)) →\n  (∀ (x : EuclideanSpace ℝ (Fin n)), σ x + σ (-x) ≥ 0) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_1_6",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.1.6 -/",
+        "content": "lemma FCA_chap_C_1_1_6 {m n : ℕ}\n  (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (x : ℕ → EuclideanSpace ℝ (Fin n))\n  (hσ : IsSublinear (liftWithToptoEReal σ))\n  (h_eq_0 : ∀ j ∈ Finset.range m, σ (x j) + σ (-1 • (x j)) = 0) :\n  let 𝓧 := {v | InSubspaceSpanVec m x v}\n  (IsLinearOn 𝓧 σ):= by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_1_7",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.1.7 -/",
+        "content": "lemma FCA_chap_C_1_1_7 {m n : ℕ}\n  (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (x : EuclideanSpace ℝ (Fin n))\n  (hσ : IsSublinear (liftWithToptoEReal σ)) :\n  (σ x + σ (-1 • x) = 0) →\n  ∀ (y : EuclideanSpace ℝ (Fin n)), σ (x + y) = σ x + σ y := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_2_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.2.5 -/",
+        "content": "lemma FCA_chap_C_1_2_5 {m n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC_closed : IsClosed C) (hC_convex : Convex ℝ C) (hC_origin : 0 ∈ C) :\n  let g : EuclideanSpace ℝ (Fin n) → WithTop ℝ := fun x => gauge C x\n  ((∀ x, g x ≥ 0) ∧ (IsSublinear (liftWithToptoEReal g)) ∧ (IsClosedFun g)) ∧\n  ((∀ x, g x ≠ ⊤) ↔ (0 ∈ interior C)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_2_6",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Corollary 1.2.6 -/",
+        "content": "lemma FCA_chap_C_1_2_6 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC_closed : IsClosed C) (hC_convex : Convex ℝ C) (hC_origin : 0 ∈ C) :\n  let g : EuclideanSpace ℝ (Fin n) → WithTop ℝ := fun x => gauge C x\n  (IsCompact C) ↔ (∀ x, x ≠ 0 → g x > 0) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_3_1_i",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (i) -/",
+        "content": "lemma FCA_chap_C_1_3_1_i {n : ℕ}\n  (σ₁ σ₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (t₁ t₂ : ℝ)\n  (hσ : IsSublinear (liftWithToptoEReal σ₁) ∧ IsSublinear (liftWithToptoEReal σ₂))\n  (ht : t₁ > 0 ∧ t₂ > 0) :\n  let σ := t₁ • σ₁ + t₂ • σ₂\n  (IsSublinear (liftWithToptoEReal σ)) ∧\n  (IsClosedFun σ₁ ∧ IsClosedFun σ₂ → (IsSublinear (liftWithToptoEReal σ)) ∧ (IsClosedFun σ)):= by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_3_1_ii",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.1 (ii) -/",
+        "content": "lemma FCA_chap_C_1_3_1_ii {n : ℕ}\n  (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))\n  (J : Set ℕ)\n  (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j))) :\n  let σ' := fun x => sSup (⋃ j ∈ J, {(σ j) x})\n  (IsSublinear (liftWithToptoEReal σ')) ∧\n  (∀ j ∈ J, IsClosedFun (σ j) → (IsSublinear (liftWithToptoEReal σ')) ∧ (IsClosedFun σ')) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_3_2_i",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.2 (i) -/",
+        "content": "lemma FCA_chap_C_1_3_2_i {n : ℕ}\n  (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))\n  (J : Set ℕ)\n  (hσ_sublinear : ∀ j ∈ J, IsSublinear (liftWithToptoEReal (σ j)))\n  (hσ_minorized : ∃ (s : EuclideanSpace ℝ (Fin n)), ∃ (b : ℝ),\n                  ∀ j ∈ J, ∀ (x : EuclideanSpace ℝ (Fin n)),\n                  (σ j) x ≥ (inner ℝ s x) + b) :\n  let σ_inf := fun x => sInf (⋃ j ∈ J, {(σ j) x})\n  let σ' := lscHull σ_inf\n  IsSublinear (liftWithToptoEReal σ') := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_3_2_ii",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.2 (ii) -/",
+        "content": "lemma FCA_chap_C_1_3_2_ii {m n : ℕ}\n  (σ : ℕ → (EuclideanSpace ℝ (Fin n) → WithTop ℝ))\n  (J : ℕ → ℕ)\n  (hσ_sublinear : ∀ i, i ≤ m → IsSublinear (liftWithToptoEReal (σ (J i))))\n  (hσ_minorized : ∃ (s : EuclideanSpace ℝ (Fin n)), ∃ (b : ℝ),\n                  ∀ i, i ≤ m → ∀ (x : EuclideanSpace ℝ (Fin n)),\n                  (σ (J i)) x ≥ (inner ℝ s x) + b) :\n  let σ_infconv := multiInfimalConv m σ\n  let σ_min := fun x => sInf (⋃ i ∈ Finset.range m, {(σ (J i)) x})\n  let σ' := lscHull σ_min\n  ∀ x, σ_infconv x = (liftWithToptoEReal σ') x := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_1_3_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 1.3.5 -/",
+        "content": "lemma FCA_chap_C_1_3_5 {n : ℕ}\n  (σk : ℕ → (EuclideanSpace ℝ (Fin n) → ℝ))\n  (σ : EuclideanSpace ℝ (Fin n) → ℝ) :\n  let d := fun k => DistOnFunctions (σk k) σ\n  List.TFAE [\n    (∀ x, Filter.Tendsto (fun k => (σk k) x) Filter.atTop (𝓝 (σ x))),\n    (∀ (K : Set (EuclideanSpace ℝ (Fin n))), IsCompact K → TendstoUniformlyOn σk σ Filter.atTop K),\n    (Filter.Tendsto d Filter.atTop (𝓝 0))\n  ] := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_2_1_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.1.2 -/",
+        "content": "lemma FCA_chap_C_2_1_2 {n : ℕ}\n  (S : Set (EuclideanSpace ℝ (Fin n)))\n  (hS : Set.Nonempty S) :\n  let support_fun := SupportFun S\n  (IsSublinear (liftWithToptoEReal support_fun)) ∧ (IsClosedFun support_fun)\n  := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_2_1_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.1.3 -/",
+        "content": "lemma FCA_chap_C_2_1_3 {n : ℕ}\n  (S : Set (EuclideanSpace ℝ (Fin n)))\n  (hS : Set.Nonempty S) :\n  let support_fun := SupportFun S\n  (∀ x, support_fun x ≠ ⊤) ↔\n  (Bornology.IsBounded S) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_2_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.1 -/",
+        "content": "lemma FCA_chap_C_2_2_1 {n : ℕ}\n  (S : Set (EuclideanSpace ℝ (Fin n)))\n  (hS : Set.Nonempty S) :\n  let sf_S := SupportFun S\n  let sf_clS := SupportFun (closure S)\n  let sf_coS := SupportFun (convexHull ℝ S)\n  let sf_barcoS := SupportFun (closure (convexHull ℝ S))\n  ∀ (x : EuclideanSpace ℝ (Fin n)),\n  (sf_S x = sf_clS x) ∧\n  (sf_clS x = sf_coS x) ∧\n  (sf_S x = sf_barcoS x) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_2_2_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.2 -/",
+        "content": "lemma FCA_chap_C_2_2_2 {n : ℕ}\n  (S : Set (EuclideanSpace ℝ (Fin n)))\n  (s : EuclideanSpace ℝ (Fin n))\n  (hS : Set.Nonempty S) :\n  let sf_S := SupportFun S\n  (s ∈ closure (convexHull ℝ S)) ↔\n  (∀ (d : EuclideanSpace ℝ (Fin n)), inner ℝ s d ≤ sf_S d) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_2_2_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.3 -/",
+        "content": "lemma FCA_chap_C_2_2_3 {n : ℕ}\n  (S : Set (EuclideanSpace ℝ (Fin n)))\n  (s : EuclideanSpace ℝ (Fin n))\n  (hS : Set.Nonempty S) :\n  let σS := SupportFun S\n  ((s ∈ affineHull S) ↔ (∀ d, σS d + σS (-1 • d) = 0 → inner ℝ s d = σS d)) ∧\n  ((s ∈ intrinsicInterior ℝ S) ↔ (∀ d, σS d + σS (-1 • d) > 0 → inner ℝ s d < σS d)) ∧\n  ((s ∈ interior S) ↔ (∀ d, d ≠ 0 → inner ℝ s d < σS d)):= by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_2_2_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 2.2.4 -/",
+        "content": "lemma FCA_chap_C_2_2_4 {n : ℕ}\n  (S : Set (EuclideanSpace ℝ (Fin n)))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hS_nonempty : Set.Nonempty S)\n  (hS_closed : IsClosed S)\n  (hS_convex : Convex ℝ S) :\n  let σS := SupportFun S\n  let Sinfty := AsymptoticCone S x\n  PolarCone (closure (effDom (liftWithToptoEReal σS))) = Sinfty := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_1_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.1 -/",
+        "content": "lemma FCA_chap_C_3_1_1 {n : ℕ}\n  (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hσ_closed : IsClosedFun σ) (hσ_sublinear : IsSublinear (liftWithToptoEReal σ)) :\n  let Sσ := {s | ∀ d, inner ℝ s d ≤ σ d}\n  ((∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ), ∀ x, inner ℝ s x + b ≤ σ x)) ∧\n  (∀ x, σ x = SupportFun Sσ x) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_1_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.2 -/",
+        "content": "lemma FCA_chap_C_3_1_2 {n : ℕ}\n  (S : Set (EuclideanSpace ℝ (Fin n)))\n  (σ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hS_nonempty : Set.Nonempty S) (hS_closed : IsClosed S) (hS_convex : Convex ℝ S)\n  (hσ_closed : IsClosedFun σ) (hσ_sublinear : IsSublinear (liftWithToptoEReal σ)) :\n  let support_fun := SupportFun S\n  let S' := {s | ∀ (d : EuclideanSpace ℝ (Fin n)), inner ℝ s d ≤ σ d}\n  List.TFAE [\n    ∀ (x : EuclideanSpace ℝ (Fin n)), support_fun x = σ x,\n    S = S'\n  ] := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_1_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.1.4 -/",
+        "content": "lemma FCA_chap_C_3_1_4 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (x : EuclideanSpace ℝ (Fin n)) (d : EuclideanSpace ℝ (Fin n))\n  (hC_nonempty : Set.Nonempty C) (hC_closed : IsClosed C) (hC_convex : Convex ℝ C)\n  (hx : x ∈ C) (hd : d ≠ 0) :\n  x ∈ DirectionExposingFace C d ↔ d ∈ NormalCone x C := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_2_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.2.4 -/",
+        "content": "lemma FCA_chap_C_3_2_4 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC_closed : IsClosed C) (hC_convex : Convex ℝ C) (hC_origin : 0 ∈ C) :\n  let γC := gauge C\n  let C' := {s | ∀ d ∈ C, inner ℝ s d ≤ 1}\n  let σC' := SupportFun C'\n  ∀ (x : EuclideanSpace ℝ (Fin n)), γC x = σC' x := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_2_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.2.5 -/",
+        "content": "lemma FCA_chap_C_3_2_5 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC_closed : IsClosed C) (hC_convex : Convex ℝ C) (hC_origin : 0 ∈ C) :\n  let C' := {s | ∀ d ∈ C, inner ℝ s d ≤ 1}\n  let σC := SupportFun C\n  let γC' := gauge C'\n  ∀ (x : EuclideanSpace ℝ (Fin n)), γC' x = σC x := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_2_7",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.2.7 -/",
+        "content": "lemma FCA_chap_C_3_2_7 {n : ℕ}\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (d s : EuclideanSpace ℝ (Fin n))\n  (hC_nonempty : Set.Nonempty C)\n  (hC_compact : IsCompact C)\n  (hC_convex : Convex ℝ C)\n  (hC_origin : 0 ∈ interior C) :\n  let C' := {s | ∀ v ∈ C, inner ℝ s v ≤ 1}\n  let Hs := {y | inner ℝ s y = 1}\n  let Hd := {y | inner ℝ d y = 1}\n  List.TFAE [\n    ∃ (s' : EuclideanSpace ℝ (Fin n)) (t' : ℝ), (SupportingHyperplaneAt s' d t' C) ∧ (AffineHyperplane s' t' = Hs),\n    ∃ (d' : EuclideanSpace ℝ (Fin n)) (t' : ℝ), (SupportingHyperplaneAt d' s t' C) ∧ (AffineHyperplane d' t' = Hd),\n    (d ∈ frontier C) ∧ (s ∈ frontier C') ∧ (inner ℝ s d = 1),\n    (d ∈ C) ∧ (s ∈ C') ∧ (inner ℝ s d = 1)\n  ] := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_3_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.1 -/",
+        "content": "lemma FCA_chap_C_3_3_1 {n : ℕ}\n  (S₁ S₂ : Set (EuclideanSpace ℝ (Fin n)))\n  (hS_nonempty : Set.Nonempty S₁ ∧ Set.Nonempty S₂)\n  (hS_closed : IsClosed S₁ ∧ IsClosed S₂)\n  (hS_convex : Convex ℝ S₁ ∧ Convex ℝ S₂) :\n  let σ₁ := SupportFun S₁\n  let σ₂ := SupportFun S₂\n  S₁ ⊆ S₂ ↔ ∀ d, σ₁ d ≤ σ₂ d := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_3_2_i",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.2 (i) -/",
+        "content": "lemma FCA_chap_C_3_3_2_i {n : ℕ}\n  (S₁ S₂ : Set (EuclideanSpace ℝ (Fin n)))\n  (t₁ t₂ : ℝ)\n  (hS_nonempty : Set.Nonempty S₁ ∧ Set.Nonempty S₂)\n  (hS_closed : IsClosed S₁ ∧ IsClosed S₂)\n  (hS_convex : Convex ℝ S₁ ∧ Convex ℝ S₂)\n  (ht : t₁ > 0 ∧ t₂ > 0):\n  let σ₁ := SupportFun S₁\n  let σ₂ := SupportFun S₂\n  let S₁' := {x | ∃ s ∈ S₁, x = t₁ • s}\n  let S₂' := {x | ∃ s ∈ S₂, x = t₂ • s}\n  let S := closure {x | ∃ s₁ ∈ S₁', ∃ s₂ ∈ S₂', x = s₁ + s₂}\n  ∀ x, (t₁ • (σ₁ x) + t₂ • (σ₂ x)) = SupportFun S x := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_3_2_ii",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.2 (ii) -/",
+        "content": "lemma FCA_chap_C_3_3_2_ii {n : ℕ}\n  (S : ℕ → Set (EuclideanSpace ℝ (Fin n)))\n  (J : Set ℕ)\n  (hS_nonempty : ∀ j ∈ J, Set.Nonempty (S j))\n  (hS_closed : ∀ j ∈ J, IsClosed (S j))\n  (hS_convex : ∀ j ∈ J, Convex ℝ (S j)) :\n  let σ := fun j => SupportFun (S j)\n  let σ_sup := fun x => sSup (⋃ j ∈ J, {(σ j) x})\n  let S' := closure (convexHull ℝ (⋃ j ∈ J, S j))\n  ∀ x, σ_sup x = SupportFun S' x := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_3_2_iii",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.2 (iii) -/",
+        "content": "lemma FCA_chap_C_3_3_2_iii {n : ℕ}\n  (S : ℕ → Set (EuclideanSpace ℝ (Fin n)))\n  (J : Set ℕ)\n  (hS_closed : ∀ j ∈ J, IsClosed (S j))\n  (hS_convex : ∀ j ∈ J, Convex ℝ (S j)) :\n  let σ := fun j => SupportFun (S j)\n  let S := ⋂ j ∈ J, S j\n  let σ_inf := fun x => sInf (⋃ j ∈ J, {(σ j) x})\n  let co_σ_inf := fun (x : EuclideanSpace ℝ (Fin n)) => sInf {r : ℝ | (x, r) ∈ epigraph (liftWithToptoEReal σ_inf)}\n  S ≠ ∅ → (∀ x, SupportFun S x = lscHull (liftRealtoWT co_σ_inf) x) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_3_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.3 -/",
+        "content": "lemma FCA_chap_C_3_3_3 {m n : ℕ}\n  (A : EuclideanSpace ℝ (Fin n) →ₗ[ℝ] EuclideanSpace ℝ (Fin m))\n  (S : Set (EuclideanSpace ℝ (Fin n)))\n  (hS_nonempty : Set.Nonempty S) :\n  let A_adj := A.adjoint\n  let cl_AS := closure (Set.image A S)\n  let σ_clAS := SupportFun cl_AS\n  let σ_S_Aadj := fun y => SupportFun S (A_adj y)\n  ∀ (y : EuclideanSpace ℝ (Fin m)), σ_clAS y = σ_S_Aadj y := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_C_3_3_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section C, Proposition 3.3.4 -/",
+        "content": "lemma FCA_chap_C_3_3_4 {m n : ℕ}\n  (A : EuclideanSpace ℝ (Fin m) →ₗ[ℝ] EuclideanSpace ℝ (Fin n))\n  (s : EuclideanSpace ℝ (Fin m) → EuclideanSpace ℝ (Fin m) → ℝ)\n  (S : Set (EuclideanSpace ℝ (Fin m)))\n  (hs : IsScalarProduct s)\n  (hS_nonempty : Set.Nonempty S) (hS_closed : IsClosed S) (hS_convex : Convex ℝ S) :\n  let A_star := A.adjoint\n  let σ := SupportFun S\n  let A_inv := fun d => {p : EuclideanSpace ℝ (Fin m) | A p = d}\n  let A_adj_inv_S := {p : EuclideanSpace ℝ (Fin n) | ∃ d ∈ S, A_star p = d}\n  let σ_adj_inv := SupportFun A_adj_inv_S\n  (∀ (d : EuclideanSpace ℝ (Fin n)), IsMinorizedOn σ (A_inv d)) →\n  (∀ (x : EuclideanSpace ℝ (Fin n)), σ_adj_inv x = lscHull (fun v => ImageFunction A σ v) x) := by\n  sorry\n"
+    },
+    {
+        "lean_tag": "FCA_chap_D_1_1_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.1.2 -/",
+        "content": "lemma FCA_chap_D_1_1_2 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf : ConvexOn ℝ Set.univ f) :\n  let f' := fun d => directionalDeriv (liftRealtoEReal f) x d\n  (∀ (z : EuclideanSpace ℝ (Fin n)), f' z < ⊤ ∧ f' z > ⊥) ∧ (IsSublinear f') := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_1_1_6",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.1.6 -/",
+        "content": "lemma FCA_chap_D_1_1_6 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf : ConvexOn ℝ Set.univ f) :\n  let σ := fun (d : EuclideanSpace ℝ (Fin n)) => directionalDeriv (liftRealtoEReal f) x d\n  let σ' := fun (d : EuclideanSpace ℝ (Fin n)) => directionalDeriv σ 0 d\n  (∀ (δ : EuclideanSpace ℝ (Fin n)), σ' δ = σ δ) ∧\n  (∀ (δ : EuclideanSpace ℝ (Fin n)), (σ δ = σ 0 + σ' δ) ∧ (σ δ = σ' δ)) ∧\n  (SubdifferentialI σ 0 = SubdifferentialI (liftRealtoEReal f) x) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_1_2_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.2.2 -/",
+        "content": "lemma FCA_chap_D_1_2_2 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x : EuclideanSpace ℝ (Fin n)) (s : EuclideanSpace ℝ (Fin n))\n  (hf : ConvexOn ℝ Set.univ f) :\n  s ∈ SubdifferentialI (liftRealtoEReal f) x ↔ s ∈ SubdifferentialII (liftRealtoEReal f) x := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_1_3_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 1.3.1 -/",
+        "content": "lemma FCA_chap_D_1_3_1 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x s : EuclideanSpace ℝ (Fin n))\n  (hf : ConvexOn ℝ Set.univ f) :\n  let f' := fun (d : EuclideanSpace ℝ (Fin n)) => directionalDeriv (liftRealtoEReal f) x\n  let f'_epi := {v : EuclideanSpace ℝ (Fin (n + 1)) |\n                     ∃ z ∈ (epigraph (f' x)), v = Fin.snoc z.1 z.2}\n  let epi_concat := {v : EuclideanSpace ℝ (Fin (n + 1)) |\n                         ∃ z ∈ (epigraph (liftRealtoEReal f)), v = Fin.snoc z.1 z.2}\n  let s' : EuclideanSpace ℝ (Fin (n + 1)) := Fin.snoc s (-1)\n  (IsSubgradientAt (liftRealtoEReal f) x s ↔ IsNormalTo epi_concat (Fin.snoc x (f x)) s') ∧\n  (tangentConeAt ℝ epi_concat (Fin.snoc x (f x)) = f'_epi) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_1_3_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 1.3.2 -/",
+        "content": "lemma FCA_chap_D_1_3_2 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf : ConvexOn ℝ Set.univ f) :\n  let S := sublevelSetFun (liftRealtoEReal f) x\n  tangentConeAt ℝ S x ⊆ {d | directionalDeriv (liftRealtoEReal f) x d ≤ 0} := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_1_3_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 1.3.3 -/",
+        "content": "lemma FCA_chap_D_1_3_3 {n : ℕ}\n  (g : EuclideanSpace ℝ (Fin n) → ℝ)\n  (hg_convex : ConvexOn ℝ Set.univ g)\n  (hg_neg : ∃ (x₀ : EuclideanSpace ℝ (Fin n)), g x₀ < 0):\n  (closure {z | g z < 0} = {z | g z ≤ 0}) ∧\n  ({z | g z < 0} = interior {z | g z ≤ 0}) ∧\n  (frontier {z | g z < 0} = {z | g z = 0}) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_1_3_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 1.3.4 -/",
+        "content": "lemma FCA_chap_D_1_3_4 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ConvexOn ℝ Set.univ f)\n  (hf_subdiff : Set.Nonempty (SubdifferentialI (liftRealtoEReal f) x)) :\n  let S := sublevelSetFun (liftRealtoEReal f) x\n  (tangentConeAt ℝ S x = {d | directionalDeriv (liftRealtoEReal f) x d ≤ 0}) ∧\n  (interior (tangentConeAt ℝ S x) = {d | directionalDeriv (liftRealtoEReal f) x d < 0}) ∧\n  Set.Nonempty (interior (tangentConeAt ℝ S x)):= by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_1_3_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 1.3.5 -/",
+        "content": "lemma FCA_chap_D_1_3_5 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x d : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ConvexOn ℝ Set.univ f)\n  (hf_subdiff : Set.Nonempty (SubdifferentialI (liftRealtoEReal f) x)) :\n  let S := sublevelSetFun (liftRealtoEReal f) x\n  (IsNormalTo S x d) ↔\n  (∃ (t : ℝ) (s : EuclideanSpace ℝ (Fin n)),\n  (t ≥ 0) ∧ (s ∈ SubdifferentialI (liftRealtoEReal f) x) ∧ (d = t • s)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_2_1_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 2.1.1 -/",
+        "content": "lemma FCA_chap_D_2_1_1 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ConvexOn ℝ Set.univ f) :\n  let f'_ereal := fun (d : EuclideanSpace ℝ (Fin n)) => directionalDeriv (liftRealtoEReal f) x d\n  let f'_real := fun (d : EuclideanSpace ℝ (Fin n)) => realDirectionalDeriv f x d\n  (∀ x, f'_ereal x = f'_real x) ∧\n  (∀ (ε : ℝ), (ε > 0) → ∃ δ > 0,\n  ∀ (h : EuclideanSpace ℝ (Fin n)), ‖h‖ ≤ δ →\n  abs (f (x + h) - f x - realDirectionalDeriv f x h) ≤ ε • ‖h‖) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_2_1_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 2.1.3 -/",
+        "content": "lemma FCA_chap_D_2_1_3 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (s h : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ConvexOn ℝ Set.univ f) :\n  (∀ (x : EuclideanSpace ℝ (Fin n)), (h ∈ normalConeAt (SubdifferentialI (liftRealtoEReal f) x) s) →\n  Asymptotics.IsLittleO (𝓝 0) (fun h => f (x + h) - f x - inner ℝ s h) (fun h => ‖h‖)) ∧\n  (∀ (x : EuclideanSpace ℝ (Fin n)), (s ∈ ExposedFace (SubdifferentialI (liftRealtoEReal f) x) h) →\n  Asymptotics.IsLittleO (𝓝 0) (fun h => f (x + h) - f x - inner ℝ s h) (fun h => ‖h‖)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_2_1_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 2.1.5  -/",
+        "content": "lemma FCA_chap_D_2_1_5 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x d : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ConvexOn ℝ Set.univ f) :\n  let f' := fun (d : EuclideanSpace ℝ (Fin n)) => directionalDeriv (liftRealtoEReal f) x d\n  SubdifferentialI f' d = ExposedFace (SubdifferentialI (liftRealtoEReal f) x) d := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_2_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 2.2.1  -/",
+        "content": "lemma FCA_chap_D_2_2_1 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ConvexOn ℝ Set.univ f) :\n  List.TFAE [\n    ∀ (y : EuclideanSpace ℝ (Fin n)), f y ≥ f x,\n    0 ∈ SubdifferentialI (liftRealtoEReal f) x,\n    ∀ (d : EuclideanSpace ℝ (Fin n)), directionalDeriv (liftRealtoEReal f) x d ≥ 0\n  ] := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_2_3_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 2.3.1  -/",
+        "content": "lemma FCA_chap_D_2_3_1 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x y : EuclideanSpace ℝ (Fin n)) (t : ℝ)\n  (hf_convex : ConvexOn ℝ Set.univ f) (ht : 0 ≤ t ∧ t ≤ 1):\n  let xt := t • y + (1 - t) • x\n  let phi := fun (v : EuclideanSpace ℝ (Fin 1)) => f xt\n  let t_asvec := fun _ => t\n  -- work in ℝ, rather than EuclideanSpace ℝ (Fin n)\n  let subdiff := {v : ℝ | ∃ v' ∈ SubdifferentialI (liftRealtoEReal phi) t_asvec, v' 0 = v}\n  subdiff = {z : ℝ | ∃ s ∈ (SubdifferentialI (liftRealtoEReal f) xt), z = inner ℝ s (y - x)} := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_2_3_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 2.3.3  -/",
+        "content": "lemma FCA_chap_D_2_3_3 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x y : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ConvexOn ℝ Set.univ f) (hxy : x ≠ y) :\n  ∃ t ∈ Set.Ioo 0 1, ∃ s ∈ SubdifferentialI (liftRealtoEReal f) (t • y + (1 - t) • x),\n  f y - f x = inner ℝ s (y - x) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_1_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 4.1.1  -/",
+        "content": "lemma FCA_chap_D_4_1_1 {n : ℕ}\n  (f₁ f₂ : EuclideanSpace ℝ (Fin n) → ℝ)\n  (t₁ t₂ : ℝ)\n  (hf_convex : ConvexOn ℝ Set.univ f₁ ∧ ConvexOn ℝ Set.univ f₂)\n  (ht : t₁ > 0 ∧ t₂ > 0) :\n  ∀ (x : EuclideanSpace ℝ (Fin n)),\n  SubdifferentialI (fun x => t₁ • (f₁ x) + t₂ • (f₂ x)) x =\n  {v | ∃ v₁ ∈ (SubdifferentialI (liftRealtoEReal f₁) x), ∃ v₂ ∈ (SubdifferentialI (liftRealtoEReal f₂) x),\n       v = t₁ • v₁ + t₂ • v₂} := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 4.2.1  -/",
+        "content": "lemma FCA_chap_D_4_2_1 {n m : ℕ}\n  (g : EuclideanSpace ℝ (Fin m) → ℝ)\n  (A₀ : EuclideanSpace ℝ (Fin n) →ₗ[ℝ] EuclideanSpace ℝ (Fin m))\n  (b : EuclideanSpace ℝ (Fin m))\n  (hf_convex : ConvexOn ℝ Set.univ g) :\n  ∀ (x : EuclideanSpace ℝ (Fin n)),\n  (SubdifferentialI (fun v => g (A₀ v + b)) x) = Set.image A₀.adjoint (SubdifferentialI (liftRealtoEReal g) (A₀ x + b)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_3_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 4.3.1  -/",
+        "content": "lemma FCA_chap_D_4_3_1 {n m : ℕ}\n  (f : ℕ → (EuclideanSpace ℝ (Fin n) → ℝ))\n  (g : EuclideanSpace ℝ (Fin m) → ℝ)\n  (hf_convex : ∀ i ∈ Finset.range m, ConvexOn ℝ Set.univ (f i))\n  (hg_convex : ConvexOn ℝ Set.univ g)\n  (hg_increasing : ∀ y z, (∀ i, y i ≥ z i) → g y ≥ g z) :\n  let F : (EuclideanSpace ℝ (Fin n)) → EuclideanSpace ℝ (Fin m) :=\n          fun x => (fun i => (f i) x)\n  ∀ (x : EuclideanSpace ℝ (Fin n)),\n  SubdifferentialI (liftRealtoEReal (g ∘ F)) x =\n  {v | ∃ ρ ∈ SubdifferentialI (liftRealtoEReal g) (F x), ∃ (s : ℕ → EuclideanSpace ℝ (Fin n)),\n       (∀ i ∈ Finset.range m, s i ∈ SubdifferentialI (liftRealtoEReal (f i)) x) ∧\n       (v = ∑ i : Fin m, (ρ i) • (s i))} := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_3_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Corollary 4.3.2  -/",
+        "content": "lemma FCA_chap_D_4_3_2 {n m : ℕ}\n  (f : ℕ → (EuclideanSpace ℝ (Fin n) → ℝ))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ∀ i ∈ Finset.range m, ConvexOn ℝ Set.univ (f i)) :\n  let F : (EuclideanSpace ℝ (Fin n)) → ℝ := fun x => sSup (⋃ i ∈ Finset.range m, {(f i) x})\n  let I := {i | (f i) x = F x}\n  SubdifferentialI (liftRealtoEReal F) x = convexHull ℝ (⋃ i ∈ I, SubdifferentialI (liftRealtoEReal (f i)) x):= by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_4_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Lemma 4.4.1  -/",
+        "content": "lemma FCA_chap_D_4_4_1 {n : ℕ} {J : Type*}\n  (f : J → (EuclideanSpace ℝ (Fin n) → ℝ))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ∀ (i : J), ConvexOn ℝ Set.univ (f i))\n  (hf_finite : ∀ z, ⨆ (j : J), (f j z : WithTop ℝ) < ⊤) :\n  let F : (EuclideanSpace ℝ (Fin n)) → EReal := fun z => ⨆ (j : J), (f j z)\n  let Jx := {j | f j x = F x}\n  closure (convexHull ℝ (⋃ j ∈ Jx, SubdifferentialI (liftRealtoEReal (f j)) x)) ⊆\n  SubdifferentialI F x := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_4_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 4.4.2  -/",
+        "content": "lemma FCA_chap_D_4_4_2 {n : ℕ} {J : Type*} [TopologicalSpace J] [CompactSpace J]\n  (f : J → (EuclideanSpace ℝ (Fin n) → ℝ))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ∀ (i : J), ConvexOn ℝ Set.univ (f i))\n  (hf_finite : ∀ z, ⨆ (j : J), (f j z : WithTop ℝ) < ⊤)\n  (hf_usc : ∀ (j : J), ∀ z, lscAt (fun v => -1 • f j v) z) :\n  let F : (EuclideanSpace ℝ (Fin n)) → EReal := fun z => ⨆ (j : J), (f j z)\n  let Jx := {j | f j x = F x}\n  convexHull ℝ (⋃ j ∈ Jx, SubdifferentialI (liftRealtoEReal (f j)) x) =\n  SubdifferentialI F x := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_4_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Corollary 4.4.4  -/",
+        "content": "lemma FCA_chap_D_4_4_4 {n : ℕ} {J : Type*} [TopologicalSpace J] [CompactSpace J]\n  (f : J → (EuclideanSpace ℝ (Fin n) → ℝ))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ∀ (i : J), ConvexOn ℝ Set.univ (f i))\n  (hf_finite : ∀ z, ⨆ (j : J), (f j z : WithTop ℝ) < ⊤)\n  (hf_usc : ∀ (j : J), ∀ z, lscAt (fun v => -1 • f j v) z)\n  (hf_differentiable : ∀ (j : J), Differentiable ℝ (f j)) :\n  let F : (EuclideanSpace ℝ (Fin n)) → EReal := fun z => ⨆ (j : J), (f j z)\n  let Jx := {j | f j x = F x}\n  SubdifferentialI F x = convexHull ℝ (⋃ j ∈ Jx, {gradient (f j) x}) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_4_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Corollary 4.4.5  -/",
+        "content": "lemma FCA_chap_D_4_4_5 {n p : ℕ}\n  (Y : Set (EuclideanSpace ℝ (Fin p)))\n  (g : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin p) → ℝ)\n  (x₀ : EuclideanSpace ℝ (Fin n))\n  (hf_usc : ∀ x, ∀ y, lscAt (fun v => -1 • (g x v)) y)\n  (hf_convex : ∀ y ∈ Y, ConvexOn ℝ Set.univ (fun x => g x y))\n  (hf_differentiable : ∀ y ∈ Y, Differentiable ℝ (fun x => g x y))\n  (hf_finite : ∀ x, ⨆ y ∈ Y, (g x y : WithTop ℝ) < ⊤) :\n  let F : EuclideanSpace ℝ (Fin n) → EReal := fun x => ⨆ y ∈ Y, (g x y : EReal)\n  ∃ (F_finite : EuclideanSpace ℝ (Fin n) → ℝ),\n  ∃! (y₀ : EuclideanSpace ℝ (Fin p)),\n  (∀ x, F_finite x = F x) ∧\n  (y₀ ∈ Y) ∧\n  (IsMaxOn (fun y => g x₀ y) Y y₀) →\n  (Differentiable ℝ F_finite) ∧\n  (gradient F_finite x₀ = gradient (fun x => g x y₀) x₀) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_5_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 4.5.1  -/",
+        "content": "lemma FCA_chap_D_4_5_1 {m n : ℕ}\n  (g : EuclideanSpace ℝ (Fin m) → ℝ)\n  (A : EuclideanSpace ℝ (Fin m) →ₗ[ℝ] EuclideanSpace ℝ (Fin n))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hg_convex : ConvexOn ℝ Set.univ g)\n  (hA_surjective : Function.Surjective A) :\n  let Ag := fun x => sInf (Set.image g {y | A y = x})\n  let Yx := {y | (A y = x) ∧ (g y = Ag x)}\n  (Set.Nonempty Yx) → ∀ y ∈ Yx,\n  (SubdifferentialI (liftRealtoEReal Ag) x =\n  {s | A.adjoint s ∈ SubdifferentialI (liftRealtoEReal g) y}) ∧\n  (SubdifferentialI (liftRealtoEReal Ag) x =\n  Set.preimage A.adjoint (SubdifferentialI (liftRealtoEReal g) y)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_5_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Corollary 4.5.2  -/",
+        "content": "lemma FCA_chap_D_4_5_2 {m n : ℕ}\n  (g : EuclideanSpace ℝ (Fin m) → ℝ)\n  (A : EuclideanSpace ℝ (Fin m) →ₗ[ℝ] EuclideanSpace ℝ (Fin n))\n  (x : EuclideanSpace ℝ (Fin n))\n  (hg_convex : ConvexOn ℝ Set.univ g)\n  (hA_surjective : Function.Surjective A) :\n  let Ag := fun x => sInf (Set.image g {y | A y = x})\n  let Yx := {y | (A y = x) ∧ (g y = Ag x)}\n  (Set.Nonempty Yx) → (∃ y ∈ Yx, DifferentiableAt ℝ g y) →\n  (DifferentiableAt ℝ Ag x) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_4_5_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Corollary 4.5.5  -/",
+        "content": "lemma FCA_chap_D_4_5_5 {n : ℕ}\n  (f₁ f₂ : EuclideanSpace ℝ (Fin n) → ℝ)\n  (y₁ y₂ : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ConvexOn ℝ Set.univ f₁ ∧ ConvexOn ℝ Set.univ f₂)\n  (hf_minorized : ∃ (s : EuclideanSpace ℝ (Fin n)) (b : ℝ),\n                 ∀ x, (inner ℝ s x + b ≤ f₁ x) ∧ (inner ℝ s x + b ≤ f₂ x)) :\n  let infconv := infimalConv (liftRealtoWT f₁) (liftRealtoWT f₂)\n  (infconv (y₁ + y₂) = f₁ y₁ + f₂ y₂) →\n  SubdifferentialI infconv (y₁ + y₂) =\n  (SubdifferentialI (liftRealtoEReal f₁) y₁) ∩ (SubdifferentialI (liftRealtoEReal f₂) y₂) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_6_1_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 6.1.1  -/",
+        "content": "lemma FCA_chap_D_6_1_1 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x₁ x₂ : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ConvexOn ℝ Set.univ f) :\n  ∀ s₁ ∈ SubdifferentialI (liftRealtoEReal f) x₁, ∀ s₂ ∈ SubdifferentialI (liftRealtoEReal f) x₂,\n  inner ℝ (s₂ - s₁) (x₂ - x₂) ≥ 0 := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_6_1_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 6.1.2  -/",
+        "content": "lemma FCA_chap_D_6_1_2 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (c : ℝ)\n  (hC_convex : Convex ℝ C) (hc : c > 0) :\n  StrongConvexOn C c f ↔\n  ∀ x₁ ∈ C, ∀ x₂ ∈ C, ∀ s ∈ SubdifferentialI (liftRealtoEReal f) x₁,\n  f x₂ ≥ f x₁ + inner ℝ s (x₂ - x₁) + (c / 2) * ‖x₂ - x₁‖^2 := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_6_1_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 6.1.3  -/",
+        "content": "lemma FCA_chap_D_6_1_3 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (C : Set (EuclideanSpace ℝ (Fin n)))\n  (hC_convex : Convex ℝ C) :\n  StrictConvexOn ℝ C f ↔\n  ∀ x₁ ∈ C, ∀ x₂ ∈ C, (x₁ ≠ x₂) →\n  ∀ s ∈ SubdifferentialI (liftRealtoEReal f) x₁,\n  f x₂ > f x₁ + inner ℝ s (x₂ - x₁) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_6_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 6.2.1  -/",
+        "content": "lemma FCA_chap_D_6_2_1 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (hf_convex : ConvexOn ℝ Set.univ f) :\n  let graph_subdiff := ⋃ x, {z : EuclideanSpace ℝ (Fin n) × EuclideanSpace ℝ (Fin n) |\n                                  z.1 = x ∧ z.2 ∈ SubdifferentialI (liftRealtoEReal f) x}\n  IsClosed graph_subdiff := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_6_2_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Proposition 6.2.2  -/",
+        "content": "lemma FCA_chap_D_6_2_2 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (hf_convex : ConvexOn ℝ Set.univ f) :\n  let subdiff_im := fun (C : Set (EuclideanSpace ℝ (Fin n))) =>\n                     {v | ∃ x, v ∈ SubdifferentialI (liftRealtoEReal f) x}\n  ∀ (B : Set (EuclideanSpace ℝ (Fin n))),\n  Bornology.IsBounded B → Bornology.IsBounded (subdiff_im B) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_6_2_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 6.2.4  -/",
+        "content": "lemma FCA_chap_D_6_2_4 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ConvexOn ℝ Set.univ f) :\n  let subdiff_neighborhood := fun (ε : ℝ) =>\n                              {v | ∃ w d,(‖d‖ ≤ ε) ∧ (w ∈ SubdifferentialI (liftRealtoEReal f) x) ∧ (v = w + d)}\n  ∀ ε > 0, ∃ δ > 0, ∀ y,\n  y ∈ Metric.ball x δ → SubdifferentialI (liftRealtoEReal f) y ⊆ subdiff_neighborhood ε := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_6_2_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Corollary 6.2.5  -/",
+        "content": "lemma FCA_chap_D_6_2_5 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (hf_convex : ConvexOn ℝ Set.univ f) :\n  ∀ (x : EuclideanSpace ℝ (Fin n)),\n  ∀ (d : EuclideanSpace ℝ (Fin n)),\n  directionalDeriv (liftRealtoEReal f) x d =\n  Filter.limsup (fun y => directionalDeriv (liftRealtoEReal f) y d) (𝓝 x):= by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_6_2_7",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Theorem 6.2.7  -/",
+        "content": "lemma FCA_chap_D_6_2_7 {n : ℕ}\n  (fk : ℕ → (EuclideanSpace ℝ (Fin n) → ℝ))\n  (xk : ℕ → EuclideanSpace ℝ (Fin n))\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (x : EuclideanSpace ℝ (Fin n))\n  (hf_convex : ∀ i, ConvexOn ℝ Set.univ (fk i))\n  (hf_pointwise : ∀ v, Filter.Tendsto (fun k => fk k v) Filter.atTop (𝓝 (f v)))\n  (hx_limit : Filter.Tendsto xk Filter.atTop (𝓝 x)) :\n  let subdiff_neighborhood := fun (ε : ℝ) =>\n                              {v | ∃ w d,(‖d‖ ≤ ε) ∧ (w ∈ SubdifferentialI (liftRealtoEReal f) x) ∧ (v = w + d)}\n  ∀ ε > 0, ∃ (K : ℕ), ∀ k ≥ K,\n  SubdifferentialI (liftRealtoEReal (fk k)) (xk k) ⊆ subdiff_neighborhood ε:= by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_6_2_8",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Corollary 6.2.8  -/",
+        "content": "lemma FCA_chap_D_6_2_8 {n : ℕ}\n  (fk : ℕ → (EuclideanSpace ℝ (Fin n) → ℝ))\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (hf_convex : ∀ i, ConvexOn ℝ Set.univ (fk i))\n  (hf_seq_diff : ∀ i, Differentiable ℝ (fk i))\n  (hf_diff : Differentiable ℝ f)\n  (hf_pointwise : ∀ v, Filter.Tendsto (fun k => fk k v) Filter.atTop (𝓝 (f v))) :\n  ∀ (K : Set (EuclideanSpace ℝ (Fin n))), IsCompact K →\n  TendstoUniformlyOn (fun k => (fun x => gradient (fk k) x)) (fun x => gradient f x) Filter.atTop K := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_D_6_3_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section D, Corollary 6.3.1  -/",
+        "content": "lemma FCA_chap_D_6_3_1 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → ℝ)\n  (hf_convex : ConvexOn ℝ Set.univ f) :\n  let delta_set := {y | SubdifferentialI (liftRealtoEReal f) y = {gradient f y}}\n  let lim_set := fun x => {s | ∃ (yk : ℕ → EuclideanSpace ℝ (Fin n)),\n                               (∀ k, yk k ∈ delta_set) ∧\n                               (Filter.Tendsto yk Filter.atTop (𝓝 x)) ∧\n                               (Filter.Tendsto (fun k => gradient f (yk k)) Filter.atTop (𝓝 s))}\n  ∀ (x : EuclideanSpace ℝ (Fin n)),\n  SubdifferentialI (liftRealtoEReal f) x = convexHull ℝ (lim_set x) := by\n  sorry\n"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_1_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.1.2 -/",
+        "content": "lemma FCA_chap_E_1_1_2 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hf_nondegenerate : IsNondegenerate f) :\n  InClosedConvRn (Conjugate f) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_2_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Example 1.2.1 -/",
+        "content": "lemma FCA_chap_E_1_2_1 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hf_nondegenerate : IsNondegenerate f) :\n  let f_conj := fun s => Conjugate f s\n  let f_epi_supportfun := fun (s : EuclideanSpace ℝ (Fin n)) (u : ℝ) =>\n  SupportFun {z | (vecHead z, vecLast z) ∈ (epigraph (liftWithToptoEReal f))} (Fin.snoc s (-u))\n  let f_dom_supportfun := fun s => SupportFun {z | z ∈ effDom (liftWithToptoEReal f)} s\n  (Conjugate f =\n  fun s => sSup {z : WithTop ℝ | ∃ (x : EuclideanSpace ℝ (Fin n)) (r : ℝ),\n  (z = (inner ℝ s x) - r) ∧ ((x, r) ∈ epigraph (liftWithToptoEReal f))}) ∧\n  f_epi_supportfun = (fun s u =>\n    if u > 0 then u • f_conj (u⁻¹ • s)\n    else if u = 0 then f_dom_supportfun s\n    else ⊤\n  ) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_2_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.2.2 -/",
+        "content": "lemma FCA_chap_E_1_2_2 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x₀ : EuclideanSpace ℝ (Fin n))\n  (hf_nondegenerate : IsNondegenerate f) (hf_closed_convex : InClosedConvRn f)\n  (hx₀ : f x₀ ≠ ⊤) :\n  let f_conj := fun s => Conjugate f s\n  let f_epi_supportfun := fun (s : EuclideanSpace ℝ (Fin n)) (u : ℝ) =>\n                               SupportFun {z | (vecHead z, vecLast z) ∈ (epigraph (liftWithToptoEReal f))} (Fin.snoc s (-u))\n  let f_dom_supportfun := fun s => SupportFun {z | z ∈ effDom (liftWithToptoEReal f)} s\n  let f_conj_asympfun := fun s => AsymptoticFun f_conj x₀ s\n  ∀ s, (f_epi_supportfun s 0 = f_dom_supportfun s) ∧ (f_dom_supportfun s = f_conj_asympfun s) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_1_i",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.i -/",
+        "content": "lemma FCA_chap_E_1_3_1_i {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (r : ℝ) (hf_nondegenerate : IsNondegenerate f) :\n  let g := fun x => f x + r\n  let f_conj := fun s => Conjugate f s\n  let g_conj := fun s => Conjugate g s\n  ∀ s, g_conj s = f_conj s - r := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_1_ii",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.ii -/",
+        "content": "lemma FCA_chap_E_1_3_1_ii {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (t : ℝ)\n  (hf_nondegenerate : IsNondegenerate f) (ht_pos : t > 0) :\n  let g := fun x => t • f x\n  let f_conj := fun s => Conjugate f s\n  let g_conj := fun s => Conjugate g s\n  ∀ s, g_conj s = t • f_conj (t⁻¹ • s) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_1_iii",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.iii -/",
+        "content": "lemma FCA_chap_E_1_3_1_iii {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (t : ℝ)\n  (hf_nondegenerate : IsNondegenerate f) (ht_nonzero : t ≠ 0) :\n  let g := fun x => f (t • x)\n  let f_conj := fun s => Conjugate f s\n  let g_conj := fun s => Conjugate g s\n  ∀ s, g_conj s = f_conj (t⁻¹ • s) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_1_iv",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.iv -/",
+        "content": "lemma FCA_chap_E_1_3_1_iv {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (A : (EuclideanSpace ℝ (Fin n)) ≃ₗ[ℝ] (EuclideanSpace ℝ (Fin n)))\n  (hf_nondegenerate : IsNondegenerate f) :\n  let g := fun x => f (A x)\n  let A_adjoint_inverse : (EuclideanSpace ℝ (Fin n) →ₗ[ℝ] EuclideanSpace ℝ (Fin n)) :=\n                          (A.symm : EuclideanSpace ℝ (Fin n) →ₗ[ℝ] EuclideanSpace ℝ (Fin n)).adjoint\n  ∀ s, Conjugate g s = Conjugate f (A_adjoint_inverse s) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_1_v",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.v -/",
+        "content": "lemma FCA_chap_E_1_3_1_v {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x₀ : EuclideanSpace ℝ (Fin n))\n  (hf_nondegenerate : IsNondegenerate f) :\n  let g := fun x => f (x - x₀)\n  ∀ s, Conjugate g s = Conjugate f s + inner ℝ s x₀ := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_1_vi",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.vi -/",
+        "content": "lemma FCA_chap_E_1_3_1_vi {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (s₀ : EuclideanSpace ℝ (Fin n))\n  (hf_nondegenerate : IsNondegenerate f) :\n  let g := fun x => f x + inner ℝ s₀ x\n  ∀ s, Conjugate g s = Conjugate f (s - s₀) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_1_vii",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.vii -/",
+        "content": "lemma FCA_chap_E_1_3_1_vii {n : ℕ}\n  (f₁ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (f₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hf_nondegenerate : IsNondegenerate f₁ ∧ IsNondegenerate f₂)\n  (hf₁_minorizes : Minorizes f₁ f₂) :\n  Minorizes (Conjugate f₂) (Conjugate f₁) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_1_viii",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.1.viii -/",
+        "content": "lemma FCA_chap_E_1_3_1_viii {n : ℕ}\n  (f₁ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (f₂ : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (α : ℝ)\n  (hf_nondegenerate : IsNondegenerate f₁ ∧ IsNondegenerate f₂) :\n  Set.Nonempty (effDom (liftWithToptoEReal f₁) ∩ effDom (liftWithToptoEReal f₂)) →\n  α ∈ Set.Ioo 0 1 →\n  Minorizes (Conjugate (fun x => α • f₁ x + (1 - α) • f₂ x))\n            (α • (Conjugate f₁) + (1 - α) • (Conjugate f₂)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.2 -/",
+        "content": "lemma FCA_chap_E_1_3_2 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (H : Subspace ℝ (EuclideanSpace ℝ (Fin n)))\n  (hf_nondegenerate : IsNondegenerate f)\n  : let pH : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n) := fun x => Submodule.orthogonalProjection H x\n    let g := fun x => f x + (Indicator H) x\n    ∀ s, Conjugate g s = Conjugate (f ∘ pH) (pH s)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.4 -/",
+        "content": "lemma FCA_chap_E_1_3_4 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (V : Subspace ℝ (EuclideanSpace ℝ (Fin n)))\n  (hf_nondegenerate : IsNondegenerate f) (hV_contains_affdom : affineSpan ℝ (effDom (liftWithToptoEReal f)))\n  : let U := Vᗮ\n    let pV : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n) := fun x => Submodule.orthogonalProjection V x\n    let pU : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n) := fun x => Submodule.orthogonalProjection U x\n    ∀ z ∈ affineSpan ℝ (effDom (liftWithToptoEReal f)), ∀ s,\n    Conjugate f s = inner ℝ (pU s) z + Conjugate f (pV s)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_5",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.3.5 -/",
+        "content": "lemma FCA_chap_E_1_3_5 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (hf_nondegenerate : IsNondegenerate f)\n  : epigraph (liftWithToptoEReal (Biconjugate f)) = closure (convexHull ℝ (epigraph (liftWithToptoEReal f)))\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_6",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.3.6 -/",
+        "content": "lemma FCA_chap_E_1_3_6 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (g : EuclideanSpace ℝ (Fin n) → WithTop ℝ) :\n  ((Minorizes (Biconjugate f) g) ∧ (Minorizes g f) → ∀ s, Conjugate g s = Conjugate f s) ∧\n  ((Biconjugate f = f) ↔ (InClosedConvRn f)) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_8",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.8 -/",
+        "content": "lemma FCA_chap_E_1_3_8 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (hf_nondegenerate : IsNondegenerate f) (hf_coercive : IsOneCoerciveFun f)\n  : ∀ s, Conjugate f s < ⊤\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_3_9",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Proposition 1.3.9 -/",
+        "content": "lemma FCA_chap_E_1_3_9 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x₀ : EuclideanSpace ℝ (Fin n))\n  (hf_nondegenerate : IsNondegenerate f) :\n  (x₀ ∈ interior (effDom (liftWithToptoEReal f)) → IsZeroCoerciveFun (fun x => Conjugate f x - inner ℝ x₀ x)) ∧\n  (∀ x, f x ≠ ⊤ → IsOneCoerciveFun (Conjugate f))\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_4_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.4.1 -/",
+        "content": "lemma FCA_chap_E_1_4_1 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x s : EuclideanSpace ℝ (Fin n))\n  (hf_nondegenerate : IsNondegenerate f)\n  : s ∈ SubdifferentialAt f x ↔ (Conjugate f s) + f x - (inner ℝ s x) = 0\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_4_2",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.4.2 -/",
+        "content": "lemma FCA_chap_E_1_4_2 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x : EuclideanSpace ℝ (Fin n))\n  (hf_convex : InConvRn f)\n  : x ∈ intrinsicInterior ℝ (effDom (liftWithToptoEReal f)) → Set.Nonempty (SubdifferentialAt f x)\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_4_3",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Theorem 1.4.3 -/",
+        "content": "lemma FCA_chap_E_1_4_3 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (g : EuclideanSpace ℝ (Fin n) → WithTop ℝ)\n  (x s : EuclideanSpace ℝ (Fin n))\n  (hf_nondegenerate : IsNondegenerate f) :\n  (Set.Nonempty (SubdifferentialAt f x) → Biconjugate f x = f x) ∧\n  ((Minorizes (Biconjugate f) g) ∧ (Minorizes g f) ∧ (g x = f x) →\n  (SubdifferentialAt g x) = (SubdifferentialAt f x)) ∧\n  (s ∈ SubdifferentialAt f x → x ∈ SubdifferentialAt (Conjugate f) s) := by\n  sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_1_4_4",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Corollary 1.4.4 -/",
+        "content": "lemma FCA_chap_E_1_4_4 {n : ℕ}\n  (f : EuclideanSpace ℝ (Fin n) → WithTop ℝ) (x s : EuclideanSpace ℝ (Fin n))\n  (hf_closed_convex : InClosedConvRn f)\n  : List.TFAE [\n    f x + Conjugate f s - inner ℝ s x = 0,\n    s ∈ SubdifferentialAt f x,\n    x ∈ SubdifferentialAt (Conjugate f) s\n  ]\n  := by sorry"
+    },
+    {
+        "lean_tag": "FCA_chap_E_2_1_1",
+        "comment": "/- Hiriart-Urruty Lemarechal (Fundamentals of Convex analysis), Section E, Corollary 2.1.1 -/",
+        "content": "lemma FCA_chap_E_2_1_1 {m n : ℕ}\n  (g : EuclideanSpace ℝ (Fin m) → WithTop ℝ)\n  (A : (EuclideanSpace ℝ (Fin m)) →ₗ[ℝ] (EuclideanSpace ℝ (Fin n)))\n  (hg_nondegenerate : IsNondegenerate g)\n  (h_nonempty_domain : Set.Nonempty ((Im A.adjoint) ∩ effDom (liftWithToptoEReal (Conjugate g))))\n  : let h := fun x => sInf (Set.image g {y | A y = x})\n    ∀ s, Conjugate h s = Conjugate g (A.adjoint s)\n  := by sorry"
+    }
+]
